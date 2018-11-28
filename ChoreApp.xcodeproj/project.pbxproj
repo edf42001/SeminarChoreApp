@@ -14,6 +14,9 @@
 		8B326AAA21AD927700665FFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B326AA821AD927700665FFE /* LaunchScreen.storyboard */; };
 		8B326AB521AD927800665FFE /* ChoreAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B326AB421AD927800665FFE /* ChoreAppTests.swift */; };
 		8B326AC021AD927800665FFE /* ChoreAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B326ABF21AD927800665FFE /* ChoreAppUITests.swift */; };
+		8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
+		8BC1EBFE21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
+		8BC1EBFF21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,7 @@
 		8B326ABB21AD927800665FFE /* ChoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B326ABF21AD927800665FFE /* ChoreAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreAppUITests.swift; sourceTree = "<group>"; };
 		8B326AC121AD927800665FFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				8B326AA621AD927700665FFE /* Assets.xcassets */,
 				8B326AA821AD927700665FFE /* LaunchScreen.storyboard */,
 				8B326AAB21AD927700665FFE /* Info.plist */,
+				8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */,
 			);
 			path = ChoreApp;
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B326AAA21AD927700665FFE /* LaunchScreen.storyboard in Resources */,
+				8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */,
 				8B326AA721AD927700665FFE /* Assets.xcassets in Resources */,
 				8B326AA521AD926D00665FFE /* Main.storyboard in Resources */,
 			);
@@ -239,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC1EBFE21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC1EBFF21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
