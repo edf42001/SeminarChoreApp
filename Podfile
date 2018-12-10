@@ -12,14 +12,4 @@ target 'ChoreApp' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
 
-  target 'ChoreAppTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'ChoreAppUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
