@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		58ADA62A9AA3227B1AAB3C97 /* Pods_ChoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE85045751A6284C536B015 /* Pods_ChoreApp.framework */; };
+		8B28478221C00F44009737AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28478121C00F44009737AC /* User.swift */; };
+		8B28478421C00F51009737AC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28478321C00F51009737AC /* Group.swift */; };
+		8B28478621C00F59009737AC /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28478521C00F59009737AC /* Chore.swift */; };
 		8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B326A9F21AD926D00665FFE /* AppDelegate.swift */; };
 		8B326AA221AD926D00665FFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B326AA121AD926D00665FFE /* ViewController.swift */; };
 		8B326AA521AD926D00665FFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B326AA321AD926D00665FFE /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B28478121C00F44009737AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8B28478321C00F51009737AC /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		8B28478521C00F59009737AC /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		8B326A9C21AD926D00665FFE /* ChoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B326A9F21AD926D00665FFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B326AA121AD926D00665FFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +84,9 @@
 				8B326AA821AD927700665FFE /* LaunchScreen.storyboard */,
 				8B326AAB21AD927700665FFE /* Info.plist */,
 				8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */,
+				8B28478121C00F44009737AC /* User.swift */,
+				8B28478321C00F51009737AC /* Group.swift */,
+				8B28478521C00F59009737AC /* Chore.swift */,
 			);
 			path = ChoreApp;
 			sourceTree = "<group>";
@@ -220,6 +229,9 @@
 			files = (
 				8B326AA221AD926D00665FFE /* ViewController.swift in Sources */,
 				8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */,
+				8B28478621C00F59009737AC /* Chore.swift in Sources */,
+				8B28478221C00F44009737AC /* User.swift in Sources */,
+				8B28478421C00F51009737AC /* Group.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
