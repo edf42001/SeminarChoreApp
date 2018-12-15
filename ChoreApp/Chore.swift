@@ -10,6 +10,11 @@ import Foundation
 
 class Chore{
     let name:String
-    let asignee:User
+    let asignee:String
+    
+    init(){
+        name = ""
+        asignee = "userid1"
+    }
 }
 

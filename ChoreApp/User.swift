@@ -9,13 +9,12 @@
 import Foundation
 import Firebase
 
-
 class User {
     let ref:DatabaseReference!
     let username:String
-    let uid:String
-    let email:String
-    var displayName:String
+    var uid:String?
+    var email:String?
+    var displayName:String?
     var group:Group?
 
     init(username:String){

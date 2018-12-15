@@ -8,35 +8,34 @@
 
 import Foundation
 import Firebase
-import User
 
 class Group{
-    var members:[User]
-    var chores:[Chore]
-    var name:String
+    var members:[User]?
+    var chores:[Chore]?
+    var name:String?
     var id:String
     let ref:DatabaseReference!
     
     init(name:String, creator:User){
         self.ref = Database.database().reference()
-        self.id = ref.child("groups").childByAutoId().key
+        self.id = ref.child("groups").childByAutoId().key ?? ""
         self.ref.child("groups/\(id)").setValue(["name":name,
                                                  "members":[creator.uid:"parent"]
                                                  ])
         
     }
-}
 
-
-func addMember(userName:String) {
-    self.ref.child("usernames/\(userName)").observeSignleEvent(of: .value, with {snapshot in
-        let uid = snapshot as? String ?? ""
+    func addMember(userName:String) {
+        self.ref.child("usernames/\(userName)").observeSingleEvent(of: .value) {snapshot in
+            let uid = snapshot as? String ?? ""
+            
+        }
+        self.ref.child("groups/\(id)")
         
-    })
-    self.ref.child("groups/\(id)")
+    }
     
+    func addChore(chore:Chore){
+        
+    }
 }
 
-func addChore(chore:Chore){
-    
-}
