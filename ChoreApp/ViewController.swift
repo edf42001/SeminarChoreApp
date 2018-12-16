@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 //        addMemberToGroup(groupID:"-LThDJhiQqk7tsTLXhXV", newMemberUserName: "bobisthebest", ref: ref, asParent: false)
 //        leaveGroup(uid: "1klasjd-sadnx", groupID:"-LThDJhiQqk7tsTLXhXV", ref: ref)
 //          addChore(name: "Take out recycling", asigneeUid: "askdjh-34ehjk", groupID: "-LThDJhiQqk7tsTLXhXV", ref: ref)
-//        addChore(name: "Get laundry from basement", asigneeUid: "askdjh-34ehjk", groupID: "-LThDJhiQqk7tsTLXhXV", ref: ref)
+//        addChore(name: "Do the laundry", asigneeUid: "askdjh-34ehjk", groupID: "-LThDJhiQqk7tsTLXhXV", ref: ref)
 //        removeChore(choreID: "-LTijDNkGs1HGvj41U8q", groupID: "-LThDJhiQqk7tsTLXhXV", uid: "askdjh-34ehjk", ref: ref)
     }
 

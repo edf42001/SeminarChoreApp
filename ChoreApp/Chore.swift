@@ -9,12 +9,14 @@
 import Foundation
 
 class Chore{
+    let id:String
     let name:String
-    let asignee:String
+    let asigneeID:String
     
-    init(){
-        name = ""
-        asignee = "userid1"
+    init(id:String, name:String, asigneeID:String){
+        self.id = id
+        self.name = name
+        self.asigneeID = asigneeID
     }
 }
 

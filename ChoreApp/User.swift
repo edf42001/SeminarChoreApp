@@ -10,29 +10,16 @@ import Foundation
 import Firebase
 
 class User {
-    let ref:DatabaseReference!
+    let uid:String
     let username:String
-    var uid:String?
-    var email:String?
-    var displayName:String?
-    var group:Group?
-
-    init(username:String){
-        let user = Auth.auth().currentUser
-        if let user = user {
-            self.uid = user.uid
-        }
+    let email:String
+    var groupID: String?
+    var chores:[Chore]?
+    
+    init(uid:String, username: String, email:String){
+        self.uid = uid
         self.username = username
-        self.ref = Database.database().reference()
+        self.email = email
     }
     
-    func updateUserData(){
-        self.ref.child("usernames/\(self.username)").setValue(self.uid)
-        
-    }
-
-    func joinGroup(group:Group){
-        self.ref.child("users/\(self.uid)/group/\(group.id)").setValue(true)
-    }
-
 }
