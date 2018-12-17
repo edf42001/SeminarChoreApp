@@ -12,7 +12,7 @@ import Firebase
 class Group{
     let id:String
     var name:String
-    var members:[String:String] //username:uid
+//    var members:[String:String] //username:uid
     var chores:[Chore]?
     
     init(id:String, name:String){

@@ -15,11 +15,13 @@ class User {
     let email:String
     var groupID: String?
     var chores:[Chore]?
+    var isParent:Bool
     
-    init(uid:String, username: String, email:String){
+    init(uid:String, username: String, email:String, isParent:Bool){
         self.uid = uid
         self.username = username
         self.email = email
+        self.isParent = isParent
     }
     
 }

@@ -15,6 +15,9 @@
 		8B326AA521AD926D00665FFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B326AA321AD926D00665FFE /* Main.storyboard */; };
 		8B326AA721AD927700665FFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B326AA621AD927700665FFE /* Assets.xcassets */; };
 		8B326AAA21AD927700665FFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B326AA821AD927700665FFE /* LaunchScreen.storyboard */; };
+		8B73F68421C822F6005A66E5 /* MainApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B73F68321C822F6005A66E5 /* MainApp.storyboard */; };
+		8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */; };
+		8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68721C83F56005A66E5 /* ParentViewController.swift */; };
 		8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
 		EEA7E9AD01167823B46739E8 /* Pods_ChoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138D13EF1B0112B1786BCDB4 /* Pods_ChoreApp.framework */; };
 /* End PBXBuildFile section */
@@ -32,6 +35,9 @@
 		8B326AA621AD927700665FFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B326AA921AD927700665FFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B326AAB21AD927700665FFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B73F68321C822F6005A66E5 /* MainApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainApp.storyboard; sourceTree = "<group>"; };
+		8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGroupViewController.swift; sourceTree = "<group>"; };
+		8B73F68721C83F56005A66E5 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BFEC223AE053DC3B78726A18 /* Pods-ChoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreApp/Pods-ChoreApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +80,9 @@
 				8B326AA321AD926D00665FFE /* Main.storyboard */,
 				8B326AA621AD927700665FFE /* Assets.xcassets */,
 				8B326AA821AD927700665FFE /* LaunchScreen.storyboard */,
+				8B73F68321C822F6005A66E5 /* MainApp.storyboard */,
+				8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */,
+				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
 				8B326AAB21AD927700665FFE /* Info.plist */,
 				8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */,
 				8B28478121C00F44009737AC /* User.swift */,
@@ -160,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B73F68421C822F6005A66E5 /* MainApp.storyboard in Resources */,
 				8B326AAA21AD927700665FFE /* LaunchScreen.storyboard in Resources */,
 				8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */,
 				8B326AA721AD927700665FFE /* Assets.xcassets in Resources */,
@@ -228,7 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B326AA221AD926D00665FFE /* ViewController.swift in Sources */,
+				8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */,
 				8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */,
+				8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */,
 				8B28478621C00F59009737AC /* Chore.swift in Sources */,
 				8B28478221C00F44009737AC /* User.swift in Sources */,
 				8B28478421C00F51009737AC /* Group.swift in Sources */,
