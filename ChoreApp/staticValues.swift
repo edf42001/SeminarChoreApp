@@ -34,6 +34,7 @@ class Styles
     
     static func setUpDefaultTextField(textField: UITextField)
     {
+        
         textField.textColor = textColor
         textField.font = defaultFont
         textField.backgroundColor = backgroundColor
