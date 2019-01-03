@@ -22,8 +22,6 @@ class ParentViewController: UIViewController {
         super.viewDidLoad()
         setupEnterMemberNameAlert()
         ref = Database.database().reference()
-//        asParentSwitch.isOn
-        
     }
     
     @IBAction func addMemberButtonPressed(_ sender: UIButton) {
