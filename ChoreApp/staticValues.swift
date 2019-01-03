@@ -15,18 +15,28 @@ class Styles
     static let bigFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 18)
     static let firstColor: UIColor? = UIColor.init(named: "white")
     static let secondColor: UIColor? = UIColor.init(named: "black")
+    static let textColor: UIColor? = UIColor.init(named: "black")
+    static let backgroundColor: UIColor? = UIColor.init(named: "white")
     
-    static func defaultButton(button: UIButton)
+    
+    static func setUpDefaultButton(button: UIButton)
     {
-        button.backgroundColor = firstColor
+        button.backgroundColor = backgroundColor
         button.titleLabel?.font = defaultFont
-        button.titleLabel?.textColor = secondColor
-        
+        button.titleLabel?.textColor = textColor
     }
     
-    static func defaultLabel(label: UILabel)
+    static func setUpDefaultLabel(label: UILabel)
     {
-        label.textColor = secondColor
+        label.textColor = textColor
         label.font = defaultFont
     }
+    
+    static func setUpDefaultTextField(textField: UITextField)
+    {
+        textField.textColor = textColor
+        textField.font = defaultFont
+        textField.backgroundColor = backgroundColor
+    }
+    
 }
