@@ -12,14 +12,14 @@ import Firebase
 class Group{
     let id:String
     var name:String
-//    var members:[String:String] //username:uid
+    var members:[UserInfo]? //username:uid
     var chores:[Chore]?
     
-    init(id:String, name:String){
+    init(id:String, name:String, members:[UserInfo], chores:[Chore]?){
         self.id = id
         self.name = name
-//        self.members = getMembers()
-//        self.chores = getChores()
+        self.members = members
+        self.chores = chores
     }
     
 //    init(name:String, creator:User){
@@ -39,5 +39,17 @@ class Group{
 //        self.ref.child("groups/\(id)")
 //
 //    }
+}
+
+struct UserInfo{
+    let uid:String
+    let username:String
+    let isParent:Bool
+    
+    init(uid:String, username:String, isParent:Bool){
+        self.uid = uid
+        self.username = username
+        self.isParent = isParent
+    }
 }
 

@@ -12,6 +12,7 @@ import FirebaseDatabase
 
 class NoGroupViewController: UIViewController {
     var user:User?
+    var group:Group?
     var enterGroupName:UIAlertController!
     var ref:DatabaseReference!
     
@@ -27,6 +28,37 @@ class NoGroupViewController: UIViewController {
             let password = "passwordpassword"
             Auth.auth().createUser(withEmail: email, password: password, completion: nil)
         }
+        
+        //FOR TESTING PURPOSES Setup user and group objects for next controller
+        if let uid = Auth.auth().currentUser?.uid {
+            user = User(uid: uid, username: "bobisthebest", email: "ethan@me.com", isParent: true)
+            user?.groupID = "-LVE5XGJ5ZNvT-ZnnJZ0"
+            var members:[UserInfo] = [UserInfo(uid: "", username: "", isParent: true)]
+            let handle = ref.child("groups/-LVE5XGJ5ZNvT-ZnnJZ0/members").observe(.value, with: {snapshot in
+                if let membersData = snapshot.value as? [String:String] {
+                    for uid in membersData.keys {
+                        let handle2 = self.ref.child("/users/\(uid)/username").observe(.value, with: {snapshot in
+                            if let usernameData = snapshot.value as? String{
+                                let member = UserInfo(uid: uid, username: usernameData, isParent: membersData[uid] == "parent")
+                                members.append(member)
+                            }
+                        })
+                        self.ref.removeObserver(withHandle: handle2)
+                    }
+                }else{
+                    print("nope")
+                }
+            })
+            ref.removeObserver(withHandle: handle)
+            print(members)
+            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", members: members, chores: nil)
+        }
+        //End for testing purposes
+    }
+    //Also only for testing purposes
+    override func viewDidAppear(_ animated: Bool) {
+        print(group?.members)
+        self.performSegue(withIdentifier: "toParentViewController", sender: self)
     }
     
     //The user clicks the button
@@ -37,8 +69,11 @@ class NoGroupViewController: UIViewController {
     func createNewGroup(name: String){
         if let uid = Auth.auth().currentUser?.uid {
             createGroupInDatabase(uid: uid, name: name, ref: ref, completion: {key in
-                self.user?.groupID = key
-                self.user?.isParent = true
+                guard let user = self.user else {return}
+                user.groupID = key
+                user.isParent = true
+                let members:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
+                self.group = Group(id: key, name: name, members: members, chores: nil)
                 self.performSegue(withIdentifier: "toParentViewController", sender: self)
             })
         }
@@ -85,6 +120,7 @@ class NoGroupViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? ParentViewController else {return}
         destination.user = user
+        destination.group = group
     }
     
 
