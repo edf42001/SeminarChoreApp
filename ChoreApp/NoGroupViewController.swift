@@ -33,10 +33,9 @@ class NoGroupViewController: UIViewController {
         if let uid = Auth.auth().currentUser?.uid {
             user = User(uid: uid, username: "bobisthebest", email: "ethan@me.com", isParent: true)
             user?.groupID = "-LVE5XGJ5ZNvT-ZnnJZ0"
-            var members:[UserInfo] = []
-            let dispatchGroup = DispatchGroup()
+            let emptyUserArray:[UserInfo] = []
             
-            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", members: members, chores: nil)
+            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
             initializeGroupData(ref: ref)
         }
         //End for testing purposes
@@ -57,8 +56,8 @@ class NoGroupViewController: UIViewController {
                 guard let user = self.user else {return}
                 user.groupID = key
                 user.isParent = true
-                let members:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
-                self.group = Group(id: key, name: name, members: members, chores: nil)
+                let parent:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
+                self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
                 self.performSegue(withIdentifier: "toParentViewController", sender: self)
             })
         }
@@ -128,7 +127,11 @@ class NoGroupViewController: UIViewController {
                     dispatchGroup.enter()
                     self.getMemberUsername(uid: uid, ref: ref, completion: {username in
                         if let username = username {
-                            self.group?.members?.append(UserInfo(uid: uid, username: username, isParent: memberData[uid] ?? "" == "parent"))
+                            if memberData[uid] == "parent" {
+                                 self.group?.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
+                            }else{
+                                self.group?.children?.append(UserInfo(uid: uid, username: username, isParent: false))
+                            }
                         }
                         dispatchGroup.leave()
                     })
