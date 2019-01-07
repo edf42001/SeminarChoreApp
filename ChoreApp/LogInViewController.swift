@@ -8,23 +8,36 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var email: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+    
+    @IBOutlet weak var logInButton: UIButton!
+    
+    //Initialize everything
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        email.delegate = self
+        password.delegate = self
+        email.becomeFirstResponder()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func LogInButtonTouchedUp(_ sender: UIButton) {
+        
     }
-    */
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if email.isFirstResponder {
+            password.becomeFirstResponder()
+        }
+        else {
+            self.view.endEditing(true)
+            password.resignFirstResponder()
+        }
+        return true
+    }
+    
 
 }

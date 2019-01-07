@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseDatabase
 
 class StartingScreenViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let _ = Auth.auth().currentUser {
+            self.performSegue(withIdentifier: "toHomeScreen", sender: self)
+        }
     }
 
 

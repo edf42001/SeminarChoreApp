@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iEW-kE-hWu">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -25,7 +25,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5bZ-2s-Q7m">
-                                <rect key="frame" x="50" y="419.5" width="314" height="30"/>
+                                <rect key="frame" x="50" y="420" width="314" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -44,20 +44,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sr-fa-Xjk">
-                                <rect key="frame" x="161" y="262.5" width="92" height="23.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sr-fa-Xjk">
+                                <rect key="frame" x="144.5" y="262.5" width="125" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8Y-bM-wEK">
-                                <rect key="frame" x="163" y="381" width="88.5" height="23.5"/>
+                                <rect key="frame" x="163" y="381.5" width="88.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U8G-XU-zyx">
-                                <rect key="frame" x="50" y="301" width="314" height="30"/>
+                                <rect key="frame" x="50" y="301.5" width="314" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -88,6 +88,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="displayName" destination="U8G-XU-zyx" id="RDT-AU-gTz"/>
+                        <outlet property="email" destination="Wn1-MP-CRd" id="jDH-L0-e0V"/>
+                        <outlet property="password" destination="5bZ-2s-Q7m" id="ay4-IF-AWi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,6 +119,9 @@
                                     <constraint firstAttribute="width" constant="100" id="XBt-UR-leB"/>
                                 </constraints>
                                 <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="LogInButtonTouchedUp:" destination="61b-mg-mlY" eventType="touchUpInside" id="bu8-QK-CSM"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pW-pB-DhH">
                                 <rect key="frame" x="139" y="144" width="136" height="23.5"/>
@@ -153,10 +161,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ubw-BQ-ddO"/>
                     </view>
+                    <connections>
+                        <outlet property="email" destination="Xje-ZJ-ad9" id="FPv-ny-kzA"/>
+                        <outlet property="logInButton" destination="pQM-Iy-2KJ" id="vVg-yX-Brk"/>
+                        <outlet property="password" destination="SNy-CX-E8Y" id="Xpv-Us-Z0v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBW-8e-LOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543" y="425"/>
+            <point key="canvasLocation" x="1538" y="539"/>
         </scene>
         <!--Starting Screen View Controller-->
         <scene sceneID="aKX-Ti-r7p">
@@ -180,6 +193,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="Log In"/>
+                                        <connections>
+                                            <segue destination="61b-mg-mlY" kind="show" identifier="toLogIn" id="nRT-pv-GdO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bI5-U3-qHr">
                                         <rect key="frame" x="214" y="0.0" width="100" height="50"/>
@@ -189,6 +205,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="Sign Up"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="toSignUp" id="BPj-xu-soC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -203,9 +222,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TeT-Ua-Bfl"/>
                     </view>
+                    <connections>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="toHomeScreen" id="nQR-6M-OJ5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRN-se-s0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--MainApp-->
+        <scene sceneID="a2K-fg-anA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainApp" id="KQp-jF-4pg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkz-Z1-lDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1413" y="133"/>
         </scene>
     </scenes>
 </document>

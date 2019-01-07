@@ -8,23 +8,35 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var email: UITextField!
+    
+    @IBOutlet weak var displayName: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        email.delegate = self
+        displayName.delegate = self
+        password.delegate = self
+        email.becomeFirstResponder()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if email.isFirstResponder {
+            displayName.becomeFirstResponder()
+        }
+        else if displayName.isFirstResponder {
+            password.becomeFirstResponder()
+        }
+        else {
+            self.view.endEditing(true)
+            password.resignFirstResponder()
+        }
+        return true
     }
-    */
+    
 
 }
