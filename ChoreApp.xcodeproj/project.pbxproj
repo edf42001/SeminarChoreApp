@@ -23,6 +23,7 @@
 		97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */; };
 		97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A33121DE5CC700B58278 /* LogInViewController.swift */; };
 		EEA7E9AD01167823B46739E8 /* Pods_ChoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138D13EF1B0112B1786BCDB4 /* Pods_ChoreApp.framework */; };
+		F39BC85821DE593100BD3DD3 /* staticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39BC85721DE593100BD3DD3 /* staticValues.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		97F6A33121DE5CC700B58278 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BFEC223AE053DC3B78726A18 /* Pods-ChoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreApp/Pods-ChoreApp.release.xcconfig"; sourceTree = "<group>"; };
+		F39BC85721DE593100BD3DD3 /* staticValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staticValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				8B28478121C00F44009737AC /* User.swift */,
 				8B28478321C00F51009737AC /* Group.swift */,
 				8B28478521C00F59009737AC /* Chore.swift */,
+				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
 			);
 			path = ChoreApp;
 			sourceTree = "<group>";
@@ -194,8 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ChoreApp/Pods-ChoreApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -204,8 +205,6 @@
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -222,15 +221,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ChoreApp-checkManifestLockResult.txt",
 			);
@@ -252,6 +247,7 @@
 				8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */,
 				8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */,
 				8B28478621C00F59009737AC /* Chore.swift in Sources */,
+				F39BC85821DE593100BD3DD3 /* staticValues.swift in Sources */,
 				97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */,
 				8B28478221C00F44009737AC /* User.swift in Sources */,
 				97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */,
