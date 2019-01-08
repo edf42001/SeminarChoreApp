@@ -13,12 +13,12 @@ class Styles
     static let defaultFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 12)
     static let smallFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 8)
     static let bigFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 18)
-    static let firstColor: UIColor? = UIColor.init(named: "white")
-    static let secondColor: UIColor? = UIColor.init(named: "black")
-    static let textColor: UIColor? = UIColor.init(named: "black")
-    static let alternateTextColor: UIColor? = UIColor.init(named: "white")
-    static let firstBackgroundColor: UIColor? = UIColor.init(named: "white")
-    static let secondBackgroundColor: UIColor? = UIColor.init(named: "black")
+    static let firstColor: UIColor? = UIColor.white
+    static let secondColor: UIColor? = UIColor.black
+    static let textColor: UIColor? = UIColor.black
+    static let alternateTextColor: UIColor? = UIColor.white
+    static let firstBackgroundColor: UIColor? = UIColor.white
+    static let secondBackgroundColor: UIColor? = UIColor.black
     
     static func setUpDefaultLabel(label: UILabel)
     {
@@ -146,6 +146,27 @@ extension UILabel
             self.font = Styles.defaultFont
             break;
             
+        }
+    }
+}
+extension UITextField
+{
+    func applyTextFieldStyles(type: Int)
+    {
+        switch(type)
+        {
+        case 1:
+            self.textColor = Styles.textColor
+            self.font = Styles.defaultFont
+            self.backgroundColor = Styles.firstBackgroundColor
+            break;
+        case 2:
+            self.textColor = Styles.textColor
+            self.font = Styles.defaultFont
+            self.backgroundColor = Styles.firstBackgroundColor
+            break;
+        default:
+            break;
         }
     }
 }
