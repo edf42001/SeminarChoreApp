@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class User {
+class User{
     let uid:String
     let username:String
     let email:String

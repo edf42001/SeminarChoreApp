@@ -16,15 +16,9 @@ class Styles
     static let firstColor: UIColor? = UIColor.init(named: "white")
     static let secondColor: UIColor? = UIColor.init(named: "black")
     static let textColor: UIColor? = UIColor.init(named: "black")
-    static let backgroundColor: UIColor? = UIColor.init(named: "white")
-    
-    
-    static func setUpDefaultButton(button: UIButton)
-    {
-        button.backgroundColor = backgroundColor
-        button.titleLabel?.font = defaultFont
-        button.titleLabel?.textColor = textColor
-    }
+    static let alternateTextColor: UIColor? = UIColor.init(named: "white")
+    static let firstBackgroundColor: UIColor? = UIColor.init(named: "white")
+    static let secondBackgroundColor: UIColor? = UIColor.init(named: "black")
     
     static func setUpDefaultLabel(label: UILabel)
     {
@@ -37,7 +31,121 @@ class Styles
         
         textField.textColor = textColor
         textField.font = defaultFont
-        textField.backgroundColor = backgroundColor
+        textField.backgroundColor = firstBackgroundColor
     }
     
+}
+extension UIButton
+{
+    func applyButtonStyles(type: Int)
+    {
+        switch(type)
+        {
+        case 1:
+            self.backgroundColor = Styles.firstBackgroundColor
+            self.titleLabel?.font = Styles.defaultFont
+            self.titleLabel?.textColor = Styles.textColor
+            break;
+        case 2:
+            self.backgroundColor = Styles.secondBackgroundColor
+            self.titleLabel?.font = Styles.defaultFont
+            self.titleLabel?.textColor = Styles.textColor
+            break;
+        case 3:
+            self.backgroundColor = Styles.firstBackgroundColor
+            self.titleLabel?.font = Styles.bigFont
+            self.titleLabel?.textColor = Styles.textColor
+            break;
+        case 4:
+            self.backgroundColor = Styles.secondBackgroundColor
+            self.titleLabel?.font = Styles.bigFont
+            self.titleLabel?.textColor = Styles.textColor
+            break;
+        case 5:
+            self.backgroundColor = Styles.firstBackgroundColor
+            self.titleLabel?.font = Styles.smallFont
+            self.titleLabel?.textColor = Styles.textColor
+            break;
+        case 6:
+            self.backgroundColor = Styles.secondBackgroundColor
+            self.titleLabel?.font = Styles.smallFont
+            self.titleLabel?.textColor = Styles.textColor
+            break;
+        case 7:
+            self.backgroundColor = Styles.firstBackgroundColor
+            self.titleLabel?.font = Styles.defaultFont
+            self.titleLabel?.textColor = Styles.alternateTextColor
+            break;
+        case 8:
+            self.backgroundColor = Styles.secondBackgroundColor
+            self.titleLabel?.font = Styles.defaultFont
+            self.titleLabel?.textColor = Styles.textColor
+            break;
+        case 9:
+            self.backgroundColor = Styles.firstBackgroundColor
+            self.titleLabel?.font = Styles.bigFont
+            self.titleLabel?.textColor = Styles.alternateTextColor
+            break;
+        case 10:
+            self.backgroundColor = Styles.secondBackgroundColor
+            self.titleLabel?.font = Styles.bigFont
+            self.titleLabel?.textColor = Styles.alternateTextColor
+            break;
+        case 11:
+            self.backgroundColor = Styles.firstBackgroundColor
+            self.titleLabel?.font = Styles.smallFont
+            self.titleLabel?.textColor = Styles.alternateTextColor
+            break;
+        case 12:
+            self.backgroundColor = Styles.secondBackgroundColor
+            self.titleLabel?.font = Styles.smallFont
+            self.titleLabel?.textColor = Styles.alternateTextColor
+            break;
+        default:
+            self.backgroundColor = Styles.firstBackgroundColor
+            self.titleLabel?.font = Styles.defaultFont
+            self.titleLabel?.textColor = Styles.alternateTextColor
+            break;
+        }
+        
+    }
+    
+}
+extension UILabel
+{
+    func applyLabelStyles(type: Int)
+    {
+        switch(type)
+        {
+        case 1:
+            self.textColor = Styles.textColor
+            self.font = Styles.defaultFont
+            break;
+        case 2:
+            self.textColor = Styles.alternateTextColor
+            self.font = Styles.defaultFont
+            break;
+        case 3:
+            self.textColor = Styles.textColor
+            self.font = Styles.bigFont
+            break;
+        case 4:
+            self.textColor = Styles.alternateTextColor
+            self.font = Styles.bigFont
+            break;
+        case 1:
+            self.textColor = Styles.textColor
+            self.font = Styles.smallFont
+            break;
+        case 2:
+            self.textColor = Styles.alternateTextColor
+            self.font = Styles.smallFont
+            break;
+        default:
+            self.textColor = Styles.textColor
+            self.font = Styles.defaultFont
+            break;
+            
+        }
+    }
 }
