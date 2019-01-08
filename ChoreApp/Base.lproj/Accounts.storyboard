@@ -37,6 +37,9 @@
                                     <constraint firstAttribute="width" constant="100" id="tTE-ha-ANR"/>
                                 </constraints>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpButtonTouchedUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3EK-LL-jvE"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0a7-mC-Cmk">
                                 <rect key="frame" x="139" y="144" width="136" height="23.5"/>
@@ -92,6 +95,7 @@
                         <outlet property="displayName" destination="U8G-XU-zyx" id="RDT-AU-gTz"/>
                         <outlet property="email" destination="Wn1-MP-CRd" id="jDH-L0-e0V"/>
                         <outlet property="password" destination="5bZ-2s-Q7m" id="ay4-IF-AWi"/>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="signUpToHome" id="Dhi-lX-CDw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -165,6 +169,7 @@
                         <outlet property="email" destination="Xje-ZJ-ad9" id="FPv-ny-kzA"/>
                         <outlet property="logInButton" destination="pQM-Iy-2KJ" id="vVg-yX-Brk"/>
                         <outlet property="password" destination="SNy-CX-E8Y" id="Xpv-Us-Z0v"/>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="logInToHome" id="pvd-eN-gh0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBW-8e-LOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -229,13 +234,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRN-se-s0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--MainApp-->
+        <!--mainApp-->
         <scene sceneID="a2K-fg-anA">
             <objects>
-                <viewControllerPlaceholder storyboardName="MainApp" id="KQp-jF-4pg" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="MainApp" storyboardName="MainApp" referencedIdentifier="mainApp" id="KQp-jF-4pg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkz-Z1-lDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1413" y="133"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Dhi-lX-CDw"/>
+    </inferredMetricsTieBreakers>
 </document>
