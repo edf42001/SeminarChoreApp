@@ -33,32 +33,16 @@ class NoGroupViewController: UIViewController {
         if let uid = Auth.auth().currentUser?.uid {
             user = User(uid: uid, username: "bobisthebest", email: "ethan@me.com", isParent: true)
             user?.groupID = "-LVE5XGJ5ZNvT-ZnnJZ0"
-            var members:[UserInfo] = [UserInfo(uid: "", username: "", isParent: true)]
-            let handle = ref.child("groups/-LVE5XGJ5ZNvT-ZnnJZ0/members").observe(.value, with: {snapshot in
-                if let membersData = snapshot.value as? [String:String] {
-                    for uid in membersData.keys {
-                        let handle2 = self.ref.child("/users/\(uid)/username").observe(.value, with: {snapshot in
-                            if let usernameData = snapshot.value as? String{
-                                let member = UserInfo(uid: uid, username: usernameData, isParent: membersData[uid] == "parent")
-                                members.append(member)
-                            }
-                        })
-                        self.ref.removeObserver(withHandle: handle2)
-                    }
-                }else{
-                    print("nope")
-                }
-            })
-            ref.removeObserver(withHandle: handle)
-            print(members)
-            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", members: members, chores: nil)
+            let emptyUserArray:[UserInfo] = []
+            
+            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
+            initializeGroupData(ref: ref)
         }
         //End for testing purposes
     }
     //Also only for testing purposes
     override func viewDidAppear(_ animated: Bool) {
-        print(group?.members)
-        self.performSegue(withIdentifier: "toParentViewController", sender: self)
+        
     }
     
     //The user clicks the button
@@ -72,8 +56,8 @@ class NoGroupViewController: UIViewController {
                 guard let user = self.user else {return}
                 user.groupID = key
                 user.isParent = true
-                let members:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
-                self.group = Group(id: key, name: name, members: members, chores: nil)
+                let parent:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
+                self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
                 self.performSegue(withIdentifier: "toParentViewController", sender: self)
             })
         }
@@ -113,6 +97,51 @@ class NoGroupViewController: UIViewController {
         })
     }
     
+    func getMembersInGroup(groupID:String, ref:DatabaseReference, completion:@escaping(_ members:[String:String]?)->()){
+        let handle = ref.child("groups/-LVE5XGJ5ZNvT-ZnnJZ0/members").observe(.value, with: {snapshot in
+            if let membersData = snapshot.value as? [String:String] {
+                completion(membersData)
+            }else{
+                completion(nil)
+            }
+        })
+        ref.removeObserver(withHandle: handle)
+    }
+    
+    func getMemberUsername(uid:String, ref:DatabaseReference, completion: @escaping (String?)->()){
+        let handle2 = self.ref.child("/users/\(uid)/username").observe(.value, with: {snapshot in
+            if let usernameData = snapshot.value as? String{
+                completion(usernameData)
+            }else{
+                completion(nil)
+            }
+        })
+        self.ref.removeObserver(withHandle: handle2)
+    }
+    
+    func initializeGroupData(ref:DatabaseReference){
+        getMembersInGroup(groupID: user?.groupID ?? "", ref: ref, completion: {memberData in
+            if let memberData = memberData {
+                let dispatchGroup = DispatchGroup()
+                for uid in memberData.keys{
+                    dispatchGroup.enter()
+                    self.getMemberUsername(uid: uid, ref: ref, completion: {username in
+                        if let username = username {
+                            if memberData[uid] == "parent" {
+                                 self.group?.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
+                            }else{
+                                self.group?.children?.append(UserInfo(uid: uid, username: username, isParent: false))
+                            }
+                        }
+                        dispatchGroup.leave()
+                    })
+                }
+                dispatchGroup.notify(queue: .main, execute: {
+                    self.performSegue(withIdentifier: "toParentViewController", sender: self)
+                })
+            }
+        })
+    }
     
     // MARK: - Navigation
 
