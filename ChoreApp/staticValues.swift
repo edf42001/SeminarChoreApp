@@ -136,6 +136,7 @@ extension UILabel
         }
     }
 }
+
 //Create a method applyTextFieldStyles that allows the creation of a default UITextField
 extension UITextField
 {
