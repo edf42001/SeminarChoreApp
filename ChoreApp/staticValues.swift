@@ -8,95 +8,76 @@
 
 import Foundation
 import UIKit
+/*
+ File staticValues
+ Contains Style class - a list of static variables that represent default values for fonts and colors
+ Contains Extensions that contain methods to create default objects
+ */
 class Styles
 {
+    //Default fonts; default, small, and big to create text for differently sized object
     static let defaultFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 12)
     static let smallFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 8)
     static let bigFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 18)
+    
+    //Default colors; first, and second for any object that needs a color of the theme
     static let firstColor: UIColor? = UIColor.white
     static let secondColor: UIColor? = UIColor.black
+    
+    //Default text colors; standard, and alternate for colors of texts to match the theme
     static let textColor: UIColor? = UIColor.black
     static let alternateTextColor: UIColor? = UIColor.white
+    
+    //Default background colors; first, and second for backgrounds of objects to match of the theme
     static let firstBackgroundColor: UIColor? = UIColor.white
     static let secondBackgroundColor: UIColor? = UIColor.black
-    
-    static func setUpDefaultLabel(label: UILabel)
-    {
-        label.textColor = textColor
-        label.font = defaultFont
-    }
-    
-    static func setUpDefaultTextField(textField: UITextField)
-    {
-        
-        textField.textColor = textColor
-        textField.font = defaultFont
-        textField.backgroundColor = firstBackgroundColor
-    }
-    
 }
+enum Condition
+{
+    case standard
+    case big
+    case small
+    case alternate
+    case alternateBig
+    case alternateSmall
+}
+//Create a method applyButtonStyles that allows the creation of a default UIButton
 extension UIButton
 {
-    func applyButtonStyles(type: Int)
+    func applyButtonStyles(type: Condition)
     {
+        /*
+         Cases 1-3 are standard color buttons, with varying font sizes, default, big, small. Cases are .standard, .big, .small
+         Cases 4-6 are alternate color buttons, with varying font sizes, default, big, small. Cases are .alternate, .alternateBig, .alternateSmall
+         */
         switch(type)
         {
-        case 1:
+        case .standard:
             self.backgroundColor = Styles.firstBackgroundColor
             self.titleLabel?.font = Styles.defaultFont
             self.titleLabel?.textColor = Styles.textColor
             break;
-        case 2:
-            self.backgroundColor = Styles.secondBackgroundColor
-            self.titleLabel?.font = Styles.defaultFont
-            self.titleLabel?.textColor = Styles.textColor
-            break;
-        case 3:
+        case .big:
             self.backgroundColor = Styles.firstBackgroundColor
             self.titleLabel?.font = Styles.bigFont
             self.titleLabel?.textColor = Styles.textColor
             break;
-        case 4:
-            self.backgroundColor = Styles.secondBackgroundColor
-            self.titleLabel?.font = Styles.bigFont
-            self.titleLabel?.textColor = Styles.textColor
-            break;
-        case 5:
+        case .small:
             self.backgroundColor = Styles.firstBackgroundColor
             self.titleLabel?.font = Styles.smallFont
             self.titleLabel?.textColor = Styles.textColor
             break;
-        case 6:
+        case .alternate:
             self.backgroundColor = Styles.secondBackgroundColor
-            self.titleLabel?.font = Styles.smallFont
-            self.titleLabel?.textColor = Styles.textColor
-            break;
-        case 7:
-            self.backgroundColor = Styles.firstBackgroundColor
             self.titleLabel?.font = Styles.defaultFont
             self.titleLabel?.textColor = Styles.alternateTextColor
             break;
-        case 8:
-            self.backgroundColor = Styles.secondBackgroundColor
-            self.titleLabel?.font = Styles.defaultFont
-            self.titleLabel?.textColor = Styles.textColor
-            break;
-        case 9:
-            self.backgroundColor = Styles.firstBackgroundColor
-            self.titleLabel?.font = Styles.bigFont
-            self.titleLabel?.textColor = Styles.alternateTextColor
-            break;
-        case 10:
+        case .alternateBig:
             self.backgroundColor = Styles.secondBackgroundColor
             self.titleLabel?.font = Styles.bigFont
             self.titleLabel?.textColor = Styles.alternateTextColor
             break;
-        case 11:
-            self.backgroundColor = Styles.firstBackgroundColor
-            self.titleLabel?.font = Styles.smallFont
-            self.titleLabel?.textColor = Styles.alternateTextColor
-            break;
-        case 12:
+        case .alternateSmall:
             self.backgroundColor = Styles.secondBackgroundColor
             self.titleLabel?.font = Styles.smallFont
             self.titleLabel?.textColor = Styles.alternateTextColor
@@ -104,40 +85,46 @@ extension UIButton
         default:
             self.backgroundColor = Styles.firstBackgroundColor
             self.titleLabel?.font = Styles.defaultFont
-            self.titleLabel?.textColor = Styles.alternateTextColor
+            self.titleLabel?.textColor = Styles.textColor
             break;
         }
         
     }
     
 }
+
+//Create a method applyLabelStyles that allows the creation of a default UILabel
 extension UILabel
 {
-    func applyLabelStyles(type: Int)
+    func applyLabelStyles(type: Condition)
     {
+        /*
+         Cases 1-3 are standard color buttons, with varying font sizes, default, big, small. Cases are .standard, .big, .small
+         Cases 4-6 are alternate color buttons, with varying font sizes, default, big, small. Cases are .alternate, .alternateBig, .alternateSmall
+         */
         switch(type)
         {
-        case 1:
+        case .standard:
             self.textColor = Styles.textColor
             self.font = Styles.defaultFont
             break;
-        case 2:
-            self.textColor = Styles.alternateTextColor
-            self.font = Styles.defaultFont
-            break;
-        case 3:
+        case .big:
             self.textColor = Styles.textColor
             self.font = Styles.bigFont
             break;
-        case 4:
-            self.textColor = Styles.alternateTextColor
-            self.font = Styles.bigFont
-            break;
-        case 1:
+        case .small:
             self.textColor = Styles.textColor
             self.font = Styles.smallFont
             break;
-        case 2:
+        case .alternate:
+            self.textColor = Styles.alternateTextColor
+            self.font = Styles.defaultFont
+            break;
+        case .alternateBig:
+            self.textColor = Styles.alternateTextColor
+            self.font = Styles.bigFont
+            break;
+        case .alternateSmall:
             self.textColor = Styles.alternateTextColor
             self.font = Styles.smallFont
             break;
@@ -149,23 +136,51 @@ extension UILabel
         }
     }
 }
+//Create a method applyTextFieldStyles that allows the creation of a default UITextField
 extension UITextField
 {
-    func applyTextFieldStyles(type: Int)
+    func applyTextFieldStyles(type: Condition)
     {
+        /*
+         Cases 1-3 are standard color buttons, with varying font sizes, default, big, small. Cases are .standard, .big, .small
+         Cases 4-6 are alternate color buttons, with varying font sizes, default, big, small. Cases are .alternate, .alternateBig, .alternateSmall
+         */
         switch(type)
         {
-        case 1:
+        case .standard:
             self.textColor = Styles.textColor
             self.font = Styles.defaultFont
             self.backgroundColor = Styles.firstBackgroundColor
             break;
-        case 2:
+        case .big:
             self.textColor = Styles.textColor
-            self.font = Styles.defaultFont
+            self.font = Styles.bigFont
             self.backgroundColor = Styles.firstBackgroundColor
+            break;
+        case .small:
+            self.textColor = Styles.textColor
+            self.font = Styles.smallFont
+            self.backgroundColor = Styles.firstBackgroundColor
+            break;
+        case .alternate:
+            self.textColor = Styles.alternateTextColor
+            self.font = Styles.defaultFont
+            self.backgroundColor = Styles.secondBackgroundColor
+            break;
+        case .alternateBig:
+            self.textColor = Styles.alternateTextColor
+            self.font = Styles.bigFont
+            self.backgroundColor = Styles.secondBackgroundColor
+            break;
+        case .alternateSmall:
+            self.textColor = Styles.alternateTextColor
+            self.font = Styles.smallFont
+            self.backgroundColor = Styles.secondBackgroundColor
             break;
         default:
+            self.textColor = Styles.textColor
+            self.font = Styles.defaultFont
+            self.backgroundColor = Styles.firstBackgroundColor
             break;
         }
     }
