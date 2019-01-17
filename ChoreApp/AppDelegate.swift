@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     noGroup.user = self.user
                 }
             })
-            ref.child("groups/\(self.user?.groupID)/members/\(self.user?.uid)").observeSingleEvent(of: .value, with: {snapshot in
+            ref.child("groups/\(self.user?.groupID ?? "0")/members/\(self.user?.uid ?? "0")").observeSingleEvent(of: .value, with: {snapshot in
                 if let parentalStatus = snapshot.value as? String {
                     if parentalStatus == "child" {
                         let storyboard = UIStoryboard(name: "MainApp", bundle: nil)

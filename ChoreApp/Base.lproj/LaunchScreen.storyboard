@@ -10,58 +10,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Loading Screen View Controller-->
+        <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
-                <viewController id="01J-lp-oVM" customClass="LoadingScreenViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <segue destination="9EL-V9-gjm" kind="show" identifier="toStart" id="k7k-7f-HBT"/>
-                        <segue destination="kJU-ly-FHQ" kind="show" identifier="toNoGroup" id="TfH-yL-EMB"/>
-                        <segue destination="B9I-jA-hDR" kind="show" identifier="toParent" id="YzM-q7-jg0"/>
-                        <segue destination="E8O-XL-8QP" kind="show" identifier="toChild" id="CX1-zF-h48"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53" y="375"/>
-        </scene>
-        <!--notLogedIn-->
-        <scene sceneID="Avb-uc-SVk">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="StartingScreenViewController" storyboardName="Accounts" referencedIdentifier="notLogedIn" id="9EL-V9-gjm" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uQS-1M-nGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="771" y="187"/>
-        </scene>
-        <!--noGroup-->
-        <scene sceneID="ezO-a8-Scv">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="NoGroupViewController" storyboardName="MainApp" referencedIdentifier="noGroup" id="kJU-ly-FHQ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lYD-Uo-GwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="777" y="301"/>
-        </scene>
-        <!--Parent-->
-        <scene sceneID="bQP-RE-eid">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ParentViewController" storyboardName="MainApp" referencedIdentifier="Parent" id="B9I-jA-hDR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="278-A4-xNw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="784" y="400"/>
-        </scene>
-        <!--Child-->
-        <scene sceneID="Kqu-LS-Jjg">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ChildViewController" storyboardName="MainApp" referencedIdentifier="Child" id="E8O-XL-8QP" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dO2-ec-EuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="788" y="520"/>
         </scene>
     </scenes>
 </document>

@@ -30,48 +30,26 @@ class LoadingScreenViewController: UIViewController {
                 }
                 else {
                     self.toScreen = 0
-                    self.performSegue(withIdentifier: "toNoGroup", sender: self)
                 }
             })
-            ref.child("groups/\(self.user?.groupID)/members/\(self.user?.uid)").observeSingleEvent(of: .value, with: {snapshot in
+            ref.child("groups/\(self.user?.groupID ?? "0")/members/\(self.user?.uid ?? "0")").observeSingleEvent(of: .value, with: {snapshot in
                 if let parentalStatus = snapshot.value as? String {
                     if parentalStatus == "child" {
                         self.user?.isParent = false
                         self.toScreen = 2
-                        self.performSegue(withIdentifier: "toChild", sender: self)
                     }
                     else if parentalStatus == "parent" {
                         self.user?.isParent = true
                         self.toScreen = 1
-                        self.performSegue(withIdentifier: "toParent", sender: self)
                     }
                 }
             })
         }
         else {
             toScreen = 3
-            self.performSegue(withIdentifier: "toStart", sender: self)
         }
         // Do any additional setup after loading the view.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch toScreen {
-        case 0:
-            guard let destination = segue.destination as? NoGroupViewController else {return}
-            destination.user = self.user
-        case 1:
-            guard let destination = segue.destination as? ParentViewController else {return}
-            destination.user = self.user
-        case 2:
-            guard let destination = segue.destination as? ChildViewController else {return}
-            destination.user = self.user
-        default:
-            //No error if meant to go to the starting screen
-            if toScreen != 3 {
-                print("error")
-            }
-        }
-    }
 
 }

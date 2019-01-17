@@ -118,10 +118,10 @@
             </objects>
             <point key="canvasLocation" x="1060.8695652173915" y="-16.071428571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Child View Controller-->
         <scene sceneID="xQm-Gg-3fE">
             <objects>
-                <viewController storyboardIdentifier="ChildViewController" id="lo2-rF-uyx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChildViewController" id="lo2-rF-uyx" customClass="ChildViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fca-MC-gmE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
