@@ -13,7 +13,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SignUpViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" id="BYZ-38-t0r" customClass="SignUpViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,6 +37,9 @@
                                     <constraint firstAttribute="width" constant="100" id="tTE-ha-ANR"/>
                                 </constraints>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpButtonTouchedUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3EK-LL-jvE"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0a7-mC-Cmk">
                                 <rect key="frame" x="139" y="144" width="136" height="23.5"/>
@@ -92,6 +95,9 @@
                         <outlet property="displayName" destination="U8G-XU-zyx" id="RDT-AU-gTz"/>
                         <outlet property="email" destination="Wn1-MP-CRd" id="jDH-L0-e0V"/>
                         <outlet property="password" destination="5bZ-2s-Q7m" id="ay4-IF-AWi"/>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="signUpToNoGroup" id="Dhi-lX-CDw"/>
+                        <segue destination="NCQ-VD-e2a" kind="show" identifier="signUpToParent" id="PBe-1p-NU1"/>
+                        <segue destination="Ppt-lk-er5" kind="show" identifier="signUpToChild" id="GTy-hB-cyd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -101,7 +107,7 @@
         <!--Log In View Controller-->
         <scene sceneID="5Bm-br-SdC">
             <objects>
-                <viewController id="61b-mg-mlY" customClass="LogInViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LogInViewController" id="61b-mg-mlY" customClass="LogInViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Q6-c4-xN5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,6 +171,9 @@
                         <outlet property="email" destination="Xje-ZJ-ad9" id="FPv-ny-kzA"/>
                         <outlet property="logInButton" destination="pQM-Iy-2KJ" id="vVg-yX-Brk"/>
                         <outlet property="password" destination="SNy-CX-E8Y" id="Xpv-Us-Z0v"/>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="logInToNoGroup" id="pvd-eN-gh0"/>
+                        <segue destination="NCQ-VD-e2a" kind="show" identifier="logInToParent" id="ni2-Xy-bhi"/>
+                        <segue destination="Ppt-lk-er5" kind="show" identifier="logInToChild" id="ewg-Go-ANo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBW-8e-LOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -174,7 +183,7 @@
         <!--Starting Screen View Controller-->
         <scene sceneID="aKX-Ti-r7p">
             <objects>
-                <viewController id="iEW-kE-hWu" customClass="StartingScreenViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StartingScreenViewController" id="iEW-kE-hWu" customClass="StartingScreenViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TwQ-Qc-Nrx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,20 +231,38 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TeT-Ua-Bfl"/>
                     </view>
-                    <connections>
-                        <segue destination="KQp-jF-4pg" kind="show" identifier="toHomeScreen" id="nQR-6M-OJ5"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRN-se-s0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--MainApp-->
+        <!--ParentViewController-->
+        <scene sceneID="vle-xa-SVU">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ParentViewController" storyboardName="MainApp" referencedIdentifier="ParentViewController" id="NCQ-VD-e2a" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Anu-Z9-x0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2848" y="-81"/>
+        </scene>
+        <!--NoGroupViewController-->
         <scene sceneID="a2K-fg-anA">
             <objects>
-                <viewControllerPlaceholder storyboardName="MainApp" id="KQp-jF-4pg" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="NoGroupViewController" storyboardName="MainApp" referencedIdentifier="NoGroupViewController" id="KQp-jF-4pg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkz-Z1-lDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1413" y="133"/>
+            <point key="canvasLocation" x="2848" y="19"/>
+        </scene>
+        <!--ChildViewController-->
+        <scene sceneID="odR-Tp-6iy">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ChildViewController" storyboardName="MainApp" referencedIdentifier="ChildViewController" id="Ppt-lk-er5" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7YQ-63-aJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2828" y="99"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ewg-Go-ANo"/>
+        <segue reference="pvd-eN-gh0"/>
+        <segue reference="PBe-1p-NU1"/>
+    </inferredMetricsTieBreakers>
 </document>

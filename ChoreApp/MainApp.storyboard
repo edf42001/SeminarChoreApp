@@ -13,7 +13,7 @@
         <!--NoGroup-->
         <scene sceneID="sje-SY-dRB">
             <objects>
-                <viewController title="NoGroup" id="Eha-SI-AtN" customClass="NoGroupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoGroupViewController" title="NoGroup" id="Eha-SI-AtN" customClass="NoGroupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bIO-Rq-Yds">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
         <!--Parent View Controller-->
         <scene sceneID="ALS-8Y-GQa">
             <objects>
-                <viewController id="LeB-FC-GmL" customClass="ParentViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParentViewController" id="LeB-FC-GmL" customClass="ParentViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LkE-wi-0Ul">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="1149" y="-120"/>
         </scene>
-        <!--View Controller-->
+        <!--Child View Controller-->
         <scene sceneID="xQm-Gg-3fE">
             <objects>
-                <viewController id="lo2-rF-uyx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChildViewController" id="lo2-rF-uyx" customClass="ChildViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fca-MC-gmE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
