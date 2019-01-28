@@ -39,6 +39,33 @@ class NoGroupViewController: UIViewController {
             initializeGroupData(ref: ref)
         }
         //End for testing purposes
+        
+        if let uid = Auth.auth().currentUser?.uid
+        {
+            let userRef = Database.database().reference().child("users/\(uid)")
+            var groupRef:DatabaseReference!
+            userRef.observeSingleEvent(of: .value) { (snapshot) in
+                if !snapshot.exists() { return }
+                let value = snapshot.value as? NSDictionary
+                if let group = value?["group"] as? String
+                {
+                    groupRef = Database.database().reference().child("groups/\(group)/members")
+                }
+            }
+            groupRef.observeSingleEvent(of: .value) { (snapshot) in
+                if !snapshot.exists() {return}
+                let value = snapshot.value as? NSDictionary
+                if let userType = value?["\(uid)"] as? String
+                {
+                    if "\(userType)" == "child"
+                    {
+                        print("yay")
+                    }
+                }
+            }
+        }
+        
+        
     }
     //Also only for testing purposes
     override func viewDidAppear(_ animated: Bool) {
