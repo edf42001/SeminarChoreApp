@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var ref: DatabaseReference!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        FirebaseApp.configure()
         window = UIWindow(frame: UIScreen.main.bounds)
         ref = Database.database().reference()
         if let user = Auth.auth().currentUser  {
@@ -64,7 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window?.makeKeyAndVisible()
         FirebaseConfiguration.shared.setLoggerLevel(.min)
-        FirebaseApp.configure()
         return true
     }
 
