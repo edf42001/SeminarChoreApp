@@ -32,12 +32,13 @@ class NoGroupViewController: UIViewController {
         //FOR TESTING PURPOSES Setup user and group objects for next controller
         if let uid = Auth.auth().currentUser?.uid {
             user = User(uid: uid, username: "bobisthebest", email: "ethan@me.com", isParent: true)
-            user?.groupID = "-LVE5XGJ5ZNvT-ZnnJZ0"
-            let emptyUserArray:[UserInfo] = []
+//            user?.groupID = "-LVE5XGJ5ZNvT-ZnnJZ0"
+//            let emptyUserArray:[UserInfo] = []
             
-            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
-            initializeGroupData(ref: ref)
+//            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
+            observeAddedToGroup(uid: uid, ref: ref)
         }
+       
         //End for testing purposes
         
         if let uid = Auth.auth().currentUser?.uid
@@ -67,9 +68,23 @@ class NoGroupViewController: UIViewController {
         
         
     }
+    
     //Also only for testing purposes
     override func viewDidAppear(_ animated: Bool) {
         
+    }
+    
+    func observeAddedToGroup(uid:String, ref:DatabaseReference){
+        ref.child("users/\(uid)/group").observe(.value, with: {snapshot in
+            if let groupID = snapshot.value as? String{
+                self.user?.groupID = groupID
+                self.initializeGroupData(groupID: groupID, ref: ref) { group in
+                    self.group = group
+                    self.performSegue(withIdentifier: "toParentViewController", sender: self)
+                }
+            }
+            
+        })
     }
     
     //The user clicks the button
@@ -99,28 +114,32 @@ class NoGroupViewController: UIViewController {
         })
     }
     
-    func setupEnterGroupNameAlert() {
-        enterGroupName = UIAlertController(title: "Enter Name", message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
-            self.enterGroupName.dismiss(animated: true)
-        })
-        let createGroupAction = UIAlertAction(title: "Create", style: .default, handler: {action in
-            let nameTextField = self.enterGroupName.textFields![0] as UITextField
-            var name = "My Group"
-            if let text = nameTextField.text, text != "" {
-                name = text
-            }else{
+    func initializeGroupData(groupID: String, ref:DatabaseReference, completition: @escaping((Group)->())){
+        let group = Group(id: groupID, name: "", parents: [], children: [], chores: nil)
+        getMembersInGroup(groupID: user?.groupID ?? "", ref: ref, completion: {memberData in
+            if let memberData = memberData {
                 
+                guard let uid = self.user?.uid else {return}
+                self.user?.isParent = (memberData[uid] == "parent")
+                
+                let dispatchGroup = DispatchGroup()
+                for uid in memberData.keys{
+                    dispatchGroup.enter()
+                    self.getMemberUsername(uid: uid, ref: ref, completion: {username in
+                        if let username = username {
+                            if memberData[uid] == "parent" {
+                                group.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
+                            }else{
+                                group.children?.append(UserInfo(uid: uid, username: username, isParent: false))
+                            }
+                        }
+                        dispatchGroup.leave()
+                    })
+                }
+                dispatchGroup.notify(queue: .main, execute: {
+                    completition(group)
+                })
             }
-            
-            self.createNewGroup(name: name) //create the new group
-            
-            self.enterGroupName.dismiss(animated: true)
-        })
-        enterGroupName.addAction(cancelAction)
-        enterGroupName.addAction(createGroupAction)
-        enterGroupName.addTextField(configurationHandler: {textfield in
-            textfield.placeholder = "My Group"
         })
     }
     
@@ -146,27 +165,28 @@ class NoGroupViewController: UIViewController {
         self.ref.removeObserver(withHandle: handle2)
     }
     
-    func initializeGroupData(ref:DatabaseReference){
-        getMembersInGroup(groupID: user?.groupID ?? "", ref: ref, completion: {memberData in
-            if let memberData = memberData {
-                let dispatchGroup = DispatchGroup()
-                for uid in memberData.keys{
-                    dispatchGroup.enter()
-                    self.getMemberUsername(uid: uid, ref: ref, completion: {username in
-                        if let username = username {
-                            if memberData[uid] == "parent" {
-                                 self.group?.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
-                            }else{
-                                self.group?.children?.append(UserInfo(uid: uid, username: username, isParent: false))
-                            }
-                        }
-                        dispatchGroup.leave()
-                    })
-                }
-                dispatchGroup.notify(queue: .main, execute: {
-                    self.performSegue(withIdentifier: "toParentViewController", sender: self)
-                })
+    func setupEnterGroupNameAlert() {
+        enterGroupName = UIAlertController(title: "Enter Name", message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
+            self.enterGroupName.dismiss(animated: true)
+        })
+        let createGroupAction = UIAlertAction(title: "Create", style: .default, handler: {action in
+            let nameTextField = self.enterGroupName.textFields![0] as UITextField
+            var name = "My Group"
+            if let text = nameTextField.text, text != "" {
+                name = text
+            }else{
+                
             }
+            
+            self.createNewGroup(name: name) //create the new group
+            
+            self.enterGroupName.dismiss(animated: true)
+        })
+        enterGroupName.addAction(cancelAction)
+        enterGroupName.addAction(createGroupAction)
+        enterGroupName.addTextField(configurationHandler: {textfield in
+            textfield.placeholder = "My Group"
         })
     }
     

@@ -17,6 +17,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     var enterMemberNameAlert:UIAlertController!
     @IBOutlet weak var membersTableView: UITableView!
     @IBOutlet weak var asParentSwitch: UISwitch!
+    @IBOutlet weak var addMemberButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,19 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func addMemberButtonPressed(_ sender: UIButton) {
         self.present(enterMemberNameAlert, animated: true)
+    }
+    
+    @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
+        guard let uid = user?.uid, let groupID = group?.id else {return}
+        leaveGroup(uid: uid, groupID: groupID, ref: ref)
+        user?.groupID = nil
+        group = nil
+        self.performSegue(withIdentifier: "toNoGroupController", sender: self)
+    }
+    
+    func leaveGroup(uid:String, groupID:String, ref:DatabaseReference){
+        ref.updateChildValues(["users/\(uid)/group": [],
+                               "groups/\(groupID)/members/\(uid)": []])
     }
     
     func setupEnterMemberNameAlert() {
@@ -123,14 +137,16 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         self.present(enterChoreAlert, animated: true, completion: nil)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        guard let destination = segue.destination as? NoGroupViewController else {return}
+        destination.group = group
+        destination.user = user
     }
-    */
 
 }

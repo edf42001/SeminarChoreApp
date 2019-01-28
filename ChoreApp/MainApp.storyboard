@@ -13,7 +13,7 @@
         <!--NoGroup-->
         <scene sceneID="sje-SY-dRB">
             <objects>
-                <viewController title="NoGroup" id="Eha-SI-AtN" customClass="NoGroupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoGroupViewController" title="NoGroup" id="Eha-SI-AtN" customClass="NoGroupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bIO-Rq-Yds">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
         <!--Parent View Controller-->
         <scene sceneID="ALS-8Y-GQa">
             <objects>
-                <viewController id="LeB-FC-GmL" customClass="ParentViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ParentViewController" id="LeB-FC-GmL" customClass="ParentViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LkE-wi-0Ul">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,23 +105,34 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg6-Zv-lsX">
+                                <rect key="frame" x="134" y="708" width="144" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Leave Group"/>
+                                <connections>
+                                    <action selector="leaveGroupButtonPressed:" destination="LeB-FC-GmL" eventType="touchUpInside" id="BW9-ss-Szi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fgM-9U-q1j"/>
                     </view>
                     <connections>
+                        <outlet property="addMemberButton" destination="orJ-zV-17B" id="TbJ-mN-D54"/>
                         <outlet property="asParentSwitch" destination="1qJ-RZ-qJO" id="tR7-8F-i0T"/>
                         <outlet property="membersTableView" destination="r3W-bn-dfr" id="TpR-RO-6c9"/>
+                        <segue destination="Eha-SI-AtN" kind="show" identifier="toNoGroupController" id="9HQ-Ok-2vn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tq2-a0-EqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060.8695652173915" y="-16.071428571428569"/>
+            <point key="canvasLocation" x="1149" y="-120"/>
         </scene>
-        <!--View Controller-->
+        <!--Child View Controller-->
         <scene sceneID="xQm-Gg-3fE">
             <objects>
-                <viewController id="lo2-rF-uyx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChildViewController" id="lo2-rF-uyx" customClass="ChildViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fca-MC-gmE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
