@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iEW-kE-hWu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tib-Fd-y3C">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -96,13 +96,11 @@
                         <outlet property="email" destination="Wn1-MP-CRd" id="jDH-L0-e0V"/>
                         <outlet property="password" destination="5bZ-2s-Q7m" id="ay4-IF-AWi"/>
                         <segue destination="KQp-jF-4pg" kind="show" identifier="signUpToNoGroup" id="Dhi-lX-CDw"/>
-                        <segue destination="NCQ-VD-e2a" kind="show" identifier="signUpToParent" id="PBe-1p-NU1"/>
-                        <segue destination="Ppt-lk-er5" kind="show" identifier="signUpToChild" id="GTy-hB-cyd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="-370"/>
+            <point key="canvasLocation" x="1538" y="-895"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="5Bm-br-SdC">
@@ -180,6 +178,27 @@
             </objects>
             <point key="canvasLocation" x="1538" y="539"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Bfh-RV-TnD">
+            <objects>
+                <viewController id="Tib-Fd-y3C" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4gn-rf-rfM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="HtY-oG-2gh"/>
+                    </view>
+                    <connections>
+                        <segue destination="iEW-kE-hWu" kind="show" id="17p-St-eLZ"/>
+                        <segue destination="KQp-jF-4pg" kind="show" id="1su-UQ-hbd"/>
+                        <segue destination="NCQ-VD-e2a" kind="show" id="Vy3-rd-0gg"/>
+                        <segue destination="Ppt-lk-er5" kind="show" id="7WW-be-zvn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ez4-w0-na3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="38" y="-950"/>
+        </scene>
         <!--Starting Screen View Controller-->
         <scene sceneID="aKX-Ti-r7p">
             <objects>
@@ -241,7 +260,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="ParentViewController" storyboardName="MainApp" referencedIdentifier="ParentViewController" id="NCQ-VD-e2a" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Anu-Z9-x0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2848" y="-81"/>
+            <point key="canvasLocation" x="2848" y="19"/>
         </scene>
         <!--NoGroupViewController-->
         <scene sceneID="a2K-fg-anA">
@@ -249,7 +268,7 @@
                 <viewControllerPlaceholder storyboardIdentifier="NoGroupViewController" storyboardName="MainApp" referencedIdentifier="NoGroupViewController" id="KQp-jF-4pg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkz-Z1-lDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2848" y="19"/>
+            <point key="canvasLocation" x="2812" y="-113"/>
         </scene>
         <!--ChildViewController-->
         <scene sceneID="odR-Tp-6iy">
@@ -261,8 +280,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ewg-Go-ANo"/>
-        <segue reference="pvd-eN-gh0"/>
-        <segue reference="PBe-1p-NU1"/>
+        <segue reference="7WW-be-zvn"/>
+        <segue reference="1su-UQ-hbd"/>
+        <segue reference="Vy3-rd-0gg"/>
     </inferredMetricsTieBreakers>
 </document>

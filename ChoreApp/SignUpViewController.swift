@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     var user: User?
     
-    var toScreen = -1
+    var ref:DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +29,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         displayName.delegate = self
         password.delegate = self
         email.becomeFirstResponder()
+        ref = Database.database().reference()
     }
     
     @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
@@ -37,23 +38,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         guard let pText = password.text else {return}
         Auth.auth().createUser(withEmail: eText, password: pText) {(user, error) in
             if user != nil, error == nil {
-                guard let current = Auth.auth().currentUser else {return}
+                guard let current = user?.user else {return}
                 self.user = User(uid: current.uid, username: dText, email: eText, isParent: false)
-                if let _ = self.user?.groupID {
-                    guard let userIsParent = self.user else {return}
-                    if userIsParent.isParent {
-                        self.toScreen = 1
-                        self.performSegue(withIdentifier: "signUpToParent", sender: self)
-                    }
-                    else {
-                        self.toScreen = 2
-                        self.performSegue(withIdentifier: "signUpToChild", sender: self)
-                    }
-                }
-                else {
-                    self.toScreen = 0
-                    self.performSegue(withIdentifier: "signUpToNoGroup", sender: self)
-                }
+                self.addUser(username: dText, uid: current.uid, email: eText, ref: self.ref)
+                self.performSegue(withIdentifier: "signUpToNoGroup", sender: self)
             }
             else {
                 print(error?.localizedDescription)
@@ -76,19 +64,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch toScreen {
-        case 0:
-            guard let destination = segue.destination as? NoGroupViewController else {return}
-            destination.user = self.user
-        case 1:
-            guard let destination = segue.destination as? ParentViewController else {return}
-            destination.user = self.user
-        case 2:
-            guard let destination = segue.destination as? ChildViewController else {return}
-            destination.user = self.user
-        default:
-            print("error")
-        }
+        guard let destination = segue.destination as? NoGroupViewController else {return}
+        destination.user = self.user
+    }
+    
+    func addUser(username:String, uid:String, email:String, ref:DatabaseReference){
+        ref.child("users/\(uid)").setValue(["username":username,
+                                            "email":email])
+        ref.child("usernames/\(username)").setValue(uid)
     }
 
 }
