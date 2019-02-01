@@ -39,12 +39,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().createUser(withEmail: eText, password: pText) {(user, error) in
             if user != nil, error == nil {
                 guard let current = user?.user else {return}
+                let changeRequest = current.createProfileChangeRequest()
+                changeRequest.displayName = dText
+                changeRequest.commitChanges(completion: {error in
+                    print("Change username error: \(error)")
+                })
                 self.user = User(uid: current.uid, username: dText, email: eText, isParent: false)
                 self.addUser(username: dText, uid: current.uid, email: eText, ref: self.ref)
                 self.performSegue(withIdentifier: "signUpToNoGroup", sender: self)
             }
             else {
-                print(error?.localizedDescription)
+                print("Create user error: \(error?.localizedDescription)")
             }
         }
     }

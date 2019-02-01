@@ -89,26 +89,26 @@
 		8B326A9E21AD926D00665FFE /* ChoreApp */ = {
 			isa = PBXGroup;
 			children = (
-				8B326A9F21AD926D00665FFE /* AppDelegate.swift */,
-				8B326AA121AD926D00665FFE /* ViewController.swift */,
+				8B326AA821AD927700665FFE /* LaunchScreen.storyboard */,
 				8B326AA321AD926D00665FFE /* Accounts.storyboard */,
+				8B73F68321C822F6005A66E5 /* MainApp.storyboard */,
+				8B326A9F21AD926D00665FFE /* AppDelegate.swift */,
 				9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */,
 				8BB436B52203592600811C2B /* StartingScreenViewController.swift */,
-				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
-				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
 				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
+				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
 				8B326AA621AD927700665FFE /* Assets.xcassets */,
-				8B326AA821AD927700665FFE /* LaunchScreen.storyboard */,
-				97A5EDEA21E8C88D002C6C5B /* LoadingScreenViewController.swift */,
-				8B73F68321C822F6005A66E5 /* MainApp.storyboard */,
 				8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */,
-				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
+				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				8B326AAB21AD927700665FFE /* Info.plist */,
 				8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */,
 				8B28478121C00F44009737AC /* User.swift */,
 				8B28478321C00F51009737AC /* Group.swift */,
 				8B28478521C00F59009737AC /* Chore.swift */,
+				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
+				97A5EDEA21E8C88D002C6C5B /* LoadingScreenViewController.swift */,
+				8B326AA121AD926D00665FFE /* ViewController.swift */,
 			);
 			path = ChoreApp;
 			sourceTree = "<group>";

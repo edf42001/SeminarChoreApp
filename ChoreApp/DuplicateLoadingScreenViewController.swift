@@ -23,6 +23,11 @@ class DuplicateLoadingScreenViewController: UIViewController {
         if Auth.auth().currentUser != nil {
             Auth.auth().createUser(withEmail: "me@me.com", password: "password")
         }
+//        do{
+//            try Auth.auth().signOut()
+//        }catch{let error:NSError 
+//            
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,6 +37,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
             print("User Exists")
             print(user.uid)
             print(user.email)
+            print(user.displayName)
             self.user = User(uid: user.uid, username: user.displayName ?? "", email: user.email ?? "", isParent: false)
             ref.child("users/\(user.uid)/group").observeSingleEvent(of: .value, with: {snapshot in
                 if let groupID = snapshot.value as? String {
