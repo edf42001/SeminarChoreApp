@@ -18,10 +18,10 @@
 		8B73F68421C822F6005A66E5 /* MainApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B73F68321C822F6005A66E5 /* MainApp.storyboard */; };
 		8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */; };
 		8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68721C83F56005A66E5 /* ParentViewController.swift */; };
+		8BB436B62203592600811C2B /* StartingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B52203592600811C2B /* StartingScreenViewController.swift */; };
 		8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
-		97A5EDEB21E8C88E002C6C5B /* LoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A5EDEA21E8C88D002C6C5B /* LoadingScreenViewController.swift */; };
+		9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */; };
 		97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */; };
-		97F6A32E21DE5C0900B58278 /* StartingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A32D21DE5C0900B58278 /* StartingScreenViewController.swift */; };
 		97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */; };
 		97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A33121DE5CC700B58278 /* LogInViewController.swift */; };
 		EEA7E9AD01167823B46739E8 /* Pods_ChoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138D13EF1B0112B1786BCDB4 /* Pods_ChoreApp.framework */; };
@@ -44,10 +44,10 @@
 		8B73F68321C822F6005A66E5 /* MainApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainApp.storyboard; sourceTree = "<group>"; };
 		8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGroupViewController.swift; sourceTree = "<group>"; };
 		8B73F68721C83F56005A66E5 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		8BB436B52203592600811C2B /* StartingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreenViewController.swift; sourceTree = "<group>"; };
 		8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		97A5EDEA21E8C88D002C6C5B /* LoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreenViewController.swift; sourceTree = "<group>"; };
+		9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateLoadingScreenViewController.swift; sourceTree = "<group>"; };
 		97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
-		97F6A32D21DE5C0900B58278 /* StartingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreenViewController.swift; sourceTree = "<group>"; };
 		97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		97F6A33121DE5CC700B58278 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BFEC223AE053DC3B78726A18 /* Pods-ChoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreApp/Pods-ChoreApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -87,25 +87,25 @@
 		8B326A9E21AD926D00665FFE /* ChoreApp */ = {
 			isa = PBXGroup;
 			children = (
-				8B326A9F21AD926D00665FFE /* AppDelegate.swift */,
-				8B326AA121AD926D00665FFE /* ViewController.swift */,
-				8B326AA321AD926D00665FFE /* Accounts.storyboard */,
-				97F6A32D21DE5C0900B58278 /* StartingScreenViewController.swift */,
-				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
-				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
-				8B326AA621AD927700665FFE /* Assets.xcassets */,
 				8B326AA821AD927700665FFE /* LaunchScreen.storyboard */,
-				97A5EDEA21E8C88D002C6C5B /* LoadingScreenViewController.swift */,
+				8B326AA321AD926D00665FFE /* Accounts.storyboard */,
 				8B73F68321C822F6005A66E5 /* MainApp.storyboard */,
+				8B326A9F21AD926D00665FFE /* AppDelegate.swift */,
+				9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */,
+				8BB436B52203592600811C2B /* StartingScreenViewController.swift */,
+				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
+				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
+				8B326AA621AD927700665FFE /* Assets.xcassets */,
 				8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */,
-				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
+				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				8B326AAB21AD927700665FFE /* Info.plist */,
 				8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */,
 				8B28478121C00F44009737AC /* User.swift */,
 				8B28478321C00F51009737AC /* Group.swift */,
 				8B28478521C00F59009737AC /* Chore.swift */,
 				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
+				8B326AA121AD926D00665FFE /* ViewController.swift */,
 			);
 			path = ChoreApp;
 			sourceTree = "<group>";
@@ -247,19 +247,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97F6A32E21DE5C0900B58278 /* StartingScreenViewController.swift in Sources */,
 				8B326AA221AD926D00665FFE /* ViewController.swift in Sources */,
 				8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */,
 				8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */,
 				8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */,
 				97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */,
+				9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */,
 				8B28478621C00F59009737AC /* Chore.swift in Sources */,
 				F39BC85821DE593100BD3DD3 /* staticValues.swift in Sources */,
 				97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */,
 				8B28478221C00F44009737AC /* User.swift in Sources */,
+				8BB436B62203592600811C2B /* StartingScreenViewController.swift in Sources */,
 				97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */,
 				8B28478421C00F51009737AC /* Group.swift in Sources */,
-				97A5EDEB21E8C88E002C6C5B /* LoadingScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

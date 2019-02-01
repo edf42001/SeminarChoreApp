@@ -12,9 +12,9 @@ import FirebaseStorage
 import FirebaseDatabase
 
 class StartingScreenViewController: UIViewController {
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    
+    override func viewDidLoad() {
+         super.viewDidLoad()
+        
     }
-
 }
