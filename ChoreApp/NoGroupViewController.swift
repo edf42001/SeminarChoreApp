@@ -8,18 +8,14 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
 
 class NoGroupViewController: UIViewController {
     var user:User?
     var group:Group?
     var enterGroupName:UIAlertController!
-    var ref:DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ref = Database.database().reference()
         
         setupEnterGroupNameAlert()
     
@@ -36,7 +32,16 @@ class NoGroupViewController: UIViewController {
 //            let emptyUserArray:[UserInfo] = []
             
 //            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
-            observeAddedToGroup(uid: uid, ref: ref)
+            DatabaseHandler.addObserver(name: "ifAddedToGroup", dataPath: "users/\(uid)/group", onRecieve: {data in
+                if let groupID = data as? String {
+                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid) {group, isParent in
+                        self.group = group
+                        self.user?.isParent = isParent
+                        self.performSegue(withIdentifier: "toParentViewController", sender: self)
+                    }
+                }
+                
+            })
         }
        
         //End for testing purposes
@@ -47,95 +52,22 @@ class NoGroupViewController: UIViewController {
         
     }
     
-    func observeAddedToGroup(uid:String, ref:DatabaseReference){
-        ref.child("users/\(uid)/group").observe(.value, with: {snapshot in
-            if let groupID = snapshot.value as? String{
-                self.user?.groupID = groupID
-                self.initializeGroupData(groupID: groupID, ref: ref) { group in
-                    self.group = group
-                    self.performSegue(withIdentifier: "toParentViewController", sender: self)
-                }
-            }
-            
-        })
-    }
-    
     //The user clicks the button
     @IBAction func createGroupButtonPressed(_ sender: UIButton) {
         self.present(enterGroupName, animated: true)
     }
     
     func createNewGroup(name: String){
-        if let uid = Auth.auth().currentUser?.uid {
-            createGroupInDatabase(uid: uid, name: name, ref: ref, completion: {key in
+        if let uid = user?.uid {
+            DatabaseHandler.createGroup(uid: uid, name: name) {key in
                 guard let user = self.user else {return}
                 user.groupID = key
                 user.isParent = true
                 let parent:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
                 self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
                 self.performSegue(withIdentifier: "toParentViewController", sender: self)
-            })
+            }
         }
-    }
-    
-    func createGroupInDatabase(uid:String, name:String, ref:DatabaseReference,completion: @escaping (String)->()){
-        let key = ref.child("groups").childByAutoId().key ?? ""
-        ref.child("groups/\(key)").setValue(["name":name,
-                                             "members":[uid:true]])
-        ref.child("users/\(uid)/group").setValue(key, withCompletionBlock: {error, ref in
-            completion(key)
-        })
-    }
-    
-    func initializeGroupData(groupID: String, ref:DatabaseReference, completition: @escaping((Group)->())){
-        let group = Group(id: groupID, name: "", parents: [], children: [], chores: nil)
-        getMembersInGroup(groupID: user?.groupID ?? "", ref: ref, completion: {memberData in
-            if let memberData = memberData {
-                
-                guard let uid = self.user?.uid else {return}
-                self.user?.isParent = (memberData[uid] == "parent")
-                
-                let dispatchGroup = DispatchGroup()
-                for uid in memberData.keys{
-                    dispatchGroup.enter()
-                    self.getMemberUsername(uid: uid, ref: ref, completion: {username in
-                        if let username = username {
-                            if memberData[uid] == "parent" {
-                                group.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
-                            }else{
-                                group.children?.append(UserInfo(uid: uid, username: username, isParent: false))
-                            }
-                        }
-                        dispatchGroup.leave()
-                    })
-                }
-                dispatchGroup.notify(queue: .main, execute: {
-                    completition(group)
-                })
-            }
-        })
-    }
-    
-    func getMembersInGroup(groupID:String, ref:DatabaseReference, completion:@escaping(_ members:[String:String]?)->()){
-        let handle = ref.child("groups/-LVE5XGJ5ZNvT-ZnnJZ0/members").observe(.value, with: {snapshot in
-            if let membersData = snapshot.value as? [String:String] {
-                completion(membersData)
-            }else{
-                completion(nil)
-            }
-        })
-        ref.removeObserver(withHandle: handle)
-    }
-    
-    func getMemberUsername(uid:String, ref:DatabaseReference, completion: @escaping (String?)->()){
-        let handle2 = self.ref.child("/users/\(uid)/username").observe(.value, with: {snapshot in
-            if let usernameData = snapshot.value as? String{
-                completion(usernameData)
-            }else{
-                completion(nil)
-            }
-        })
-        self.ref.removeObserver(withHandle: handle2)
     }
     
     func setupEnterGroupNameAlert() {
