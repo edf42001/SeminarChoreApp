@@ -19,12 +19,19 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var signUpButton: UIButton!
+    
     var user: User?
     
     var ref:DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Styles.backgroundColor
+        signUpButton.applyButtonStyles(type: .standard)
+        email.applyTextFieldStyles(type: .standard)
+        displayName.applyTextFieldStyles(type: .standard)
+        password.applyTextFieldStyles(type: .standard)
         email.delegate = self
         displayName.delegate = self
         password.delegate = self

@@ -17,7 +17,7 @@ class ChildViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.view.backgroundColor = Styles.backgroundColor
         // Do any additional setup after loading the view.
     }
     

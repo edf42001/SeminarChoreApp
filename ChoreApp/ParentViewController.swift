@@ -21,6 +21,8 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Styles.backgroundColor
+        addMemberButton.applyButtonStyles(type: .standard)
         setupEnterMemberNameAlert()
         ref = Database.database().reference()
         membersTableView.dataSource = self

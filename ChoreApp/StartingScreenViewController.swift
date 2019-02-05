@@ -14,7 +14,7 @@ import FirebaseDatabase
 class StartingScreenViewController: UIViewController {
     
     override func viewDidLoad() {
-         super.viewDidLoad()
-        
+        super.viewDidLoad()
+        self.view.backgroundColor = Styles.backgroundColor
     }
 }

@@ -26,6 +26,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     //Initialize everything
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Styles.backgroundColor
+        logInButton.applyButtonStyles(type: .standard)
+        email.applyTextFieldStyles(type: .standard)
+        password.applyTextFieldStyles(type: .standard)
         email.delegate = self
         password.delegate = self
         email.becomeFirstResponder()
