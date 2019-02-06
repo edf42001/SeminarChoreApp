@@ -36,6 +36,17 @@
                                     <action selector="createGroupButtonPressed:" destination="Eha-SI-AtN" eventType="touchUpInside" id="5DK-ns-XKi"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smM-C9-S7A">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="4vZ-GS-p67">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="Cog" landscapeImage="Cog" largeContentSizeImage="Cog" style="plain" id="3ak-lz-a1h">
+                                            <color key="tintColor" red="0.83597797929999995" green="0.34789121220000002" blue="0.21143537239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -45,7 +56,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M7o-Id-gZ4"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="createGroupButton" destination="ey7-ys-KQj" id="Shd-wF-eAf"/>
                         <segue destination="LeB-FC-GmL" kind="show" identifier="toParentViewController" id="gnN-UK-bZH"/>
                         <segue destination="lo2-rF-uyx" kind="show" identifier="toChildViewController" id="bbY-tW-HcY"/>
                     </connections>
@@ -154,4 +168,7 @@
             <point key="canvasLocation" x="1061" y="631"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cog" width="50" height="50"/>
+    </resources>
 </document>

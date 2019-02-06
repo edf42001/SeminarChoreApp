@@ -15,10 +15,12 @@ class NoGroupViewController: UIViewController {
     var group:Group?
     var enterGroupName:UIAlertController!
     var ref:DatabaseReference!
+    @IBOutlet weak var createGroupButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Styles.backgroundColor
+        createGroupButton.applyButtonStyles(type: .standard)
         ref = Database.database().reference()
         
         setupEnterGroupNameAlert()
