@@ -9,7 +9,6 @@
 import UIKit
 import FirebaseAuth
 import FirebaseStorage
-import FirebaseDatabase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -20,8 +19,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var password: UITextField!
     
     var user: User?
-    
-    var toScreen = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,26 +34,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         guard let pText = password.text else {return}
         Auth.auth().createUser(withEmail: eText, password: pText) {(user, error) in
             if user != nil, error == nil {
-                guard let current = Auth.auth().currentUser else {return}
+                guard let current = user?.user else {return}
+                let changeRequest = current.createProfileChangeRequest()
+                changeRequest.displayName = dText
+                changeRequest.commitChanges(completion: {error in
+                    print("Change username error: \(error)")
+                })
                 self.user = User(uid: current.uid, username: dText, email: eText, isParent: false)
-                if let _ = self.user?.groupID {
-                    guard let userIsParent = self.user else {return}
-                    if userIsParent.isParent {
-                        self.toScreen = 1
-                        self.performSegue(withIdentifier: "signUpToParent", sender: self)
-                    }
-                    else {
-                        self.toScreen = 2
-                        self.performSegue(withIdentifier: "signUpToChild", sender: self)
-                    }
-                }
-                else {
-                    self.toScreen = 0
-                    self.performSegue(withIdentifier: "signUpToNoGroup", sender: self)
-                }
+                DatabaseHandler.addUser(username: dText, uid: current.uid, email: eText)
+                self.performSegue(withIdentifier: "signUpToNoGroup", sender: self)
             }
             else {
-                print(error?.localizedDescription)
+                print("Create user error: \(error?.localizedDescription)")
             }
         }
     }
@@ -76,19 +65,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch toScreen {
-        case 0:
-            guard let destination = segue.destination as? NoGroupViewController else {return}
-            destination.user = self.user
-        case 1:
-            guard let destination = segue.destination as? ParentViewController else {return}
-            destination.user = self.user
-        case 2:
-            guard let destination = segue.destination as? ChildViewController else {return}
-            destination.user = self.user
-        default:
-            print("error")
-        }
+        guard let destination = segue.destination as? NoGroupViewController else {return}
+        destination.user = self.user
     }
 
 }

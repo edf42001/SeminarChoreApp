@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import FirebaseDatabase
 
 class ParentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var user:User?
     var group:Group?
-    var ref:DatabaseReference!
     
     var enterMemberNameAlert:UIAlertController!
     @IBOutlet weak var membersTableView: UITableView!
@@ -22,7 +20,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         setupEnterMemberNameAlert()
-        ref = Database.database().reference()
         membersTableView.dataSource = self
         membersTableView.delegate = self
     }
@@ -33,15 +30,10 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
         guard let uid = user?.uid, let groupID = group?.id else {return}
-        leaveGroup(uid: uid, groupID: groupID, ref: ref)
+        DatabaseHandler.leaveGroup(uid: uid, groupID: groupID)
         user?.groupID = nil
         group = nil
         self.performSegue(withIdentifier: "toNoGroupController", sender: self)
-    }
-    
-    func leaveGroup(uid:String, groupID:String, ref:DatabaseReference){
-        ref.updateChildValues(["users/\(uid)/group": [],
-                               "groups/\(groupID)/members/\(uid)": []])
     }
     
     func setupEnterMemberNameAlert() {
@@ -59,8 +51,8 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if let name = name, let groupID = self.group?.id {
-                self.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, ref: self.ref, asParent: self.asParentSwitch.isOn, completition: {error in
-                    if error {
+                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: self.asParentSwitch.isOn, completition: {userFound in
+                    if !userFound {
                         print("No user with that username")
                     }else{
                         self.enterMemberNameAlert.dismiss(animated: true)
@@ -76,19 +68,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-    func tryAddMemberToGroup(groupID:String, newMemberUserName:String, ref:DatabaseReference, asParent:Bool, completition:@escaping (_ error:Bool)->()){
-        let handle = ref.child("usernames/\(newMemberUserName)").observe(.value, with: { snapshot in
-            if let uid = snapshot.value as? String {
-                ref.child("groups/\(groupID)/members/\(uid)").setValue(asParent)
-                ref.child("users/\(uid)/group").setValue(groupID)
-                completition(false)
-            }else{
-                completition(true)
-            }
-        })
-        ref.removeObserver(withHandle: handle)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return group?.children?.count ?? 0
     }
@@ -101,10 +80,10 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        createChoreForUser(userIndex: indexPath.row, ref: ref)
+        createChoreForUser(userIndex: indexPath.row)
     }
     
-    func createChoreForUser(userIndex:Int, ref:DatabaseReference){
+    func createChoreForUser(userIndex:Int){
         guard let asigneeUid = group?.children?[userIndex].uid else {return}
         
         let enterChoreAlert = UIAlertController(title: "Chore Name:", message: nil, preferredStyle: .alert)
@@ -113,23 +92,16 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             enterChoreAlert.dismiss(animated: true)
         })
         
-        let createMemberAction = UIAlertAction(title: "Create", style: .default, handler: {action in
+        let createChoreAction = UIAlertAction(title: "Create", style: .default, handler: {action in
             let nameTextField = enterChoreAlert.textFields![0] as UITextField
-            var name:String?
-            if let text = nameTextField.text, text != "" {
-                name = text
-            }
-            
-            if let name = name, let groupID = self.group?.id {
-                let key = ref.child("groups/\(groupID)/chores").childByAutoId().key ?? ""
-                ref.child("groups/\(groupID)/chores/\(key)").setValue(["name":name,
-                                                                       "asignee":asigneeUid])
-                ref.child("users/\(asigneeUid)/chores/\(key)").setValue(true)
+            guard let name = nameTextField.text else {return}
+            if name != "" {
+                 DatabaseHandler.addChore(name: name, asigneeUid: asigneeUid, groupID: self.group!.id)
             }
         })
         
         enterChoreAlert.addAction(cancelAction)
-        enterChoreAlert.addAction(createMemberAction)
+        enterChoreAlert.addAction(createChoreAction)
         enterChoreAlert.addTextField(configurationHandler: {textfield in
             textfield.placeholder = "Enter Username"
         })
