@@ -51,8 +51,6 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 {
                     if i.id == userChore.id
                     {
-                       
-                        
                         cell.choreLabel.text = i.name
                         cell.choreID = i.id
                     }
@@ -103,8 +101,8 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
             
-            self.ref.child("groups/\(self.group!.id)/chores/\(cell.choreID)").setValue(nil)
-            self.ref.child("users/\(self.user!.uid)/chores/\(cell.choreID)").setValue(nil)
+            self.ref.child("groups/\(self.group!.id)/chores/\(cell.choreID!)").setValue(nil)
+            self.ref.child("users/\(self.user!.uid)/chores/\(cell.choreID!)").setValue(nil)
             tableView.reloadData()
 
         }))
