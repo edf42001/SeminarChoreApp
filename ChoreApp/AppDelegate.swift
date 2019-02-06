@@ -23,17 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var ref: DatabaseReference!
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
+    {
         FirebaseApp.configure()
         window = UIWindow(frame: UIScreen.main.bounds)
         ref = Database.database().reference()
-        if let user = Auth.auth().currentUser  {
+        if let user = Auth.auth().currentUser
+        {
             self.user = User(uid: user.uid, username: user.displayName ?? "", email: user.email ?? "", isParent: false)
-            ref.child("users/\(user.uid)/group").observeSingleEvent(of: .value, with: {snapshot in
-                if let groupID = snapshot.value as? String {
+            ref.child("users/\(user.uid)/group").observeSingleEvent(of: .value, with:
+                {snapshot in
+                if let groupID = snapshot.value as? String
+                {
                     self.user?.groupID = groupID
                 }
-                else {
+                else
+                {
                     let storyboard = UIStoryboard(name: "MainApp", bundle: nil)
                     let noGroup = storyboard.instantiateViewController(withIdentifier: "NoGroupViewController") as! NoGroupViewController
                     self.window?.rootViewController = noGroup
@@ -41,14 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             })
             ref.child("groups/\(self.user?.groupID ?? "0")/members/\(self.user?.uid ?? "0")").observeSingleEvent(of: .value, with: {snapshot in
-                if let parentalStatus = snapshot.value as? String {
-                    if parentalStatus == "child" {
+                if let parentalStatus = snapshot.value as? String
+                {
+                    if parentalStatus == "child"
+                    {
                         let storyboard = UIStoryboard(name: "MainApp", bundle: nil)
                         let child = storyboard.instantiateViewController(withIdentifier: "ChildViewController") as! ChildViewController
                         self.window?.rootViewController = child
                         child.user = self.user
                     }
-                    else if parentalStatus == "parent" {
+                    else if parentalStatus == "parent"
+                    {
                         let storyboard = UIStoryboard(name: "MainApp", bundle: nil)
                         let parent = storyboard.instantiateViewController(withIdentifier: "ParentViewController") as! ParentViewController
                         self.window?.rootViewController = parent

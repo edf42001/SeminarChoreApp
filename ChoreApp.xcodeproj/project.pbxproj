@@ -25,6 +25,7 @@
 		97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */; };
 		97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A33121DE5CC700B58278 /* LogInViewController.swift */; };
 		EEA7E9AD01167823B46739E8 /* Pods_ChoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138D13EF1B0112B1786BCDB4 /* Pods_ChoreApp.framework */; };
+		F390B1B822049828006A5F97 /* ChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */; };
 		F39BC85821DE593100BD3DD3 /* staticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39BC85721DE593100BD3DD3 /* staticValues.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		97F6A33121DE5CC700B58278 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		BFEC223AE053DC3B78726A18 /* Pods-ChoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreApp/Pods-ChoreApp.release.xcconfig"; sourceTree = "<group>"; };
+		F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTableViewCell.swift; sourceTree = "<group>"; };
 		F39BC85721DE593100BD3DD3 /* staticValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staticValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +108,7 @@
 				8B28478321C00F51009737AC /* Group.swift */,
 				8B28478521C00F59009737AC /* Chore.swift */,
 				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
+				F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */,
 			);
 			path = ChoreApp;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */,
 				8B28478421C00F51009737AC /* Group.swift in Sources */,
 				97A5EDEB21E8C88E002C6C5B /* LoadingScreenViewController.swift in Sources */,
+				F390B1B822049828006A5F97 /* ChoreTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
