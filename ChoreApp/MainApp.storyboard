@@ -177,6 +177,7 @@
                                 <state key="normal" title="Leave Group"/>
                                 <connections>
                                     <action selector="leaveGroupButtonPressed:" destination="lo2-rF-uyx" eventType="touchUpInside" id="29J-ar-aek"/>
+                                    <segue destination="Eha-SI-AtN" kind="show" identifier="toNoGroupController" id="2Xi-6d-JEc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -192,4 +193,7 @@
             <point key="canvasLocation" x="1060" y="630.13493253373315"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2Xi-6d-JEc"/>
+    </inferredMetricsTieBreakers>
 </document>
