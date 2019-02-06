@@ -50,14 +50,14 @@ class DatabaseHandler {
         completion(key)
     }
     
-    static func tryAddMemberToGroup(groupID:String, newMemberUserName:String, asParent:Bool, completition:@escaping (_ userFound:Bool)->()){
+    static func tryAddMemberToGroup(groupID:String, newMemberUserName:String, asParent:Bool, completition:@escaping (_ uid:String?)->()){
         ref.child("usernames/\(newMemberUserName)").observeSingleEvent(of: .value, with: { snapshot in
             if let uid = snapshot.value as? String {
                 ref.child("groups/\(groupID)/members/\(uid)").setValue(asParent ? "parent":"child")
                 ref.child("users/\(uid)/group").setValue(groupID)
-                completition(true)
+                completition(uid)
             }else{
-                completition(false)
+                completition(nil)
             }
         })
     }
@@ -140,6 +140,26 @@ class DatabaseHandler {
             }else{
                 completion(nil)
                 print("Couldn't get member username")
+            }
+        })
+    }
+    
+    static func readUserData(uid:String, completion: @escaping (_ groupID:String?, _ isParent:Bool)->()){
+        ref.child("users/\(uid)/group").observeSingleEvent(of: .value, with: {snapshot in
+            if let groupID = snapshot.value as? String {
+                ref.child("groups/\(groupID)/members/\(uid)").observeSingleEvent(of: .value, with: {snapshot in
+                    if let parentalStatus = snapshot.value as? String {
+                        if parentalStatus == "child" {
+                            completion(groupID, false)
+                        }else if parentalStatus == "parent" {
+                            completion(groupID, true)
+                        }else{
+                            print("They were not a parent or a child halp")
+                        }
+                    }
+                })
+            }else{
+                completion(nil, false)
             }
         })
     }

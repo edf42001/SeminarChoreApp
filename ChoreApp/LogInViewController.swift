@@ -39,23 +39,23 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 guard let current = Auth.auth().currentUser else {return}
                 guard let dName = current.displayName else {return}
                 self.user = User(uid: current.uid, username: dName, email: eText, isParent: false)
-                if let _ = self.user?.groupID {
-                    guard let userIsParent = self.user else {return}
-                    if userIsParent.isParent {
-                        self.toScreen = 1
-                        self.performSegue(withIdentifier: "logInToParent", sender: self)
+                DatabaseHandler.readUserData(uid: current.uid, completion: {groupID, isParent in
+                    if let groupID = groupID {
+                        self.user?.groupID = groupID
+                        self.user?.isParent = isParent
+                        if isParent {
+                            self.toScreen = 1
+                            self.performSegue(withIdentifier: "logInToParent", sender: self)
+                        }else {
+                            self.toScreen = 2
+                            self.performSegue(withIdentifier: "logInToChild", sender: self)
+                        }
+                    }else {
+                        self.toScreen = 0
+                        self.performSegue(withIdentifier: "logInToNoGroup", sender: self)
                     }
-                    else {
-                        self.toScreen = 2
-                        self.performSegue(withIdentifier: "logInToChild", sender: self)
-                    }
-                }
-                else {
-                    self.toScreen = 0
-                    self.performSegue(withIdentifier: "logInToNoGroup", sender: self)
-                }
-            }
-            else {
+                })
+            }else {
                 print(error?.localizedDescription)
             }
         }

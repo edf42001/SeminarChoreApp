@@ -22,6 +22,10 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         setupEnterMemberNameAlert()
         membersTableView.dataSource = self
         membersTableView.delegate = self
+        addMemberButton.applyButtonStyles(type: .alternateBig)
+        print(group?.children)
+        print(group?.parents)
+    
     }
     
     @IBAction func addMemberButtonPressed(_ sender: UIButton) {
@@ -51,11 +55,19 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if let name = name, let groupID = self.group?.id {
-                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: self.asParentSwitch.isOn, completition: {userFound in
-                    if !userFound {
-                        print("No user with that username")
-                    }else{
+                let asParent = self.asParentSwitch.isOn
+                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: asParent, completition: {uid in
+                    if let uid = uid {
+                        print("New member is parent? \(asParent)")
+                        if asParent {
+                            self.group?.parents?.append(UserInfo(uid: uid, username: name, isParent: true))
+                        }else{
+                            self.group?.children?.append(UserInfo(uid: uid, username: name, isParent: false))
+                        }
                         self.enterMemberNameAlert.dismiss(animated: true)
+                        self.membersTableView.reloadData()
+                    }else{
+                       print("No user with that username")
                     }
                 })
             }
