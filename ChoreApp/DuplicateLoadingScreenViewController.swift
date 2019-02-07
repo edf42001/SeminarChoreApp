@@ -48,12 +48,19 @@ class DuplicateLoadingScreenViewController: UIViewController {
                             print("User is parent")
                             self.user?.isParent = true
                             self.toScreen = 1
-                            self.performSegue(withIdentifier: "toParent", sender: self)
+                            DatabaseHandler.getAllGroupChores(groupID: groupID, completion: {chores in
+                                self.group?.chores = chores
+                                self.performSegue(withIdentifier: "toParent", sender: self)
+                            })
+                            
                         }else {
                             print("User is child")
                             self.user?.isParent = false
                             self.toScreen = 2
-                            self.performSegue(withIdentifier: "toChild", sender: self)
+                            DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
+                                self.user?.chores = chores
+                                self.performSegue(withIdentifier: "toChild", sender: self)
+                            })
                         }
                     })
                     

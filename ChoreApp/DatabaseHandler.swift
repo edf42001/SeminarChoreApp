@@ -84,15 +84,13 @@ class DatabaseHandler {
     }
     
     static func addChore(name:String, asigneeUid: String, groupID:String){
-        let key = ref.child("groups/\(groupID)/chores").childByAutoId().key ?? ""
+        let key = ref.child("groups/\(groupID)/chores/\(asigneeUid)").childByAutoId().key ?? ""
         ref.child("groups/\(groupID)/chores/\(key)").setValue(["name":name,
                                                                "asignee":asigneeUid])
-        ref.child("users/\(asigneeUid)/chores/\(key)").setValue(true)
     }
     
-    static func removeChore(choreID:String, groupID:String, uid:String){
-        ref.child("groups/\(groupID)/chores/\(choreID)").removeValue()
-        ref.child("users/\(uid)/chores/\(choreID)").removeValue()
+    static func removeChore(asigneeUid:String, choreID:String, groupID:String, uid:String){
+        ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(choreID)").removeValue()
     }
     
     static func readBasicGroupData(groupID: String, uid:String, completition: @escaping((_ group:Group, _ isParent:Bool)->())){
@@ -144,12 +142,41 @@ class DatabaseHandler {
         })
     }
     
+    static func getAllGroupChores(groupID:String, completion: @escaping(_ chores:[Chore])->()){
+        ref.child("groups/\(groupID)/chores").observeSingleEvent(of: .value, with: {snapshot in
+            var chores:[Chore] = []
+            if let data = snapshot.value as? [String:[String:String]] {
+                for key in data.keys {
+                    if let name = data[key]?["name"], let asigneeID = data[key]?["asigneeID"]{
+                        let chore = Chore(id: key, name: name, asigneeID: asigneeID)
+                        chores.append(chore)
+                    }
+                }
+            }
+            print(chores)
+            completion(chores)
+        })
+    }
+    
+    static func getChoresForUser(uid:String, groupID:String, completion: @escaping(_ chores:[Chore])->()){
+        ref.child("users/\(uid)/chores").observeSingleEvent(of: .value, with: {snapshot in
+            var chores:[Chore] = []
+            if let data = snapshot.value as? [String] {
+                print(data)
+            }
+            print(chores)
+            completion(chores)
+        })
+    }
+    
     static func readUserData(uid:String, completion: @escaping (_ groupID:String?, _ isParent:Bool)->()){
         ref.child("users/\(uid)/group").observeSingleEvent(of: .value, with: {snapshot in
             if let groupID = snapshot.value as? String {
                 ref.child("groups/\(groupID)/members/\(uid)").observeSingleEvent(of: .value, with: {snapshot in
                     if let parentalStatus = snapshot.value as? String {
                         if parentalStatus == "child" {
+                            
+                            
                             completion(groupID, false)
                         }else if parentalStatus == "parent" {
                             completion(groupID, true)
