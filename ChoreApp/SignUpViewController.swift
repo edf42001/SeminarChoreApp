@@ -9,7 +9,6 @@
 import UIKit
 import FirebaseAuth
 import FirebaseStorage
-import FirebaseDatabase
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
@@ -23,8 +22,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     var user: User?
     
-    var ref:DatabaseReference!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Styles.backgroundColor
@@ -36,7 +33,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         displayName.delegate = self
         password.delegate = self
         email.becomeFirstResponder()
-        ref = Database.database().reference()
     }
     
     @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
@@ -52,7 +48,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     print("Change username error: \(error)")
                 })
                 self.user = User(uid: current.uid, username: dText, email: eText, isParent: false)
-                self.addUser(username: dText, uid: current.uid, email: eText, ref: self.ref)
+                DatabaseHandler.addUser(username: dText, uid: current.uid, email: eText)
                 self.performSegue(withIdentifier: "signUpToNoGroup", sender: self)
             }
             else {
@@ -78,12 +74,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? NoGroupViewController else {return}
         destination.user = self.user
-    }
-    
-    func addUser(username:String, uid:String, email:String, ref:DatabaseReference){
-        ref.child("users/\(uid)").setValue(["username":username,
-                                            "email":email])
-        ref.child("usernames/\(username)").setValue(uid)
     }
 
 }
