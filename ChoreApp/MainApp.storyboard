@@ -18,57 +18,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBi-gH-kql">
-                                <rect key="frame" x="20" y="111" width="374" height="45"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q3-vB-bKw">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBi-gH-kql">
+                                        <rect key="frame" x="40" y="75" width="334" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="I4O-u3-AZa"/>
+                                            <constraint firstAttribute="height" constant="45" id="r5Z-m2-5Li"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeK-m5-gWI">
+                                        <rect key="frame" x="182" y="359" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Item2" image="Cog"/>
+                                        <connections>
+                                            <action selector="openSettings:" destination="Eha-SI-AtN" eventType="touchUpInside" id="XbD-hQ-wFu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-ys-KQj">
+                                        <rect key="frame" x="131" y="577" width="152" height="42"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                        <state key="normal" title="Create Group"/>
+                                        <connections>
+                                            <action selector="createGroupButtonPressed:" destination="Eha-SI-AtN" eventType="touchUpInside" id="5DK-ns-XKi"/>
+                                        </connections>
+                                    </button>
+                                    <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smM-C9-S7A">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <items>
+                                            <navigationItem largeTitleDisplayMode="never" id="4vZ-GS-p67">
+                                                <barButtonItem key="rightBarButtonItem" title="Item" image="Cog" landscapeImage="Cog" largeContentSizeImage="Cog" id="3ak-lz-a1h">
+                                                    <connections>
+                                                        <action selector="openSettingsFromTop:" destination="Eha-SI-AtN" id="fWV-Ny-HSS"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.034920876077064067" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="r5Z-m2-5Li"/>
+                                    <constraint firstAttribute="trailing" secondItem="ey7-ys-KQj" secondAttribute="trailing" constant="131" id="2p7-hy-zXG"/>
+                                    <constraint firstItem="oBi-gH-kql" firstAttribute="leading" secondItem="2Q3-vB-bKw" secondAttribute="leading" constant="40" id="XqR-YE-hE4"/>
+                                    <constraint firstItem="ey7-ys-KQj" firstAttribute="leading" secondItem="2Q3-vB-bKw" secondAttribute="leading" constant="131" id="mEJ-Wi-Bcu"/>
+                                    <constraint firstItem="oBi-gH-kql" firstAttribute="top" secondItem="2Q3-vB-bKw" secondAttribute="top" constant="75" id="s3X-mV-0R9"/>
+                                    <constraint firstAttribute="bottom" secondItem="ey7-ys-KQj" secondAttribute="bottom" constant="150" id="tJg-VP-zOI"/>
+                                    <constraint firstAttribute="trailing" secondItem="oBi-gH-kql" secondAttribute="trailing" constant="40" id="wTe-VV-Xod"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-ys-KQj">
-                                <rect key="frame" x="132" y="626" width="151" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="Create Group"/>
-                                <connections>
-                                    <action selector="createGroupButtonPressed:" destination="Eha-SI-AtN" eventType="touchUpInside" id="5DK-ns-XKi"/>
-                                </connections>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smM-C9-S7A">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <navigationItem id="4vZ-GS-p67">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="Cog" landscapeImage="Cog" largeContentSizeImage="Cog" style="plain" id="3ak-lz-a1h">
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="oBi-gH-kql" firstAttribute="leading" secondItem="M7o-Id-gZ4" secondAttribute="leading" constant="20" id="gJ5-2q-O6E"/>
-                            <constraint firstAttribute="trailing" secondItem="oBi-gH-kql" secondAttribute="trailing" constant="20" id="lnf-0d-0xf"/>
-                            <constraint firstItem="oBi-gH-kql" firstAttribute="top" secondItem="M7o-Id-gZ4" secondAttribute="top" constant="67" id="pT5-wd-lRf"/>
+                            <constraint firstItem="2Q3-vB-bKw" firstAttribute="leading" secondItem="M7o-Id-gZ4" secondAttribute="leading" id="b5i-vu-OSx"/>
+                            <constraint firstItem="2Q3-vB-bKw" firstAttribute="top" secondItem="M7o-Id-gZ4" secondAttribute="top" id="gb3-Lf-mlv"/>
+                            <constraint firstItem="M7o-Id-gZ4" firstAttribute="bottom" secondItem="2Q3-vB-bKw" secondAttribute="bottom" id="tmj-8V-lWq"/>
+                            <constraint firstItem="M7o-Id-gZ4" firstAttribute="trailing" secondItem="2Q3-vB-bKw" secondAttribute="trailing" id="uxS-6e-PaG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M7o-Id-gZ4"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="background" destination="2Q3-vB-bKw" id="ZZT-d3-pKJ"/>
                         <outlet property="createGroupButton" destination="ey7-ys-KQj" id="Shd-wF-eAf"/>
+                        <outlet property="leading" destination="b5i-vu-OSx" id="soT-jE-0ei"/>
+                        <outlet property="trailing" destination="uxS-6e-PaG" id="xFf-vu-jpT"/>
+                        <outlet property="view" destination="2Q3-vB-bKw" id="hYw-vc-Vsp"/>
                         <segue destination="LeB-FC-GmL" kind="show" identifier="toParentViewController" id="gnN-UK-bZH"/>
                         <segue destination="lo2-rF-uyx" kind="show" identifier="toChildViewController" id="bbY-tW-HcY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9EE-rA-sb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="179.46026986506749"/>
+            <point key="canvasLocation" x="-2.8985507246376816" y="178.79464285714286"/>
         </scene>
         <!--Parent View Controller-->
         <scene sceneID="ALS-8Y-GQa">

@@ -10,14 +10,20 @@ import UIKit
 import Firebase
 
 class NoGroupViewController: UIViewController {
+    let move = CGFloat(175)
     var user:User?
     var group:Group?
     var enterGroupName:UIAlertController!
+    var menuOpen = false
+    @IBOutlet weak var leading: NSLayoutConstraint!
+    @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var background: UIView!
     @IBOutlet weak var createGroupButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Styles.backgroundColor
+        background.backgroundColor = Styles.backgroundColor
         createGroupButton.applyButtonStyles(type: .standard)
         
         setupEnterGroupNameAlert()
@@ -37,8 +43,6 @@ class NoGroupViewController: UIViewController {
 //            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
             DatabaseHandler.addObserver(name: "ifAddedToGroup", dataPath: "users/\(uid)/group", onRecieve: {data in
                 if let groupID = data as? String {
-            DatabaseHandler.addObserver(name: "ifAddedToGroup", dataPath: "users/\(uid)/group", onRecieve: {data in
-                if let groupID = data as? String {
                     DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid) {group, isParent in
                         self.group = group
                         self.user?.isParent = isParent
@@ -49,11 +53,40 @@ class NoGroupViewController: UIViewController {
             })
         //End for testing purposes
     }
+    }
     
     //Also only for testing purposes
     override func viewDidAppear(_ animated: Bool) {
         
     }
+    
+    @IBAction func openSettingsFromTop(_ sender: UIBarButtonItem) {
+        if !menuOpen {
+            leading.constant += move
+            trailing.constant -= move
+        }
+        else {
+            leading.constant -= move
+            trailing.constant += move
+        }
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
+        menuOpen = !menuOpen
+    }
+    
+    
+    @IBAction func openSettings(_ sender: UIButton) {
+        if !menuOpen {
+            leading.constant += move
+            trailing.constant -= move
+        }
+        else {
+            leading.constant -= move
+            trailing.constant += move
+        }
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
+        menuOpen = !menuOpen
+    }
+    
     
     //The user clicks the button
     @IBAction func createGroupButtonPressed(_ sender: UIButton) {
