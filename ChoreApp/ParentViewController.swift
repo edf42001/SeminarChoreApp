@@ -37,7 +37,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         DatabaseHandler.leaveGroup(uid: uid, groupID: groupID)
         user?.groupID = nil
         group = nil
-        self.performSegue(withIdentifier: "toNoGroupController", sender: self)
+        self.performSegue(withIdentifier: "toNoGroup", sender: self)
     }
     
     func setupEnterMemberNameAlert() {

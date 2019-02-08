@@ -169,9 +169,9 @@
                         <outlet property="email" destination="Xje-ZJ-ad9" id="FPv-ny-kzA"/>
                         <outlet property="logInButton" destination="pQM-Iy-2KJ" id="vVg-yX-Brk"/>
                         <outlet property="password" destination="SNy-CX-E8Y" id="Xpv-Us-Z0v"/>
-                        <segue destination="KQp-jF-4pg" kind="show" identifier="logInToNoGroup" id="pvd-eN-gh0"/>
-                        <segue destination="NCQ-VD-e2a" kind="show" identifier="logInToParent" id="ni2-Xy-bhi"/>
-                        <segue destination="Ppt-lk-er5" kind="show" identifier="logInToChild" id="ewg-Go-ANo"/>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="toNoGroup" id="pvd-eN-gh0"/>
+                        <segue destination="NCQ-VD-e2a" kind="show" identifier="toParent" id="ni2-Xy-bhi"/>
+                        <segue destination="Ppt-lk-er5" kind="show" identifier="toChild" id="ewg-Go-ANo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBW-8e-LOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,8 +293,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7WW-be-zvn"/>
-        <segue reference="1su-UQ-hbd"/>
-        <segue reference="Vy3-rd-0gg"/>
+        <segue reference="ewg-Go-ANo"/>
+        <segue reference="pvd-eN-gh0"/>
+        <segue reference="ni2-Xy-bhi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logInButton: UIButton!
     
     var user: User?
+    var group: Group?
     
     var toScreen = -1
     
@@ -35,24 +36,36 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         guard let eText = email.text else {return}
         guard let pText = password.text else {return}
         Auth.auth().signIn(withEmail: eText, password: pText) {(user, error) in
-            if user != nil, error == nil {
+            if let user = user?.user, error == nil {
                 guard let current = Auth.auth().currentUser else {return}
                 guard let dName = current.displayName else {return}
                 self.user = User(uid: current.uid, username: dName, email: eText, isParent: false)
-                DatabaseHandler.readUserData(uid: current.uid, completion: {groupID, isParent in
+                DatabaseHandler.readUserData(uid: user.uid, completion: {groupID, isParent in
                     if let groupID = groupID {
-                        self.user?.groupID = groupID
-                        self.user?.isParent = isParent
-                        if isParent {
-                            self.toScreen = 1
-                            self.performSegue(withIdentifier: "logInToParent", sender: self)
-                        }else {
-                            self.toScreen = 2
-                            self.performSegue(withIdentifier: "logInToChild", sender: self)
-                        }
-                    }else {
+                        DatabaseHandler.readBasicGroupData(groupID: groupID, uid: user.uid, completition: {group, isParent in
+                            self.group = group
+                            if isParent {
+                                print("User is parent")
+                                self.user?.isParent = true
+                                self.toScreen = 1
+                                DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
+                                    self.group?.chores = chores
+                                    self.performSegue(withIdentifier: "toParent", sender: self)
+                                })
+                                
+                            }else {
+                                print("User is child")
+                                self.user?.isParent = false
+                                self.toScreen = 2
+                                DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
+                                    self.user?.chores = chores
+                                    self.performSegue(withIdentifier: "toChild", sender: self)
+                                })
+                            }
+                        })
+                    }else{
                         self.toScreen = 0
-                        self.performSegue(withIdentifier: "logInToNoGroup", sender: self)
+                        self.performSegue(withIdentifier: "toNoGroup", sender: self)
                     }
                 })
             }else {
@@ -77,12 +90,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         case 0:
             guard let destination = segue.destination as? NoGroupViewController else {return}
             destination.user = self.user
+            destination.group = self.group
         case 1:
             guard let destination = segue.destination as? ParentViewController else {return}
             destination.user = self.user
+            destination.group = self.group
         case 2:
             guard let destination = segue.destination as? ChildViewController else {return}
             destination.user = self.user
+            destination.group = self.group
         default:
             print("error")
         }

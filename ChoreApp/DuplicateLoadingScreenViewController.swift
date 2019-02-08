@@ -27,7 +27,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
 //        do{
 //            try Auth.auth().signOut()
 //        }catch{let _:NSError
-//            
+//
 //        }
     }
     
@@ -48,7 +48,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
                             print("User is parent")
                             self.user?.isParent = true
                             self.toScreen = 1
-                            DatabaseHandler.getAllGroupChores(groupID: groupID, completion: {chores in
+                            DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
                                 self.group?.chores = chores
                                 self.performSegue(withIdentifier: "toParent", sender: self)
                             })
