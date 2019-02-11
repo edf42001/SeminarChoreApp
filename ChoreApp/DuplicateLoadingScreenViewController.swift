@@ -15,19 +15,11 @@ class DuplicateLoadingScreenViewController: UIViewController {
     
     var toScreen = -1
     
-    var ref: DatabaseReference!
-    
-    @IBOutlet weak var botView: UIView!
-    @IBOutlet weak var trailing: NSLayoutConstraint!
-    @IBOutlet weak var leading: NSLayoutConstraint!
-    var menuOpen = false
-    let move = CGFloat(-175)
-    
+    var ref: DatabaseReference!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Styles.backgroundColor
-        botView.backgroundColor = Styles.tabColor
         
         ref = Database.database().reference()
 //        if Auth.auth().currentUser != nil {
