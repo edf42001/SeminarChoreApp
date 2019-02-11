@@ -31,6 +31,12 @@ class Styles
     //Default background colors; first, and second for backgrounds of objects to match of the theme
     static let firstBackgroundColor: UIColor? = UIColor.white
     static let secondBackgroundColor: UIColor? = UIColor.black
+    
+    //Default ViewController background color
+    static let backgroundColor: UIColor? = UIColor.red
+    
+    //Default tab background color
+    static let tabColor: UIColor? = UIColor.black
 }
 enum Condition
 {

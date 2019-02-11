@@ -16,10 +16,12 @@ class DuplicateLoadingScreenViewController: UIViewController {
     
     var toScreen = -1
     
-    var ref: DatabaseReference!
+    var ref: DatabaseReference!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Styles.backgroundColor
+        
         ref = Database.database().reference()
 //        if Auth.auth().currentUser != nil {
 //            Auth.auth().createUser(withEmail: "me@me.com", password: "password")

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class NoGroupViewController: UIViewController {
+    let move = CGFloat(175)
     var user:User?
     var group:Group?
     var enterGroupName:UIAlertController!
@@ -17,6 +18,9 @@ class NoGroupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Styles.backgroundColor
+        background.backgroundColor = Styles.backgroundColor
+        createGroupButton.applyButtonStyles(type: .standard)
         
         setupEnterGroupNameAlert()
     
@@ -59,15 +63,28 @@ class NoGroupViewController: UIViewController {
                     })
                 }
             })
-        }
-       
         //End for testing purposes
+    }
     }
     
     //Also only for testing purposes
     override func viewDidAppear(_ animated: Bool) {
         
     }
+    
+    @IBAction func openSettings(_ sender: UIButton) {
+        if !menuOpen {
+            leading.constant -= move
+            trailing.constant += move
+        }
+        else {
+            leading.constant += move
+            trailing.constant -= move
+        }
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
+        menuOpen = !menuOpen
+    }
+    
     
     //The user clicks the button
     @IBAction func createGroupButtonPressed(_ sender: UIButton) {
