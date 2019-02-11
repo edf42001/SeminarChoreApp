@@ -14,11 +14,7 @@ class NoGroupViewController: UIViewController {
     var user:User?
     var group:Group?
     var enterGroupName:UIAlertController!
-    var menuOpen = false
-    @IBOutlet weak var leading: NSLayoutConstraint!
-    @IBOutlet weak var trailing: NSLayoutConstraint!
-    @IBOutlet weak var background: UIView!
-    @IBOutlet weak var createGroupButton: UIButton!
+    var toScreen = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,15 +37,31 @@ class NoGroupViewController: UIViewController {
 //            let emptyUserArray:[UserInfo] = []
             
 //            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
-            DatabaseHandler.addObserver(name: "ifAddedToGroup", dataPath: "users/\(uid)/group", onRecieve: {data in
-                if let groupID = data as? String {
-                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid) {group, isParent in
+            DatabaseHandler.observeIfAddedToGroup(uid: uid, onRecieve: {groupID in
+                if let groupID = groupID as? String {
+                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
                         self.group = group
-                        self.user?.isParent = isParent
-                        self.performSegue(withIdentifier: "toParentViewController", sender: self)
-                    }
+                        if isParent {
+                            print("User is parent")
+                            self.user?.isParent = true
+                            self.toScreen = 1
+                            DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
+                                self.group?.chores = chores
+                                self.performSegue(withIdentifier: "toParent", sender: self)
+                            })
+                            
+                        }else {
+                            print("User is child")
+                            self.user?.isParent = false
+                            self.toScreen = 2
+                            DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
+                                self.user?.chores = chores
+                                self.performSegue(withIdentifier: "toChild", sender: self)
+                            })
+                        }
+                        DatabaseHandler.stopObservingIfAddedToGroup()
+                    })
                 }
-                
             })
         //End for testing purposes
     }
@@ -87,7 +99,7 @@ class NoGroupViewController: UIViewController {
                 user.isParent = true
                 let parent:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
                 self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
-                self.performSegue(withIdentifier: "toParentViewController", sender: self)
+                self.performSegue(withIdentifier: "toParent", sender: self)
             }
         }
     }
@@ -121,9 +133,18 @@ class NoGroupViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? ParentViewController else {return}
-        destination.user = user
-        destination.group = group
+        switch toScreen {
+        case 1:
+            guard let destination = segue.destination as? ParentViewController else {return}
+            destination.user = self.user
+            destination.group = self.group
+        case 2:
+            guard let destination = segue.destination as? ChildViewController else {return}
+            destination.user = self.user
+            destination.group = self.group
+        default:
+            print("error")
+        }
     }
     
 
