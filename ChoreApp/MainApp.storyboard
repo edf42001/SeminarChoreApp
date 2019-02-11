@@ -75,10 +75,10 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="background" destination="2Q3-vB-bKw" id="ZZT-d3-pKJ"/>
-                        <outlet property="createGroupButton" destination="ey7-ys-KQj" id="Shd-wF-eAf"/>
-                        <outlet property="leading" destination="b5i-vu-OSx" id="soT-jE-0ei"/>
-                        <outlet property="trailing" destination="uxS-6e-PaG" id="xFf-vu-jpT"/>
+                        <outlet property="background" destination="2Q3-vB-bKw" id="UIH-I3-x0H"/>
+                        <outlet property="createGroupButton" destination="ey7-ys-KQj" id="zWB-Fn-Sv8"/>
+                        <outlet property="leading" destination="b5i-vu-OSx" id="Jdf-aU-AuA"/>
+                        <outlet property="trailing" destination="uxS-6e-PaG" id="iDr-3H-y0M"/>
                         <outlet property="view" destination="2Q3-vB-bKw" id="hYw-vc-Vsp"/>
                         <segue destination="LeB-FC-GmL" kind="show" identifier="toParent" id="gnN-UK-bZH"/>
                         <segue destination="lo2-rF-uyx" kind="show" identifier="toChild" id="bbY-tW-HcY"/>

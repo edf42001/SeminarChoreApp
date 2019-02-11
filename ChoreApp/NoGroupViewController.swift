@@ -15,6 +15,11 @@ class NoGroupViewController: UIViewController {
     var group:Group?
     var enterGroupName:UIAlertController!
     var toScreen = -1
+    var menuOpen = false
+    @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var leading: NSLayoutConstraint!
+    @IBOutlet weak var background: UIView!
+    @IBOutlet weak var createGroupButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +104,7 @@ class NoGroupViewController: UIViewController {
                 user.isParent = true
                 let parent:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
                 self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
+                self.toScreen = 1
                 self.performSegue(withIdentifier: "toParent", sender: self)
             }
         }
