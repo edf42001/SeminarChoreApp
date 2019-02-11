@@ -19,23 +19,6 @@ class DatabaseHandler {
         })
     }
     
-    static func addObserver(name:String, dataPath:String, onRecieve: @escaping (Any?)->()) {
-        let handle = ref.child(dataPath).observe(.value, with: {snapshot in
-            onRecieve(snapshot.value)
-        })
-        
-        observers[name] = handle
-    }
-    
-    static func removeObserver(name:String) {
-        if let handle = observers[name] {
-            ref.removeObserver(withHandle: handle)
-            observers.removeValue(forKey: name)
-        }else{
-            print("no observer with that name")
-        }
-    }
-    
     static func addUser(username:String, uid:String, email:String){
         ref.child("users/\(uid)").setValue(["username":username,
                                             "email":email])
@@ -62,10 +45,18 @@ class DatabaseHandler {
         })
     }
     
-    static func observeIfAddedToGroup(uid:String, onRecieve: @escaping (Any?)->()) -> UInt{
-        return ref.child("users/\(uid)/group").observe(.value, with: {snapshot in
+    static func observeIfAddedToGroup(uid:String, onRecieve: @escaping (Any?)->()) -> (){
+        let key = ref.child("users/\(uid)/group").observe(.value, with: {snapshot in
             onRecieve(snapshot.value)
         })
+        observers["ifAddedToGroup"] = key
+    }
+    
+    static func stopObservingIfAddedToGroup(){
+        if let key = observers["ifAddedToGroup"] {
+            ref.removeObserver(withHandle: key)
+            observers.removeValue(forKey: "ifAddedToGroup")
+        }
     }
     
     static func leaveGroup(uid:String, groupID:String){
@@ -84,7 +75,7 @@ class DatabaseHandler {
     }
     
     static func observeMembersInGroup(groupID: String, completion: @escaping(_ parents:[UserInfo], _ children:[UserInfo])->()){
-        ref.child("groups/\(groupID)/members").observe(.value, with: {snapshot in
+        let key = ref.child("groups/\(groupID)/members").observe(.value, with: {snapshot in
             var parents:[UserInfo] = []
             var children:[UserInfo] = []
             if let members = snapshot.value as? [String:String] {
@@ -107,6 +98,14 @@ class DatabaseHandler {
                 })
             }
         })
+        observers["membersInGroup"] = key
+    }
+    
+    static func stopObservingMembersInGroup() {
+        if let key = observers["membersInGroup"] {
+            ref.removeObserver(withHandle: key)
+            observers.removeValue(forKey: "membersInGroup")
+        }
     }
     
     static func readBasicGroupData(groupID: String, uid:String, completion: @escaping((_ group:Group, _ isParent:Bool)->())){
@@ -165,7 +164,7 @@ class DatabaseHandler {
     }
     
     static func observeChores(groupID:String, completion: @escaping(_ chores:[Chore])->()){
-        ref.child("groups/\(groupID)/chores").observe(.value, with: {snapshot in
+        let key = ref.child("groups/\(groupID)/chores").observe(.value, with: {snapshot in
             var chores:[Chore] = []
             if let data = snapshot.value as? [String:Any] {
                 for (asigneeID, choreList) in data {
@@ -174,6 +173,14 @@ class DatabaseHandler {
             }
             completion(chores)
         })
+        observers["choresInGroup"] = key
+    }
+    
+    static func stopObservingChores() {
+        if let key = observers["choresInGroup"] {
+            ref.removeObserver(withHandle: key)
+            observers.removeValue(forKey: "choresInGroup")
+        }
     }
     
     static func getChoresForUser(uid:String, groupID:String, completion: @escaping(_ chores:[Chore])->()){

@@ -55,6 +55,7 @@ class NoGroupViewController: UIViewController {
                                 self.performSegue(withIdentifier: "toChild", sender: self)
                             })
                         }
+                        DatabaseHandler.stopObservingIfAddedToGroup()
                     })
                 }
             })

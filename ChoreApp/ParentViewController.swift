@@ -43,6 +43,8 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
         guard let uid = user?.uid, let groupID = group?.id else {return}
         DatabaseHandler.leaveGroup(uid: uid, groupID: groupID)
+        DatabaseHandler.stopObservingChores()
+        DatabaseHandler.stopObservingMembersInGroup()
         user?.groupID = nil
         group = nil
         self.performSegue(withIdentifier: "toNoGroup", sender: self)
