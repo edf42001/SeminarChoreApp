@@ -46,8 +46,8 @@
                         <viewLayoutGuide key="safeArea" id="M7o-Id-gZ4"/>
                     </view>
                     <connections>
-                        <segue destination="LeB-FC-GmL" kind="show" identifier="toParentViewController" id="gnN-UK-bZH"/>
-                        <segue destination="lo2-rF-uyx" kind="show" identifier="toChildViewController" id="bbY-tW-HcY"/>
+                        <segue destination="LeB-FC-GmL" kind="show" identifier="toParent" id="gnN-UK-bZH"/>
+                        <segue destination="lo2-rF-uyx" kind="show" identifier="toChild" id="bbY-tW-HcY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9EE-rA-sb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -122,7 +122,7 @@
                         <outlet property="addMemberButton" destination="orJ-zV-17B" id="TbJ-mN-D54"/>
                         <outlet property="asParentSwitch" destination="1qJ-RZ-qJO" id="tR7-8F-i0T"/>
                         <outlet property="membersTableView" destination="r3W-bn-dfr" id="TpR-RO-6c9"/>
-                        <segue destination="Eha-SI-AtN" kind="show" identifier="toNoGroupController" id="9HQ-Ok-2vn"/>
+                        <segue destination="Eha-SI-AtN" kind="show" identifier="toNoGroup" id="9HQ-Ok-2vn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tq2-a0-EqY" userLabel="First Responder" sceneMemberID="firstResponder"/>

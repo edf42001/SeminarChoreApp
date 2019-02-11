@@ -19,23 +19,6 @@ class DatabaseHandler {
         })
     }
     
-    static func addObserver(name:String, dataPath:String, onRecieve: @escaping (Any?)->()) {
-        let handle = ref.child(dataPath).observe(.value, with: {snapshot in
-            onRecieve(snapshot.value)
-        })
-        
-        observers[name] = handle
-    }
-    
-    static func removeObserver(name:String) {
-        if let handle = observers[name] {
-            ref.removeObserver(withHandle: handle)
-            observers.removeValue(forKey: name)
-        }else{
-            print("no observer with that name")
-        }
-    }
-    
     static func addUser(username:String, uid:String, email:String){
         ref.child("users/\(uid)").setValue(["username":username,
                                             "email":email])
@@ -50,32 +33,30 @@ class DatabaseHandler {
         completion(key)
     }
     
-    static func tryAddMemberToGroup(groupID:String, newMemberUserName:String, asParent:Bool, completition:@escaping (_ userFound:Bool)->()){
+    static func tryAddMemberToGroup(groupID:String, newMemberUserName:String, asParent:Bool, completition:@escaping (_ uid:String?)->()){
         ref.child("usernames/\(newMemberUserName)").observeSingleEvent(of: .value, with: { snapshot in
             if let uid = snapshot.value as? String {
                 ref.child("groups/\(groupID)/members/\(uid)").setValue(asParent ? "parent":"child")
                 ref.child("users/\(uid)/group").setValue(groupID)
-                completition(true)
+                completition(uid)
             }else{
-                completition(false)
+                completition(nil)
             }
         })
     }
     
-    static func observeIfAddedToGroup(uid:String) -> UInt{
-        return ref.child("users/\(uid)/group").observe(.value, with: {snapshot in
-            if snapshot.exists(){
-                print("I, \(uid), was added to a group!")
-            }
+    static func observeIfAddedToGroup(uid:String, onRecieve: @escaping (Any?)->()) -> (){
+        let key = ref.child("users/\(uid)/group").observe(.value, with: {snapshot in
+            onRecieve(snapshot.value)
         })
+        observers["ifAddedToGroup"] = key
     }
     
-    static func observeNewChores(uid:String, groupID:String) -> UInt{
-        return ref.child("users/\(uid)/chores/").observe(.value, with: {snapshot in
-            if snapshot.exists(){
-                print(snapshot)
-            }
-        })
+    static func stopObservingIfAddedToGroup(){
+        if let key = observers["ifAddedToGroup"] {
+            ref.removeObserver(withHandle: key)
+            observers.removeValue(forKey: "ifAddedToGroup")
+        }
     }
     
     static func leaveGroup(uid:String, groupID:String){
@@ -83,52 +64,77 @@ class DatabaseHandler {
         ref.child("groups/\(groupID)/members/\(uid)").removeValue()
     }
     
-    static func addChore(name:String, asigneeUid: String, groupID:String){
-        let key = ref.child("groups/\(groupID)/chores").childByAutoId().key ?? ""
-        ref.child("groups/\(groupID)/chores/\(key)").setValue(["name":name,
-                                                               "asignee":asigneeUid])
-        ref.child("users/\(asigneeUid)/chores/\(key)").setValue(true)
+    static func addChore(name:String, asigneeUid: String, groupID:String, completion: @escaping (_ id:String)->()){
+        let key = ref.child("groups/\(groupID)/chores/\(asigneeUid)").childByAutoId().key ?? ""
+        ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(key)/name").setValue(name)
+        completion(key)
     }
     
-    static func removeChore(choreID:String, groupID:String, uid:String){
-        ref.child("groups/\(groupID)/chores/\(choreID)").removeValue()
-        ref.child("users/\(uid)/chores/\(choreID)").removeValue()
+    static func removeChore(asigneeUid:String, choreID:String, groupID:String, uid:String){
+        ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(choreID)").removeValue()
     }
     
-    static func readBasicGroupData(groupID: String, uid:String, completition: @escaping((_ group:Group, _ isParent:Bool)->())){
-        let group = Group(id: groupID, name: "", parents: [], children: [], chores: nil)
-        getMembersInGroup(groupID: groupID, completion: {memberData in
-            if let memberData = memberData {
-                let userIsParent = memberData[uid] == "parent"
-                
+    static func observeMembersInGroup(groupID: String, completion: @escaping(_ parents:[UserInfo], _ children:[UserInfo])->()){
+        let key = ref.child("groups/\(groupID)/members").observe(.value, with: {snapshot in
+            var parents:[UserInfo] = []
+            var children:[UserInfo] = []
+            if let members = snapshot.value as? [String:String] {
                 let dispatchGroup = DispatchGroup()
-                for uid in memberData.keys{
+                for (uid, parentStatus) in members {
                     dispatchGroup.enter()
                     getMemberUsername(uid: uid, completion: {username in
                         if let username = username {
-                            if memberData[uid] == "parent" {
-                                group.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
+                            if parentStatus == "parent" {
+                                parents.append(UserInfo(uid: uid, username: username, isParent: true))
                             }else{
-                                group.children?.append(UserInfo(uid: uid, username: username, isParent: false))
+                                children.append(UserInfo(uid: uid, username: username, isParent: false))
                             }
                         }
                         dispatchGroup.leave()
                     })
                 }
                 dispatchGroup.notify(queue: .main, execute: {
-                    completition(group, userIsParent)
+                    completion(parents, children)
                 })
             }
         })
+        observers["membersInGroup"] = key
     }
     
-    private static func getMembersInGroup(groupID:String, completion:@escaping(_ members:[String:String]?)->()){
-        ref.child("groups/\(groupID)/members").observeSingleEvent(of: .value, with: {snapshot in
-            if let membersData = snapshot.value as? [String:String] {
-                completion(membersData)
-            }else{
-                completion(nil)
-                print("Couldn't get members in group")
+    static func stopObservingMembersInGroup() {
+        if let key = observers["membersInGroup"] {
+            ref.removeObserver(withHandle: key)
+            observers.removeValue(forKey: "membersInGroup")
+        }
+    }
+    
+    static func readBasicGroupData(groupID: String, uid:String, completion: @escaping((_ group:Group, _ isParent:Bool)->())){
+        let group = Group(id: groupID, name: "", parents: [], children: [], chores: nil)
+        ref.child("groups/\(groupID)").observeSingleEvent(of: .value, with: {snapshot in
+            if let groupData = snapshot.value as? [String:Any] {
+                if let name = groupData["name"] as? String{
+                    group.name = name
+                }
+                if let members = groupData["members"] as? [String:String] {
+                    let userIsParent = members[uid] == "parent"
+                    let dispatchGroup = DispatchGroup()
+                    for (uid, parentStatus) in members {
+                        dispatchGroup.enter()
+                        getMemberUsername(uid: uid, completion: {username in
+                            if let username = username {
+                                if parentStatus == "parent" {
+                                    group.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
+                                }else{
+                                    group.children?.append(UserInfo(uid: uid, username: username, isParent: false))
+                                }
+                            }
+                            dispatchGroup.leave()
+                        })
+                    }
+                    dispatchGroup.notify(queue: .main, execute: {
+                        completion(group, userIsParent)
+                    })
+                }
             }
         })
     }
@@ -143,4 +149,79 @@ class DatabaseHandler {
             }
         })
     }
+    
+    static func getAllChoresFromGroup(groupID:String, completion: @escaping(_ chores:[Chore])->()){
+        //If the user is a parent then they will get all the chores
+        ref.child("groups/\(groupID)/chores").observeSingleEvent(of: .value, with: {snapshot in
+            var chores:[Chore] = []
+            if let data = snapshot.value as? [String:Any] {
+                for (asigneeID, choreList) in data {
+                    chores.append(contentsOf: parseChoreList(choreList: choreList, uid:asigneeID))
+                }
+            }
+            completion(chores)
+        })
+    }
+    
+    static func observeChores(groupID:String, completion: @escaping(_ chores:[Chore])->()){
+        let key = ref.child("groups/\(groupID)/chores").observe(.value, with: {snapshot in
+            var chores:[Chore] = []
+            if let data = snapshot.value as? [String:Any] {
+                for (asigneeID, choreList) in data {
+                    chores.append(contentsOf: parseChoreList(choreList: choreList, uid:asigneeID))
+                }
+            }
+            completion(chores)
+        })
+        observers["choresInGroup"] = key
+    }
+    
+    static func stopObservingChores() {
+        if let key = observers["choresInGroup"] {
+            ref.removeObserver(withHandle: key)
+            observers.removeValue(forKey: "choresInGroup")
+        }
+    }
+    
+    static func getChoresForUser(uid:String, groupID:String, completion: @escaping(_ chores:[Chore])->()){
+        //, but if they are a child they will onyl get their chores
+        ref.child("groups/\(groupID)/chores/\(uid)").observeSingleEvent(of: .value, with: {snapshot in
+            var chores:[Chore] = parseChoreList(choreList: snapshot.value, uid: uid)
+            completion(chores)
+        })
+    }
+    
+    static func readUserData(uid:String, completion: @escaping (_ groupID:String?, _ isParent:Bool)->()){
+        ref.child("users/\(uid)/group").observeSingleEvent(of: .value, with: {snapshot in
+            if let groupID = snapshot.value as? String {
+                ref.child("groups/\(groupID)/members/\(uid)").observeSingleEvent(of: .value, with: {snapshot in
+                    if let parentalStatus = snapshot.value as? String {
+                        if parentalStatus == "child" {
+                            completion(groupID, false)
+                        }else if parentalStatus == "parent" {
+                            completion(groupID, true)
+                        }else{
+                            print("They were not a parent or a child halp")
+                        }
+                    }
+                })
+            }else{
+                completion(nil, false)
+            }
+        })
+    }
+    
+    private static func parseChoreList(choreList:Any?, uid:String)->[Chore]{
+        var chores:[Chore] = []
+        if let choreList = choreList as? [String:[String:String]] {
+            for (choreID, choreData) in choreList {
+                if let name = choreData["name"] {
+                    let chore = Chore(id: choreID, name: name, asigneeID: uid)
+                    chores.append(chore)
+                }
+            }
+        }
+        return chores
+    }
+    
 }

@@ -22,6 +22,18 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         setupEnterMemberNameAlert()
         membersTableView.dataSource = self
         membersTableView.delegate = self
+        addMemberButton.applyButtonStyles(type: .alternateBig)
+        
+        DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
+            self.group?.chores = chores
+            print(chores)
+        })
+        
+        DatabaseHandler.observeMembersInGroup(groupID: group!.id, completion: {parents, children in
+            self.group?.parents = parents
+            self.group?.children = children
+            self.membersTableView.reloadData()
+        })
     }
     
     @IBAction func addMemberButtonPressed(_ sender: UIButton) {
@@ -31,9 +43,11 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
         guard let uid = user?.uid, let groupID = group?.id else {return}
         DatabaseHandler.leaveGroup(uid: uid, groupID: groupID)
+        DatabaseHandler.stopObservingChores()
+        DatabaseHandler.stopObservingMembersInGroup()
         user?.groupID = nil
         group = nil
-        self.performSegue(withIdentifier: "toNoGroupController", sender: self)
+        self.performSegue(withIdentifier: "toNoGroup", sender: self)
     }
     
     func setupEnterMemberNameAlert() {
@@ -51,11 +65,19 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if let name = name, let groupID = self.group?.id {
-                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: self.asParentSwitch.isOn, completition: {userFound in
-                    if !userFound {
-                        print("No user with that username")
-                    }else{
+                let asParent = self.asParentSwitch.isOn
+                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: asParent, completition: {uid in
+                    if let uid = uid {
+                        print("New member is parent? \(asParent)")
+                        if asParent {
+                            self.group?.parents?.append(UserInfo(uid: uid, username: name, isParent: true))
+                        }else{
+                            self.group?.children?.append(UserInfo(uid: uid, username: name, isParent: false))
+                        }
                         self.enterMemberNameAlert.dismiss(animated: true)
+                        self.membersTableView.reloadData()
+                    }else{
+                       print("No user with that username")
                     }
                 })
             }
@@ -96,7 +118,9 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             let nameTextField = enterChoreAlert.textFields![0] as UITextField
             guard let name = nameTextField.text else {return}
             if name != "" {
-                 DatabaseHandler.addChore(name: name, asigneeUid: asigneeUid, groupID: self.group!.id)
+                DatabaseHandler.addChore(name: name, asigneeUid: asigneeUid, groupID: self.group!.id, completion: {id in
+                     self.group?.chores?.append(Chore(id: id, name: name, asigneeID: asigneeUid))
+                })
             }
         })
         
