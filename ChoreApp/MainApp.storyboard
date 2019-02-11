@@ -18,59 +18,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q3-vB-bKw">
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q3-vB-bKw">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBi-gH-kql">
-                                        <rect key="frame" x="40" y="75" width="334" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="I4O-u3-AZa"/>
-                                            <constraint firstAttribute="height" constant="45" id="r5Z-m2-5Li"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeK-m5-gWI">
-                                        <rect key="frame" x="182" y="359" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Item2" image="Cog"/>
-                                        <connections>
-                                            <action selector="openSettings:" destination="Eha-SI-AtN" eventType="touchUpInside" id="XbD-hQ-wFu"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-ys-KQj">
-                                        <rect key="frame" x="131" y="577" width="152" height="42"/>
+                                        <rect key="frame" x="131" y="627" width="152" height="42"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                         <state key="normal" title="Create Group"/>
                                         <connections>
                                             <action selector="createGroupButtonPressed:" destination="Eha-SI-AtN" eventType="touchUpInside" id="5DK-ns-XKi"/>
                                         </connections>
                                     </button>
-                                    <navigationBar opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="smM-C9-S7A">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <items>
-                                            <navigationItem largeTitleDisplayMode="never" id="4vZ-GS-p67">
-                                                <barButtonItem key="rightBarButtonItem" title="Item" image="Cog" landscapeImage="Cog" largeContentSizeImage="Cog" id="3ak-lz-a1h">
-                                                    <connections>
-                                                        <action selector="openSettingsFromTop:" destination="Eha-SI-AtN" id="fWV-Ny-HSS"/>
-                                                    </connections>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeK-m5-gWI">
+                                        <rect key="frame" x="339" y="25" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="bOF-aT-3Tb"/>
+                                            <constraint firstAttribute="height" constant="50" id="mD5-hF-3yB"/>
+                                        </constraints>
+                                        <state key="normal" title="Item2" image="Cog"/>
+                                        <connections>
+                                            <action selector="openSettings:" destination="Eha-SI-AtN" eventType="touchUpInside" id="XbD-hQ-wFu"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBi-gH-kql">
+                                        <rect key="frame" x="40" y="100" width="334" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="r5Z-m2-5Li"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.034920876077064067" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ey7-ys-KQj" secondAttribute="trailing" constant="131" id="2p7-hy-zXG"/>
-                                    <constraint firstItem="oBi-gH-kql" firstAttribute="leading" secondItem="2Q3-vB-bKw" secondAttribute="leading" constant="40" id="XqR-YE-hE4"/>
-                                    <constraint firstItem="ey7-ys-KQj" firstAttribute="leading" secondItem="2Q3-vB-bKw" secondAttribute="leading" constant="131" id="mEJ-Wi-Bcu"/>
-                                    <constraint firstItem="oBi-gH-kql" firstAttribute="top" secondItem="2Q3-vB-bKw" secondAttribute="top" constant="75" id="s3X-mV-0R9"/>
-                                    <constraint firstAttribute="bottom" secondItem="ey7-ys-KQj" secondAttribute="bottom" constant="150" id="tJg-VP-zOI"/>
-                                    <constraint firstAttribute="trailing" secondItem="oBi-gH-kql" secondAttribute="trailing" constant="40" id="wTe-VV-Xod"/>
+                                    <constraint firstAttribute="bottom" secondItem="ey7-ys-KQj" secondAttribute="bottom" constant="100" id="0OV-LF-Bb7"/>
+                                    <constraint firstItem="oBi-gH-kql" firstAttribute="top" secondItem="2Q3-vB-bKw" secondAttribute="top" constant="100" id="3jT-ID-plp"/>
+                                    <constraint firstAttribute="trailing" secondItem="ey7-ys-KQj" secondAttribute="trailing" constant="131" id="E5c-zc-agH"/>
+                                    <constraint firstItem="oBi-gH-kql" firstAttribute="leading" secondItem="2Q3-vB-bKw" secondAttribute="leading" constant="40" id="EAU-nw-T8J"/>
+                                    <constraint firstItem="ey7-ys-KQj" firstAttribute="leading" secondItem="2Q3-vB-bKw" secondAttribute="leading" constant="131" id="EIS-yw-7ml"/>
+                                    <constraint firstAttribute="trailing" secondItem="VeK-m5-gWI" secondAttribute="trailing" constant="25" id="Gdd-Eg-iD6"/>
+                                    <constraint firstAttribute="trailing" secondItem="oBi-gH-kql" secondAttribute="trailing" constant="40" id="K99-sK-gMB"/>
+                                    <constraint firstItem="VeK-m5-gWI" firstAttribute="top" secondItem="2Q3-vB-bKw" secondAttribute="top" constant="25" id="xJc-gI-O5D"/>
                                 </constraints>
                             </view>
                         </subviews>

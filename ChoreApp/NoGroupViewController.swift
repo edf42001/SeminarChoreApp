@@ -60,28 +60,14 @@ class NoGroupViewController: UIViewController {
         
     }
     
-    @IBAction func openSettingsFromTop(_ sender: UIBarButtonItem) {
-        if !menuOpen {
-            leading.constant += move
-            trailing.constant -= move
-        }
-        else {
-            leading.constant -= move
-            trailing.constant += move
-        }
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
-        menuOpen = !menuOpen
-    }
-    
-    
     @IBAction func openSettings(_ sender: UIButton) {
         if !menuOpen {
-            leading.constant += move
-            trailing.constant -= move
-        }
-        else {
             leading.constant -= move
             trailing.constant += move
+        }
+        else {
+            leading.constant += move
+            trailing.constant -= move
         }
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
         menuOpen = !menuOpen

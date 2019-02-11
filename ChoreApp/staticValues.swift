@@ -34,6 +34,9 @@ class Styles
     
     //Default ViewController background color
     static let backgroundColor: UIColor? = UIColor.red
+    
+    //Default tab background color
+    static let tabColor: UIColor? = UIColor.black
 }
 enum Condition
 {
