@@ -42,7 +42,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
             self.user = User(uid: user.uid, username: user.displayName ?? "", email: user.email ?? "", isParent: false)
             DatabaseHandler.readUserData(uid: user.uid, completion: {groupID, isParent in
                 if let groupID = groupID {
-                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: user.uid, completition: {group, isParent in
+                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: user.uid, completion: {group, isParent in
                         self.group = group
                         if isParent {
                             print("User is parent")

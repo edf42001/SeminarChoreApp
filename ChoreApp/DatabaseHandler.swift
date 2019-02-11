@@ -68,62 +68,74 @@ class DatabaseHandler {
         })
     }
     
-    static func observeNewChores(uid:String, groupID:String) -> UInt{
-        return ref.child("users/\(uid)/chores/").observe(.value, with: {snapshot in
-            if snapshot.exists(){
-                print(snapshot)
-            }
-        })
-    }
-    
     static func leaveGroup(uid:String, groupID:String){
         ref.child("users/\(uid)/group").removeValue()
         ref.child("groups/\(groupID)/members/\(uid)").removeValue()
     }
     
-    static func addChore(name:String, asigneeUid: String, groupID:String){
+    static func addChore(name:String, asigneeUid: String, groupID:String, completion: @escaping (_ id:String)->()){
         let key = ref.child("groups/\(groupID)/chores/\(asigneeUid)").childByAutoId().key ?? ""
         ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(key)/name").setValue(name)
+        completion(key)
     }
     
     static func removeChore(asigneeUid:String, choreID:String, groupID:String, uid:String){
         ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(choreID)").removeValue()
     }
     
-    static func readBasicGroupData(groupID: String, uid:String, completition: @escaping((_ group:Group, _ isParent:Bool)->())){
-        let group = Group(id: groupID, name: "", parents: [], children: [], chores: nil)
-        getMembersInGroup(groupID: groupID, completion: {memberData in
-            if let memberData = memberData {
-                let userIsParent = memberData[uid] == "parent"
-                
+    static func observeMembersInGroup(groupID: String, completion: @escaping(_ parents:[UserInfo], _ children:[UserInfo])->()){
+        ref.child("groups/\(groupID)/members").observe(.value, with: {snapshot in
+            var parents:[UserInfo] = []
+            var children:[UserInfo] = []
+            if let members = snapshot.value as? [String:String] {
                 let dispatchGroup = DispatchGroup()
-                for uid in memberData.keys{
+                for (uid, parentStatus) in members {
                     dispatchGroup.enter()
                     getMemberUsername(uid: uid, completion: {username in
                         if let username = username {
-                            if memberData[uid] == "parent" {
-                                group.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
+                            if parentStatus == "parent" {
+                                parents.append(UserInfo(uid: uid, username: username, isParent: true))
                             }else{
-                                group.children?.append(UserInfo(uid: uid, username: username, isParent: false))
+                                children.append(UserInfo(uid: uid, username: username, isParent: false))
                             }
                         }
                         dispatchGroup.leave()
                     })
                 }
                 dispatchGroup.notify(queue: .main, execute: {
-                    completition(group, userIsParent)
+                    completion(parents, children)
                 })
             }
         })
     }
     
-    private static func getMembersInGroup(groupID:String, completion:@escaping(_ members:[String:String]?)->()){
-        ref.child("groups/\(groupID)/members").observeSingleEvent(of: .value, with: {snapshot in
-            if let membersData = snapshot.value as? [String:String] {
-                completion(membersData)
-            }else{
-                completion(nil)
-                print("Couldn't get members in group")
+    static func readBasicGroupData(groupID: String, uid:String, completion: @escaping((_ group:Group, _ isParent:Bool)->())){
+        let group = Group(id: groupID, name: "", parents: [], children: [], chores: nil)
+        ref.child("groups/\(groupID)").observeSingleEvent(of: .value, with: {snapshot in
+            if let groupData = snapshot.value as? [String:Any] {
+                if let name = groupData["name"] as? String{
+                    group.name = name
+                }
+                if let members = groupData["members"] as? [String:String] {
+                    let userIsParent = members[uid] == "parent"
+                    let dispatchGroup = DispatchGroup()
+                    for (uid, parentStatus) in members {
+                        dispatchGroup.enter()
+                        getMemberUsername(uid: uid, completion: {username in
+                            if let username = username {
+                                if parentStatus == "parent" {
+                                    group.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
+                                }else{
+                                    group.children?.append(UserInfo(uid: uid, username: username, isParent: false))
+                                }
+                            }
+                            dispatchGroup.leave()
+                        })
+                    }
+                    dispatchGroup.notify(queue: .main, execute: {
+                        completion(group, userIsParent)
+                    })
+                }
             }
         })
     }
@@ -143,18 +155,21 @@ class DatabaseHandler {
         //If the user is a parent then they will get all the chores
         ref.child("groups/\(groupID)/chores").observeSingleEvent(of: .value, with: {snapshot in
             var chores:[Chore] = []
-            if let allData = snapshot.value as? [String:Any] {
-                for asigneeID in allData.keys {
-                    if let choreList = allData[asigneeID]! as? [String: Any] {
-                        for choreID in choreList.keys {
-                            if let choreData = choreList[choreID]! as? [String:String] {
-                                if let name = choreData["name"] {
-                                    let chore = Chore(id: choreID, name: name, asigneeID: asigneeID)
-                                    chores.append(chore)
-                                }
-                            }
-                        }
-                    }
+            if let data = snapshot.value as? [String:Any] {
+                for (asigneeID, choreList) in data {
+                    chores.append(contentsOf: parseChoreList(choreList: choreList, uid:asigneeID))
+                }
+            }
+            completion(chores)
+        })
+    }
+    
+    static func observeChores(groupID:String, completion: @escaping(_ chores:[Chore])->()){
+        ref.child("groups/\(groupID)/chores").observe(.value, with: {snapshot in
+            var chores:[Chore] = []
+            if let data = snapshot.value as? [String:Any] {
+                for (asigneeID, choreList) in data {
+                    chores.append(contentsOf: parseChoreList(choreList: choreList, uid:asigneeID))
                 }
             }
             completion(chores)
@@ -164,17 +179,7 @@ class DatabaseHandler {
     static func getChoresForUser(uid:String, groupID:String, completion: @escaping(_ chores:[Chore])->()){
         //, but if they are a child they will onyl get their chores
         ref.child("groups/\(groupID)/chores/\(uid)").observeSingleEvent(of: .value, with: {snapshot in
-            var chores:[Chore] = []
-            if let choreList = snapshot.value as? [String: Any] {
-                for choreID in choreList.keys {
-                    if let choreData = choreList[choreID]! as? [String:String] {
-                        if let name = choreData["name"] {
-                            let chore = Chore(id: choreID, name: name, asigneeID: uid)
-                            chores.append(chore)
-                        }
-                    }
-                }
-            }
+            var chores:[Chore] = parseChoreList(choreList: snapshot.value, uid: uid)
             completion(chores)
         })
     }
@@ -185,8 +190,6 @@ class DatabaseHandler {
                 ref.child("groups/\(groupID)/members/\(uid)").observeSingleEvent(of: .value, with: {snapshot in
                     if let parentalStatus = snapshot.value as? String {
                         if parentalStatus == "child" {
-                            
-                            
                             completion(groupID, false)
                         }else if parentalStatus == "parent" {
                             completion(groupID, true)
@@ -200,4 +203,18 @@ class DatabaseHandler {
             }
         })
     }
+    
+    private static func parseChoreList(choreList:Any?, uid:String)->[Chore]{
+        var chores:[Chore] = []
+        if let choreList = choreList as? [String:[String:String]] {
+            for (choreID, choreData) in choreList {
+                if let name = choreData["name"] {
+                    let chore = Chore(id: choreID, name: name, asigneeID: uid)
+                    chores.append(chore)
+                }
+            }
+        }
+        return chores
+    }
+    
 }

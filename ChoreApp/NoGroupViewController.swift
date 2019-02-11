@@ -35,7 +35,7 @@ class NoGroupViewController: UIViewController {
 //            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
             DatabaseHandler.observeIfAddedToGroup(uid: uid, onRecieve: {groupID in
                 if let groupID = groupID as? String {
-                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completition: {group, isParent in
+                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
                         self.group = group
                         if isParent {
                             print("User is parent")

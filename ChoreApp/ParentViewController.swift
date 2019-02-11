@@ -23,9 +23,17 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         membersTableView.dataSource = self
         membersTableView.delegate = self
         addMemberButton.applyButtonStyles(type: .alternateBig)
-        print(group?.children)
-        print(group?.parents)
-    
+        
+        DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
+            self.group?.chores = chores
+            print(chores)
+        })
+        
+        DatabaseHandler.observeMembersInGroup(groupID: group!.id, completion: {parents, children in
+            self.group?.parents = parents
+            self.group?.children = children
+            self.membersTableView.reloadData()
+        })
     }
     
     @IBAction func addMemberButtonPressed(_ sender: UIButton) {
@@ -108,7 +116,9 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             let nameTextField = enterChoreAlert.textFields![0] as UITextField
             guard let name = nameTextField.text else {return}
             if name != "" {
-                 DatabaseHandler.addChore(name: name, asigneeUid: asigneeUid, groupID: self.group!.id)
+                DatabaseHandler.addChore(name: name, asigneeUid: asigneeUid, groupID: self.group!.id, completion: {id in
+                     self.group?.chores?.append(Chore(id: id, name: name, asigneeID: asigneeUid))
+                })
             }
         })
         

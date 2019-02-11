@@ -42,7 +42,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 self.user = User(uid: current.uid, username: dName, email: eText, isParent: false)
                 DatabaseHandler.readUserData(uid: user.uid, completion: {groupID, isParent in
                     if let groupID = groupID {
-                        DatabaseHandler.readBasicGroupData(groupID: groupID, uid: user.uid, completition: {group, isParent in
+                        DatabaseHandler.readBasicGroupData(groupID: groupID, uid: user.uid, completion: {group, isParent in
                             self.group = group
                             if isParent {
                                 print("User is parent")
