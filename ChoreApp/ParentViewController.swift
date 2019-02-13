@@ -11,15 +11,20 @@ import UIKit
 class ParentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var user:User?
     var group:Group?
-    
+    let move = CGFloat(175)
     var enterMemberNameAlert:UIAlertController!
     @IBOutlet weak var membersTableView: UITableView!
-    @IBOutlet weak var asParentSwitch: UISwitch!
     @IBOutlet weak var addMemberButton: UIButton!
+    var menuOpen = false
+    @IBOutlet weak var settingsButton: UIButton!
+    @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var leading: NSLayoutConstraint!
+    @IBOutlet weak var background: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Styles.backgroundColor
+        self.view.backgroundColor = Styles.tabColor
+        background.backgroundColor = Styles.backgroundColor
         addMemberButton.applyButtonStyles(type: .standard)
         setupEnterMemberNameAlert()
         membersTableView.dataSource = self
@@ -67,15 +72,9 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if let name = name, let groupID = self.group?.id {
-                let asParent = self.asParentSwitch.isOn
-                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: asParent, completition: {uid in
+                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: true, completition: {uid in
                     if let uid = uid {
-                        print("New member is parent? \(asParent)")
-                        if asParent {
-                            self.group?.parents?.append(UserInfo(uid: uid, username: name, isParent: true))
-                        }else{
-                            self.group?.children?.append(UserInfo(uid: uid, username: name, isParent: false))
-                        }
+                        self.group?.parents?.append(UserInfo(uid: uid, username: name, isParent: true))
                         self.enterMemberNameAlert.dismiss(animated: true)
                         self.membersTableView.reloadData()
                     }else{
@@ -134,6 +133,20 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         
         self.present(enterChoreAlert, animated: true, completion: nil)
     }
+    
+    @IBAction func openSettings(_ sender: UIButton) {
+        if !menuOpen {
+            leading.constant -= move
+            trailing.constant += move
+        }
+        else {
+            leading.constant += move
+            trailing.constant -= move
+        }
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
+        menuOpen = !menuOpen
+    }
+    
     
     
     // MARK: - Navigation

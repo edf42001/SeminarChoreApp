@@ -23,7 +23,7 @@ class NoGroupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Styles.backgroundColor
+        self.view.backgroundColor = Styles.tabColor
         background.backgroundColor = Styles.backgroundColor
         createGroupButton.applyButtonStyles(type: .standard)
         
