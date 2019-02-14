@@ -22,6 +22,7 @@ class NoGroupViewController: UIViewController {
     @IBOutlet weak var createGroupButton: UIButton!
     
     override func viewDidLoad() {
+        toScreen = -1
         super.viewDidLoad()
         self.view.backgroundColor = Styles.backgroundColor
         background.backgroundColor = Styles.backgroundColor
@@ -30,8 +31,9 @@ class NoGroupViewController: UIViewController {
         setupEnterGroupNameAlert()
 
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
-            if let groupID = groupID as? String {
+            if let groupID = groupID as? String, self.toScreen == -1{
                 DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
+                    print("\(groupID), \(isParent)")
                     self.group = group
                     if isParent {
                         print("User is parent")

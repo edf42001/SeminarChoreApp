@@ -59,9 +59,46 @@ class DatabaseHandler {
         }
     }
     
-    static func leaveGroup(uid:String, groupID:String){
-        ref.child("users/\(uid)/group").removeValue()
-        ref.child("groups/\(groupID)/members/\(uid)").removeValue()
+    static func leaveGroup(uid:String, groupID:String, isParent:Bool, done: @escaping()->()){
+        ref.child("groups/\(groupID)/members").observeSingleEvent(of: .value, with: {snapshot in
+            let dispatchGroup = DispatchGroup()
+            var parentCount = 0
+            
+            if let members = snapshot.value as? [String:String], isParent{ //don't count if not parent
+                for parentStatus in members.values {
+                    if parentStatus == "parent"{
+                        parentCount+=1
+                    }
+                }
+                dispatchGroup.enter()
+                ref.child("users/\(uid)/group").removeValue() {error, ref in
+                    dispatchGroup.leave()
+                }
+                
+                if parentCount > 1 {
+                    dispatchGroup.enter()
+                    ref.child("groups/\(groupID)/members/\(uid)").removeValue() {error, ref in
+                        dispatchGroup.leave()
+                    }
+                }else{
+
+                    dispatchGroup.enter()
+                    ref.child("groups/\(groupID)").removeValue() {error, ref in
+                        dispatchGroup.leave()
+                    }
+                    for uid in members.keys {
+                        dispatchGroup.enter()
+                        ref.child("users/\(uid)/group").removeValue() {error, ref in
+                            dispatchGroup.leave()
+                        }
+                    }
+                }
+                
+                dispatchGroup.notify(queue: .main) {
+                    done()
+                }
+            }
+        })
     }
     
     static func addChore(name:String, asigneeUid: String, groupID:String, completion: @escaping (_ id:String)->()){
@@ -116,6 +153,7 @@ class DatabaseHandler {
                     group.name = name
                 }
                 if let members = groupData["members"] as? [String:String] {
+                    print("member uid: \(members[uid])")
                     let userIsParent = members[uid] == "parent"
                     let dispatchGroup = DispatchGroup()
                     for (uid, parentStatus) in members {
@@ -186,7 +224,7 @@ class DatabaseHandler {
     static func getChoresForUser(uid:String, groupID:String, completion: @escaping(_ chores:[Chore])->()){
         //, but if they are a child they will onyl get their chores
         ref.child("groups/\(groupID)/chores/\(uid)").observeSingleEvent(of: .value, with: {snapshot in
-            var chores:[Chore] = parseChoreList(choreList: snapshot.value, uid: uid)
+            let chores:[Chore] = parseChoreList(choreList: snapshot.value, uid: uid)
             completion(chores)
         })
     }

@@ -28,7 +28,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         
         DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
             self.group?.chores = chores
-            print(chores)
         })
         
         DatabaseHandler.observeMembersInGroup(groupID: group!.id, completion: {parents, children in
@@ -44,12 +43,14 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
         guard let uid = user?.uid, let groupID = group?.id else {return}
-        DatabaseHandler.leaveGroup(uid: uid, groupID: groupID)
         DatabaseHandler.stopObservingChores()
         DatabaseHandler.stopObservingMembersInGroup()
-        user?.groupID = nil
-        group = nil
-        self.performSegue(withIdentifier: "toNoGroup", sender: self)
+        DatabaseHandler.leaveGroup(uid: uid, groupID: groupID, isParent: user!.isParent, done: {
+            self.user?.groupID = nil
+            self.group = nil
+            self.performSegue(withIdentifier: "toNoGroup", sender: self)
+        })
+        
     }
     
     func setupEnterMemberNameAlert() {
@@ -140,8 +141,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
         guard let destination = segue.destination as? NoGroupViewController else {return}
         destination.group = group
         destination.user = user
