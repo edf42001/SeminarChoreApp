@@ -120,12 +120,8 @@ class NoGroupViewController: UIViewController {
             var name = "My Group"
             if let text = nameTextField.text, text != "" {
                 name = text
-            }else{
-                
             }
-            
             self.createNewGroup(name: name) //create the new group
-            
             self.enterGroupName.dismiss(animated: true)
         })
         enterGroupName.addAction(cancelAction)
@@ -149,7 +145,7 @@ class NoGroupViewController: UIViewController {
             destination.user = self.user
             destination.group = self.group
         default:
-            print("error")
+            print("Failed segue error")
         }
     }
     

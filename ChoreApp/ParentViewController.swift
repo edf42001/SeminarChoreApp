@@ -20,6 +20,10 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var background: UIView!
+    @IBOutlet weak var addChore: UIButton!
+    @IBOutlet weak var addMember: UIButton!
+    var enterMember:UIAlertController!
+    var enterChore:UIAlertController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +34,13 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         membersTableView.dataSource = self
         membersTableView.delegate = self
         addMemberButton.applyButtonStyles(type: .alternateBig)
+        addChore.applyButtonStyles(type: .standard)
+        addMember.applyButtonStyles(type: .standard)
+        setupEnterMemberNameAlert()
+        setupEnterChoreAlert()
         
         DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
+            
             self.group?.chores = chores
             print(chores)
         })
@@ -46,6 +55,11 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func addMemberButtonPressed(_ sender: UIButton) {
         self.present(enterMemberNameAlert, animated: true)
     }
+    
+    @IBAction func addChoreButtonPressed(_ sender: UIButton) {
+        self.present(enterChore, animated: true)
+    }
+    
     
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
         guard let uid = user?.uid, let groupID = group?.id else {return}
@@ -91,6 +105,29 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
+    func setupEnterChoreAlert() {
+        enterChore = UIAlertController(title: "Enter Chore Name", message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:
+        {action in
+            self.enterChore.dismiss(animated: true)
+        })
+        let createChoreAction = UIAlertAction(title: "Create", style: .default, handler: {action in
+            let choreTextField = self.enterChore.textFields![0] as UITextField
+            var chore = "My Chore"
+            if let text = choreTextField.text, text != "" {
+                chore = text
+            }
+            self.createChoreForUser(userIndex: 0) //Update to correct user later, and add chore properties, such as name, date, etc.
+            self.enterChore.dismiss(animated: true)
+        })
+        enterChore.addAction(cancelAction)
+        enterChore.addAction(createChoreAction)
+        enterChore.addTextField(configurationHandler: {textfield in
+            textfield.placeholder = "A Chore"
+        })
+    }
+
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return group?.children?.count ?? 0
     }
@@ -106,6 +143,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         createChoreForUser(userIndex: indexPath.row)
     }
     
+    //Add chore names later?
     func createChoreForUser(userIndex:Int){
         guard let asigneeUid = group?.children?[userIndex].uid else {return}
         

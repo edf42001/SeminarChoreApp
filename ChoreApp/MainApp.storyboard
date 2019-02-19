@@ -158,6 +158,19 @@
                                             <action selector="openSettings:" destination="LeB-FC-GmL" eventType="touchUpInside" id="YeF-dh-J6K"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7A-xS-eWI">
+                                        <rect key="frame" x="62" y="589" width="89" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Add Member"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q87-pi-GRp">
+                                        <rect key="frame" x="231" y="580" width="73" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Add Chore"/>
+                                        <connections>
+                                            <action selector="addChoreButtonPressed:" destination="LeB-FC-GmL" eventType="touchUpInside" id="nGC-ma-nPv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -185,6 +198,8 @@
                         <viewLayoutGuide key="safeArea" id="fgM-9U-q1j"/>
                     </view>
                     <connections>
+                        <outlet property="addChore" destination="q87-pi-GRp" id="UcT-QR-flg"/>
+                        <outlet property="addMember" destination="C7A-xS-eWI" id="vMQ-cp-YH4"/>
                         <outlet property="addMemberButton" destination="orJ-zV-17B" id="TbJ-mN-D54"/>
                         <outlet property="background" destination="8uf-Mv-BAr" id="cyr-xI-vkU"/>
                         <outlet property="leading" destination="PRE-4b-REg" id="scm-kg-3up"/>
