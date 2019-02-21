@@ -96,15 +96,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg6-Zv-lsX">
+                                <rect key="frame" x="219" y="690" width="144" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Leave Group"/>
+                                <connections>
+                                    <action selector="leaveGroupButtonPressed:" destination="LeB-FC-GmL" eventType="touchUpInside" id="BW9-ss-Szi"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8uf-Mv-BAr">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're a parent!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gty-Gk-By7">
-                                        <rect key="frame" x="147" y="75" width="120" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orJ-zV-17B">
                                         <rect key="frame" x="134" y="363" width="146" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -122,10 +125,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r3W-bn-dfr">
-                                        <rect key="frame" x="86" y="250" width="241" height="300"/>
+                                        <rect key="frame" x="86" y="150" width="241" height="475"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="iBQ-JX-RHf"/>
+                                            <constraint firstAttribute="height" constant="475" id="iBQ-JX-RHf"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberNameCell" id="IeK-oB-ebC">
@@ -139,14 +142,6 @@
                                         </prototypes>
                                         <sections/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cg6-Zv-lsX">
-                                        <rect key="frame" x="135" y="652" width="144" height="42"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                        <state key="normal" title="Leave Group"/>
-                                        <connections>
-                                            <action selector="leaveGroupButtonPressed:" destination="LeB-FC-GmL" eventType="touchUpInside" id="BW9-ss-Szi"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGL-pF-1Zv">
                                         <rect key="frame" x="314" y="50" width="50" height="50"/>
                                         <constraints>
@@ -158,32 +153,38 @@
                                             <action selector="openSettings:" destination="LeB-FC-GmL" eventType="touchUpInside" id="YeF-dh-J6K"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7A-xS-eWI">
-                                        <rect key="frame" x="62" y="589" width="89" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7A-xS-eWI">
+                                        <rect key="frame" x="75" y="658" width="113" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Add Member"/>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q87-pi-GRp">
-                                        <rect key="frame" x="231" y="580" width="73" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q87-pi-GRp">
+                                        <rect key="frame" x="246" y="658" width="93" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Add Chore"/>
                                         <connections>
                                             <action selector="addChoreButtonPressed:" destination="LeB-FC-GmL" eventType="touchUpInside" id="nGC-ma-nPv"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYh-tO-0gO">
+                                        <rect key="frame" x="139" y="75" width="136.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="cg6-Zv-lsX" firstAttribute="leading" secondItem="8uf-Mv-BAr" secondAttribute="leading" constant="135" id="11x-ip-e3H"/>
-                                    <constraint firstAttribute="bottom" secondItem="cg6-Zv-lsX" secondAttribute="bottom" constant="75" id="4N3-UZ-Kfp"/>
-                                    <constraint firstItem="r3W-bn-dfr" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="250" id="7h1-pG-VbO"/>
-                                    <constraint firstItem="gty-Gk-By7" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="75" id="Ehd-Ro-B1G"/>
-                                    <constraint firstAttribute="trailing" secondItem="cg6-Zv-lsX" secondAttribute="trailing" constant="135" id="Hin-Py-zGz"/>
+                                    <constraint firstItem="C7A-xS-eWI" firstAttribute="leading" secondItem="8uf-Mv-BAr" secondAttribute="leading" constant="75" id="1lm-ve-OIL"/>
+                                    <constraint firstItem="r3W-bn-dfr" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="150" id="7h1-pG-VbO"/>
+                                    <constraint firstAttribute="bottom" secondItem="q87-pi-GRp" secondAttribute="bottom" constant="75" id="E6T-G6-fnr"/>
                                     <constraint firstAttribute="trailing" secondItem="NGL-pF-1Zv" secondAttribute="trailing" constant="50" id="OaH-SU-CA2"/>
+                                    <constraint firstAttribute="trailing" secondItem="q87-pi-GRp" secondAttribute="trailing" constant="75" id="RAE-5v-CdY"/>
+                                    <constraint firstItem="xYh-tO-0gO" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="75" id="UOV-8E-fDe"/>
+                                    <constraint firstItem="xYh-tO-0gO" firstAttribute="centerX" secondItem="8uf-Mv-BAr" secondAttribute="centerX" id="V7w-0A-idg"/>
                                     <constraint firstItem="r3W-bn-dfr" firstAttribute="leading" secondItem="8uf-Mv-BAr" secondAttribute="leading" constant="86" id="d2V-x7-gKx"/>
                                     <constraint firstAttribute="trailing" secondItem="r3W-bn-dfr" secondAttribute="trailing" constant="87" id="eCK-ld-dTJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="gty-Gk-By7" secondAttribute="trailing" constant="147" id="fQz-cU-RjH"/>
-                                    <constraint firstItem="gty-Gk-By7" firstAttribute="leading" secondItem="8uf-Mv-BAr" secondAttribute="leading" constant="147" id="l4a-T9-KTI"/>
+                                    <constraint firstAttribute="bottom" secondItem="C7A-xS-eWI" secondAttribute="bottom" constant="75" id="hPz-6N-5Un"/>
                                     <constraint firstItem="NGL-pF-1Zv" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="50" id="qZF-Jz-nas"/>
                                 </constraints>
                             </view>
@@ -211,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tq2-a0-EqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1149" y="-120"/>
+            <point key="canvasLocation" x="1147.8260869565217" y="-120.53571428571428"/>
         </scene>
         <!--Child View Controller-->
         <scene sceneID="xQm-Gg-3fE">
