@@ -33,14 +33,20 @@ class DatabaseHandler {
         completion(key)
     }
     
-    static func tryAddMemberToGroup(groupID:String, newMemberUserName:String, asParent:Bool, completition:@escaping (_ uid:String?)->()){
+    static func tryAddMemberToGroup(groupID:String, newMemberUserName:String, asParent:Bool, completition:@escaping (_ uid:String?, _ error:String?)->()){
         ref.child("usernames/\(newMemberUserName)").observeSingleEvent(of: .value, with: { snapshot in
             if let uid = snapshot.value as? String {
-                ref.child("groups/\(groupID)/members/\(uid)").setValue(asParent ? "parent":"child")
-                ref.child("users/\(uid)/group").setValue(groupID)
-                completition(uid)
+                ref.child("users/\(uid)/group").observeSingleEvent(of: .value, with: {snapshot in
+                    if let _ = snapshot.value as? String {
+                        completition(nil, "User already in group")//already in a group
+                    }else{
+                        ref.child("groups/\(groupID)/members/\(uid)").setValue(asParent ? "parent":"child")
+                        ref.child("users/\(uid)/group").setValue(groupID)
+                        completition(uid, nil)
+                    }
+                })
             }else{
-                completition(nil)
+                completition(nil, "User does not exist") //user does not exist
             }
         })
     }

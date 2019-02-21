@@ -87,13 +87,13 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
             if let name = name, let groupID = self.group?.id {
-                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: true, completition: {uid in
+                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: true, completition: {uid, error in
                     if let uid = uid {
                         self.group?.parents?.append(UserInfo(uid: uid, username: name, isParent: true))
                         self.enterMemberNameAlert.dismiss(animated: true)
                         self.membersTableView.reloadData()
                     }else{
-                       print("No user with that username")
+                       print(error!)
                     }
                 })
             }
