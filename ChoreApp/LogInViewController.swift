@@ -14,11 +14,8 @@ import FirebaseDatabase
 class LogInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var email: UITextField!
-    
     @IBOutlet weak var password: UITextField!
-    
     @IBOutlet weak var logInButton: UIButton!
-    
     var user: User?
     var group: Group?
     
@@ -78,6 +75,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //Smooth transitions between the text input boxes
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if email.isFirstResponder {
             password.becomeFirstResponder()
@@ -89,6 +87,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    //Send user and group information to the next ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch toScreen {
         case 0:

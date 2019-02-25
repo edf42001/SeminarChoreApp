@@ -13,9 +13,7 @@ import FirebaseAuth
 class DuplicateLoadingScreenViewController: UIViewController {
     var user: User?
     var group: Group?
-    
     var toScreen = -1
-    
     var ref: DatabaseReference!    
     
     override func viewDidLoad() {
@@ -23,6 +21,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
         self.view.backgroundColor = Styles.backgroundColor
         
         ref = Database.database().reference()
+        //Testing code
 //        if Auth.auth().currentUser != nil {
 //            Auth.auth().createUser(withEmail: "me@me.com", password: "password")
 //        }
@@ -36,6 +35,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        //Attempting to load and use the current user's information to send him/her to the appropriate landing page
         if let user = Auth.auth().currentUser {
             print("User Exists")
             print(user.uid)
@@ -54,7 +54,6 @@ class DuplicateLoadingScreenViewController: UIViewController {
                                 self.group?.chores = chores
                                 self.performSegue(withIdentifier: "toParent", sender: self)
                             })
-                            
                         }else {
                             print("User is child")
                             self.user?.isParent = false
@@ -65,7 +64,6 @@ class DuplicateLoadingScreenViewController: UIViewController {
                             })
                         }
                     })
-                    
                 }else{
                     self.toScreen = 0
                     self.performSegue(withIdentifier: "toNoGroup", sender: self)
@@ -79,6 +77,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
         }
     }
     
+    //Sending the gathered user data to the desired destination
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch toScreen {
         case 0:
