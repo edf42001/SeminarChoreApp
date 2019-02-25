@@ -27,9 +27,7 @@ class NoGroupViewController: UIViewController {
         self.view.backgroundColor = Styles.tabColor
         background.backgroundColor = Styles.backgroundColor
         createGroupButton.applyButtonStyles(type: .standard)
-        
         setupEnterGroupNameAlert()
-
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
             if let groupID = groupID as? String, self.toScreen == -1{
                 DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
@@ -59,6 +57,7 @@ class NoGroupViewController: UIViewController {
         })
     }
     
+    //Move settings tab
     @IBAction func openSettings(_ sender: UIButton) {
         if !menuOpen {
             leading.constant -= move
@@ -78,6 +77,7 @@ class NoGroupViewController: UIViewController {
         self.present(enterGroupName, animated: true)
     }
     
+    //Create a new group
     func createNewGroup(name: String){
         if let uid = user?.uid {
             DatabaseHandler.stopObservingIfAddedToGroup()
@@ -93,6 +93,7 @@ class NoGroupViewController: UIViewController {
         }
     }
     
+    //Create the popup for user to enter group name
     func setupEnterGroupNameAlert() {
         enterGroupName = UIAlertController(title: "Enter Name", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
@@ -116,7 +117,7 @@ class NoGroupViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //Transfer the user's information to another ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch toScreen {
         case 1:

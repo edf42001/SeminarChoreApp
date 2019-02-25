@@ -33,9 +33,11 @@ class Styles
     static let secondBackgroundColor: UIColor? = UIColor.black
     
     //Default ViewController background color
+    //Change to notebook paper in the future
     static let backgroundColor: UIColor? = UIColor.red
     
     //Default tab background color
+    //Up for future debate
     static let tabColor: UIColor? = UIColor.black
 }
 enum Condition
