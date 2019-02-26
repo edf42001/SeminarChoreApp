@@ -125,29 +125,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="IY9-9H-eZb">
-                                        <rect key="frame" x="50" y="652" width="314" height="42"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="orJ-zV-17B">
-                                                <rect key="frame" x="0.0" y="0.0" width="154" height="42"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                <state key="normal" title="Add Member"/>
-                                                <connections>
-                                                    <action selector="addMemberButtonPressed:" destination="LeB-FC-GmL" eventType="touchUpInside" id="JWu-b3-Qst"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q87-pi-GRp">
-                                                <rect key="frame" x="160" y="0.0" width="154" height="42"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                                <state key="normal" title="Add Chore"/>
-                                                <connections>
-                                                    <action selector="addChoreButtonPressed:" destination="LeB-FC-GmL" eventType="touchUpInside" id="nGC-ma-nPv"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r3W-bn-dfr">
-                                        <rect key="frame" x="87" y="147" width="241" height="475"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r3W-bn-dfr">
+                                        <rect key="frame" x="86" y="200" width="241" height="475"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="475" id="iBQ-JX-RHf"/>
@@ -164,19 +143,47 @@
                                         </prototypes>
                                         <sections/>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ff1-8S-3vF">
+                                        <rect key="frame" x="287" y="633" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="3N7-uV-VgY"/>
+                                            <constraint firstAttribute="width" constant="32" id="mga-zK-fT6"/>
+                                        </constraints>
+                                        <state key="normal" image="Add"/>
+                                        <connections>
+                                            <action selector="addButtonPressed:" destination="LeB-FC-GmL" eventType="touchUpInside" id="bxS-8v-Akp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wl3-gq-j9F">
+                                        <rect key="frame" x="86" y="140" width="65" height="30"/>
+                                        <state key="normal" title="Members"/>
+                                        <connections>
+                                            <action selector="setModeMember:" destination="LeB-FC-GmL" eventType="touchUpInside" id="lbw-zh-FaU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MAJ-Xe-ogd">
+                                        <rect key="frame" x="278" y="140" width="50" height="30"/>
+                                        <state key="normal" title="Chores"/>
+                                        <connections>
+                                            <action selector="setModeChore:" destination="LeB-FC-GmL" eventType="touchUpInside" id="fF6-Rv-Msi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="IY9-9H-eZb" firstAttribute="leading" secondItem="8uf-Mv-BAr" secondAttribute="leading" constant="50" id="3jC-SW-yO0"/>
-                                    <constraint firstItem="r3W-bn-dfr" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="150" id="7h1-pG-VbO"/>
-                                    <constraint firstAttribute="bottom" secondItem="IY9-9H-eZb" secondAttribute="bottom" constant="75" id="7sg-XN-IGI"/>
+                                    <constraint firstItem="wl3-gq-j9F" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="140" id="2NN-qm-qvh"/>
+                                    <constraint firstAttribute="trailing" secondItem="ff1-8S-3vF" secondAttribute="trailing" constant="95" id="6a7-3m-hiR"/>
+                                    <constraint firstItem="r3W-bn-dfr" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="200" id="7h1-pG-VbO"/>
+                                    <constraint firstAttribute="trailing" secondItem="MAJ-Xe-ogd" secondAttribute="trailing" constant="86" id="8A1-oK-XvF"/>
                                     <constraint firstAttribute="trailing" secondItem="NGL-pF-1Zv" secondAttribute="trailing" constant="50" id="OaH-SU-CA2"/>
                                     <constraint firstItem="xYh-tO-0gO" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="75" id="UOV-8E-fDe"/>
                                     <constraint firstItem="xYh-tO-0gO" firstAttribute="centerX" secondItem="8uf-Mv-BAr" secondAttribute="centerX" id="V7w-0A-idg"/>
                                     <constraint firstItem="r3W-bn-dfr" firstAttribute="leading" secondItem="8uf-Mv-BAr" secondAttribute="leading" constant="86" id="d2V-x7-gKx"/>
                                     <constraint firstAttribute="trailing" secondItem="r3W-bn-dfr" secondAttribute="trailing" constant="87" id="eCK-ld-dTJ"/>
+                                    <constraint firstItem="wl3-gq-j9F" firstAttribute="leading" secondItem="8uf-Mv-BAr" secondAttribute="leading" constant="86" id="kCV-hm-8Nc"/>
+                                    <constraint firstItem="MAJ-Xe-ogd" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="140" id="lT6-kP-EgT"/>
                                     <constraint firstItem="NGL-pF-1Zv" firstAttribute="top" secondItem="8uf-Mv-BAr" secondAttribute="top" constant="50" id="qZF-Jz-nas"/>
-                                    <constraint firstAttribute="trailing" secondItem="IY9-9H-eZb" secondAttribute="trailing" constant="50" id="snn-mp-F0r"/>
+                                    <constraint firstAttribute="bottom" secondItem="ff1-8S-3vF" secondAttribute="bottom" constant="104" id="uYz-fM-Dz6"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -190,10 +197,11 @@
                         <viewLayoutGuide key="safeArea" id="fgM-9U-q1j"/>
                     </view>
                     <connections>
-                        <outlet property="addChore" destination="q87-pi-GRp" id="UcT-QR-flg"/>
-                        <outlet property="addMemberButton" destination="orJ-zV-17B" id="TbJ-mN-D54"/>
+                        <outlet property="addButton" destination="ff1-8S-3vF" id="rsM-Ra-hq2"/>
                         <outlet property="background" destination="8uf-Mv-BAr" id="cyr-xI-vkU"/>
+                        <outlet property="choresButton" destination="MAJ-Xe-ogd" id="f45-cv-HdB"/>
                         <outlet property="leading" destination="PRE-4b-REg" id="scm-kg-3up"/>
+                        <outlet property="membersButton" destination="wl3-gq-j9F" id="Tl6-cF-S91"/>
                         <outlet property="membersTableView" destination="r3W-bn-dfr" id="TpR-RO-6c9"/>
                         <outlet property="settingsButton" destination="NGL-pF-1Zv" id="D8N-HX-9eJ"/>
                         <outlet property="trailing" destination="hvK-Fl-EAt" id="tve-iz-FRS"/>
@@ -202,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tq2-a0-EqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="-192"/>
+            <point key="canvasLocation" x="1147.8260869565217" y="-192.1875"/>
         </scene>
         <!--Child View Controller-->
         <scene sceneID="xQm-Gg-3fE">
@@ -230,6 +238,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add" width="626" height="626"/>
         <image name="Cog" width="50" height="50"/>
     </resources>
 </document>
