@@ -11,23 +11,26 @@ import FirebaseAuth
 import FirebaseStorage
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
-
     @IBOutlet weak var email: UITextField!
-    
     @IBOutlet weak var displayName: UITextField!
-    
     @IBOutlet weak var password: UITextField!
-    
+    @IBOutlet weak var signUpButton: UIButton!
     var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Styles.backgroundColor
+        signUpButton.applyButtonStyles(type: .standard)
+        email.applyTextFieldStyles(type: .standard)
+        displayName.applyTextFieldStyles(type: .standard)
+        password.applyTextFieldStyles(type: .standard)
         email.delegate = self
         displayName.delegate = self
         password.delegate = self
         email.becomeFirstResponder()
     }
     
+    //Create a user with the specifications entered by the user, and send the data to the database. Also, send the user to the NoGroupViewController
     @IBAction func signUpButtonTouchedUp(_ sender: UIButton) {
         guard let eText = email.text else {return}
         guard let dText = displayName.text else {return}
@@ -50,6 +53,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //Smooth transitions between the text input boxes
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if email.isFirstResponder {
             displayName.becomeFirstResponder()
@@ -64,6 +68,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    //Send user data to the NoGroupViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? NoGroupViewController else {return}
         destination.user = self.user

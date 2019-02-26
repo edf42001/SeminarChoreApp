@@ -21,7 +21,7 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
+        self.view.backgroundColor = Styles.backgroundColor
         // Do any additional setup after loading the view.
     }
     

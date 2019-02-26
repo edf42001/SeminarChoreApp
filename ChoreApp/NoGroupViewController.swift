@@ -10,93 +10,90 @@ import UIKit
 import Firebase
 
 class NoGroupViewController: UIViewController {
+    let move = CGFloat(175)
     var user:User?
     var group:Group?
     var enterGroupName:UIAlertController!
+    var toScreen = -1
+    var menuOpen = false
+    @IBOutlet weak var trailing: NSLayoutConstraint!
+    @IBOutlet weak var leading: NSLayoutConstraint!
+    @IBOutlet weak var background: UIView!
+    @IBOutlet weak var createGroupButton: UIButton!
     
     override func viewDidLoad() {
+        toScreen = -1
         super.viewDidLoad()
-        
+        self.view.backgroundColor = Styles.tabColor
+        background.backgroundColor = Styles.backgroundColor
+        createGroupButton.applyButtonStyles(type: .standard)
         setupEnterGroupNameAlert()
-    
-        if Auth.auth().currentUser==nil {
-            let email = "ethan@me.com"
-            let password = "passwordpassword"
-            Auth.auth().createUser(withEmail: email, password: password, completion: nil)
-        }
-        
-        //FOR TESTING PURPOSES Setup user and group objects for next controller
-        if let uid = Auth.auth().currentUser?.uid {
-            user = User(uid: uid, username: "bobisthebest", email: "ethan@me.com", isParent: true)
-//            user?.groupID = "-LVE5XGJ5ZNvT-ZnnJZ0"
-//            let emptyUserArray:[UserInfo] = []
-            
-//            group = Group(id: "-LVE5XGJ5ZNvT-ZnnJZ0", name: "Groooup", parents: emptyUserArray, children: emptyUserArray, chores: nil)
-            DatabaseHandler.addObserver(name: "ifAddedToGroup", dataPath: "users/\(uid)/group", onRecieve: {data in
-                if let groupID = data as? String {
-                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid) {group, isParent in
-                        self.group = group
-                        self.user?.isParent = isParent
-                        self.performSegue(withIdentifier: "toParentViewController", sender: self)
+        DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
+            if let groupID = groupID as? String, self.toScreen == -1{
+                DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
+                    print("\(groupID), \(isParent)")
+                    self.group = group
+                    if isParent {
+                        print("User is parent")
+                        self.user?.isParent = true
+                        self.toScreen = 1
+                        DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
+                            self.group?.chores = chores
+                            self.performSegue(withIdentifier: "toParent", sender: self)
+                        })
+                        
+                    }else {
+                        print("User is child")
+                        self.user?.isParent = false
+                        self.toScreen = 2
+                        DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
+                            self.user?.chores = chores
+                            self.performSegue(withIdentifier: "toChild", sender: self)
+                        })
                     }
-                }
-                
-            })
-        }
-       
-        //End for testing purposes
-        
-        if let uid = Auth.auth().currentUser?.uid
-        {
-            let userRef = Database.database().reference().child("users/\(uid)")
-            var groupRef:DatabaseReference!
-            userRef.observeSingleEvent(of: .value) { (snapshot) in
-                if !snapshot.exists() { return }
-                let value = snapshot.value as? NSDictionary
-                if let group = value?["group"] as? String
-                {
-                    groupRef = Database.database().reference().child("groups/\(group)/members")
-                }
+                    DatabaseHandler.stopObservingIfAddedToGroup()
+                })
             }
-            groupRef.observeSingleEvent(of: .value) { (snapshot) in
-                if !snapshot.exists() {return}
-                let value = snapshot.value as? NSDictionary
-                if let userType = value?["\(uid)"] as? String
-                {
-                    if "\(userType)" == "child"
-                    {
-                        print("yay")
-                    }
-                }
-            }
-        }
-        
-        
+        })
     }
     
-    //Also only for testing purposes
-    override func viewDidAppear(_ animated: Bool) {
-        
+    //Move settings tab
+    @IBAction func openSettings(_ sender: UIButton) {
+        if !menuOpen {
+            leading.constant -= move
+            trailing.constant += move
+        }
+        else {
+            leading.constant += move
+            trailing.constant -= move
+        }
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
+        menuOpen = !menuOpen
     }
+    
     
     //The user clicks the button
     @IBAction func createGroupButtonPressed(_ sender: UIButton) {
         self.present(enterGroupName, animated: true)
     }
     
+    //Create a new group
     func createNewGroup(name: String){
         if let uid = user?.uid {
+            DatabaseHandler.stopObservingIfAddedToGroup()
             DatabaseHandler.createGroup(uid: uid, name: name) {key in
                 guard let user = self.user else {return}
                 user.groupID = key
                 user.isParent = true
                 let parent:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
                 self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
-                self.performSegue(withIdentifier: "toParentViewController", sender: self)
+                self.toScreen = 1
+                self.performSegue(withIdentifier: "toParent", sender: self)
             }
         }
     }
     
+    //Create the popup for user to enter group name
     func setupEnterGroupNameAlert() {
         enterGroupName = UIAlertController(title: "Enter Name", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
@@ -107,12 +104,8 @@ class NoGroupViewController: UIViewController {
             var name = "My Group"
             if let text = nameTextField.text, text != "" {
                 name = text
-            }else{
-                
             }
-            
             self.createNewGroup(name: name) //create the new group
-            
             self.enterGroupName.dismiss(animated: true)
         })
         enterGroupName.addAction(cancelAction)
@@ -124,11 +117,20 @@ class NoGroupViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    //Transfer the user's information to another ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? ParentViewController else {return}
-        destination.user = user
-        destination.group = group
+        switch toScreen {
+        case 1:
+            guard let destination = segue.destination as? ParentViewController else {return}
+            destination.user = self.user
+            destination.group = self.group
+        case 2:
+            guard let destination = segue.destination as? ChildViewController else {return}
+            destination.user = self.user
+            destination.group = self.group
+        default:
+            print("Failed segue error")
+        }
     }
     
 

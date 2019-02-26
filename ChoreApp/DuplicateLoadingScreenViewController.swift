@@ -12,55 +12,59 @@ import FirebaseAuth
 
 class DuplicateLoadingScreenViewController: UIViewController {
     var user: User?
-    
+    var group: Group?
     var toScreen = -1
-    
-    var ref: DatabaseReference!
+    var ref: DatabaseReference!    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Styles.backgroundColor
+        
         ref = Database.database().reference()
+        //Testing code
 //        if Auth.auth().currentUser != nil {
 //            Auth.auth().createUser(withEmail: "me@me.com", password: "password")
 //        }
 //        do{
 //            try Auth.auth().signOut()
 //        }catch{let _:NSError
-//            
+//
 //        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let user = Auth.auth().currentUser  {
+        //Attempting to load and use the current user's information to send him/her to the appropriate landing page
+        if let user = Auth.auth().currentUser {
             print("User Exists")
             print(user.uid)
             print(user.email)
             print(user.displayName)
             self.user = User(uid: user.uid, username: user.displayName ?? "", email: user.email ?? "", isParent: false)
-            ref.child("users/\(user.uid)/group").observeSingleEvent(of: .value, with: {snapshot in
-                if let groupID = snapshot.value as? String {
-                    print("User has group")
-                    self.user?.groupID = groupID
-                    self.ref.child("groups/\(self.user?.groupID ?? "0")/members/\(self.user?.uid ?? "0")").observeSingleEvent(of: .value, with: {snapshot in
-                        if let parentalStatus = snapshot.value as? String {
-                            if parentalStatus == "child" {
-                                print("User is child")
-                                self.user?.isParent = false
-                                self.toScreen = 2
-                                self.performSegue(withIdentifier: "toChild", sender: self)
-                            }
-                            else if parentalStatus == "parent" {
-                                print("User is parent")
-                                self.user?.isParent = true
-                                self.toScreen = 1
+            DatabaseHandler.readUserData(uid: user.uid, completion: {groupID, isParent in
+                if let groupID = groupID {
+                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: user.uid, completion: {group, isParent in
+                        self.group = group
+                        if isParent {
+                            print("User is parent")
+                            self.user?.isParent = true
+                            self.toScreen = 1
+                            DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
+                                self.group?.chores = chores
                                 self.performSegue(withIdentifier: "toParent", sender: self)
-                            }
+                            })
+                        }else {
+                            print("User is child")
+                            self.user?.isParent = false
+                            self.toScreen = 2
+                            DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
+                                self.user?.chores = chores
+                                self.performSegue(withIdentifier: "toChild", sender: self)
+                            })
                         }
                     })
-                }
-                else {
+                }else{
                     self.toScreen = 0
                     self.performSegue(withIdentifier: "toNoGroup", sender: self)
                 }
@@ -73,17 +77,21 @@ class DuplicateLoadingScreenViewController: UIViewController {
         }
     }
     
+    //Sending the gathered user data to the desired destination
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch toScreen {
         case 0:
             guard let destination = segue.destination as? NoGroupViewController else {return}
             destination.user = self.user
+            destination.group = self.group
         case 1:
             guard let destination = segue.destination as? ParentViewController else {return}
             destination.user = self.user
+            destination.group = self.group
         case 2:
             guard let destination = segue.destination as? ChildViewController else {return}
             destination.user = self.user
+            destination.group = self.group
         case 3:
             break
         default:
