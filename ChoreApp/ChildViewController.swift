@@ -110,10 +110,12 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBAction func leaveGroupButtonPressed(_ sender: Any) {
         guard let uid = user?.uid, let groupID = group?.id else {return}
-        DatabaseHandler.leaveGroup(uid: uid, groupID: groupID)
-        user?.groupID = nil
-        group = nil
-        self.performSegue(withIdentifier: "toNoGroupController", sender: self)
+        DatabaseHandler.leaveGroup(uid: uid, groupID: groupID, isParent: false, done:{
+            self.user?.groupID = nil
+            self.group = nil
+            self.performSegue(withIdentifier: "toNoGroupController", sender: self)
+        })
+        
     }
     
     
