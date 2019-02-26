@@ -14,27 +14,28 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     let move = CGFloat(175)
     var enterMemberNameAlert:UIAlertController!
     @IBOutlet weak var membersTableView: UITableView!
-    @IBOutlet weak var addMemberButton: UIButton!
     var menuOpen = false
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
     @IBOutlet weak var background: UIView!
-    @IBOutlet weak var addChore: UIButton!
     var enterMember:UIAlertController!
     var enterChore:UIAlertController!
+    @IBOutlet weak var addButton: UIButton!
+    var memberMode = true
+    @IBOutlet weak var membersButton: UIButton!
+    @IBOutlet weak var choresButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Styles.tabColor
         background.backgroundColor = Styles.backgroundColor
-        addMemberButton.applyButtonStyles(type: .standard)
+        addButton.applyButtonStyles(type: .standard)
+        membersButton.applyButtonStyles(type: .standard)
+        choresButton.applyButtonStyles(type: .standard)
         setupEnterMemberNameAlert()
         membersTableView.dataSource = self
         membersTableView.delegate = self
-        addMemberButton.applyButtonStyles(type: .alternateBig)
-        addChore.applyButtonStyles(type: .standard)
-        addMemberButton.applyButtonStyles(type: .standard)
         setupEnterMemberNameAlert()
         setupEnterChoreAlert()
         DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
@@ -47,15 +48,28 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-    //Present the popup to ask for the member's name if one wishes to add a new member
-    @IBAction func addMemberButtonPressed(_ sender: UIButton) {
-        self.present(enterMemberNameAlert, animated: true)
+    //Add item button pressed
+    @IBAction func addButtonPressed(_ sender: UIButton) {
+        //Test mode of current view
+        if memberMode {
+            self.present(enterMemberNameAlert, animated: true)
+        }
+        else {
+            self.present(enterChore, animated: true)
+        }
     }
     
-    //Present the popup to ask for details should the user want to create a new chore
-    @IBAction func addChoreButtonPressed(_ sender: UIButton) {
-        self.present(enterChore, animated: true)
+    //Set mode to members
+    @IBAction func setModeMember(_ sender: UIButton) {
+        memberMode = true
     }
+    
+    
+    //Set mode to chores
+    @IBAction func setModeChore(_ sender: UIButton) {
+        memberMode = false
+    }
+    
     
     //Leave the current group
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
