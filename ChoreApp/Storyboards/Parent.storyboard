@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqy-L3-goG">
-                                        <rect key="frame" x="314" y="50" width="50" height="50"/>
+                                        <rect key="frame" x="314" y="718" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="jEm-5W-XDD"/>
                                             <constraint firstAttribute="height" constant="50" id="kr4-4L-q5Y"/>
@@ -52,6 +52,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="475" id="V6y-Hq-Ob1"/>
+                                            <constraint firstAttribute="width" constant="241" id="qJ5-Av-17g"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberNameCell" id="KeQ-xQ-2jB">
@@ -90,6 +91,25 @@
                                             <action selector="setModeChore:" destination="j9q-zF-pZh" eventType="touchUpInside" id="IHA-xD-P95"/>
                                         </connections>
                                     </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vxw-oh-1og">
+                                        <rect key="frame" x="777" y="200" width="241" height="475"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="475" id="5gI-O2-fOy"/>
+                                            <constraint firstAttribute="width" constant="241" id="fA4-L4-5oN"/>
+                                        </constraints>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7E-yZ-6lb">
+                                        <rect key="frame" x="978" y="682" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="6oL-WV-YUp"/>
+                                            <constraint firstAttribute="height" constant="32" id="DVS-aV-TUX"/>
+                                        </constraints>
+                                        <state key="normal" image="Add"/>
+                                        <connections>
+                                            <action selector="addChores:" destination="j9q-zF-pZh" eventType="touchUpInside" id="BEl-q4-lRc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -101,11 +121,15 @@
                                     <constraint firstItem="0ea-kH-qZP" firstAttribute="top" secondItem="drF-jn-QYT" secondAttribute="top" constant="140" id="BmE-sA-8XJ"/>
                                     <constraint firstItem="I9w-dR-GWu" firstAttribute="top" secondItem="drF-jn-QYT" secondAttribute="top" constant="200" id="D77-8O-58R"/>
                                     <constraint firstItem="MFG-m9-Occ" firstAttribute="top" secondItem="drF-jn-QYT" secondAttribute="top" constant="75" id="Ejn-PQ-X5L"/>
-                                    <constraint firstItem="Dqy-L3-goG" firstAttribute="top" secondItem="drF-jn-QYT" secondAttribute="top" constant="50" id="LQS-fe-Erp"/>
+                                    <constraint firstAttribute="bottom" secondItem="j7E-yZ-6lb" secondAttribute="bottom" constant="104" id="RJv-oK-kXC"/>
                                     <constraint firstItem="0ea-kH-qZP" firstAttribute="leading" secondItem="drF-jn-QYT" secondAttribute="leading" constant="86" id="UM0-bt-2X9"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dqy-L3-goG" secondAttribute="bottom" constant="50" id="aAa-Xk-tVP"/>
                                     <constraint firstItem="MFG-m9-Occ" firstAttribute="centerX" secondItem="drF-jn-QYT" secondAttribute="centerX" id="aav-XA-RLw"/>
                                     <constraint firstAttribute="bottom" secondItem="VCV-X1-f2v" secondAttribute="bottom" constant="104" id="jZ2-ap-jvL"/>
+                                    <constraint firstItem="j7E-yZ-6lb" firstAttribute="leading" secondItem="VCV-X1-f2v" secondAttribute="trailing" constant="659" id="khl-gu-eU0"/>
+                                    <constraint firstItem="Vxw-oh-1og" firstAttribute="top" secondItem="drF-jn-QYT" secondAttribute="top" constant="200" id="lJF-Y0-qlz"/>
                                     <constraint firstItem="h0X-KF-JRY" firstAttribute="top" secondItem="drF-jn-QYT" secondAttribute="top" constant="140" id="vun-bq-Bev"/>
+                                    <constraint firstItem="Vxw-oh-1og" firstAttribute="leading" secondItem="I9w-dR-GWu" secondAttribute="trailing" constant="450" id="wGm-FN-3Vi"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -120,12 +144,17 @@
                     </view>
                     <connections>
                         <outlet property="addButton" destination="VCV-X1-f2v" id="ZPk-In-fJ2"/>
+                        <outlet property="addChores" destination="j7E-yZ-6lb" id="DFw-BE-zxF"/>
                         <outlet property="background" destination="drF-jn-QYT" id="kdA-Od-EGX"/>
+                        <outlet property="bot" destination="5PD-VD-uid" id="f3D-Rt-EyL"/>
                         <outlet property="choresButton" destination="h0X-KF-JRY" id="fPV-KS-Kp5"/>
+                        <outlet property="choresTableView" destination="Vxw-oh-1og" id="fKT-aZ-afh"/>
                         <outlet property="leading" destination="PU6-Q0-7q6" id="3f1-Wb-2Aa"/>
                         <outlet property="membersButton" destination="0ea-kH-qZP" id="Sf2-bo-Tie"/>
                         <outlet property="membersTableView" destination="I9w-dR-GWu" id="0Sp-DZ-fY0"/>
                         <outlet property="settingsButton" destination="Dqy-L3-goG" id="LBf-7c-gQC"/>
+                        <outlet property="tableViewConstraint" destination="AF4-wg-VLv" id="xuK-eZ-c8D"/>
+                        <outlet property="top" destination="82t-jR-9cs" id="Jea-fn-qb2"/>
                         <outlet property="trailing" destination="pWJ-9v-GNX" id="kXb-Kc-Y74"/>
                         <segue destination="mHg-Xx-iLv" kind="show" id="G3v-rC-unq"/>
                     </connections>
