@@ -271,7 +271,7 @@
         <!--ParentViewController-->
         <scene sceneID="vle-xa-SVU">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ParentViewController" storyboardName="MainApp" referencedIdentifier="ParentViewController" id="NCQ-VD-e2a" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="ParentViewController" storyboardName="Parent" referencedIdentifier="ParentViewController" id="NCQ-VD-e2a" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Anu-Z9-x0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2848" y="19"/>
@@ -279,7 +279,7 @@
         <!--NoGroupViewController-->
         <scene sceneID="a2K-fg-anA">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="NoGroupViewController" storyboardName="MainApp" referencedIdentifier="NoGroupViewController" id="KQp-jF-4pg" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="NoGroupViewController" storyboardName="NoGroup" referencedIdentifier="NoGroupViewController" id="KQp-jF-4pg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkz-Z1-lDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2812" y="-113"/>
@@ -287,7 +287,7 @@
         <!--ChildViewController-->
         <scene sceneID="odR-Tp-6iy">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ChildViewController" storyboardName="MainApp" referencedIdentifier="ChildViewController" id="Ppt-lk-er5" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="ChildViewController" storyboardName="Child" referencedIdentifier="ChildViewController" id="Ppt-lk-er5" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YQ-63-aJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2828" y="99"/>
