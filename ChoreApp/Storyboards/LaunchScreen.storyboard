@@ -19,21 +19,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="zOe-q1-o3f">
-                                <rect key="frame" x="79" y="69" width="256" height="256"/>
+                                <rect key="frame" x="143" y="384" width="128" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="256" id="3gP-9a-kfy"/>
-                                    <constraint firstAttribute="width" constant="256" id="c3F-01-bPp"/>
+                                    <constraint firstAttribute="height" constant="128" id="3gP-9a-kfy"/>
+                                    <constraint firstAttribute="width" constant="128" id="c3F-01-bPp"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cJo-io-ZKH" userLabel="loadingGif">
                                 <rect key="frame" x="87" y="633" width="240" height="128"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.21568627450980393" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zOe-q1-o3f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="20B-yJ-GK6"/>
                             <constraint firstItem="zOe-q1-o3f" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="C5N-93-36T"/>
                             <constraint firstItem="cJo-io-ZKH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="H9P-zT-C8x"/>
+                            <constraint firstItem="zOe-q1-o3f" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ecx-ku-PQ9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

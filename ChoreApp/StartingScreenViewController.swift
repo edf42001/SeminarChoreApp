@@ -13,8 +13,13 @@ import FirebaseDatabase
 
 class StartingScreenViewController: UIViewController {
     
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Styles.backgroundColor
+        loginButton.applyButtonStyles(type: .standard)
+        signUpButton.applyButtonStyles(type: .standard)
     }
 }

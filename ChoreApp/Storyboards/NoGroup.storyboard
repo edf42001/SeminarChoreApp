@@ -18,68 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GXu-hp-963">
-                                <rect key="frame" x="-148" y="44" width="414" height="769"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9si-LE-BLB">
-                                        <rect key="frame" x="40" y="100" width="334" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="iFN-k0-UjF"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1n7-7r-wLD">
-                                        <rect key="frame" x="254" y="669" width="152" height="42"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                        <state key="normal" title="Create Group"/>
-                                        <connections>
-                                            <action selector="createGroupButtonPressed:" destination="UZp-S6-8Vb" eventType="touchUpInside" id="rso-yy-zVl"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-kR-gWa">
-                                        <rect key="frame" x="356" y="22" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="0lW-B4-v9y"/>
-                                            <constraint firstAttribute="width" constant="50" id="tsa-mE-0cy"/>
-                                        </constraints>
-                                        <state key="normal" title="Item2" image="Cog"/>
-                                        <connections>
-                                            <action selector="openSettings:" destination="UZp-S6-8Vb" eventType="touchUpInside" id="5Rm-Je-Kxt"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.034920876080000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1n7-7r-wLD">
+                                <rect key="frame" x="131" y="427" width="152" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Create Group">
+                                    <color key="titleColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="createGroupButtonPressed:" destination="UZp-S6-8Vb" eventType="touchUpInside" id="rso-yy-zVl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9si-LE-BLB">
+                                <rect key="frame" x="20" y="124" width="374" height="84"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="vXd-kR-gWa" secondAttribute="trailing" constant="25" id="EQk-Rh-KxB"/>
-                                    <constraint firstAttribute="trailing" secondItem="9si-LE-BLB" secondAttribute="trailing" constant="40" id="Fw9-BH-xM8"/>
-                                    <constraint firstItem="1n7-7r-wLD" firstAttribute="leading" secondItem="GXu-hp-963" secondAttribute="leading" constant="254" id="Jk1-yY-6Xb"/>
-                                    <constraint firstAttribute="trailing" secondItem="1n7-7r-wLD" secondAttribute="trailing" constant="8" id="PRx-le-sKK"/>
-                                    <constraint firstAttribute="bottom" secondItem="1n7-7r-wLD" secondAttribute="bottom" constant="58" id="Qou-0j-AfF"/>
-                                    <constraint firstItem="vXd-kR-gWa" firstAttribute="top" secondItem="GXu-hp-963" secondAttribute="top" constant="25" id="Vdh-a0-SfE"/>
-                                    <constraint firstItem="9si-LE-BLB" firstAttribute="top" secondItem="GXu-hp-963" secondAttribute="top" constant="100" id="fil-J6-ZCc"/>
-                                    <constraint firstItem="9si-LE-BLB" firstAttribute="leading" secondItem="GXu-hp-963" secondAttribute="leading" constant="40" id="qTG-mD-mZl"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="iFN-k0-UjF"/>
                                 </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-kR-gWa">
+                                <rect key="frame" x="354" y="753" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0lW-B4-v9y"/>
+                                    <constraint firstAttribute="width" constant="50" id="tsa-mE-0cy"/>
+                                </constraints>
+                                <state key="normal" title="Item2" image="Cog"/>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aFK-j6-lMO" firstAttribute="trailing" secondItem="GXu-hp-963" secondAttribute="trailing" id="2Ap-cI-PX4"/>
-                            <constraint firstItem="aFK-j6-lMO" firstAttribute="bottom" secondItem="GXu-hp-963" secondAttribute="bottom" id="3ni-kI-EgE"/>
-                            <constraint firstItem="GXu-hp-963" firstAttribute="top" secondItem="aFK-j6-lMO" secondAttribute="top" id="nbZ-7u-o7i"/>
-                            <constraint firstItem="GXu-hp-963" firstAttribute="leading" secondItem="aFK-j6-lMO" secondAttribute="leading" id="vY9-2J-9EA"/>
+                            <constraint firstAttribute="trailing" secondItem="9si-LE-BLB" secondAttribute="trailing" constant="20" id="Gzh-0A-hqh"/>
+                            <constraint firstItem="9si-LE-BLB" firstAttribute="leading" secondItem="t8V-e4-QoH" secondAttribute="leading" constant="20" id="LhS-JE-uaM"/>
+                            <constraint firstItem="9si-LE-BLB" firstAttribute="top" secondItem="aFK-j6-lMO" secondAttribute="top" constant="80" id="bwt-2v-6yj"/>
+                            <constraint firstItem="9si-LE-BLB" firstAttribute="centerX" secondItem="t8V-e4-QoH" secondAttribute="centerX" id="dCA-kS-UIa"/>
+                            <constraint firstItem="aFK-j6-lMO" firstAttribute="bottom" secondItem="vXd-kR-gWa" secondAttribute="bottom" constant="10" id="hr7-Ts-xC8"/>
+                            <constraint firstItem="aFK-j6-lMO" firstAttribute="trailing" secondItem="vXd-kR-gWa" secondAttribute="trailing" constant="10" id="yFH-cx-V96"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aFK-j6-lMO"/>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="background" destination="GXu-hp-963" id="Sjs-Qc-Bc7"/>
                         <outlet property="createGroupButton" destination="1n7-7r-wLD" id="Arr-Il-cAB"/>
-                        <outlet property="leading" destination="vY9-2J-9EA" id="FdR-qh-VBt"/>
-                        <outlet property="trailing" destination="2Ap-cI-PX4" id="bs9-Fz-lMo"/>
-                        <outlet property="view" destination="GXu-hp-963" id="S0c-yy-ncK"/>
                         <segue destination="BPn-hc-fKC" kind="show" identifier="toParent" id="CbP-rh-bjZ"/>
                         <segue destination="b6k-Gj-SNw" kind="show" identifier="toChild" id="p3R-Jz-Q1b"/>
                     </connections>
