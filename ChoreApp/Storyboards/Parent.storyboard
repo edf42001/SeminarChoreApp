@@ -156,7 +156,7 @@
                         <outlet property="tableViewConstraint" destination="AF4-wg-VLv" id="xuK-eZ-c8D"/>
                         <outlet property="top" destination="82t-jR-9cs" id="Jea-fn-qb2"/>
                         <outlet property="trailing" destination="pWJ-9v-GNX" id="kXb-Kc-Y74"/>
-                        <segue destination="mHg-Xx-iLv" kind="show" id="G3v-rC-unq"/>
+                        <segue destination="mHg-Xx-iLv" kind="show" identifier="toNoGroup" id="G3v-rC-unq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5a-rF-tzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
