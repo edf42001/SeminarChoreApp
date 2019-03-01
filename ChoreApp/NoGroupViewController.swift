@@ -10,22 +10,19 @@ import UIKit
 import Firebase
 
 class NoGroupViewController: UIViewController {
-    let move = CGFloat(175)
     var user:User?
     var group:Group?
     var enterGroupName:UIAlertController!
     var toScreen = -1
     var menuOpen = false
-    @IBOutlet weak var trailing: NSLayoutConstraint!
-    @IBOutlet weak var leading: NSLayoutConstraint!
-    @IBOutlet weak var background: UIView!
+    
     @IBOutlet weak var createGroupButton: UIButton!
     
     override func viewDidLoad() {
         toScreen = -1
         super.viewDidLoad()
-        self.view.backgroundColor = Styles.tabColor
-        background.backgroundColor = Styles.backgroundColor
+//        self.view.backgroundColor = Styles.tabColor
+//        background.backgroundColor = Styles.backgroundColor
         createGroupButton.applyButtonStyles(type: .standard)
         setupEnterGroupNameAlert()
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
@@ -55,20 +52,6 @@ class NoGroupViewController: UIViewController {
                 })
             }
         })
-    }
-    
-    //Move settings tab
-    @IBAction func openSettings(_ sender: UIButton) {
-        if !menuOpen {
-            leading.constant -= move
-            trailing.constant += move
-        }
-        else {
-            leading.constant += move
-            trailing.constant -= move
-        }
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
-        menuOpen = !menuOpen
     }
     
     

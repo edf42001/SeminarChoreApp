@@ -14,17 +14,22 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     let move = CGFloat(175)
     var enterMemberNameAlert:UIAlertController!
     @IBOutlet weak var membersTableView: UITableView!
+    @IBOutlet weak var choresTableView: UITableView!
     var menuOpen = false
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var trailing: NSLayoutConstraint!
     @IBOutlet weak var leading: NSLayoutConstraint!
+    @IBOutlet weak var top: NSLayoutConstraint!
+    @IBOutlet weak var bot: NSLayoutConstraint!
+    @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var background: UIView!
     var enterMember:UIAlertController!
     var enterChore:UIAlertController!
     @IBOutlet weak var addButton: UIButton!
-    var memberMode = true
+    @IBOutlet weak var addChores: UIButton!
     @IBOutlet weak var membersButton: UIButton!
     @IBOutlet weak var choresButton: UIButton!
+    var memberMode = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,24 +55,31 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Add item button pressed
     @IBAction func addButtonPressed(_ sender: UIButton) {
-        //Test mode of current view
-        if memberMode {
-            self.present(enterMemberNameAlert, animated: true)
-        }
-        else {
-            self.present(enterChore, animated: true)
-        }
+        self.present(enterMemberNameAlert, animated: true)
+    }
+    
+    //Add chore button pressed
+    @IBAction func addChores(_ sender: UIButton) {
+        self.present(enterChore, animated: true)
     }
     
     //Set mode to members
     @IBAction func setModeMember(_ sender: UIButton) {
+        if memberMode == false {
+            tableViewConstraint.constant -= 450
+        }
         memberMode = true
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
     }
     
     
     //Set mode to chores
     @IBAction func setModeChore(_ sender: UIButton) {
+        if memberMode == true {
+            tableViewConstraint.constant += 450
+        }
         memberMode = false
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
     }
     
     
@@ -191,12 +203,12 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     //Open the settings tab
     @IBAction func openSettings(_ sender: UIButton) {
         if !menuOpen {
-            leading.constant -= move
-            trailing.constant += move
+            top.constant -= move
+            bot.constant += move
         }
         else {
-            leading.constant += move
-            trailing.constant -= move
+            top.constant += move
+            bot.constant -= move
         }
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
         menuOpen = !menuOpen

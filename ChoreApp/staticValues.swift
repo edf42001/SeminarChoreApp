@@ -33,12 +33,15 @@ class Styles
     static let secondBackgroundColor: UIColor? = UIColor.black
     
     //Default ViewController background color
-    //Change to notebook paper in the future
-    static let backgroundColor: UIColor? = UIColor.red
+    static let backgroundColor: UIColor? = UIColorFromRGB(0x373c3c)
     
     //Default tab background color
     //Up for future debate
     static let tabColor: UIColor? = UIColor.black
+    
+    //Default Black/greyish background: 0x373C3C
+    //Logo grey color: 0xD3E1DF
+    //Logo red: 0xEE5551
 }
 enum Condition
 {
@@ -49,56 +52,25 @@ enum Condition
     case alternateBig
     case alternateSmall
 }
+
+enum ButtonStyle {
+    case standard
+}
+
 //Create a method applyButtonStyles that allows the creation of a default UIButton
-extension UIButton
-{
-    func applyButtonStyles(type: Condition)
-    {
-        /*
-         Cases 1-3 are standard color buttons, with varying font sizes, default, big, small. Cases are .standard, .big, .small
-         Cases 4-6 are alternate color buttons, with varying font sizes, default, big, small. Cases are .alternate, .alternateBig, .alternateSmall
-         */
-        switch(type)
-        {
+extension UIButton {
+    func applyButtonStyles(type: ButtonStyle){
+        switch type{
         case .standard:
-            self.backgroundColor = Styles.firstBackgroundColor
+            self.backgroundColor = UIColorFromRGB(0xD3E1DF)
             self.titleLabel?.font = Styles.defaultFont
-            self.titleLabel?.textColor = Styles.textColor
-            break;
-        case .big:
-            self.backgroundColor = Styles.firstBackgroundColor
-            self.titleLabel?.font = Styles.bigFont
-            self.titleLabel?.textColor = Styles.textColor
-            break;
-        case .small:
-            self.backgroundColor = Styles.firstBackgroundColor
-            self.titleLabel?.font = Styles.smallFont
-            self.titleLabel?.textColor = Styles.textColor
-            break;
-        case .alternate:
-            self.backgroundColor = Styles.secondBackgroundColor
-            self.titleLabel?.font = Styles.defaultFont
-            self.titleLabel?.textColor = Styles.alternateTextColor
-            break;
-        case .alternateBig:
-            self.backgroundColor = Styles.secondBackgroundColor
-            self.titleLabel?.font = Styles.bigFont
-            self.titleLabel?.textColor = Styles.alternateTextColor
-            break;
-        case .alternateSmall:
-            self.backgroundColor = Styles.secondBackgroundColor
-            self.titleLabel?.font = Styles.smallFont
-            self.titleLabel?.textColor = Styles.alternateTextColor
-            break;
-        default:
-            self.backgroundColor = Styles.firstBackgroundColor
-            self.titleLabel?.font = Styles.defaultFont
-            self.titleLabel?.textColor = Styles.textColor
-            break;
+            self.setTitleColor(Styles.textColor, for: .normal)
+            self.layer.cornerRadius = 15
+            self.layer.borderWidth = 5
+            self.layer.borderColor = UIColorFromRGB(0xEE5551).cgColor
+            break
         }
-        
     }
-    
 }
 
 //Create a method applyLabelStyles that allows the creation of a default UILabel
@@ -136,11 +108,6 @@ extension UILabel
             self.textColor = Styles.alternateTextColor
             self.font = Styles.smallFont
             break;
-        default:
-            self.textColor = Styles.textColor
-            self.font = Styles.defaultFont
-            break;
-            
         }
     }
 }
@@ -186,11 +153,86 @@ extension UITextField
             self.font = Styles.smallFont
             self.backgroundColor = Styles.secondBackgroundColor
             break;
-        default:
-            self.textColor = Styles.textColor
-            self.font = Styles.defaultFont
-            self.backgroundColor = Styles.firstBackgroundColor
-            break;
         }
+    }
+}
+
+func UIColorFromRGB(_ rgbValue: UInt) -> UIColor {
+    return UIColor(
+        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+        alpha: CGFloat(1.0)
+    )
+}
+
+@IBDesignable
+class ButtonExtension: UIButton {
+    //MARK: PROPERTIES
+    @IBInspectable var borderColor: UIColor = UIColor.white {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 1.0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 1.0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+            clipsToBounds = true
+        }
+    }
+    
+    //MARK: Initializers
+    override init(frame : CGRect) {
+        super.init(frame : frame)
+        setup()
+        configure()
+    }
+    
+    convenience init() {
+        self.init(frame:CGRect.zero)
+        setup()
+        configure()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+        configure()
+    }
+    
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setup()
+        configure()
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setup()
+        configure()
+    }
+    
+    func setup() {
+        layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 1.0
+        layer.cornerRadius = 1.0
+    }
+    
+    func configure() {
+        layer.borderColor = borderColor.cgColor
+        layer.borderWidth = borderWidth
+        layer.cornerRadius = cornerRadius
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
 }
