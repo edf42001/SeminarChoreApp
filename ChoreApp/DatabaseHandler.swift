@@ -113,7 +113,7 @@ class DatabaseHandler {
         completion(key)
     }
     
-    static func removeChore(asigneeUid:String, choreID:String, groupID:String, uid:String){
+    static func removeChore(asigneeUid:String, choreID:String, groupID:String){
         ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(choreID)").removeValue()
     }
     

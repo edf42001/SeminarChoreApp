@@ -16,13 +16,19 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var user:User?
     var group:Group?
     var ref:DatabaseReference!
-    
+    var choreList: [Chore]?
+    @IBOutlet weak var background: UIView!
     @IBOutlet weak var choreTable: UITableView!
+    @IBOutlet weak var groupLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Styles.backgroundColor
+        background.backgroundColor = Styles.backgroundColor
+        groupLabel.text = group!.name
         // Do any additional setup after loading the view.
+        DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
+            self.choreTable.reloadData()
+        }
     }
     
 
@@ -41,22 +47,12 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "choreCell", for: indexPath) as! ChoreTableViewCell
-        
-        if let groupChores = group?.chores
-        {
-            for i in groupChores
-            {
-                if let userChore = user?.chores?[indexPath.row]
-                {
-                    if i.id == userChore.id
-                    {
-                        cell.choreLabel.text = i.name
-                        cell.choreID = i.id
-                    }
-                }
-            }
+        DatabaseHandler.getChoresForUser(uid: user!.uid, groupID: group!.id) { (chores) in
+            self.choreList = chores
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "choreCell", for: indexPath) as! ChoreTableViewCell
+        cell.choreLabel.text = choreList?[indexPath.row].name
+        cell.choreID = choreList?[indexPath.row].id
         return cell
     }
     
@@ -66,49 +62,14 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         confirmationMessage.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
             let cell = tableView.cellForRow(at: indexPath) as! ChoreTableViewCell
-            if var userChores = self.user?.chores
-            {
-                var index : Int? = nil
-                for userChore in userChores
-                {
-                    if userChore.id == cell.choreID
-                    {
-                        index = userChores.index(where: { (chore) -> Bool in
-                            chore.id == cell.choreID
-                        })
-                    }
-                }
-                if let unwrappedIndex = index
-                {
-                    userChores.remove(at: unwrappedIndex)
-                }
-            }
-            if var groupChores = self.group?.chores
-            {
-                var index : Int? = nil
-                for groupChore in groupChores
-                {
-                    if groupChore.id == cell.choreID
-                    {
-                        index = groupChores.index(where: { (chore) -> Bool in
-                            chore.id == cell.choreID
-                        })
-                    }
-                }
-                if let unwrappedIndex = index
-                {
-                    groupChores.remove(at: unwrappedIndex)
-                }
-            }
-            
-            self.ref.child("groups/\(self.group!.id)/chores/\(cell.choreID!)").setValue(nil)
-            self.ref.child("users/\(self.user!.uid)/chores/\(cell.choreID!)").setValue(nil)
-            tableView.reloadData()
+            DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
+            self.choreTable.reloadData()
 
         }))
     }
     
     @IBAction func leaveGroupButtonPressed(_ sender: Any) {
+        DatabaseHandler.stopObservingChores()
         guard let uid = user?.uid, let groupID = group?.id else {return}
         DatabaseHandler.leaveGroup(uid: uid, groupID: groupID, isParent: false, done:{
             self.user?.groupID = nil
