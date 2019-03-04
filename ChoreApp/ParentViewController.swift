@@ -11,30 +11,33 @@ import UIKit
 class ParentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var user:User?
     var group:Group?
-    let move = CGFloat(175)
     var enterMemberNameAlert:UIAlertController!
     @IBOutlet weak var membersTableView: UITableView!
     @IBOutlet weak var choresTableView: UITableView!
-    var menuOpen = false
     @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var trailing: NSLayoutConstraint!
-    @IBOutlet weak var leading: NSLayoutConstraint!
-    @IBOutlet weak var top: NSLayoutConstraint!
+    @IBOutlet weak var settingsView: UIView!
+    @IBOutlet weak var viewBot: NSLayoutConstraint!
     @IBOutlet weak var bot: NSLayoutConstraint!
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
-    @IBOutlet weak var background: UIView!
+    @IBOutlet weak var leadingButton1: NSLayoutConstraint!
+    @IBOutlet weak var leadingButton2: NSLayoutConstraint!
     var enterMember:UIAlertController!
     var enterChore:UIAlertController!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addChores: UIButton!
     @IBOutlet weak var membersButton: UIButton!
     @IBOutlet weak var choresButton: UIButton!
+    @IBOutlet weak var dim: UIView!
     var memberMode = true
+    @IBOutlet weak var closeMenu: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Styles.tabColor
-        background.backgroundColor = Styles.backgroundColor
+        settingsView.layer.cornerRadius = 10
+        settingsView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        settingsView.backgroundColor = Styles.backgroundColor
+        self.view.backgroundColor = Styles.tabColor
         addButton.applyButtonStyles(type: .standard)
         membersButton.applyButtonStyles(type: .standard)
         choresButton.applyButtonStyles(type: .standard)
@@ -63,10 +66,26 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         self.present(enterChore, animated: true)
     }
     
+    //Close settings menu
+    @IBAction func closeButtonPressed(_ sender: UIButton) {
+        viewBot.constant -= 409
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.alpha = 1
+        })
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: {attempt in self.recede(attempt)})
+        
+    }
+    
+    func recede(_: Bool) -> Void {
+        self.view.sendSubview(toBack: dim)
+    }
+    
     //Set mode to members
     @IBAction func setModeMember(_ sender: UIButton) {
         if memberMode == false {
-            tableViewConstraint.constant -= 450
+            tableViewConstraint.constant += 691
+            leadingButton1.constant += 691
+            leadingButton2.constant += 691
         }
         memberMode = true
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
@@ -76,7 +95,9 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     //Set mode to chores
     @IBAction func setModeChore(_ sender: UIButton) {
         if memberMode == true {
-            tableViewConstraint.constant += 450
+            tableViewConstraint.constant -= 691
+            leadingButton1.constant -= 691
+            leadingButton2.constant -= 691
         }
         memberMode = false
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
@@ -202,16 +223,12 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Open the settings tab
     @IBAction func openSettings(_ sender: UIButton) {
-        if !menuOpen {
-            top.constant -= move
-            bot.constant += move
-        }
-        else {
-            top.constant += move
-            bot.constant -= move
-        }
+        viewBot.constant += 409
+        self.view.bringSubview(toFront: dim)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.alpha = 0.5
+        })
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
-        menuOpen = !menuOpen
     }
     
     //Send user group and user information to another ViewController
