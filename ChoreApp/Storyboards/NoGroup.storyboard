@@ -18,14 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1n7-7r-wLD">
-                                <rect key="frame" x="131" y="427" width="152" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1n7-7r-wLD" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
+                                <rect key="frame" x="107" y="709" width="200" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="9XE-ep-bup"/>
+                                    <constraint firstAttribute="width" constant="200" id="J7O-gi-Cu8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <state key="normal" title="Create Group">
                                     <color key="titleColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="createGroupButtonPressed:" destination="UZp-S6-8Vb" eventType="touchUpInside" id="rso-yy-zVl"/>
                                 </connections>
@@ -39,8 +53,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-kR-gWa">
-                                <rect key="frame" x="354" y="753" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-kR-gWa">
+                                <rect key="frame" x="344" y="743" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0lW-B4-v9y"/>
                                     <constraint firstAttribute="width" constant="50" id="tsa-mE-0cy"/>
@@ -51,16 +65,17 @@
                         <color key="backgroundColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="9si-LE-BLB" secondAttribute="trailing" constant="20" id="Gzh-0A-hqh"/>
+                            <constraint firstItem="1n7-7r-wLD" firstAttribute="centerX" secondItem="t8V-e4-QoH" secondAttribute="centerX" id="LAW-mF-mds"/>
                             <constraint firstItem="9si-LE-BLB" firstAttribute="leading" secondItem="t8V-e4-QoH" secondAttribute="leading" constant="20" id="LhS-JE-uaM"/>
                             <constraint firstItem="9si-LE-BLB" firstAttribute="top" secondItem="aFK-j6-lMO" secondAttribute="top" constant="80" id="bwt-2v-6yj"/>
                             <constraint firstItem="9si-LE-BLB" firstAttribute="centerX" secondItem="t8V-e4-QoH" secondAttribute="centerX" id="dCA-kS-UIa"/>
                             <constraint firstItem="aFK-j6-lMO" firstAttribute="bottom" secondItem="vXd-kR-gWa" secondAttribute="bottom" constant="10" id="hr7-Ts-xC8"/>
+                            <constraint firstItem="1n7-7r-wLD" firstAttribute="centerY" secondItem="t8V-e4-QoH" secondAttribute="centerY" multiplier="1.65" id="kQB-X7-9L1"/>
                             <constraint firstItem="aFK-j6-lMO" firstAttribute="trailing" secondItem="vXd-kR-gWa" secondAttribute="trailing" constant="10" id="yFH-cx-V96"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aFK-j6-lMO"/>
                     </view>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createGroupButton" destination="1n7-7r-wLD" id="Arr-Il-cAB"/>
                         <segue destination="BPn-hc-fKC" kind="show" identifier="toParent" id="CbP-rh-bjZ"/>
