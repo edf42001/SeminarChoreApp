@@ -236,3 +236,44 @@ class ButtonExtension: UIButton {
         super.layoutSubviews()
     }
 }
+
+@IBDesignable
+class ViewExtension: UIView {
+    //MARK: PROPERTIES
+    @IBInspectable var borderColor: UIColor = UIColor.white {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat = 1.0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 1.0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+            clipsToBounds = true
+        }
+    }
+    
+    func setup() {
+        layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 1.0
+        layer.cornerRadius = 1.0
+    }
+    
+    func configure() {
+        layer.borderColor = borderColor.cgColor
+        layer.borderWidth = borderWidth
+        layer.cornerRadius = cornerRadius
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        setup()
+        configure()
+    }
+}
