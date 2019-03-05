@@ -25,7 +25,6 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         choreTable.dataSource = self
         choreTable.delegate = self
-        print("************ \(user?.chores?.count)")
         background.backgroundColor = Styles.backgroundColor
         groupLabel.text = group!.name
         // Do any additional setup after loading the view.
