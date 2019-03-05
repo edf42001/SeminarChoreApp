@@ -16,17 +16,21 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var user:User?
     var group:Group?
     var ref:DatabaseReference!
-    var choreList: [Chore]?
+    var choreList: [Chore] = []
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var choreTable: UITableView!
     @IBOutlet weak var groupLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        choreTable.dataSource = self
+        choreTable.delegate = self
+        print("************ \(user?.chores?.count)")
         background.backgroundColor = Styles.backgroundColor
         groupLabel.text = group!.name
         // Do any additional setup after loading the view.
         DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
+            self.user?.chores! = chores
             self.choreTable.reloadData()
         }
     }
@@ -47,12 +51,10 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        DatabaseHandler.getChoresForUser(uid: user!.uid, groupID: group!.id) { (chores) in
-            self.choreList = chores
-        }
+       // choreList = (user?.chores!)!
         let cell = tableView.dequeueReusableCell(withIdentifier: "choreCell", for: indexPath) as! ChoreTableViewCell
-        cell.choreLabel.text = choreList?[indexPath.row].name
-        cell.choreID = choreList?[indexPath.row].id
+        cell.choreLabel.text = user?.chores![indexPath.row].name
+        cell.choreID = user?.chores![indexPath.row].id
         return cell
     }
     
