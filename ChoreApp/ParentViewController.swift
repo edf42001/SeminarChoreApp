@@ -36,8 +36,8 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.backgroundColor = Styles.tabColor
         settingsView.layer.cornerRadius = 10
         settingsView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        settingsView.backgroundColor = Styles.backgroundColor
-        self.view.backgroundColor = Styles.tabColor
+        settingsView.backgroundColor = Styles.tabColor
+        self.view.backgroundColor = Styles.backgroundColor
         addButton.applyButtonStyles(type: .standard)
         membersButton.applyButtonStyles(type: .standard)
         choresButton.applyButtonStyles(type: .standard)
@@ -68,7 +68,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Close settings menu
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        viewBot.constant -= 409
+        viewBot.constant = -409
         UIView.animate(withDuration: 0.3, animations: {
             self.view.alpha = 1
         })
@@ -78,6 +78,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     func recede(_: Bool) -> Void {
         self.view.sendSubview(toBack: dim)
+        self.view.sendSubview(toBack: settingsView)
     }
     
     //Set mode to members
@@ -223,8 +224,9 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Open the settings tab
     @IBAction func openSettings(_ sender: UIButton) {
-        viewBot.constant += 409
+        viewBot.constant = 0
         self.view.bringSubview(toFront: dim)
+        self.view.bringSubview(toFront: settingsView)
         UIView.animate(withDuration: 0.3, animations: {
             self.view.alpha = 0.5
         })
