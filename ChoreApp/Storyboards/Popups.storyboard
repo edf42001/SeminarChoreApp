@@ -13,15 +13,15 @@
         <!--Add Member Popup View Controller-->
         <scene sceneID="uWM-UT-k6A">
             <objects>
-                <viewController storyboardIdentifier="addMemberPopup" id="OCv-l7-vct" customClass="AddMemberPopupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R7l-bv-dwS">
+                <viewController storyboardIdentifier="AddMemberPopup" id="OCv-l7-vct" customClass="AddMemberPopupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="R7l-bv-dwS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dhk-EW-TY3" customClass="ViewExtension" customModule="ChoreApp" customModuleProvider="target">
                                 <rect key="frame" x="67" y="318" width="280" height="260"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter username" borderStyle="roundedRect" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="7Do-u8-dei">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username:" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="7Do-u8-dei">
                                         <rect key="frame" x="10" y="25" width="260" height="30"/>
                                         <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -29,7 +29,12 @@
                                         </constraints>
                                         <color key="textColor" red="0.82745098039999998" green="0.88235294119999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="done" textContentType="username"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                <color key="value" red="0.82745098039999998" green="0.88235294119999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="OCv-l7-vct" id="rkz-Q3-6zb"/>
                                         </connections>
@@ -135,7 +140,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.71161167512690349" green="0.71161167512690349" blue="0.71161167512690349" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Dhk-EW-TY3" firstAttribute="centerY" secondItem="R7l-bv-dwS" secondAttribute="centerY" id="Jeg-vd-h3q"/>
                             <constraint firstItem="Dhk-EW-TY3" firstAttribute="centerX" secondItem="R7l-bv-dwS" secondAttribute="centerX" id="QxB-nb-imx"/>
@@ -149,7 +154,128 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPd-ak-ssF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="21.739130434782609" y="186.83035714285714"/>
+            <point key="canvasLocation" x="32" y="177"/>
+        </scene>
+        <!--Create New Group View Controller-->
+        <scene sceneID="JaW-Tq-QpT">
+            <objects>
+                <viewController storyboardIdentifier="CreateNewGroupPopup" id="til-jg-Rde" customClass="CreateNewGroupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="2BC-0g-cZT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Zu-rh-kk7" customClass="ViewExtension" customModule="ChoreApp" customModuleProvider="target">
+                                <rect key="frame" x="67" y="348" width="280" height="200"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Group Name:" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="PXL-sG-ihh">
+                                        <rect key="frame" x="10" y="25" width="260" height="30"/>
+                                        <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="6Fe-OV-Emt"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.82745098039999998" green="0.88235294119999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="done" textContentType="username"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
+                                                <color key="value" red="0.82745098039999998" green="0.88235294119999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="til-jg-Rde" id="6ql-v6-juU"/>
+                                        </connections>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="70" translatesAutoresizingMaskIntoConstraints="NO" id="BLb-7y-iwY">
+                                        <rect key="frame" x="30" y="146" width="220" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPJ-ml-ZZ4" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="40"/>
+                                                <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" red="0.82745098039999998" green="0.88235294119999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="til-jg-Rde" eventType="touchUpInside" id="Uye-aj-Oqz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfd-q1-83u" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
+                                                <rect key="frame" x="145" y="0.0" width="75" height="40"/>
+                                                <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Create">
+                                                    <color key="titleColor" red="0.82745098039999998" green="0.88235294119999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="createButtonPressed:" destination="til-jg-Rde" eventType="touchUpInside" id="znb-du-dgV"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="9nx-sx-tDv"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.82745098039999998" green="0.88235294119999996" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BLb-7y-iwY" secondAttribute="trailing" constant="30" id="0X8-3r-HZI"/>
+                                    <constraint firstAttribute="trailing" secondItem="PXL-sG-ihh" secondAttribute="trailing" constant="10" id="6ST-js-sAq"/>
+                                    <constraint firstItem="PXL-sG-ihh" firstAttribute="top" secondItem="3Zu-rh-kk7" secondAttribute="top" constant="25" id="9Oi-ak-W5T"/>
+                                    <constraint firstAttribute="bottom" secondItem="BLb-7y-iwY" secondAttribute="bottom" constant="14" id="FgI-ai-RjR"/>
+                                    <constraint firstItem="BLb-7y-iwY" firstAttribute="leading" secondItem="3Zu-rh-kk7" secondAttribute="leading" constant="30" id="OOv-41-7W3"/>
+                                    <constraint firstAttribute="height" constant="200" id="WRS-yF-Os3"/>
+                                    <constraint firstItem="PXL-sG-ihh" firstAttribute="leading" secondItem="3Zu-rh-kk7" secondAttribute="leading" constant="10" id="b09-GX-pEZ"/>
+                                    <constraint firstAttribute="width" constant="280" id="hZk-rU-g2Z"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3Zu-rh-kk7" firstAttribute="centerX" secondItem="2BC-0g-cZT" secondAttribute="centerX" id="My1-DS-8wW"/>
+                            <constraint firstItem="3Zu-rh-kk7" firstAttribute="centerY" secondItem="2BC-0g-cZT" secondAttribute="centerY" id="OJd-6G-FHO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SWJ-wC-FFZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="groupNameTextField" destination="PXL-sG-ihh" id="nEJ-Rq-uVN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zgO-jf-hGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="770" y="177"/>
         </scene>
     </scenes>
 </document>

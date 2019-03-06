@@ -12,7 +12,6 @@ import Firebase
 class NoGroupViewController: UIViewController {
     var user:User?
     var group:Group?
-    var enterGroupName:UIAlertController!
     var toScreen = -1
     var menuOpen = false
     
@@ -24,7 +23,6 @@ class NoGroupViewController: UIViewController {
 //        self.view.backgroundColor = Styles.tabColor
 //        background.backgroundColor = Styles.backgroundColor
         createGroupButton.applyButtonStyles(type: .standard)
-        setupEnterGroupNameAlert()
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
             if let groupID = groupID as? String, self.toScreen == -1{
                 DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
@@ -53,51 +51,7 @@ class NoGroupViewController: UIViewController {
             }
         })
     }
-    
-    
-    //The user clicks the button
-    @IBAction func createGroupButtonPressed(_ sender: UIButton) {
-        self.present(enterGroupName, animated: true)
-    }
-    
-    //Create a new group
-    func createNewGroup(name: String){
-        if let uid = user?.uid {
-            DatabaseHandler.stopObservingIfAddedToGroup()
-            DatabaseHandler.createGroup(uid: uid, name: name) {key in
-                guard let user = self.user else {return}
-                user.groupID = key
-                user.isParent = true
-                let parent:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
-                self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
-                self.toScreen = 1
-                self.performSegue(withIdentifier: "toParent", sender: self)
-            }
-        }
-    }
-    
-    //Create the popup for user to enter group name
-    func setupEnterGroupNameAlert() {
-        enterGroupName = UIAlertController(title: "Enter Name", message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
-            self.enterGroupName.dismiss(animated: true)
-        })
-        let createGroupAction = UIAlertAction(title: "Create", style: .default, handler: {action in
-            let nameTextField = self.enterGroupName.textFields![0] as UITextField
-            var name = "My Group"
-            if let text = nameTextField.text, text != "" {
-                name = text
-            }
-            self.createNewGroup(name: name) //create the new group
-            self.enterGroupName.dismiss(animated: true)
-        })
-        enterGroupName.addAction(cancelAction)
-        enterGroupName.addAction(createGroupAction)
-        enterGroupName.addTextField(configurationHandler: {textfield in
-            textfield.placeholder = "My Group"
-        })
-    }
-    
+
     // MARK: - Navigation
 
     //Transfer the user's information to another ViewController
@@ -112,7 +66,19 @@ class NoGroupViewController: UIViewController {
             destination.user = self.user
             destination.group = self.group
         default:
-            print("Failed segue error")
+            if segue.identifier == "toCreateGroupPopup"{
+                guard let destination = segue.destination as? CreateNewGroupViewController else {return}
+                destination.user = self.user
+                destination.group = self.group
+                destination.onClose = {created in
+                    if created {
+                        self.toScreen = 1
+                        self.performSegue(withIdentifier: "toParent", sender: self)
+                    }
+                }
+            }else{
+                print("Failed segue error")
+            }
         }
     }
     

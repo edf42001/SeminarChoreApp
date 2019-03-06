@@ -48,6 +48,14 @@
                                             <action selector="closeButtonPressed:" destination="j9q-zF-pZh" eventType="touchUpInside" id="JQC-DP-QT2"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uuq-II-jHf">
+                                        <rect key="frame" x="138" y="780" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <segue destination="RhE-9Z-OCb" kind="presentation" identifier="toAddMemberPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Jrt-vd-iuv"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -195,6 +203,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zcY-cb-Pje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1829" y="-192"/>
+        </scene>
+        <!--AddMemberPopup-->
+        <scene sceneID="VxQ-kW-CzJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Popups" referencedIdentifier="AddMemberPopup" id="RhE-9Z-OCb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="svV-hh-PK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1148" y="220"/>
         </scene>
     </scenes>
     <resources>

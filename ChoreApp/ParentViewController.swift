@@ -233,9 +233,15 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Send user group and user information to another ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? NoGroupViewController else {return}
-        destination.group = group
-        destination.user = user
+        
+        if segue.identifier == "toNoGroup" {
+            guard let destination = segue.destination as? NoGroupViewController else {return}
+            destination.group = group
+            destination.user = user
+        }else if segue.identifier == "toAddMemberPopup" {
+            guard let destination = segue.destination as? AddMemberPopupViewController else {return}
+            destination.group = group
+            destination.user = user
+        }
     }
-
 }
