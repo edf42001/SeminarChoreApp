@@ -30,14 +30,6 @@
                                             <action selector="closeButtonPressed:" destination="j9q-zF-pZh" eventType="touchUpInside" id="JQC-DP-QT2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uuq-II-jHf">
-                                        <rect key="frame" x="138" y="780" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <segue destination="RhE-9Z-OCb" kind="presentation" identifier="toAddMemberPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Jrt-vd-iuv"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -93,7 +85,7 @@
                                 </constraints>
                                 <state key="normal" image="Add"/>
                                 <connections>
-                                    <action selector="addButtonPressed:" destination="j9q-zF-pZh" eventType="touchUpInside" id="uwS-8d-lKO"/>
+                                    <segue destination="RhE-9Z-OCb" kind="presentation" identifier="toAddMemberPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Fyu-CQ-7Oe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqy-L3-goG">

@@ -55,11 +55,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-    //Add item button pressed
-    @IBAction func addButtonPressed(_ sender: UIButton) {
-        self.present(enterMemberNameAlert, animated: true)
-    }
-    
     //Add chore button pressed
     @IBAction func addChores(_ sender: UIButton) {
         self.present(enterChore, animated: true)
