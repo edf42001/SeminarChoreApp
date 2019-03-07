@@ -41,7 +41,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="createGroupButtonPressed:" destination="UZp-S6-8Vb" eventType="touchUpInside" id="rso-yy-zVl"/>
+                                    <segue destination="510-v6-exF" kind="presentation" identifier="toCreateGroupPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="HeZ-YQ-gjM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9si-LE-BLB">
@@ -101,6 +101,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7s-Hz-Hke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="700" y="227"/>
+        </scene>
+        <!--CreateNewGroupPopup-->
+        <scene sceneID="8qU-CW-oep">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Popups" referencedIdentifier="CreateNewGroupPopup" id="510-v6-exF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qxq-oq-Jt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2" y="571"/>
         </scene>
     </scenes>
     <resources>

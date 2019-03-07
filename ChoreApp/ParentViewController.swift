@@ -21,7 +21,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingButton1: NSLayoutConstraint!
     @IBOutlet weak var leadingButton2: NSLayoutConstraint!
-    var enterMember:UIAlertController!
     var enterChore:UIAlertController!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addChores: UIButton!
@@ -36,29 +35,24 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.backgroundColor = Styles.tabColor
         settingsView.layer.cornerRadius = 10
         settingsView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        settingsView.backgroundColor = Styles.backgroundColor
-        self.view.backgroundColor = Styles.tabColor
+        settingsView.backgroundColor = Styles.tabColor
+        self.view.backgroundColor = Styles.backgroundColor
         addButton.applyButtonStyles(type: .standard)
         membersButton.applyButtonStyles(type: .standard)
         choresButton.applyButtonStyles(type: .standard)
-        setupEnterMemberNameAlert()
         membersTableView.dataSource = self
         membersTableView.delegate = self
-        setupEnterMemberNameAlert()
         setupEnterChoreAlert()
+        
         DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
             self.group?.chores = chores
         })
+        
         DatabaseHandler.observeMembersInGroup(groupID: group!.id, completion: {parents, children in
             self.group?.parents = parents
             self.group?.children = children
             self.membersTableView.reloadData()
         })
-    }
-    
-    //Add item button pressed
-    @IBAction func addButtonPressed(_ sender: UIButton) {
-        self.present(enterMemberNameAlert, animated: true)
     }
     
     //Add chore button pressed
@@ -68,7 +62,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Close settings menu
     @IBAction func closeButtonPressed(_ sender: UIButton) {
-        viewBot.constant -= 409
+        viewBot.constant = -409
         UIView.animate(withDuration: 0.3, animations: {
             self.view.alpha = 1
         })
@@ -78,6 +72,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     func recede(_: Bool) -> Void {
         self.view.sendSubview(toBack: dim)
+        self.view.sendSubview(toBack: settingsView)
     }
     
     //Set mode to members
@@ -115,42 +110,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             self.performSegue(withIdentifier: "toNoGroup", sender: self)
         })
         
-    }
-    
-    //Setup the popup in order to add a new member, and ask for the member's username
-    func setupEnterMemberNameAlert() {
-        //Create the title
-        enterMemberNameAlert = UIAlertController(title: "Enter Member Name", message: nil, preferredStyle: .alert)
-        //Create the "cancel" button
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
-            self.enterMemberNameAlert.dismiss(animated: true)
-        })
-        //Create the "add" button
-        let createMemberAction = UIAlertAction(title: "Add", style: .default, handler: {action in
-            let nameTextField = self.enterMemberNameAlert.textFields![0] as UITextField
-            var name:String?
-            if let text = nameTextField.text, text != "" {
-                name = text
-            }
-            //Search the database for the username
-            if let name = name, let groupID = self.group?.id {
-                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: true, completition: {uid, error in
-                    if let uid = uid {
-                        self.group?.parents?.append(UserInfo(uid: uid, username: name, isParent: true))
-                        self.enterMemberNameAlert.dismiss(animated: true)
-                        self.membersTableView.reloadData()
-                    }else{
-                       print(error!)
-                    }
-                })
-            }
-        })
-        //Add pieces to the alert
-        enterMemberNameAlert.addAction(cancelAction)
-        enterMemberNameAlert.addAction(createMemberAction)
-        enterMemberNameAlert.addTextField(configurationHandler: {textfield in
-            textfield.placeholder = "Enter Username"
-        })
     }
     
     //Setup the popup in order to add a new chore, and ask for all the necessary details
@@ -223,8 +182,9 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Open the settings tab
     @IBAction func openSettings(_ sender: UIButton) {
-        viewBot.constant += 409
+        viewBot.constant = 0
         self.view.bringSubview(toFront: dim)
+        self.view.bringSubview(toFront: settingsView)
         UIView.animate(withDuration: 0.3, animations: {
             self.view.alpha = 0.5
         })
@@ -233,9 +193,15 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Send user group and user information to another ViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? NoGroupViewController else {return}
-        destination.group = group
-        destination.user = user
+        
+        if segue.identifier == "toNoGroup" {
+            guard let destination = segue.destination as? NoGroupViewController else {return}
+            destination.group = group
+            destination.user = user
+        }else if segue.identifier == "toAddMemberPopup" {
+            guard let destination = segue.destination as? AddMemberPopupViewController else {return}
+            destination.group = group
+            destination.user = user
+        }
     }
-
 }

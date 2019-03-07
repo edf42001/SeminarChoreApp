@@ -37,7 +37,7 @@ class Styles
     
     //Default tab background color
     //Up for future debate
-    static let tabColor: UIColor? = UIColor.black
+    static let tabColor: UIColor? = UIColor.darkGray
     
     //Default Black/greyish background: 0x373C3C
     //Logo grey color: 0xD3E1DF
