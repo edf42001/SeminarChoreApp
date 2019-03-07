@@ -21,7 +21,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingButton1: NSLayoutConstraint!
     @IBOutlet weak var leadingButton2: NSLayoutConstraint!
-    var enterMember:UIAlertController!
     var enterChore:UIAlertController!
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var addChores: UIButton!
@@ -41,14 +40,14 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         addButton.applyButtonStyles(type: .standard)
         membersButton.applyButtonStyles(type: .standard)
         choresButton.applyButtonStyles(type: .standard)
-        setupEnterMemberNameAlert()
         membersTableView.dataSource = self
         membersTableView.delegate = self
-        setupEnterMemberNameAlert()
         setupEnterChoreAlert()
+        
         DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
             self.group?.chores = chores
         })
+        
         DatabaseHandler.observeMembersInGroup(groupID: group!.id, completion: {parents, children in
             self.group?.parents = parents
             self.group?.children = children
@@ -116,42 +115,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             self.performSegue(withIdentifier: "toNoGroup", sender: self)
         })
         
-    }
-    
-    //Setup the popup in order to add a new member, and ask for the member's username
-    func setupEnterMemberNameAlert() {
-        //Create the title
-        enterMemberNameAlert = UIAlertController(title: "Enter Member Name", message: nil, preferredStyle: .alert)
-        //Create the "cancel" button
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
-            self.enterMemberNameAlert.dismiss(animated: true)
-        })
-        //Create the "add" button
-        let createMemberAction = UIAlertAction(title: "Add", style: .default, handler: {action in
-            let nameTextField = self.enterMemberNameAlert.textFields![0] as UITextField
-            var name:String?
-            if let text = nameTextField.text, text != "" {
-                name = text
-            }
-            //Search the database for the username
-            if let name = name, let groupID = self.group?.id {
-                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: true, completition: {uid, error in
-                    if let uid = uid {
-                        self.group?.parents?.append(UserInfo(uid: uid, username: name, isParent: true))
-                        self.enterMemberNameAlert.dismiss(animated: true)
-                        self.membersTableView.reloadData()
-                    }else{
-                       print(error!)
-                    }
-                })
-            }
-        })
-        //Add pieces to the alert
-        enterMemberNameAlert.addAction(cancelAction)
-        enterMemberNameAlert.addAction(createMemberAction)
-        enterMemberNameAlert.addTextField(configurationHandler: {textfield in
-            textfield.placeholder = "Enter Username"
-        })
     }
     
     //Setup the popup in order to add a new chore, and ask for all the necessary details
