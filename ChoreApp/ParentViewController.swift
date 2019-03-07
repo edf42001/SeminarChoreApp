@@ -29,13 +29,17 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var dim: UIView!
     var memberMode = true
     @IBOutlet weak var closeMenu: UIButton!
+    @IBOutlet weak var tableView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Styles.tabColor
+        self.view.backgroundColor = Styles.backgroundColor
+        tableView.backgroundColor = Styles.backgroundColor
         settingsView.layer.cornerRadius = 10
         settingsView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        settingsView.backgroundColor = Styles.tabColor
+        dim.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        settingsView.backgroundColor = UIColor.black
+        settingsView.alpha = 0
         self.view.backgroundColor = Styles.backgroundColor
         addButton.applyButtonStyles(type: .standard)
         membersButton.applyButtonStyles(type: .standard)
@@ -72,7 +76,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     func recede(_: Bool) -> Void {
         self.view.sendSubview(toBack: dim)
-        self.view.sendSubview(toBack: settingsView)
     }
     
     //Set mode to members
