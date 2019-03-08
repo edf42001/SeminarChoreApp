@@ -38,18 +38,6 @@
                                     <constraint firstItem="cUg-ak-NYg" firstAttribute="leading" secondItem="flO-HG-9js" secondAttribute="leading" id="kCT-tO-NZd"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7E-yZ-6lb">
-                                <rect key="frame" x="976.5" y="652" width="32" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="32" id="6oL-WV-YUp"/>
-                                    <constraint firstAttribute="height" constant="32" id="DVS-aV-TUX"/>
-                                </constraints>
-                                <state key="normal" image="Add"/>
-                                <connections>
-                                    <action selector="addChores:" destination="j9q-zF-pZh" eventType="touchUpInside" id="BEl-q4-lRc"/>
-                                    <segue destination="VN2-Nb-5kw" kind="presentation" identifier="toAddChorePopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="xdP-Be-8F7"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sng-NV-KSJ">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
@@ -134,6 +122,17 @@
                                 <state key="normal" image="Add"/>
                                 <connections>
                                     <segue destination="RhE-9Z-OCb" kind="presentation" identifier="toAddMemberPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Fyu-CQ-7Oe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j7E-yZ-6lb">
+                                <rect key="frame" x="976.5" y="652" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="6oL-WV-YUp"/>
+                                    <constraint firstAttribute="height" constant="32" id="DVS-aV-TUX"/>
+                                </constraints>
+                                <state key="normal" image="Add"/>
+                                <connections>
+                                    <segue destination="VN2-Nb-5kw" kind="presentation" identifier="toAddChorePopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="xdP-Be-8F7"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9d-oY-b90">
@@ -221,7 +220,7 @@
                 <viewControllerPlaceholder storyboardName="Popups" referencedIdentifier="AddMemberPopup" id="RhE-9Z-OCb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svV-hh-PK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1148" y="220"/>
+            <point key="canvasLocation" x="1362" y="220"/>
         </scene>
         <!--AddChorePopup-->
         <scene sceneID="KBd-dT-aBw">
