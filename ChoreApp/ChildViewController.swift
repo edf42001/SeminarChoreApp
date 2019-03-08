@@ -67,6 +67,7 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.choreTable.reloadData()
 
         }))
+        self.present(confirmationMessage, animated: true)
     }
     
     @IBAction func leaveGroupButtonPressed(_ sender: Any) {
