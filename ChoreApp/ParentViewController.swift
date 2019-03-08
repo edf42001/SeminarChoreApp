@@ -141,12 +141,12 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
 
     //Tableview functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return group?.children?.count ?? 0
+        return group?.children.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberNameCell", for: indexPath)
-        cell.textLabel?.text = group?.children?[indexPath.row].username
+        cell.textLabel?.text = group?.children[indexPath.row].username
         
         return cell
     }
@@ -157,7 +157,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     
     //Add chore names later?
     func createChoreForUser(userIndex:Int){
-        guard let asigneeUid = group?.children?[userIndex].uid else {return}
+        guard let asigneeUid = group?.children[userIndex].uid else {return}
         //Create the title
         let enterChoreAlert = UIAlertController(title: "Chore Name:", message: nil, preferredStyle: .alert)
         //Create the "Cancel" button
@@ -205,6 +205,9 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
             guard let destination = segue.destination as? AddMemberPopupViewController else {return}
             destination.group = group
             destination.user = user
+        }else if segue.identifier == "toAddChorePopup" {
+            guard let destination = segue.destination as? AddChorePopupViewController else {return}
+            destination.group = group
         }
     }
 }

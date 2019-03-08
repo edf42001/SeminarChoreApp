@@ -167,9 +167,9 @@ class DatabaseHandler {
                         getMemberUsername(uid: uid, completion: {username in
                             if let username = username {
                                 if parentStatus == "parent" {
-                                    group.parents?.append(UserInfo(uid: uid, username: username, isParent: true))
+                                    group.parents.append(UserInfo(uid: uid, username: username, isParent: true))
                                 }else{
-                                    group.children?.append(UserInfo(uid: uid, username: username, isParent: false))
+                                    group.children.append(UserInfo(uid: uid, username: username, isParent: false))
                                 }
                             }
                             dispatchGroup.leave()
