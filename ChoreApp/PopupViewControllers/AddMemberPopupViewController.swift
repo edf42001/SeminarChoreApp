@@ -27,9 +27,9 @@ class AddMemberPopupViewController: UIViewController, UITextFieldDelegate {
                 DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: isParent, completition: {uid, error in
                     if let uid = uid {
                         if isParent{
-                             self.group?.parents?.append(UserInfo(uid: uid, username: name, isParent: true))
+                             self.group?.parents.append(UserInfo(uid: uid, username: name, isParent: true))
                         }else{
-                             self.group?.children?.append(UserInfo(uid: uid, username: name, isParent: false))
+                             self.group?.children.append(UserInfo(uid: uid, username: name, isParent: false))
                         }
                         self.dismiss(animated: true, completion: nil)
                     }else{

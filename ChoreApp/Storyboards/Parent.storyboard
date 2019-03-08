@@ -218,6 +218,14 @@
             </objects>
             <point key="canvasLocation" x="1148" y="220"/>
         </scene>
+        <!--AddChorePopup-->
+        <scene sceneID="KBd-dT-aBw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Popups" referencedIdentifier="AddChorePopup" id="VN2-Nb-5kw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xcr-tG-Xov" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="853" y="220"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Add" width="626" height="626"/>
