@@ -42,11 +42,11 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         settingsView.alpha = 0
         self.view.backgroundColor = Styles.backgroundColor
         addButton.applyButtonStyles(type: .standard)
+        addChores.applyButtonStyles(type: .standard)
         membersButton.applyButtonStyles(type: .standard)
         choresButton.applyButtonStyles(type: .standard)
         membersTableView.dataSource = self
         membersTableView.delegate = self
-        setupEnterChoreAlert()
         
         DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
             self.group?.chores = chores
@@ -59,10 +59,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         })
     }
     
-    //Add chore button pressed
-    @IBAction func addChores(_ sender: UIButton) {
-        self.present(enterChore, animated: true)
-    }
     
     //Close settings menu
     @IBAction func closeButtonPressed(_ sender: UIButton) {
@@ -114,30 +110,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         })
         
     }
-    
-    //Setup the popup in order to add a new chore, and ask for all the necessary details
-    func setupEnterChoreAlert() {
-        enterChore = UIAlertController(title: "Enter Chore Name", message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler:
-        {action in
-            self.enterChore.dismiss(animated: true)
-        })
-        let createChoreAction = UIAlertAction(title: "Create", style: .default, handler: {action in
-            let choreTextField = self.enterChore.textFields![0] as UITextField
-            //Might want to incorporate the 'chore' variable in the future
-            var chore = "My Chore"
-            if let text = choreTextField.text, text != "" {
-                chore = text
-            }
-            self.createChoreForUser(userIndex: 0) //Update to correct user later, and add chore properties, such as name, date, etc.
-            self.enterChore.dismiss(animated: true)
-        })
-        enterChore.addAction(cancelAction)
-        enterChore.addAction(createChoreAction)
-        enterChore.addTextField(configurationHandler: {textfield in
-            textfield.placeholder = "A Chore"
-        })
-    }
 
     //Tableview functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -149,38 +121,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         cell.textLabel?.text = group?.children[indexPath.row].username
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        createChoreForUser(userIndex: indexPath.row)
-    }
-    
-    //Add chore names later?
-    func createChoreForUser(userIndex:Int){
-        guard let asigneeUid = group?.children[userIndex].uid else {return}
-        //Create the title
-        let enterChoreAlert = UIAlertController(title: "Chore Name:", message: nil, preferredStyle: .alert)
-        //Create the "Cancel" button
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {action in
-            enterChoreAlert.dismiss(animated: true)
-        })
-        //Create the "Create" button
-        let createChoreAction = UIAlertAction(title: "Create", style: .default, handler: {action in
-            let nameTextField = enterChoreAlert.textFields![0] as UITextField
-            guard let name = nameTextField.text else {return}
-            if name != "" {
-                DatabaseHandler.addChore(name: name, asigneeUid: asigneeUid, groupID: self.group!.id, completion: {id in
-                     self.group?.chores?.append(Chore(id: id, name: name, asigneeID: asigneeUid))
-                })
-            }
-        })
-        //Add specified items to the popup
-        enterChoreAlert.addAction(cancelAction)
-        enterChoreAlert.addAction(createChoreAction)
-        enterChoreAlert.addTextField(configurationHandler: {textfield in
-            textfield.placeholder = "Enter Username"
-        })
-        self.present(enterChoreAlert, animated: true, completion: nil)
     }
     
     //Open the settings tab
