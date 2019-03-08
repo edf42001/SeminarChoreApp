@@ -17,7 +17,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var settingsView: UIView!
     @IBOutlet weak var viewBot: NSLayoutConstraint!
-    @IBOutlet weak var bot: NSLayoutConstraint!
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var leadingButton1: NSLayoutConstraint!
     @IBOutlet weak var leadingButton2: NSLayoutConstraint!
@@ -35,11 +34,12 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         self.view.backgroundColor = Styles.backgroundColor
         tableView.backgroundColor = Styles.backgroundColor
-        settingsView.layer.cornerRadius = 10
+        settingsView.layer.cornerRadius = 40
         settingsView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        dim.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        dim.backgroundColor = UIColor.black
+        dim.alpha = 0
         settingsView.backgroundColor = UIColor.black
-        settingsView.alpha = 0
+        settingsView.alpha = 1
         self.view.backgroundColor = Styles.backgroundColor
         addButton.applyButtonStyles(type: .standard)
         addChores.applyButtonStyles(type: .standard)
@@ -64,7 +64,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         viewBot.constant = -409
         UIView.animate(withDuration: 0.3, animations: {
-            self.view.alpha = 1
+            self.dim.alpha = 0
         })
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: {attempt in self.recede(attempt)})
         
@@ -129,7 +129,7 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         self.view.bringSubview(toFront: dim)
         self.view.bringSubview(toFront: settingsView)
         UIView.animate(withDuration: 0.3, animations: {
-            self.view.alpha = 0.5
+            self.dim.alpha = 0.4
         })
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {self.view.layoutIfNeeded()}, completion: nil)
     }
