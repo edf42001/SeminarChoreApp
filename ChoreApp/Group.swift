@@ -12,11 +12,11 @@ import Firebase
 class Group{
     let id:String
     var name:String
-    var parents:[UserInfo]?
-    var children:[UserInfo]?
+    var parents:[UserInfo]
+    var children:[UserInfo]
     var chores:[Chore]?
     
-    init(id:String, name:String, parents:[UserInfo], children:[UserInfo]?, chores:[Chore]?){
+    init(id:String, name:String, parents:[UserInfo], children:[UserInfo], chores:[Chore]?){
         self.id = id
         self.name = name
         self.parents = parents
