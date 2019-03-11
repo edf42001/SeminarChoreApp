@@ -20,7 +20,9 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var choreTable: UITableView!
     @IBOutlet weak var groupLabel: UILabel!
-    
+    var menuOut = false;
+    @IBOutlet weak var backgroundBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundTopConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         choreTable.dataSource = self
@@ -34,7 +36,26 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-
+    @IBAction func settingsButtonPressed(_ sender: UIButton) {
+        if menuOut == true
+        {
+            backgroundBottomConstraint.constant = 0
+            backgroundTopConstraint.constant = 0
+            menuOut = false
+        }
+        else
+        {
+            backgroundBottomConstraint.constant = 200
+            backgroundTopConstraint.constant = -200
+            menuOut = true
+        }
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }) { (animationComplete) in
+        }
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -70,7 +91,7 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(confirmationMessage, animated: true)
     }
     
-    @IBAction func leaveGroupButtonPressed(_ sender: Any) {
+    @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
         DatabaseHandler.stopObservingChores()
         guard let uid = user?.uid, let groupID = group?.id else {return}
         DatabaseHandler.leaveGroup(uid: uid, groupID: groupID, isParent: false, done:{
@@ -78,7 +99,6 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.group = nil
             self.performSegue(withIdentifier: "toNoGroupController", sender: self)
         })
-        
     }
     
     

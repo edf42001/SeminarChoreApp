@@ -33,13 +33,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="INg-cR-q01">
                                 <rect key="frame" x="163.5" y="802" width="87" height="30"/>
                                 <state key="normal" title="Leave Group"/>
+                                <connections>
+                                    <action selector="leaveGroupButtonPressed:" destination="4Fy-fS-xeQ" eventType="touchUpInside" id="eaZ-zx-PEP"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-2g-uS5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="iHm-pJ-vuL">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="iHm-pJ-vuL">
                                         <rect key="frame" x="0.0" y="320" width="414" height="468"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="separatorColor" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="sectionIndexBackgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,19 +88,37 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="highlightedColor" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91g-uR-Bvf">
+                                        <rect key="frame" x="342" y="804" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="8ZI-4e-e65"/>
+                                            <constraint firstAttribute="width" constant="50" id="p0D-qO-e0d"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Cog"/>
+                                        <connections>
+                                            <action selector="settingsButtonPressed:" destination="4Fy-fS-xeQ" eventType="touchUpInside" id="mSx-bL-O5G"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="iHm-pJ-vuL" secondAttribute="trailing" id="0DE-Eu-DM9"/>
+                                    <constraint firstItem="91g-uR-Bvf" firstAttribute="top" secondItem="iHm-pJ-vuL" secondAttribute="bottom" constant="16" id="2tW-9e-3Ll"/>
+                                    <constraint firstAttribute="bottom" secondItem="iHm-pJ-vuL" secondAttribute="bottom" constant="108" id="9jc-Zt-Okn"/>
+                                    <constraint firstAttribute="bottom" secondItem="91g-uR-Bvf" secondAttribute="bottom" constant="42" id="BmP-s0-slj"/>
                                     <constraint firstAttribute="trailing" secondItem="Z1h-gK-DeP" secondAttribute="trailing" id="HHD-xI-BRR"/>
                                     <constraint firstItem="Z1h-gK-DeP" firstAttribute="leading" secondItem="Z7Y-2g-uS5" secondAttribute="leading" id="SCv-Mw-ddV"/>
+                                    <constraint firstAttribute="trailing" secondItem="91g-uR-Bvf" secondAttribute="trailing" constant="22" id="Z0G-Ri-O3i"/>
                                     <constraint firstItem="jdH-cJ-c94" firstAttribute="leading" secondItem="Z7Y-2g-uS5" secondAttribute="leading" constant="120" id="mur-6u-07W"/>
+                                    <constraint firstItem="iHm-pJ-vuL" firstAttribute="top" secondItem="jdH-cJ-c94" secondAttribute="bottom" constant="20" id="siR-Xs-Ei7"/>
                                     <constraint firstItem="Z1h-gK-DeP" firstAttribute="top" secondItem="Z7Y-2g-uS5" secondAttribute="top" constant="50" id="vUh-Rz-7ee"/>
                                     <constraint firstAttribute="trailing" secondItem="jdH-cJ-c94" secondAttribute="trailing" constant="120" id="w0q-tD-RLi"/>
                                     <constraint firstItem="jdH-cJ-c94" firstAttribute="top" secondItem="Z1h-gK-DeP" secondAttribute="bottom" constant="160" id="xwX-jq-meI"/>
+                                    <constraint firstItem="iHm-pJ-vuL" firstAttribute="leading" secondItem="Z7Y-2g-uS5" secondAttribute="leading" id="zpD-lh-rfV"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5sW-iV-kD0" firstAttribute="bottom" secondItem="INg-cR-q01" secondAttribute="bottom" constant="30" id="92v-8U-xoA"/>
                             <constraint firstItem="INg-cR-q01" firstAttribute="centerX" secondItem="a1E-hX-yOV" secondAttribute="centerX" id="9t4-0T-M39"/>
@@ -107,14 +127,16 @@
                             <constraint firstItem="5sW-iV-kD0" firstAttribute="bottom" secondItem="pEl-UN-q3w" secondAttribute="bottom" constant="146" id="Q4b-kw-h45"/>
                             <constraint firstItem="Z7Y-2g-uS5" firstAttribute="trailing" secondItem="5sW-iV-kD0" secondAttribute="trailing" id="QSJ-fd-E5T"/>
                             <constraint firstItem="5sW-iV-kD0" firstAttribute="bottom" secondItem="cYp-ei-bBb" secondAttribute="bottom" constant="146" id="eBO-pi-vRh"/>
-                            <constraint firstAttribute="bottom" secondItem="Z7Y-2g-uS5" secondAttribute="bottom" id="kY7-TW-IBV"/>
-                            <constraint firstItem="Z7Y-2g-uS5" firstAttribute="top" secondItem="a1E-hX-yOV" secondAttribute="top" id="phA-Sv-QsO"/>
+                            <constraint firstAttribute="bottom" secondItem="Z7Y-2g-uS5" secondAttribute="bottom" id="f6y-WT-Lwd"/>
+                            <constraint firstItem="Z7Y-2g-uS5" firstAttribute="top" secondItem="a1E-hX-yOV" secondAttribute="top" id="oN3-6a-xjE"/>
                             <constraint firstItem="pEl-UN-q3w" firstAttribute="leading" secondItem="5sW-iV-kD0" secondAttribute="leading" constant="13" id="ysq-Yw-tq0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5sW-iV-kD0"/>
                     </view>
                     <connections>
                         <outlet property="background" destination="Z7Y-2g-uS5" id="4bn-yH-WJu"/>
+                        <outlet property="backgroundBottomConstraint" destination="f6y-WT-Lwd" id="GCd-Aa-SBe"/>
+                        <outlet property="backgroundTopConstraint" destination="oN3-6a-xjE" id="ncO-OX-lBL"/>
                         <outlet property="choreTable" destination="iHm-pJ-vuL" id="2uE-08-rXM"/>
                         <outlet property="groupLabel" destination="Z1h-gK-DeP" id="ym2-Gv-Ci4"/>
                         <segue destination="le4-Kv-W2e" kind="show" identifier="toNoGroup" id="hdj-ni-ONh"/>
@@ -133,4 +155,7 @@
             <point key="canvasLocation" x="1784" y="534"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cog" width="50" height="50"/>
+    </resources>
 </document>
