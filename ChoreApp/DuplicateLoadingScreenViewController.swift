@@ -22,14 +22,14 @@ class DuplicateLoadingScreenViewController: UIViewController {
         
         ref = Database.database().reference()
         //Testing code
-//        if Auth.auth().currentUser != nil {
-//            Auth.auth().createUser(withEmail: "me@me.com", password: "password")
-//        }
-//        do{
-//            try Auth.auth().signOut()
-//        }catch{let _:NSError
-//
-//        }
+        if Auth.auth().currentUser != nil {
+            Auth.auth().createUser(withEmail: "me@me.com", password: "password")
+        }
+        do{
+            try Auth.auth().signOut()
+        }catch{let _:NSError
+
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

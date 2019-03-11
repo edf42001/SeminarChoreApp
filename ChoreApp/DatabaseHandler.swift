@@ -99,10 +99,19 @@ class DatabaseHandler {
                         }
                     }
                 }
-                
-                dispatchGroup.notify(queue: .main) {
-                    done()
+            }else{
+                dispatchGroup.enter()
+                ref.child("users/\(uid)/group").removeValue() {error, ref in
+                    dispatchGroup.leave()
                 }
+                dispatchGroup.enter()
+                ref.child("groups/\(groupID)/members/\(uid)").removeValue() {error, ref in
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                done()
             }
         })
     }

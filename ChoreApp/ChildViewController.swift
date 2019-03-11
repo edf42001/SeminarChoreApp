@@ -56,16 +56,6 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return user?.chores?.count ?? 0
     }
@@ -97,9 +87,18 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
         DatabaseHandler.leaveGroup(uid: uid, groupID: groupID, isParent: false, done:{
             self.user?.groupID = nil
             self.group = nil
-            self.performSegue(withIdentifier: "toNoGroupController", sender: self)
+            self.performSegue(withIdentifier: "toNoGroup", sender: self)
         })
     }
+    
+    
+     // MARK: - Navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? NoGroupViewController{
+            destination.user = user
+            destination.group = group
+        }
+     }
     
     
     
