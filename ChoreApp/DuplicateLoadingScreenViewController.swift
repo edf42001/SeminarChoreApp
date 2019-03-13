@@ -25,11 +25,11 @@ class DuplicateLoadingScreenViewController: UIViewController {
         if Auth.auth().currentUser != nil {
             Auth.auth().createUser(withEmail: "me@me.com", password: "password")
         }
-        do{
-            try Auth.auth().signOut()
-        }catch{let _:NSError
-
-        }
+//        do{
+//            try Auth.auth().signOut()
+//        }catch{let _:NSError
+//
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
