@@ -17,6 +17,10 @@ class AddMemberPopupViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        childSwitch.tintColor = UIColorFromRGB(0x373C3C)
+        childSwitch.backgroundColor = UIColorFromRGB(0x373C3C)
+        childSwitch.layer.cornerRadius = childSwitch.frame.height / 2
+        usernameTextField.becomeFirstResponder()
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {

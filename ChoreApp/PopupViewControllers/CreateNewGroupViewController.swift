@@ -18,6 +18,7 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        groupNameTextField.becomeFirstResponder()
     }
     
 
