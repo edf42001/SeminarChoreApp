@@ -19,6 +19,7 @@ class Styles
     static let defaultFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 12)
     static let smallFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 8)
     static let bigFont: UIFont? = UIFont.init(name: "helvetica-neue", size: 18)
+    static let settingsFont: UIFont? = UIFont.init(name: "HelveticaNeue-Bold", size: 18)
     
     //Default colors; first, and second for any object that needs a color of the theme
     static let firstColor: UIColor? = UIColor.white
@@ -55,6 +56,7 @@ enum Condition
 
 enum ButtonStyle {
     case standard
+    case settings
 }
 
 //Create a method applyButtonStyles that allows the creation of a default UIButton
@@ -69,6 +71,13 @@ extension UIButton {
             self.layer.borderWidth = 5
             self.layer.borderColor = UIColorFromRGB(0xEE5551).cgColor
             break
+        case .settings:
+            self.backgroundColor = UIColor.white.withAlphaComponent(0)
+            self.titleLabel?.font = Styles.settingsFont
+            self.setTitleColor(UIColorFromRGB(0xD3E1DF), for: .normal)
+            self.layer.cornerRadius = 15
+            self.layer.borderWidth = 5
+            self.layer.borderColor = UIColor.white.cgColor
         }
     }
 }
