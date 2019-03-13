@@ -78,23 +78,31 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFG-m9-Occ">
-                                <rect key="frame" x="139" y="69" width="136.5" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <rect key="frame" x="112.5" y="69" width="189.5" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="162" translatesAutoresizingMaskIntoConstraints="NO" id="e0h-NE-ZHs">
-                                <rect key="frame" x="68.5" y="144" width="277" height="30"/>
+                                <rect key="frame" x="41" y="134" width="332" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ea-kH-qZP">
-                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="95" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="95" id="fFO-08-REe"/>
+                                            <constraint firstAttribute="height" constant="40" id="q6l-hJ-hSx"/>
+                                        </constraints>
                                         <state key="normal" title="Members"/>
                                         <connections>
                                             <action selector="setModeMember:" destination="j9q-zF-pZh" eventType="touchUpInside" id="h1L-gI-Tay"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0X-KF-JRY">
-                                        <rect key="frame" x="227" y="0.0" width="50" height="30"/>
+                                        <rect key="frame" x="257" y="0.0" width="75" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="m4l-z3-OHl"/>
+                                            <constraint firstAttribute="width" constant="75" id="wvs-o5-sht"/>
+                                        </constraints>
                                         <state key="normal" title="Chores"/>
                                         <connections>
                                             <action selector="setModeChore:" destination="j9q-zF-pZh" eventType="touchUpInside" id="IHA-xD-P95"/>
@@ -138,9 +146,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W9d-oY-b90">
                                 <rect key="frame" x="0.0" y="852" width="414" height="453"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfZ-1j-Yau">
-                                        <rect key="frame" x="135" y="183" width="144" height="42"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfZ-1j-Yau">
+                                        <rect key="frame" x="119.5" y="175" width="175" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Edb-oR-DfJ"/>
+                                            <constraint firstAttribute="width" constant="175" id="p4o-vS-Avj"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                         <state key="normal" title="Leave Group"/>
                                         <connections>
@@ -150,6 +161,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="sfZ-1j-Yau" firstAttribute="top" secondItem="W9d-oY-b90" secondAttribute="top" constant="175" id="FW8-cn-l74"/>
+                                    <constraint firstItem="sfZ-1j-Yau" firstAttribute="centerX" secondItem="W9d-oY-b90" secondAttribute="centerX" id="NUY-au-lIQ"/>
                                     <constraint firstAttribute="height" constant="453" id="WDC-MK-vFH"/>
                                 </constraints>
                             </view>
@@ -173,7 +186,7 @@
                             <constraint firstItem="W9d-oY-b90" firstAttribute="leading" secondItem="IJI-d6-HLo" secondAttribute="leading" id="ihf-RH-KIT"/>
                             <constraint firstItem="f4f-Pm-RlP" firstAttribute="bottom" secondItem="Dqy-L3-goG" secondAttribute="bottom" constant="25" id="jpL-DF-5lT"/>
                             <constraint firstItem="f4f-Pm-RlP" firstAttribute="trailing" secondItem="sng-NV-KSJ" secondAttribute="trailing" id="lHe-zf-KeD"/>
-                            <constraint firstItem="e0h-NE-ZHs" firstAttribute="top" secondItem="f4f-Pm-RlP" secondAttribute="top" constant="100" id="nDY-Na-abE"/>
+                            <constraint firstItem="e0h-NE-ZHs" firstAttribute="top" secondItem="f4f-Pm-RlP" secondAttribute="top" constant="90" id="nDY-Na-abE"/>
                             <constraint firstItem="sng-NV-KSJ" firstAttribute="top" secondItem="IJI-d6-HLo" secondAttribute="top" id="ndA-Y0-5aB"/>
                             <constraint firstItem="f4f-Pm-RlP" firstAttribute="trailing" secondItem="Dqy-L3-goG" secondAttribute="trailing" constant="25" id="pv8-zb-N29"/>
                             <constraint firstItem="f4f-Pm-RlP" firstAttribute="bottom" secondItem="flO-HG-9js" secondAttribute="bottom" id="ubB-vF-euE"/>
@@ -189,8 +202,10 @@
                         <outlet property="choresTableView" destination="Vxw-oh-1og" id="fKT-aZ-afh"/>
                         <outlet property="closeMenu" destination="cUg-ak-NYg" id="CWg-Bv-tPz"/>
                         <outlet property="dim" destination="flO-HG-9js" id="GMh-Ea-JJ8"/>
+                        <outlet property="groupName" destination="MFG-m9-Occ" id="fXT-N8-yCq"/>
                         <outlet property="leadingButton1" destination="Qh0-su-lZ6" id="sOD-yj-odE"/>
                         <outlet property="leadingButton2" destination="SVE-s6-Vol" id="DRk-gn-KEU"/>
+                        <outlet property="leaveGroupButton" destination="sfZ-1j-Yau" id="Hm7-pX-Isr"/>
                         <outlet property="membersButton" destination="0ea-kH-qZP" id="Sf2-bo-Tie"/>
                         <outlet property="membersTableView" destination="I9w-dR-GWu" id="0Sp-DZ-fY0"/>
                         <outlet property="settingsButton" destination="Dqy-L3-goG" id="LBf-7c-gQC"/>

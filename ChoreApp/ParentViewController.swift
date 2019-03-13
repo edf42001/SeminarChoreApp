@@ -29,6 +29,8 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     var memberMode = true
     @IBOutlet weak var closeMenu: UIButton!
     @IBOutlet weak var tableView: UIView!
+    @IBOutlet weak var groupName: UILabel!
+    @IBOutlet weak var leaveGroupButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,9 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
         choresButton.applyButtonStyles(type: .standard)
         membersTableView.dataSource = self
         membersTableView.delegate = self
+        groupName.textColor = UIColorFromRGB(0xD3E1DF)
+        groupName.text = self.group?.name
+        leaveGroupButton.applyButtonStyles(type: .settings)
         
         DatabaseHandler.observeChores(groupID: group!.id, completion: {chores in
             self.group?.chores = chores
