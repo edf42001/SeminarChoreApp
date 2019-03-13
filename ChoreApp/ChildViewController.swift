@@ -20,7 +20,9 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var background: UIView!
     @IBOutlet weak var choreTable: UITableView!
     @IBOutlet weak var groupLabel: UILabel!
-    
+    var menuOut = false;
+    @IBOutlet weak var backgroundBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundTopConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         choreTable.dataSource = self
@@ -34,16 +36,25 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func settingsButtonPressed(_ sender: UIButton) {
+        if menuOut == true
+        {
+            backgroundBottomConstraint.constant = 0
+            backgroundTopConstraint.constant = 0
+            menuOut = false
+        }
+        else
+        {
+            backgroundBottomConstraint.constant = 200
+            backgroundTopConstraint.constant = -200
+            menuOut = true
+        }
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.2, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }) { (animationComplete) in
+        }
+        
     }
-    */
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return user?.chores?.count ?? 0
@@ -70,16 +81,24 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.present(confirmationMessage, animated: true)
     }
     
-    @IBAction func leaveGroupButtonPressed(_ sender: Any) {
+    @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
         DatabaseHandler.stopObservingChores()
         guard let uid = user?.uid, let groupID = group?.id else {return}
         DatabaseHandler.leaveGroup(uid: uid, groupID: groupID, isParent: false, done:{
             self.user?.groupID = nil
             self.group = nil
-            self.performSegue(withIdentifier: "toNoGroupController", sender: self)
+            self.performSegue(withIdentifier: "toNoGroup", sender: self)
         })
-        
     }
+    
+    
+     // MARK: - Navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? NoGroupViewController{
+            destination.user = user
+            destination.group = group
+        }
+     }
     
     
     
