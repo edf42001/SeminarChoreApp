@@ -25,6 +25,7 @@ class AddChorePopupViewController: UIViewController, UIPickerViewDelegate, UIPic
             list.append(user.username)
         }
         pickerView.isHidden = true
+        choreNameTextField.becomeFirstResponder()
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
