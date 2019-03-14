@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Group-->
         <scene sceneID="Xy5-OR-qVc">
             <objects>
                 <viewController id="3Ph-2b-eD9" sceneMemberID="viewController">
@@ -20,13 +20,13 @@
                         <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="uba-X0-WP1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="qrQ-gr-R6P"/>
+                    <tabBarItem key="tabBarItem" title="Group" id="qrQ-gr-R6P"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJV-5k-hMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="774" y="-206"/>
         </scene>
-        <!--Item 1-->
+        <!--Chores-->
         <scene sceneID="Z5o-ad-fKV">
             <objects>
                 <viewController id="sa2-bD-9lg" sceneMemberID="viewController">
@@ -36,16 +36,16 @@
                         <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="0ti-8R-HGW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="eWC-cm-aWd"/>
+                    <tabBarItem key="tabBarItem" title="Chores" id="eWC-cm-aWd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oQa-Uy-1Yy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="25" y="-674"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar Controller-->
         <scene sceneID="df6-gE-UW6">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarViewController" id="68d-3Z-OGA" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="68d-3Z-OGA" customClass="CustomTabBarController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tD0-9w-bWx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -72,7 +72,7 @@
                         <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="b49-cQ-6QA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="8eQ-dV-ESK"/>
+                    <tabBarItem key="tabBarItem" title="Menu" id="8eQ-dV-ESK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vr9-UF-x6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

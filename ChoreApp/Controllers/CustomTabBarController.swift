@@ -9,22 +9,26 @@
 import UIKit
 
 class CustomTabBarController: UITabBarController {
-
+    var user:User?
+    var group:Group?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if group == nil {
+            self.selectedIndex = 1
+        }else{
+            self.selectedIndex = 0
+        }
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        //Use to log out??
     }
-    */
+ 
 
 }
