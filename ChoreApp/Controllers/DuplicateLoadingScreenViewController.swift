@@ -21,10 +21,10 @@ class DuplicateLoadingScreenViewController: UIViewController {
         self.view.backgroundColor = Styles.backgroundColor
         
         ref = Database.database().reference()
-        //Testing code
-        if Auth.auth().currentUser != nil {
-            Auth.auth().createUser(withEmail: "me@me.com", password: "password")
-        }
+//        //Testing code
+//        if Auth.auth().currentUser != nil {
+//            Auth.auth().createUser(withEmail: "me@me.com", password: "password")
+//        }
 //        do{
 //            try Auth.auth().signOut()
 //        }catch{let _:NSError
