@@ -23,9 +23,11 @@
 		8BB436B62203592600811C2B /* StartingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B52203592600811C2B /* StartingScreenViewController.swift */; };
 		8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B922049A8A00811C2B /* DatabaseHandler.swift */; };
 		8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
+		8BC7165F223BC9ED00910ED0 /* Chores.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BC7165E223BC9ED00910ED0 /* Chores.storyboard */; };
+		8BC71661223BCA0400910ED0 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BC71660223BCA0400910ED0 /* Options.storyboard */; };
 		8BDD009D2226BCE3005210BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */; };
 		8BDD009F2226BCE3005210BC /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD009C2226BCE3005210BC /* Accounts.storyboard */; };
-		8BDD00A12226BD13005210BC /* NoGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A02226BD13005210BC /* NoGroup.storyboard */; };
+		8BDD00A12226BD13005210BC /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A02226BD13005210BC /* Group.storyboard */; };
 		8BDD00A32226BE11005210BC /* Parent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A22226BE11005210BC /* Parent.storyboard */; };
 		8BDD00A52226BE28005210BC /* Child.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A42226BE28005210BC /* Child.storyboard */; };
 		9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */; };
@@ -56,9 +58,11 @@
 		8BB436B52203592600811C2B /* StartingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreenViewController.swift; sourceTree = "<group>"; };
 		8BB436B922049A8A00811C2B /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8BC7165E223BC9ED00910ED0 /* Chores.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chores.storyboard; sourceTree = "<group>"; };
+		8BC71660223BCA0400910ED0 /* Options.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BDD009C2226BCE3005210BC /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
-		8BDD00A02226BD13005210BC /* NoGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoGroup.storyboard; sourceTree = "<group>"; };
+		8BDD00A02226BD13005210BC /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		8BDD00A22226BE11005210BC /* Parent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Parent.storyboard; sourceTree = "<group>"; };
 		8BDD00A42226BE28005210BC /* Child.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Child.storyboard; sourceTree = "<group>"; };
 		9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateLoadingScreenViewController.swift; sourceTree = "<group>"; };
@@ -121,8 +125,8 @@
 				8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */,
 				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
 				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
-				8B296EEE222EBE01002EB0B8 /* PopupViewControllers */,
 				8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */,
+				8B296EEE222EBE01002EB0B8 /* PopupViewControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -177,11 +181,13 @@
 			children = (
 				8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */,
 				8BDD009C2226BCE3005210BC /* Accounts.storyboard */,
-				8BDD00A02226BD13005210BC /* NoGroup.storyboard */,
+				8BDD00A02226BD13005210BC /* Group.storyboard */,
 				8BDD00A22226BE11005210BC /* Parent.storyboard */,
 				8BDD00A42226BE28005210BC /* Child.storyboard */,
 				8B4BBCCA222D794A0068B417 /* Popups.storyboard */,
 				8B2F019B223A9792008AC7DC /* Main.storyboard */,
+				8BC7165E223BC9ED00910ED0 /* Chores.storyboard */,
+				8BC71660223BCA0400910ED0 /* Options.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -247,13 +253,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BDD00A32226BE11005210BC /* Parent.storyboard in Resources */,
-				8BDD00A12226BD13005210BC /* NoGroup.storyboard in Resources */,
+				8BDD00A12226BD13005210BC /* Group.storyboard in Resources */,
 				8BDD009D2226BCE3005210BC /* LaunchScreen.storyboard in Resources */,
 				8BDD00A52226BE28005210BC /* Child.storyboard in Resources */,
 				8BDD009F2226BCE3005210BC /* Accounts.storyboard in Resources */,
 				8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */,
 				8B2F019C223A9792008AC7DC /* Main.storyboard in Resources */,
 				8B326AA721AD927700665FFE /* Assets.xcassets in Resources */,
+				8BC7165F223BC9ED00910ED0 /* Chores.storyboard in Resources */,
+				8BC71661223BCA0400910ED0 /* Options.storyboard in Resources */,
 				8B4BBCCB222D794A0068B417 /* Popups.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

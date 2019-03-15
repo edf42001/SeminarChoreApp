@@ -139,20 +139,11 @@
                         <outlet property="backgroundTopConstraint" destination="oN3-6a-xjE" id="ncO-OX-lBL"/>
                         <outlet property="choreTable" destination="iHm-pJ-vuL" id="2uE-08-rXM"/>
                         <outlet property="groupLabel" destination="Z1h-gK-DeP" id="ym2-Gv-Ci4"/>
-                        <segue destination="le4-Kv-W2e" kind="show" identifier="toNoGroup" id="hdj-ni-ONh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ybe-gj-qQS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1147.8260869565217" y="533.70535714285711"/>
-        </scene>
-        <!--NoGroupViewController-->
-        <scene sceneID="Sby-7Q-Cx0">
-            <objects>
-                <viewControllerPlaceholder storyboardName="NoGroup" referencedIdentifier="NoGroupViewController" id="le4-Kv-W2e" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Krm-NZ-xqb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1784" y="534"/>
         </scene>
     </scenes>
     <resources>

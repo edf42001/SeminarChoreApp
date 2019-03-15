@@ -75,32 +75,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aFK-j6-lMO"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="rgr-16-hsB"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createGroupButton" destination="1n7-7r-wLD" id="Arr-Il-cAB"/>
-                        <segue destination="BPn-hc-fKC" kind="show" identifier="toParent" id="CbP-rh-bjZ"/>
-                        <segue destination="b6k-Gj-SNw" kind="show" identifier="toChild" id="p3R-Jz-Q1b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kWU-hW-YUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2.8985507246376816" y="178.79464285714286"/>
-        </scene>
-        <!--ParentViewController-->
-        <scene sceneID="4sh-rL-BME">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ParentViewController" storyboardName="Parent" referencedIdentifier="ParentViewController" id="BPn-hc-fKC" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LCt-pi-SdZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="701" y="131"/>
-        </scene>
-        <!--ChildViewController-->
-        <scene sceneID="9ge-5K-ZDt">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Child" referencedIdentifier="ChildViewController" id="b6k-Gj-SNw" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X7s-Hz-Hke" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="700" y="227"/>
+            <point key="canvasLocation" x="907.24637681159425" y="178.79464285714286"/>
         </scene>
         <!--CreateNewGroupPopup-->
         <scene sceneID="8qU-CW-oep">
@@ -108,7 +92,7 @@
                 <viewControllerPlaceholder storyboardName="Popups" referencedIdentifier="CreateNewGroupPopup" id="510-v6-exF" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxq-oq-Jt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2" y="571"/>
+            <point key="canvasLocation" x="908" y="615"/>
         </scene>
     </scenes>
     <resources>
