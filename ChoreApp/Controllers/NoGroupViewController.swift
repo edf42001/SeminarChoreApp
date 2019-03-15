@@ -10,22 +10,46 @@ import UIKit
 import Firebase
 
 class NoGroupViewController: UIViewController {
+    
+    //General variables
     var user:User?
     var group:Group?
     var toScreen = -1
     var menuOpen = false
-    
+    @IBOutlet weak var noGroup: UIView!
     @IBOutlet weak var createGroupButton: UIButton!
+    @IBOutlet weak var yesGroup: UIView!
+    
+    //Tableview Variables
+    enum TableSection: Int {
+        case parent = 0, child, total
+    }
+    let SectionHeaderHeight: CGFloat = 25
+    var data = [TableSection: [[String: String]]]()
+    var groupData: [[String:String]] = []
     
     override func viewDidLoad() {
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
-        
+        if let g = self.group {
+            self.view.bringSubview(toFront: yesGroup)
+            for parent in g.parents {
+                groupData.append(["parent" : parent.username])
+            }
+            for child in g.children {
+                groupData.append(["child" : child.username])
+            }
+            
+        }
+        else {
+            self.view.bringSubview(toFront: noGroup)
+        }
         toScreen = -1
         super.viewDidLoad()
-//        self.view.backgroundColor = Styles.tabColor
-//        background.backgroundColor = Styles.backgroundColor
+        self.view.backgroundColor = Styles.backgroundColor
+        noGroup.backgroundColor = Styles.backgroundColor
+        yesGroup.backgroundColor = Styles.backgroundColor
         createGroupButton.applyButtonStyles(type: .standard)
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
             if let groupID = groupID as? String, self.toScreen == -1{
