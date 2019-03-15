@@ -18,6 +18,10 @@ class NoGroupViewController: UIViewController {
     @IBOutlet weak var createGroupButton: UIButton!
     
     override func viewDidLoad() {
+        let tabBar = self.tabBarController as! CustomTabBarController
+        self.user = tabBar.user
+        self.group = tabBar.group
+        
         toScreen = -1
         super.viewDidLoad()
 //        self.view.backgroundColor = Styles.tabColor
@@ -34,7 +38,6 @@ class NoGroupViewController: UIViewController {
                         self.toScreen = 1
                         DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
                             self.group?.chores = chores
-                            self.performSegue(withIdentifier: "toParent", sender: self)
                         })
                         
                     }else {
@@ -43,7 +46,6 @@ class NoGroupViewController: UIViewController {
                         self.toScreen = 2
                         DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
                             self.user?.chores = chores
-                            self.performSegue(withIdentifier: "toChild", sender: self)
                         })
                     }
                     DatabaseHandler.stopObservingIfAddedToGroup()

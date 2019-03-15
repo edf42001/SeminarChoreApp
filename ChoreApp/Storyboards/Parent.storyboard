@@ -213,20 +213,11 @@
                         <outlet property="tableView" destination="sng-NV-KSJ" id="O64-IB-bfS"/>
                         <outlet property="tableViewConstraint" destination="nIi-cV-SUx" id="nhf-Gn-Lzt"/>
                         <outlet property="viewBot" destination="YbG-xp-fHl" id="jyn-5F-FRt"/>
-                        <segue destination="mHg-Xx-iLv" kind="show" identifier="toNoGroup" id="G3v-rC-unq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5a-rF-tzP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1147.8260869565217" y="-192.1875"/>
-        </scene>
-        <!--NoGroupViewController-->
-        <scene sceneID="nPm-3V-Md2">
-            <objects>
-                <viewControllerPlaceholder storyboardName="NoGroup" referencedIdentifier="NoGroupViewController" id="mHg-Xx-iLv" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zcY-cb-Pje" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1829" y="-192"/>
         </scene>
         <!--AddMemberPopup-->
         <scene sceneID="VxQ-kW-CzJ">

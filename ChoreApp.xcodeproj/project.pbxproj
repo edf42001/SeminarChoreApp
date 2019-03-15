@@ -12,6 +12,8 @@
 		8B28478621C00F59009737AC /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28478521C00F59009737AC /* Chore.swift */; };
 		8B296EF0222EBE40002EB0B8 /* AddMemberPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B296EEF222EBE40002EB0B8 /* AddMemberPopupViewController.swift */; };
 		8B296EF222301B74002EB0B8 /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B296EF122301B74002EB0B8 /* CreateNewGroupViewController.swift */; };
+		8B2F019C223A9792008AC7DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2F019B223A9792008AC7DC /* Main.storyboard */; };
+		8B2F01A2223A9AC7008AC7DC /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */; };
 		8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B326A9F21AD926D00665FFE /* AppDelegate.swift */; };
 		8B326AA721AD927700665FFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B326AA621AD927700665FFE /* Assets.xcassets */; };
 		8B4BBCCB222D794A0068B417 /* Popups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4BBCCA222D794A0068B417 /* Popups.storyboard */; };
@@ -21,9 +23,11 @@
 		8BB436B62203592600811C2B /* StartingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B52203592600811C2B /* StartingScreenViewController.swift */; };
 		8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B922049A8A00811C2B /* DatabaseHandler.swift */; };
 		8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
+		8BC7165F223BC9ED00910ED0 /* Chores.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BC7165E223BC9ED00910ED0 /* Chores.storyboard */; };
+		8BC71661223BCA0400910ED0 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BC71660223BCA0400910ED0 /* Options.storyboard */; };
 		8BDD009D2226BCE3005210BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */; };
 		8BDD009F2226BCE3005210BC /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD009C2226BCE3005210BC /* Accounts.storyboard */; };
-		8BDD00A12226BD13005210BC /* NoGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A02226BD13005210BC /* NoGroup.storyboard */; };
+		8BDD00A12226BD13005210BC /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A02226BD13005210BC /* Group.storyboard */; };
 		8BDD00A32226BE11005210BC /* Parent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A22226BE11005210BC /* Parent.storyboard */; };
 		8BDD00A52226BE28005210BC /* Child.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A42226BE28005210BC /* Child.storyboard */; };
 		9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */; };
@@ -41,6 +45,8 @@
 		8B28478521C00F59009737AC /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		8B296EEF222EBE40002EB0B8 /* AddMemberPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberPopupViewController.swift; sourceTree = "<group>"; };
 		8B296EF122301B74002EB0B8 /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
+		8B2F019B223A9792008AC7DC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		8B326A9C21AD926D00665FFE /* ChoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B326A9F21AD926D00665FFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B326AA621AD927700665FFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,9 +58,11 @@
 		8BB436B52203592600811C2B /* StartingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreenViewController.swift; sourceTree = "<group>"; };
 		8BB436B922049A8A00811C2B /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8BC7165E223BC9ED00910ED0 /* Chores.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chores.storyboard; sourceTree = "<group>"; };
+		8BC71660223BCA0400910ED0 /* Options.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BDD009C2226BCE3005210BC /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
-		8BDD00A02226BD13005210BC /* NoGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoGroup.storyboard; sourceTree = "<group>"; };
+		8BDD00A02226BD13005210BC /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		8BDD00A22226BE11005210BC /* Parent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Parent.storyboard; sourceTree = "<group>"; };
 		8BDD00A42226BE28005210BC /* Child.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Child.storyboard; sourceTree = "<group>"; };
 		9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateLoadingScreenViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +115,35 @@
 			path = PopupViewControllers;
 			sourceTree = "<group>";
 		};
+		8B2F019D223A99DA008AC7DC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */,
+				8BB436B52203592600811C2B /* StartingScreenViewController.swift */,
+				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
+				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
+				8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */,
+				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
+				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
+				8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */,
+				8B296EEE222EBE01002EB0B8 /* PopupViewControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8B2F019E223A99E6008AC7DC /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8B28478121C00F44009737AC /* User.swift */,
+				8B28478321C00F51009737AC /* Group.swift */,
+				8B28478521C00F59009737AC /* Chore.swift */,
+				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
+				F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */,
+				8BB436B922049A8A00811C2B /* DatabaseHandler.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		8B326A9321AD926D00665FFE = {
 			isa = PBXGroup;
 			children = (
@@ -129,24 +166,12 @@
 			isa = PBXGroup;
 			children = (
 				8BDD00992226BCE3005210BC /* Storyboards */,
-				8B296EEE222EBE01002EB0B8 /* PopupViewControllers */,
+				8B2F019D223A99DA008AC7DC /* Controllers */,
+				8B2F019E223A99E6008AC7DC /* Other */,
 				8B326A9F21AD926D00665FFE /* AppDelegate.swift */,
-				9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */,
-				8BB436B52203592600811C2B /* StartingScreenViewController.swift */,
-				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
-				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
 				8B326AA621AD927700665FFE /* Assets.xcassets */,
-				8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */,
-				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
-				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				8B326AAB21AD927700665FFE /* Info.plist */,
 				8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */,
-				8B28478121C00F44009737AC /* User.swift */,
-				8B28478321C00F51009737AC /* Group.swift */,
-				8B28478521C00F59009737AC /* Chore.swift */,
-				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
-				F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */,
-				8BB436B922049A8A00811C2B /* DatabaseHandler.swift */,
 			);
 			path = ChoreApp;
 			sourceTree = "<group>";
@@ -156,10 +181,13 @@
 			children = (
 				8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */,
 				8BDD009C2226BCE3005210BC /* Accounts.storyboard */,
-				8BDD00A02226BD13005210BC /* NoGroup.storyboard */,
+				8BDD00A02226BD13005210BC /* Group.storyboard */,
 				8BDD00A22226BE11005210BC /* Parent.storyboard */,
 				8BDD00A42226BE28005210BC /* Child.storyboard */,
 				8B4BBCCA222D794A0068B417 /* Popups.storyboard */,
+				8B2F019B223A9792008AC7DC /* Main.storyboard */,
+				8BC7165E223BC9ED00910ED0 /* Chores.storyboard */,
+				8BC71660223BCA0400910ED0 /* Options.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -225,12 +253,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BDD00A32226BE11005210BC /* Parent.storyboard in Resources */,
-				8BDD00A12226BD13005210BC /* NoGroup.storyboard in Resources */,
+				8BDD00A12226BD13005210BC /* Group.storyboard in Resources */,
 				8BDD009D2226BCE3005210BC /* LaunchScreen.storyboard in Resources */,
 				8BDD00A52226BE28005210BC /* Child.storyboard in Resources */,
 				8BDD009F2226BCE3005210BC /* Accounts.storyboard in Resources */,
 				8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */,
+				8B2F019C223A9792008AC7DC /* Main.storyboard in Resources */,
 				8B326AA721AD927700665FFE /* Assets.xcassets in Resources */,
+				8BC7165F223BC9ED00910ED0 /* Chores.storyboard in Resources */,
+				8BC71661223BCA0400910ED0 /* Options.storyboard in Resources */,
 				8B4BBCCB222D794A0068B417 /* Popups.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +334,7 @@
 				8B296EF0222EBE40002EB0B8 /* AddMemberPopupViewController.swift in Sources */,
 				97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */,
 				9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */,
+				8B2F01A2223A9AC7008AC7DC /* CustomTabBarController.swift in Sources */,
 				8B28478621C00F59009737AC /* Chore.swift in Sources */,
 				F39BC85821DE593100BD3DD3 /* staticValues.swift in Sources */,
 				97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */,
