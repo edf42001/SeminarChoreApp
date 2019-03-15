@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Chores-->
         <scene sceneID="wV0-fZ-hln">
             <objects>
                 <viewController storyboardIdentifier="ChoresViewController" id="VLN-SC-pHU" sceneMemberID="viewController">
@@ -20,6 +20,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="CaE-JA-kEk"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Chores" id="eL1-bf-KiK"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eki-ay-zxj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
