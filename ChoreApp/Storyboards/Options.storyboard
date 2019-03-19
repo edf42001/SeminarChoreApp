@@ -13,19 +13,111 @@
         <!--Options-->
         <scene sceneID="sy8-68-8cX">
             <objects>
-                <viewController storyboardIdentifier="OptionsViewController" id="fsY-BV-yXf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OptionsViewController" id="fsY-BV-yXf" customClass="OptionsViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MJl-Xw-foQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9G-dB-A01" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
+                                <rect key="frame" x="304" y="758" width="100" height="45"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="XRd-V7-pK2"/>
+                                    <constraint firstAttribute="width" constant="100" id="dr6-R6-CRH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="fsY-BV-yXf" eventType="touchUpInside" id="bxr-Yi-fCa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe6-Tv-mnE">
+                                <rect key="frame" x="0.0" y="64" width="414" height="43.5"/>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="31"/>
+                                <color key="textColor" red="0.91764705882352937" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="3ka-92-I0d">
+                                <rect key="frame" x="20" y="105" width="374" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="9fg-Pl-P9A"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRw-vv-SBF" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
+                                <rect key="frame" x="55" y="529" width="151" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                                <state key="normal" title="Create Group">
+                                    <color key="titleColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createGroupButtonPressed:" destination="fsY-BV-yXf" eventType="touchUpInside" id="tn0-0V-SVZ"/>
+                                    <action selector="logoutButtonPressed:" destination="fsY-BV-yXf" eventType="touchUpInside" id="nxB-65-I9k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="izm-eb-Jxy" firstAttribute="bottom" secondItem="G9G-dB-A01" secondAttribute="bottom" constant="10" id="5y4-hx-cO0"/>
+                            <constraint firstItem="izm-eb-Jxy" firstAttribute="trailing" secondItem="Pe6-Tv-mnE" secondAttribute="trailing" id="9al-qM-UQa"/>
+                            <constraint firstItem="3ka-92-I0d" firstAttribute="top" secondItem="Pe6-Tv-mnE" secondAttribute="bottom" constant="-2.5" id="HgF-zl-dYj"/>
+                            <constraint firstItem="3ka-92-I0d" firstAttribute="centerX" secondItem="MJl-Xw-foQ" secondAttribute="centerX" id="OD3-gn-Goh"/>
+                            <constraint firstItem="Pe6-Tv-mnE" firstAttribute="top" secondItem="izm-eb-Jxy" secondAttribute="top" constant="20" id="QRj-aG-fGx"/>
+                            <constraint firstItem="izm-eb-Jxy" firstAttribute="trailing" secondItem="3ka-92-I0d" secondAttribute="trailing" constant="20" id="Rux-7i-0cO"/>
+                            <constraint firstItem="izm-eb-Jxy" firstAttribute="trailing" secondItem="G9G-dB-A01" secondAttribute="trailing" constant="10" id="SjJ-lG-JXz"/>
+                            <constraint firstItem="Pe6-Tv-mnE" firstAttribute="leading" secondItem="izm-eb-Jxy" secondAttribute="leading" id="VlL-F2-xud"/>
+                            <constraint firstItem="3ka-92-I0d" firstAttribute="leading" secondItem="izm-eb-Jxy" secondAttribute="leading" constant="20" id="kiK-td-sLf"/>
+                            <constraint firstItem="Pe6-Tv-mnE" firstAttribute="centerX" secondItem="MJl-Xw-foQ" secondAttribute="centerX" id="sT0-cf-NLb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="izm-eb-Jxy"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Options" id="eDF-h2-Dgd"/>
+                    <tabBarItem key="tabBarItem" title="Options" image="Options" id="eDF-h2-Dgd"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="usernameLabel" destination="Pe6-Tv-mnE" id="3aG-K8-EXu"/>
+                        <segue destination="eQA-MW-xng" kind="show" identifier="toStartingScreen" id="ip7-gL-Izw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yn-sU-Xcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="15"/>
+            <point key="canvasLocation" x="137.68115942028987" y="14.732142857142856"/>
+        </scene>
+        <!--StartingScreenViewController-->
+        <scene sceneID="rsR-Ru-iKB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="StartingScreenViewController" id="eQA-MW-xng" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WNc-yU-v4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="792" y="15"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Options" width="40" height="39"/>
+        <image name="line" width="644" height="22"/>
+    </resources>
 </document>

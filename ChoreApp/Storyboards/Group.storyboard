@@ -75,7 +75,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aFK-j6-lMO"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Group" id="65X-3d-S4D"/>
+                    <tabBarItem key="tabBarItem" title="Group" image="Group" id="65X-3d-S4D"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -97,5 +97,6 @@
     </scenes>
     <resources>
         <image name="Cog" width="50" height="50"/>
+        <image name="Group" width="25" height="25"/>
     </resources>
 </document>

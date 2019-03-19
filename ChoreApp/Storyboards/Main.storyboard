@@ -20,8 +20,8 @@
                         <color key="barTintColor" red="0.2156862745" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ZU4-Qk-mop" kind="relationship" relationship="viewControllers" id="sim-Fe-sbY"/>
                         <segue destination="IOa-cL-EkS" kind="relationship" relationship="viewControllers" id="bYe-pQ-tVQ"/>
+                        <segue destination="ZU4-Qk-mop" kind="relationship" relationship="viewControllers" id="sim-Fe-sbY"/>
                         <segue destination="0Wk-OC-ONK" kind="relationship" relationship="viewControllers" id="MCH-Ch-ZfK"/>
                     </connections>
                 </tabBarController>
@@ -33,7 +33,7 @@
         <scene sceneID="jCu-rP-fnU">
             <objects>
                 <viewControllerPlaceholder storyboardName="Chores" referencedIdentifier="ChoresViewController" id="IOa-cL-EkS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="egb-i1-cpu"/>
+                    <tabBarItem key="tabBarItem" selectedImage="Group" systemItem="favorites" id="egb-i1-cpu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhF-Zd-hGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,7 +43,7 @@
         <scene sceneID="lBV-nM-Wet">
             <objects>
                 <viewControllerPlaceholder storyboardName="Group" referencedIdentifier="NoGroupViewController" id="ZU4-Qk-mop" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="jJ9-ia-Bvh"/>
+                    <tabBarItem key="tabBarItem" title="Group" image="Group" id="jJ9-ia-Bvh"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ne-Zl-8oF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,11 +53,15 @@
         <scene sceneID="QxU-3z-koJ">
             <objects>
                 <viewControllerPlaceholder storyboardName="Options" referencedIdentifier="OptionsViewController" id="0Wk-OC-ONK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="downloads" id="54z-wD-BBu"/>
+                    <tabBarItem key="tabBarItem" title="Options" image="Options" id="54z-wD-BBu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swg-nu-xFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-262" y="-98"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Group" width="25" height="25"/>
+        <image name="Options" width="40" height="39"/>
+    </resources>
 </document>
