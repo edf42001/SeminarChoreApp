@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UZp-S6-8Vb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SdV-vl-tLW">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,34 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88j-N7-yX6">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1n7-7r-wLD" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="604.5" width="200" height="60"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="9XE-ep-bup"/>
-                                            <constraint firstAttribute="width" constant="200" id="J7O-gi-Cu8"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                        <state key="normal" title="Create Group">
-                                            <color key="titleColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="510-v6-exF" kind="presentation" identifier="toCreateGroupPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="HeZ-YQ-gjM"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9si-LE-BLB">
                                         <rect key="frame" x="20" y="80" width="374" height="70"/>
                                         <constraints>
@@ -62,13 +36,40 @@
                                     <constraint firstItem="9si-LE-BLB" firstAttribute="top" secondItem="88j-N7-yX6" secondAttribute="top" constant="80" id="0mx-Kf-q5u"/>
                                     <constraint firstAttribute="trailing" secondItem="9si-LE-BLB" secondAttribute="trailing" constant="20" id="1AK-Jt-bD1"/>
                                     <constraint firstItem="9si-LE-BLB" firstAttribute="centerX" secondItem="88j-N7-yX6" secondAttribute="centerX" id="GPv-sb-38Z"/>
-                                    <constraint firstItem="1n7-7r-wLD" firstAttribute="centerX" secondItem="88j-N7-yX6" secondAttribute="centerX" id="fVG-mN-rwj"/>
-                                    <constraint firstItem="1n7-7r-wLD" firstAttribute="centerY" secondItem="88j-N7-yX6" secondAttribute="centerY" multiplier="1.65" id="hZu-GY-FQf"/>
                                     <constraint firstItem="9si-LE-BLB" firstAttribute="leading" secondItem="88j-N7-yX6" secondAttribute="leading" constant="20" id="wjO-wd-j2z"/>
                                 </constraints>
                             </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="88j-N7-yX6" firstAttribute="leading" secondItem="aFK-j6-lMO" secondAttribute="leading" id="2Yx-Az-jsd"/>
+                            <constraint firstItem="aFK-j6-lMO" firstAttribute="trailing" secondItem="88j-N7-yX6" secondAttribute="trailing" id="Cff-XV-APg"/>
+                            <constraint firstItem="88j-N7-yX6" firstAttribute="top" secondItem="aFK-j6-lMO" secondAttribute="top" id="NxW-9i-mgh"/>
+                            <constraint firstItem="aFK-j6-lMO" firstAttribute="bottom" secondItem="88j-N7-yX6" secondAttribute="bottom" id="dnO-ee-3TI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aFK-j6-lMO"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Gwz-At-csV"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="noGroup" destination="88j-N7-yX6" id="ahx-Xy-egC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWU-hW-YUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1774" y="-327"/>
+        </scene>
+        <!--Yes Group View Controller-->
+        <scene sceneID="vlR-YK-zwT">
+            <objects>
+                <viewController id="DOr-Bz-IJX" customClass="YesGroupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wb8-IU-Ucg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UIG-PT-tuC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wuf-Jb-ugD">
                                         <rect key="frame" x="50" y="89.5" width="314" height="650"/>
@@ -95,31 +96,23 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UIG-PT-tuC" firstAttribute="top" secondItem="aFK-j6-lMO" secondAttribute="top" id="20U-xS-SRh"/>
-                            <constraint firstItem="88j-N7-yX6" firstAttribute="leading" secondItem="aFK-j6-lMO" secondAttribute="leading" id="2Yx-Az-jsd"/>
-                            <constraint firstItem="aFK-j6-lMO" firstAttribute="trailing" secondItem="88j-N7-yX6" secondAttribute="trailing" id="Cff-XV-APg"/>
-                            <constraint firstItem="UIG-PT-tuC" firstAttribute="leading" secondItem="aFK-j6-lMO" secondAttribute="leading" id="LPZ-5f-mKb"/>
-                            <constraint firstItem="88j-N7-yX6" firstAttribute="top" secondItem="aFK-j6-lMO" secondAttribute="top" id="NxW-9i-mgh"/>
-                            <constraint firstItem="aFK-j6-lMO" firstAttribute="bottom" secondItem="UIG-PT-tuC" secondAttribute="bottom" id="TV5-fC-GKm"/>
-                            <constraint firstItem="aFK-j6-lMO" firstAttribute="bottom" secondItem="88j-N7-yX6" secondAttribute="bottom" id="dnO-ee-3TI"/>
-                            <constraint firstItem="aFK-j6-lMO" firstAttribute="trailing" secondItem="UIG-PT-tuC" secondAttribute="trailing" id="eg1-ZI-TxW"/>
+                            <constraint firstAttribute="bottom" secondItem="UIG-PT-tuC" secondAttribute="bottom" id="0JA-8d-l3p"/>
+                            <constraint firstItem="UIG-PT-tuC" firstAttribute="leading" secondItem="wb8-IU-Ucg" secondAttribute="leading" id="Qp3-5k-qcg"/>
+                            <constraint firstItem="UIG-PT-tuC" firstAttribute="top" secondItem="O1j-Nj-QRf" secondAttribute="top" id="WcH-GJ-clj"/>
+                            <constraint firstAttribute="trailing" secondItem="UIG-PT-tuC" secondAttribute="trailing" id="gP8-Y2-tXy"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="aFK-j6-lMO"/>
+                        <viewLayoutGuide key="safeArea" id="O1j-Nj-QRf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Group" id="65X-3d-S4D"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="createGroupButton" destination="1n7-7r-wLD" id="Arr-Il-cAB"/>
-                        <outlet property="noGroup" destination="88j-N7-yX6" id="ahx-Xy-egC"/>
-                        <outlet property="yesGroup" destination="UIG-PT-tuC" id="eh9-ds-fkb"/>
+                        <outlet property="table" destination="wuf-Jb-ugD" id="7el-T2-ew8"/>
+                        <outlet property="yesGroup" destination="UIG-PT-tuC" id="3u4-9Q-hu4"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kWU-hW-YUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UNZ-0w-iu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="907.24637681159425" y="178.79464285714286"/>
+            <point key="canvasLocation" x="1774" y="355"/>
         </scene>
         <!--CreateNewGroupPopup-->
         <scene sceneID="8qU-CW-oep">
@@ -128,6 +121,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxq-oq-Jt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="908" y="615"/>
+        </scene>
+        <!--Group-->
+        <scene sceneID="Us0-tg-4JM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SdV-vl-tLW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Group" id="65X-3d-S4D"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="B8e-7z-qES">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="UZp-S6-8Vb" kind="relationship" relationship="rootViewController" id="2ta-pY-0KW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CSc-vI-H8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="907.24637681159425" y="178.79464285714286"/>
         </scene>
     </scenes>
 </document>

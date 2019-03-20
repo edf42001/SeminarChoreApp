@@ -31,6 +31,8 @@
 		8BDD00A32226BE11005210BC /* Parent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A22226BE11005210BC /* Parent.storyboard */; };
 		8BDD00A52226BE28005210BC /* Child.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A42226BE28005210BC /* Child.storyboard */; };
 		9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */; };
+		9746B66322426E3E002F9F16 /* YesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9746B66222426E3E002F9F16 /* YesGroupViewController.swift */; };
+		9746B66522427674002F9F16 /* GroupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9746B66422427674002F9F16 /* GroupNavigationController.swift */; };
 		97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */; };
 		97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */; };
 		97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A33121DE5CC700B58278 /* LogInViewController.swift */; };
@@ -66,6 +68,8 @@
 		8BDD00A22226BE11005210BC /* Parent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Parent.storyboard; sourceTree = "<group>"; };
 		8BDD00A42226BE28005210BC /* Child.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Child.storyboard; sourceTree = "<group>"; };
 		9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateLoadingScreenViewController.swift; sourceTree = "<group>"; };
+		9746B66222426E3E002F9F16 /* YesGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YesGroupViewController.swift; path = /Users/s021791/Documents/SeminarChoreApp/ChoreApp/Controllers/YesGroupViewController.swift; sourceTree = "<absolute>"; };
+		9746B66422427674002F9F16 /* GroupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationController.swift; sourceTree = "<group>"; };
 		97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		97F6A33121DE5CC700B58278 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
 				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
 				8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */,
+				9746B66222426E3E002F9F16 /* YesGroupViewController.swift */,
 				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
 				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */,
@@ -140,6 +145,7 @@
 				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
 				F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */,
 				8BB436B922049A8A00811C2B /* DatabaseHandler.swift */,
+				9746B66422427674002F9F16 /* GroupNavigationController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B6AB6BC22314E990055907B /* AddChorePopupViewController.swift in Sources */,
+				9746B66322426E3E002F9F16 /* YesGroupViewController.swift in Sources */,
 				8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */,
 				8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */,
 				8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */,
@@ -344,6 +351,7 @@
 				97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */,
 				8B28478421C00F51009737AC /* Group.swift in Sources */,
 				F390B1B822049828006A5F97 /* ChoreTableViewCell.swift in Sources */,
+				9746B66522427674002F9F16 /* GroupNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
