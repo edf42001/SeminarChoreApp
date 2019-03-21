@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88j-N7-yX6">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9si-LE-BLB">
                                         <rect key="frame" x="20" y="80" width="374" height="70"/>
@@ -31,7 +31,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21568627450980393" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="9si-LE-BLB" firstAttribute="top" secondItem="88j-N7-yX6" secondAttribute="top" constant="80" id="0mx-Kf-q5u"/>
                                     <constraint firstAttribute="trailing" secondItem="9si-LE-BLB" secondAttribute="trailing" constant="20" id="1AK-Jt-bD1"/>
@@ -69,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UIG-PT-tuC">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wuf-Jb-ugD">
                                         <rect key="frame" x="50" y="89.5" width="314" height="650"/>
@@ -85,7 +85,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.21568627450980393" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="wuf-Jb-ugD" firstAttribute="centerX" secondItem="UIG-PT-tuC" secondAttribute="centerX" id="4yk-U0-vys"/>
                                     <constraint firstItem="wuf-Jb-ugD" firstAttribute="leading" secondItem="UIG-PT-tuC" secondAttribute="leading" constant="50" id="DxN-Vw-bpk"/>
@@ -105,6 +105,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O1j-Nj-QRf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="8jk-Nb-IW8"/>
                     <connections>
                         <outlet property="table" destination="wuf-Jb-ugD" id="7el-T2-ew8"/>
                         <outlet property="yesGroup" destination="UIG-PT-tuC" id="3u4-9Q-hu4"/>
@@ -125,16 +126,16 @@
         <!--Group-->
         <scene sceneID="Us0-tg-4JM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SdV-vl-tLW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GroupViewController" automaticallyAdjustsScrollViewInsets="NO" id="SdV-vl-tLW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Group" id="65X-3d-S4D"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="B8e-7z-qES">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="B8e-7z-qES">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="UZp-S6-8Vb" kind="relationship" relationship="rootViewController" id="2ta-pY-0KW"/>
+                        <segue destination="DOr-Bz-IJX" kind="relationship" relationship="rootViewController" id="nqn-PC-a5l"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSc-vI-H8N" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -33,7 +33,7 @@ class NoGroupViewController: UIViewController {
         toScreen = -1
         super.viewDidLoad()
         self.view.backgroundColor = Styles.backgroundColor
-        noGroup.backgroundColor = Styles.backgroundColor
+        noGroup.backgroundColor = UIColor.black
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
             if let groupID = groupID as? String, self.toScreen == -1{
                 DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in

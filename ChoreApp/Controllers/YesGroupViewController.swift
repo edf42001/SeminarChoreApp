@@ -27,7 +27,7 @@ class YesGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         table.delegate = self
         table.dataSource = self
-        yesGroup.backgroundColor = Styles.backgroundColor
+        yesGroup.backgroundColor = UIColor.black
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
