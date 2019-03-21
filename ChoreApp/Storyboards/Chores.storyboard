@@ -4,13 +4,12 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Chores-->
+        <!--View Controller-->
         <scene sceneID="wV0-fZ-hln">
             <objects>
                 <viewController storyboardIdentifier="ChoresViewController" id="VLN-SC-pHU" sceneMemberID="viewController">
@@ -20,7 +19,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="CaE-JA-kEk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chores" id="eL1-bf-KiK"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="eL1-bf-KiK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eki-ay-zxj" userLabel="First Responder" sceneMemberID="firstResponder"/>
