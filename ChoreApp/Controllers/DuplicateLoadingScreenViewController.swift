@@ -21,15 +21,6 @@ class DuplicateLoadingScreenViewController: UIViewController {
         self.view.backgroundColor = Styles.backgroundColor
         
         ref = Database.database().reference()
-//        //Testing code
-//        if Auth.auth().currentUser != nil {
-//            Auth.auth().createUser(withEmail: "me@me.com", password: "password")
-//        }
-//        do{
-//            try Auth.auth().signOut()
-//        }catch{let _:NSError
-//
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -79,9 +70,13 @@ class DuplicateLoadingScreenViewController: UIViewController {
     
     //Sending the gathered user data to the desired destination
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! CustomTabBarController
-        destination.user = user
-        destination.group = group
+        if toScreen != 3 {
+            let destination = segue.destination as! CustomTabBarController
+            destination.user = user
+            destination.group = group
+        }
+      
+
         switch toScreen {
         case 0:
             guard let destination = segue.destination as? NoGroupViewController else {return}

@@ -14,7 +14,7 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate {
     
     var user: User?
     var group: Group?
-    var onClose: ((_ created:Bool)->())?
+    var onClose: ((_ name:String?)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,22 +25,14 @@ class CreateNewGroupViewController: UIViewController, UITextFieldDelegate {
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         groupNameTextField.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
-        onClose?(false)
+        onClose!(nil)
     }
     
     @IBAction func createButtonPressed(_ sender: UIButton) {
         if let name = groupNameTextField.text {
-            DatabaseHandler.stopObservingIfAddedToGroup()
-            DatabaseHandler.createGroup(uid: user!.uid, name: name) {key in
-                guard let user = self.user else {return}
-                user.groupID = key
-                user.isParent = true
-                let parent:[UserInfo] = [UserInfo(uid: user.uid, username:user.username, isParent:true)]
-                self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
-                self.dismiss(animated: true, completion: {
-                    self.onClose?(true)
-                })
-            }
+            onClose!(name)
+            groupNameTextField.resignFirstResponder()
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
