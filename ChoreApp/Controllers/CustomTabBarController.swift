@@ -16,10 +16,12 @@ class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
 
         if group == nil {
-            self.selectedIndex = 3
+            self.selectedIndex = 1
         }else{
             self.selectedIndex = 0
         }
+        
+        self.selectedIndex = 2 //for testing only
     }
     
 

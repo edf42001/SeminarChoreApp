@@ -68,19 +68,7 @@ class NoGroupViewController: UIViewController {
             destination.user = self.user
             destination.group = self.group
         default:
-            if segue.identifier == "toCreateGroupPopup"{
-                guard let destination = segue.destination as? CreateNewGroupViewController else {return}
-                destination.user = self.user
-                destination.group = self.group
-                destination.onClose = {created in
-                    if created {
-                        self.toScreen = 1
-                        self.performSegue(withIdentifier: "toParent", sender: self)
-                    }
-                }
-            }else{
-                print("Failed segue error")
-            }
+            break
         }
     }
     
