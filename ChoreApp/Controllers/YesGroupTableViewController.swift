@@ -8,10 +8,7 @@
 import UIKit
 import Firebase
 
-class YesGroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    @IBOutlet weak var yesGroup: UIView!
-    @IBOutlet weak var table: UITableView!
+class YesGroupTableViewController: UITableViewController {
     var user:User?
     var group:Group?
     
@@ -25,9 +22,6 @@ class YesGroupViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        table.delegate = self
-        table.dataSource = self
-        yesGroup.backgroundColor = UIColor.black
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
@@ -49,14 +43,14 @@ class YesGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         data[.child] = groupData.filter({ $0["role"] == "child" })
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = TableSection(rawValue: section), let groupData = data[tableSection] {
             return groupData.count
         }
         return 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         // Similar to above, first check if there is a valid section of table.
         // Then we check that for the section there is a row.
@@ -71,15 +65,15 @@ class YesGroupViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return TableSection.total.rawValue
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return SectionHeaderHeight
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
         view.backgroundColor = UIColor(red: 253.0/255.0, green: 240.0/255.0, blue: 196.0/255.0, alpha: 1)
         let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))

@@ -16,6 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="IOa-cL-EkS" kind="relationship" relationship="viewControllers" id="bYe-pQ-tVQ"/>
@@ -37,10 +38,10 @@
             </objects>
             <point key="canvasLocation" x="-159" y="-206"/>
         </scene>
-        <!--NoGroupViewController-->
+        <!--YesGroupViewController-->
         <scene sceneID="lBV-nM-Wet">
             <objects>
-                <viewControllerPlaceholder storyboardName="Group" referencedIdentifier="NoGroupViewController" id="ZU4-Qk-mop" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Group" referencedIdentifier="YesGroupViewController" id="ZU4-Qk-mop" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Group" image="Group" id="jJ9-ia-Bvh"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ne-Zl-8oF" userLabel="First Responder" sceneMemberID="firstResponder"/>

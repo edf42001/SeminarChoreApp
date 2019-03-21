@@ -51,7 +51,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                                 self.toScreen = 1
                                 DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
                                     self.group?.chores = chores
-                                    self.performSegue(withIdentifier: "toParent", sender: self)
+                                    self.performSegue(withIdentifier: "toTabBar", sender: self)
                                 })
                                 
                             }else {
@@ -60,13 +60,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                                 self.toScreen = 2
                                 DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
                                     self.user?.chores = chores
-                                    self.performSegue(withIdentifier: "toChild", sender: self)
+                                    self.performSegue(withIdentifier: "toTabBar", sender: self)
                                 })
                             }
                         })
                     }else{
                         self.toScreen = 0
-                        self.performSegue(withIdentifier: "toNoGroup", sender: self)
+                        self.performSegue(withIdentifier: "toTabBar", sender: self)
                     }
                 })
             }else {

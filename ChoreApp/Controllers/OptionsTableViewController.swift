@@ -76,7 +76,6 @@ class OptionsTableViewController: UITableViewController {
         createGroupButton.isEnabled = (group == nil)
         leaveGroupButton.isEnabled = (group != nil)
         if group == nil {
-            print("Hello")
             groupNameLabel.text = "N/A"
         }else{
             groupNameLabel.text = group!.name
@@ -163,6 +162,8 @@ class OptionsTableViewController: UITableViewController {
                         self.user!.isParent = true
                         let parent:[UserInfo] = [UserInfo(uid: self.user!.uid, username:self.user!.username, isParent:true)]
                         self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
+                        let tabBar = self.tabBarController as! CustomTabBarController
+                        tabBar.group = self.group
                     }
                     self.setupGroupButtonsAndLabel()
                 }

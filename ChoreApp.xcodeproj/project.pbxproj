@@ -20,6 +20,7 @@
 		8B6AB6BC22314E990055907B /* AddChorePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB6BB22314E990055907B /* AddChorePopupViewController.swift */; };
 		8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */; };
 		8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68721C83F56005A66E5 /* ParentViewController.swift */; };
+		8B97E18B2243DAFE003590C7 /* YesGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97E18A2243DAFE003590C7 /* YesGroupTableViewController.swift */; };
 		8BB436B62203592600811C2B /* StartingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B52203592600811C2B /* StartingScreenViewController.swift */; };
 		8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B922049A8A00811C2B /* DatabaseHandler.swift */; };
 		8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
@@ -32,8 +33,6 @@
 		8BDD00A52226BE28005210BC /* Child.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A42226BE28005210BC /* Child.storyboard */; };
 		8BF2A8CF2242593D0035AE70 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF2A8CE2242593D0035AE70 /* OptionsTableViewController.swift */; };
 		9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */; };
-		9746B66322426E3E002F9F16 /* YesGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9746B66222426E3E002F9F16 /* YesGroupViewController.swift */; };
-		9746B66522427674002F9F16 /* GroupNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9746B66422427674002F9F16 /* GroupNavigationController.swift */; };
 		97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */; };
 		97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */; };
 		97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A33121DE5CC700B58278 /* LogInViewController.swift */; };
@@ -58,6 +57,7 @@
 		8B6AB6BB22314E990055907B /* AddChorePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChorePopupViewController.swift; sourceTree = "<group>"; };
 		8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGroupViewController.swift; sourceTree = "<group>"; };
 		8B73F68721C83F56005A66E5 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
+		8B97E18A2243DAFE003590C7 /* YesGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesGroupTableViewController.swift; sourceTree = "<group>"; };
 		8BB436B52203592600811C2B /* StartingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreenViewController.swift; sourceTree = "<group>"; };
 		8BB436B922049A8A00811C2B /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -71,8 +71,6 @@
 		8BF2A8CE2242593D0035AE70 /* OptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
 		8BF2A8D022426AB80035AE70 /* ChoreApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChoreApp.entitlements; sourceTree = "<group>"; };
 		9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateLoadingScreenViewController.swift; sourceTree = "<group>"; };
-		9746B66222426E3E002F9F16 /* YesGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = YesGroupViewController.swift; path = /Users/s021791/Documents/SeminarChoreApp/ChoreApp/Controllers/YesGroupViewController.swift; sourceTree = "<absolute>"; };
-		9746B66422427674002F9F16 /* GroupNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupNavigationController.swift; sourceTree = "<group>"; };
 		97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
 		97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		97F6A33121DE5CC700B58278 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -130,7 +128,7 @@
 				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
 				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
 				8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */,
-				9746B66222426E3E002F9F16 /* YesGroupViewController.swift */,
+				8B97E18A2243DAFE003590C7 /* YesGroupTableViewController.swift */,
 				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
 				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */,
@@ -149,7 +147,6 @@
 				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
 				F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */,
 				8BB436B922049A8A00811C2B /* DatabaseHandler.swift */,
-				9746B66422427674002F9F16 /* GroupNavigationController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -344,7 +341,6 @@
 			files = (
 				8BF2A8CF2242593D0035AE70 /* OptionsTableViewController.swift in Sources */,
 				8B6AB6BC22314E990055907B /* AddChorePopupViewController.swift in Sources */,
-				9746B66322426E3E002F9F16 /* YesGroupViewController.swift in Sources */,
 				8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */,
 				8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */,
 				8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */,
@@ -354,6 +350,7 @@
 				9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */,
 				8B2F01A2223A9AC7008AC7DC /* CustomTabBarController.swift in Sources */,
 				8B28478621C00F59009737AC /* Chore.swift in Sources */,
+				8B97E18B2243DAFE003590C7 /* YesGroupTableViewController.swift in Sources */,
 				F39BC85821DE593100BD3DD3 /* staticValues.swift in Sources */,
 				97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */,
 				8B28478221C00F44009737AC /* User.swift in Sources */,
@@ -362,7 +359,6 @@
 				97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */,
 				8B28478421C00F51009737AC /* Group.swift in Sources */,
 				F390B1B822049828006A5F97 /* ChoreTableViewCell.swift in Sources */,
-				9746B66522427674002F9F16 /* GroupNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

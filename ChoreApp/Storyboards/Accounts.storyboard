@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -111,7 +110,7 @@
                         <outlet property="email" destination="Wn1-MP-CRd" id="jDH-L0-e0V"/>
                         <outlet property="password" destination="5bZ-2s-Q7m" id="ay4-IF-AWi"/>
                         <outlet property="signUpButton" destination="G2k-k7-ZQQ" id="C8h-mF-nKs"/>
-                        <segue destination="KQp-jF-4pg" kind="show" identifier="signUpToNoGroup" id="Dhi-lX-CDw"/>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="toTabBar" id="Dhi-lX-CDw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -200,9 +199,7 @@
                         <outlet property="email" destination="Xje-ZJ-ad9" id="FPv-ny-kzA"/>
                         <outlet property="logInButton" destination="pQM-Iy-2KJ" id="vVg-yX-Brk"/>
                         <outlet property="password" destination="SNy-CX-E8Y" id="Xpv-Us-Z0v"/>
-                        <segue destination="KQp-jF-4pg" kind="show" identifier="toNoGroup" id="pvd-eN-gh0"/>
-                        <segue destination="NCQ-VD-e2a" kind="show" identifier="toParent" id="ni2-Xy-bhi"/>
-                        <segue destination="Ppt-lk-er5" kind="show" identifier="toChild" id="ewg-Go-ANo"/>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="toTabBar" id="pvd-eN-gh0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBW-8e-LOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -234,9 +231,7 @@
                     </view>
                     <connections>
                         <segue destination="iEW-kE-hWu" kind="show" identifier="toStartingScreen" animates="NO" id="17p-St-eLZ"/>
-                        <segue destination="KQp-jF-4pg" kind="show" identifier="toNoGroup" id="1su-UQ-hbd"/>
-                        <segue destination="NCQ-VD-e2a" kind="show" identifier="toParent" id="Vy3-rd-0gg"/>
-                        <segue destination="Ppt-lk-er5" kind="show" identifier="toChild" id="7WW-be-zvn"/>
+                        <segue destination="KQp-jF-4pg" kind="show" identifier="toTabBar" id="1su-UQ-hbd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ez4-w0-na3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -337,36 +332,18 @@
             <point key="canvasLocation" x="545" y="-113"/>
         </scene>
         <!--TabBarViewController-->
-        <scene sceneID="vle-xa-SVU">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ParentViewController" storyboardName="Main" referencedIdentifier="TabBarViewController" id="NCQ-VD-e2a" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Anu-Z9-x0a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2848" y="19"/>
-        </scene>
-        <!--TabBarViewController-->
         <scene sceneID="a2K-fg-anA">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="NoGroupViewController" storyboardName="Main" referencedIdentifier="TabBarViewController" id="KQp-jF-4pg" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkz-Z1-lDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2812" y="-113"/>
-        </scene>
-        <!--TabBarViewController-->
-        <scene sceneID="odR-Tp-6iy">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ChildViewController" storyboardName="Main" referencedIdentifier="TabBarViewController" id="Ppt-lk-er5" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7YQ-63-aJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2828" y="99"/>
+            <point key="canvasLocation" x="2809" y="-49"/>
         </scene>
     </scenes>
     <resources>
         <image name="Icon" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7WW-be-zvn"/>
         <segue reference="Dhi-lX-CDw"/>
-        <segue reference="Vy3-rd-0gg"/>
     </inferredMetricsTieBreakers>
 </document>

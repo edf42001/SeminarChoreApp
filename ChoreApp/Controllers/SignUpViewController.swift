@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 })
                 self.user = User(uid: current.uid, username: dText, email: eText, isParent: false)
                 DatabaseHandler.addUser(username: dText, uid: current.uid, email: eText)
-                self.performSegue(withIdentifier: "signUpToNoGroup", sender: self)
+                self.performSegue(withIdentifier: "toTabBar", sender: self)
             }
             else {
                 print("Create user error: \(error?.localizedDescription)")

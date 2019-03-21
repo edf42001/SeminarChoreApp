@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/s021791/Documents/SeminarChoreApp/ChoreApp/Controllers/YesGroupViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:ChoreApp.xcodeproj">
    </FileRef>
    <FileRef

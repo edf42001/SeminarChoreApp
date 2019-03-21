@@ -43,7 +43,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
                             self.toScreen = 1
                             DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
                                 self.group?.chores = chores
-                                self.performSegue(withIdentifier: "toParent", sender: self)
+                                self.performSegue(withIdentifier: "toTabBar", sender: self)
                             })
                         }else {
                             print("User is child")
@@ -51,13 +51,13 @@ class DuplicateLoadingScreenViewController: UIViewController {
                             self.toScreen = 2
                             DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
                                 self.user?.chores = chores
-                                self.performSegue(withIdentifier: "toChild", sender: self)
+                                self.performSegue(withIdentifier: "toTabBar", sender: self)
                             })
                         }
                     })
                 }else{
                     self.toScreen = 0
-                    self.performSegue(withIdentifier: "toNoGroup", sender: self)
+                    self.performSegue(withIdentifier: "toTabBar", sender: self)
                 }
             })
         }
@@ -75,27 +75,5 @@ class DuplicateLoadingScreenViewController: UIViewController {
             destination.user = user
             destination.group = group
         }
-      
-
-        switch toScreen {
-        case 0:
-            guard let destination = segue.destination as? NoGroupViewController else {return}
-            destination.user = self.user
-            destination.group = self.group
-        case 1:
-            guard let destination = segue.destination as? ParentViewController else {return}
-            destination.user = self.user
-            destination.group = self.group
-
-        case 2:
-            guard let destination = segue.destination as? ChildViewController else {return}
-            destination.user = self.user
-            destination.group = self.group
-        case 3:
-            break
-        default:
-            print("error")
-        }
     }
-
 }
