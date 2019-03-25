@@ -5,10 +5,11 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Yes Group Table View Controller-->
+        <!--Members-->
         <scene sceneID="I2s-h2-ccs">
             <objects>
                 <tableViewController id="FM1-hy-qdB" customClass="YesGroupTableViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,13 +32,116 @@
                             <outlet property="delegate" destination="FM1-hy-qdB" id="fIz-Lo-BHj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="P2E-DE-t9p">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yGP-YG-3qO"/>
+                    <navigationItem key="navigationItem" title="Members" id="P2E-DE-t9p">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Fva-Va-Y7J"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yGP-YG-3qO">
+                            <connections>
+                                <segue destination="eec-oe-0I7" kind="show" id="4Xa-9e-72H"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWW-8R-roe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1745" y="179"/>
+        </scene>
+        <!--Add Member-->
+        <scene sceneID="U7f-6N-25g">
+            <objects>
+                <viewController id="eec-oe-0I7" customClass="AddMemberViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Aux-av-8WL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iJc-u6-4e9">
+                                <rect key="frame" x="20" y="134" width="374" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Parent"/>
+                                    <segment title="Child"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="controlClicked:forEvent:" destination="eec-oe-0I7" eventType="valueChanged" id="ySI-Vb-kLO"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new member as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioW-ZS-Bh0">
+                                <rect key="frame" x="20" y="105" width="162" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-3R-n0c" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
+                                <rect key="frame" x="149.5" y="413" width="115" height="40"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="WnY-Dp-BJZ"/>
+                                    <constraint firstAttribute="width" constant="115" id="sFS-dk-LGo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Add Parent">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="eec-oe-0I7" eventType="touchUpInside" id="nMf-j2-cfq"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVP-cA-ykM">
+                                <rect key="frame" x="20" y="236" width="126" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EhG-9L-Pgf">
+                                <rect key="frame" x="20" y="265" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eec-oe-0I7" id="aUx-jg-imF"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSF-b6-fhU">
+                                <rect key="frame" x="20" y="303" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Wvw-3R-n0c" firstAttribute="centerX" secondItem="Aux-av-8WL" secondAttribute="centerX" id="AvJ-54-3er"/>
+                            <constraint firstItem="x1D-c4-97v" firstAttribute="bottom" secondItem="Wvw-3R-n0c" secondAttribute="bottom" constant="360" id="MLi-EU-QFf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="x1D-c4-97v"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Member" id="YCK-gH-XBO"/>
+                    <connections>
+                        <outlet property="addMemberButton" destination="Wvw-3R-n0c" id="1EN-yy-weL"/>
+                        <outlet property="errorMessageLabel" destination="pSF-b6-fhU" id="jGA-fI-ad0"/>
+                        <outlet property="parentChildSwitch" destination="iJc-u6-4e9" id="7mN-f0-EJI"/>
+                        <outlet property="usernameTextField" destination="EhG-9L-Pgf" id="9Oj-8z-TF1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pN0-E3-Wzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2586.9565217391305" y="178.79464285714286"/>
         </scene>
         <!--Group-->
         <scene sceneID="Us0-tg-4JM">

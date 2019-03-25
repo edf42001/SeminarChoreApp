@@ -21,6 +21,10 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         }else{
             self.selectedIndex = 0
         }
+        
+//        self.selectedIndex = 1 //for testing purposes
+//        self.user = User(uid: "jkashd", username: "edf42001", email: "how@are.you", isParent: true)
+//        self.group = Group(id: "sad", name: "My Group", parents: [], children: [], chores: [])
     }
     
     // MARK: - Navigation

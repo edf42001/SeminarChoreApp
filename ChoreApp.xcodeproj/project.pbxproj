@@ -21,6 +21,7 @@
 		8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */; };
 		8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68721C83F56005A66E5 /* ParentViewController.swift */; };
 		8B97E18B2243DAFE003590C7 /* YesGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97E18A2243DAFE003590C7 /* YesGroupTableViewController.swift */; };
+		8B97E18D22452503003590C7 /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97E18C22452503003590C7 /* AddMemberViewController.swift */; };
 		8BB436B62203592600811C2B /* StartingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B52203592600811C2B /* StartingScreenViewController.swift */; };
 		8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B922049A8A00811C2B /* DatabaseHandler.swift */; };
 		8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */; };
@@ -58,6 +59,7 @@
 		8B73F68521C8235F005A66E5 /* NoGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoGroupViewController.swift; sourceTree = "<group>"; };
 		8B73F68721C83F56005A66E5 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		8B97E18A2243DAFE003590C7 /* YesGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesGroupTableViewController.swift; sourceTree = "<group>"; };
+		8B97E18C22452503003590C7 /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
 		8BB436B52203592600811C2B /* StartingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreenViewController.swift; sourceTree = "<group>"; };
 		8BB436B922049A8A00811C2B /* DatabaseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseHandler.swift; sourceTree = "<group>"; };
 		8BC1EBFC21AF04AF004CF3EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */,
 				8BF2A8CE2242593D0035AE70 /* OptionsTableViewController.swift */,
+				8B97E18C22452503003590C7 /* AddMemberViewController.swift */,
 				8B296EEE222EBE01002EB0B8 /* PopupViewControllers */,
 			);
 			path = Controllers;
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B97E18D22452503003590C7 /* AddMemberViewController.swift in Sources */,
 				8BF2A8CF2242593D0035AE70 /* OptionsTableViewController.swift in Sources */,
 				8B6AB6BC22314E990055907B /* AddChorePopupViewController.swift in Sources */,
 				8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */,

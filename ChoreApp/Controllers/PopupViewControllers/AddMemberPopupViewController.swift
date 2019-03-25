@@ -28,18 +28,18 @@ class AddMemberPopupViewController: UIViewController, UITextFieldDelegate {
             //Search the database for the username
             if let groupID = self.group?.id {
                 let isParent = !childSwitch.isOn
-                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: isParent, completition: {uid, error in
-                    if let uid = uid {
-                        if isParent{
-                             self.group?.parents.append(UserInfo(uid: uid, username: name, isParent: true))
-                        }else{
-                             self.group?.children.append(UserInfo(uid: uid, username: name, isParent: false))
-                        }
-                        self.dismiss(animated: true, completion: nil)
-                    }else{
-                        print(error!)
-                    }
-                })
+//                DatabaseHandler.tryAddMemberToGroup(groupID: groupID, newMemberUserName: name, asParent: isParent, completition: {uid, error in
+//                    if let uid = uid {
+//                        if isParent{
+//                             self.group?.parents.append(UserInfo(uid: uid, username: name, isParent: true))
+//                        }else{
+//                             self.group?.children.append(UserInfo(uid: uid, username: name, isParent: false))
+//                        }
+//                        self.dismiss(animated: true, completion: nil)
+//                    }else{
+//                        print(error!)
+//                    }
+//                })
             }
         }
     }

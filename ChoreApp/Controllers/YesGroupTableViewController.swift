@@ -25,6 +25,7 @@ class YesGroupTableViewController: UITableViewController {
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
+    
         if let g = self.group {
             for parent in g.parents {
                 groupData.append(["role" : "parent", "username" : parent.username])
