@@ -70,6 +70,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     //Send user data to the NoGroupViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let destination = segue.destination as? NoGroupViewController else {return}
+//        destination.user = self.user
         let destination = segue.destination as! CustomTabBarController
         destination.user = user
         destination.group = nil

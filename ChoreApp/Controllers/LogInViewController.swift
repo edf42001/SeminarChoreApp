@@ -92,6 +92,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let destination = segue.destination as! CustomTabBarController
         destination.user = user
         destination.group = group
+//        switch toScreen {
+//        case 0:
+//            guard let destination = segue.destination as? NoGroupViewController else {return}
+//            destination.user = self.user
+//            destination.group = self.group
+//        case 1:
+//            guard let destination = segue.destination as? ParentViewController else {return}
+//            destination.user = self.user
+//            destination.group = self.group
+//        case 2:
+//            guard let destination = segue.destination as? ChildViewController else {return}
+//            destination.user = self.user
+//            destination.group = self.group
+//        default:
+//            print("error")
+//        }
     }
 
 }
