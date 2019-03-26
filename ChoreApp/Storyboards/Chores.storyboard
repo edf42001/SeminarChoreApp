@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -132,7 +131,7 @@
         <!--Chores-->
         <scene sceneID="X3O-vi-lQd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bem-DA-r2l" customClass="ChoreNavigationViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bem-DA-r2l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chores" id="eL1-bf-KiK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dZJ-jO-TDo">

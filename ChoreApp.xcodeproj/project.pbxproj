@@ -39,7 +39,6 @@
 		97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A33121DE5CC700B58278 /* LogInViewController.swift */; };
 		E0E2AB16C4E0D6A118B26F7D /* Pods_ChoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB135B47EA073AA2992A294E /* Pods_ChoreApp.framework */; };
 		F37C778C22426E03002640ED /* ParentChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C778B22426E03002640ED /* ParentChoresViewController.swift */; };
-		F37C778E22427368002640ED /* AssignChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C778D22427368002640ED /* AssignChoreViewController.swift */; };
 		F37C77902243D683002640ED /* ChoreNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C778F2243D683002640ED /* ChoreNavigationViewController.swift */; };
 		F390B1B822049828006A5F97 /* ChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */; };
 		F39BC85821DE593100BD3DD3 /* staticValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39BC85721DE593100BD3DD3 /* staticValues.swift */; };
@@ -83,7 +82,6 @@
 		CB135B47EA073AA2992A294E /* Pods_ChoreApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B941B14A85B763217D5324 /* Pods-ChoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.release.xcconfig"; path = "Target Support Files/Pods-ChoreApp/Pods-ChoreApp.release.xcconfig"; sourceTree = "<group>"; };
 		F37C778B22426E03002640ED /* ParentChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentChoresViewController.swift; sourceTree = "<group>"; };
-		F37C778D22427368002640ED /* AssignChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignChoreViewController.swift; sourceTree = "<group>"; };
 		F37C778F2243D683002640ED /* ChoreNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreNavigationViewController.swift; sourceTree = "<group>"; };
 		F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTableViewCell.swift; sourceTree = "<group>"; };
 		F39BC85721DE593100BD3DD3 /* staticValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staticValues.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 		8B2F019D223A99DA008AC7DC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F37C778D22427368002640ED /* AssignChoreViewController.swift */,
 				9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */,
 				8BB436B52203592600811C2B /* StartingScreenViewController.swift */,
 				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
@@ -361,7 +358,6 @@
 				8B296EF0222EBE40002EB0B8 /* AddMemberPopupViewController.swift in Sources */,
 				F37C77902243D683002640ED /* ChoreNavigationViewController.swift in Sources */,
 				97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */,
-				F37C778E22427368002640ED /* AssignChoreViewController.swift in Sources */,
 				9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */,
 				8B2F01A2223A9AC7008AC7DC /* CustomTabBarController.swift in Sources */,
 				8B28478621C00F59009737AC /* Chore.swift in Sources */,
