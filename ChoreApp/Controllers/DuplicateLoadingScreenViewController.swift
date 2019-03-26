@@ -79,9 +79,12 @@ class DuplicateLoadingScreenViewController: UIViewController {
     
     //Sending the gathered user data to the desired destination
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! CustomTabBarController
-        destination.user = user
-        destination.group = group
+        if toScreen != 3{
+            let destination = segue.destination as! CustomTabBarController
+            destination.user = user
+            destination.group = group
+        }
+        
         switch toScreen {
         case 0:
             guard let destination = segue.destination as? NoGroupViewController else {return}
