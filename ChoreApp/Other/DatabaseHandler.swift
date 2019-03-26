@@ -33,20 +33,30 @@ class DatabaseHandler {
         completion(key)
     }
     
-    static func tryAddMemberToGroup(groupID:String, newMemberUserName:String, asParent:Bool, completition:@escaping (_ uid:String?, _ error:String?)->()){
+    static func checkIfCanAddMemberToGroup(groupID:String, newMemberUserName:String, completition:@escaping (_ error:String?)->()){
         ref.child("usernames/\(newMemberUserName)").observeSingleEvent(of: .value, with: { snapshot in
             if let uid = snapshot.value as? String {
                 ref.child("users/\(uid)/group").observeSingleEvent(of: .value, with: {snapshot in
                     if let _ = snapshot.value as? String {
-                        completition(nil, "User already in group")//already in a group
+                        completition("User already in group")//already in a group
                     }else{
-                        ref.child("groups/\(groupID)/members/\(uid)").setValue(asParent ? "parent":"child")
-                        ref.child("users/\(uid)/group").setValue(groupID)
-                        completition(uid, nil)
+//                        ref.child("groups/\(groupID)/members/\(uid)").setValue(asParent ? "parent":"child")
+//                        ref.child("users/\(uid)/group").setValue(groupID)
+                        completition(nil)
                     }
                 })
             }else{
-                completition(nil, "User does not exist") //user does not exist
+                completition("User does not exist") //user does not exist
+            }
+        })
+    }
+    
+    static func addMemberToGroup(groupID:String, newMemberUserName:String, asParent: Bool, completition:@escaping (_ error:String?)->()){
+        ref.child("usernames/\(newMemberUserName)").observeSingleEvent(of: .value, with: { snapshot in
+            if let uid = snapshot.value as? String {
+                ref.child("groups/\(groupID)/members/\(uid)").setValue(asParent ? "parent":"child")
+                ref.child("users/\(uid)/group").setValue(groupID)
+                completition(nil)
             }
         })
     }

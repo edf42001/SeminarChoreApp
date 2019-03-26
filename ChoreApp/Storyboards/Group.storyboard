@@ -1,101 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UZp-S6-8Vb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SdV-vl-tLW">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--NoGroup-->
-        <scene sceneID="MvZ-TB-cnU">
+        <!--Members-->
+        <scene sceneID="I2s-h2-ccs">
             <objects>
-                <viewController storyboardIdentifier="NoGroupViewController" title="NoGroup" id="UZp-S6-8Vb" customClass="NoGroupViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="t8V-e4-QoH">
+                <tableViewController id="FM1-hy-qdB" customClass="YesGroupTableViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Kk1-r7-Hfg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="PD3-oQ-cvO">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PD3-oQ-cvO" id="vNW-A6-RTl">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="FM1-hy-qdB" id="Qs3-if-j6w"/>
+                            <outlet property="delegate" destination="FM1-hy-qdB" id="fIz-Lo-BHj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Members" id="P2E-DE-t9p">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Fva-Va-Y7J"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yGP-YG-3qO">
+                            <connections>
+                                <segue destination="eec-oe-0I7" kind="show" id="4Xa-9e-72H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VWW-8R-roe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1745" y="179"/>
+        </scene>
+        <!--Add Member-->
+        <scene sceneID="U7f-6N-25g">
+            <objects>
+                <viewController id="eec-oe-0I7" customClass="AddMemberViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Aux-av-8WL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1n7-7r-wLD" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
-                                <rect key="frame" x="107" y="709" width="200" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="9XE-ep-bup"/>
-                                    <constraint firstAttribute="width" constant="200" id="J7O-gi-Cu8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
-                                <state key="normal" title="Create Group">
-                                    <color key="titleColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.93333333330000001" green="0.33333333329999998" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="iJc-u6-4e9">
+                                <rect key="frame" x="20" y="134" width="374" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Parent"/>
+                                    <segment title="Child"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="510-v6-exF" kind="presentation" identifier="toCreateGroupPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="HeZ-YQ-gjM"/>
+                                    <action selector="controlClicked:forEvent:" destination="eec-oe-0I7" eventType="valueChanged" id="ySI-Vb-kLO"/>
                                 </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Click to create one or ask someone to invite you to theirs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9si-LE-BLB">
-                                <rect key="frame" x="20" y="124" width="374" height="84"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="iFN-k0-UjF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="20"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add new member as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioW-ZS-Bh0">
+                                <rect key="frame" x="20" y="105" width="162" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-kR-gWa">
-                                <rect key="frame" x="344" y="743" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvw-3R-n0c" customClass="ButtonExtension" customModule="ChoreApp" customModuleProvider="target">
+                                <rect key="frame" x="149.5" y="413" width="115" height="40"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0lW-B4-v9y"/>
-                                    <constraint firstAttribute="width" constant="50" id="tsa-mE-0cy"/>
+                                    <constraint firstAttribute="height" constant="40" id="WnY-Dp-BJZ"/>
+                                    <constraint firstAttribute="width" constant="115" id="sFS-dk-LGo"/>
                                 </constraints>
-                                <state key="normal" title="Item2" image="Cog"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Add Parent">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="eec-oe-0I7" eventType="touchUpInside" id="nMf-j2-cfq"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVP-cA-ykM">
+                                <rect key="frame" x="20" y="236" width="126" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EhG-9L-Pgf">
+                                <rect key="frame" x="20" y="265" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eec-oe-0I7" id="aUx-jg-imF"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSF-b6-fhU">
+                                <rect key="frame" x="20" y="303" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="9si-LE-BLB" secondAttribute="trailing" constant="20" id="Gzh-0A-hqh"/>
-                            <constraint firstItem="1n7-7r-wLD" firstAttribute="centerX" secondItem="t8V-e4-QoH" secondAttribute="centerX" id="LAW-mF-mds"/>
-                            <constraint firstItem="9si-LE-BLB" firstAttribute="leading" secondItem="t8V-e4-QoH" secondAttribute="leading" constant="20" id="LhS-JE-uaM"/>
-                            <constraint firstItem="9si-LE-BLB" firstAttribute="top" secondItem="aFK-j6-lMO" secondAttribute="top" constant="80" id="bwt-2v-6yj"/>
-                            <constraint firstItem="9si-LE-BLB" firstAttribute="centerX" secondItem="t8V-e4-QoH" secondAttribute="centerX" id="dCA-kS-UIa"/>
-                            <constraint firstItem="aFK-j6-lMO" firstAttribute="bottom" secondItem="vXd-kR-gWa" secondAttribute="bottom" constant="10" id="hr7-Ts-xC8"/>
-                            <constraint firstItem="1n7-7r-wLD" firstAttribute="centerY" secondItem="t8V-e4-QoH" secondAttribute="centerY" multiplier="1.65" id="kQB-X7-9L1"/>
-                            <constraint firstItem="aFK-j6-lMO" firstAttribute="trailing" secondItem="vXd-kR-gWa" secondAttribute="trailing" constant="10" id="yFH-cx-V96"/>
+                            <constraint firstItem="Wvw-3R-n0c" firstAttribute="centerX" secondItem="Aux-av-8WL" secondAttribute="centerX" id="AvJ-54-3er"/>
+                            <constraint firstItem="x1D-c4-97v" firstAttribute="bottom" secondItem="Wvw-3R-n0c" secondAttribute="bottom" constant="360" id="MLi-EU-QFf"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="aFK-j6-lMO"/>
+                        <viewLayoutGuide key="safeArea" id="x1D-c4-97v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Group" id="65X-3d-S4D"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Add Member" id="YCK-gH-XBO"/>
                     <connections>
-                        <outlet property="createGroupButton" destination="1n7-7r-wLD" id="Arr-Il-cAB"/>
+                        <outlet property="addMemberButton" destination="Wvw-3R-n0c" id="1EN-yy-weL"/>
+                        <outlet property="errorMessageLabel" destination="pSF-b6-fhU" id="jGA-fI-ad0"/>
+                        <outlet property="parentChildSwitch" destination="iJc-u6-4e9" id="7mN-f0-EJI"/>
+                        <outlet property="usernameTextField" destination="EhG-9L-Pgf" id="9Oj-8z-TF1"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kWU-hW-YUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pN0-E3-Wzu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2586.9565217391305" y="178.79464285714286"/>
+        </scene>
+        <!--Group-->
+        <scene sceneID="Us0-tg-4JM">
+            <objects>
+                <navigationController storyboardIdentifier="YesGroupViewController" automaticallyAdjustsScrollViewInsets="NO" id="SdV-vl-tLW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Group" image="Group" selectedImage="Group" id="XL2-KO-8dO"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="B8e-7z-qES">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FM1-hy-qdB" kind="relationship" relationship="rootViewController" id="jsv-JO-H74"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CSc-vI-H8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="907.24637681159425" y="178.79464285714286"/>
         </scene>
-        <!--CreateNewGroupPopup-->
-        <scene sceneID="8qU-CW-oep">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Popups" referencedIdentifier="CreateNewGroupPopup" id="510-v6-exF" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qxq-oq-Jt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="908" y="615"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="Cog" width="50" height="50"/>
+        <image name="Group" width="25" height="25"/>
     </resources>
 </document>

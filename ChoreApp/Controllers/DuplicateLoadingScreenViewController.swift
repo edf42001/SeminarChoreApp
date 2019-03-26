@@ -21,15 +21,6 @@ class DuplicateLoadingScreenViewController: UIViewController {
         self.view.backgroundColor = Styles.backgroundColor
         
         ref = Database.database().reference()
-//        //Testing code
-//        if Auth.auth().currentUser != nil {
-//            Auth.auth().createUser(withEmail: "me@me.com", password: "password")
-//        }
-//        do{
-//            try Auth.auth().signOut()
-//        }catch{let _:NSError
-//
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,7 +43,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
                             self.toScreen = 1
                             DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
                                 self.group?.chores = chores
-                                self.performSegue(withIdentifier: "toParent", sender: self)
+                                self.performSegue(withIdentifier: "toTabBar", sender: self)
                             })
                         }else {
                             print("User is child")
@@ -60,13 +51,13 @@ class DuplicateLoadingScreenViewController: UIViewController {
                             self.toScreen = 2
                             DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
                                 self.user?.chores = chores
-                                self.performSegue(withIdentifier: "toChild", sender: self)
+                                self.performSegue(withIdentifier: "toTabBar", sender: self)
                             })
                         }
                     })
                 }else{
                     self.toScreen = 0
-                    self.performSegue(withIdentifier: "toNoGroup", sender: self)
+                    self.performSegue(withIdentifier: "toTabBar", sender: self)
                 }
             })
         }
@@ -79,9 +70,12 @@ class DuplicateLoadingScreenViewController: UIViewController {
     
     //Sending the gathered user data to the desired destination
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! CustomTabBarController
-        destination.user = user
-        destination.group = group
+        if toScreen != 3 {
+            let destination = segue.destination as! CustomTabBarController
+            destination.user = user
+            destination.group = group
+        }
+        
         switch toScreen {
         case 0:
             guard let destination = segue.destination as? NoGroupViewController else {return}
@@ -102,5 +96,4 @@ class DuplicateLoadingScreenViewController: UIViewController {
             print("error")
         }
     }
-
 }
