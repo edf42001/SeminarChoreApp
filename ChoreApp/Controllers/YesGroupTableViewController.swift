@@ -36,6 +36,7 @@ class YesGroupTableViewController: UITableViewController {
             
         }
 
+        sortData()
         // Do any additional setup after loading the view.
     }
     
