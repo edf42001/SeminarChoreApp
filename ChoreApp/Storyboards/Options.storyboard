@@ -27,7 +27,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxN-Uj-Wer">
-                                                    <rect key="frame" x="20" y="12" width="78.5" height="21"/>
+                                                    <rect key="frame" x="20" y="12" width="79" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="kxN-Uj-Wer" secondAttribute="height" multiplier="79:21" id="qgv-Mf-6Bw"/>
                                                     </constraints>
@@ -171,9 +171,8 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shN-dV-opx">
                                                     <rect key="frame" x="20" y="5.5" width="97" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="Leave Group">
-                                                        <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
+                                                    <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Leave Group"/>
                                                     <connections>
                                                         <action selector="leaveGroupButtonPressed:" destination="naU-ef-LBP" eventType="touchUpInside" id="Vm3-7X-5zJ"/>
                                                     </connections>
