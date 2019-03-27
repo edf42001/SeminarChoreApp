@@ -45,7 +45,13 @@ class YesGroupTableViewController: UITableViewController {
         }
         
         sortData()
-        print(hasGroup)
+        
+        if hasGroup {
+            tableView.separatorStyle = .singleLine
+        }else{
+            tableView.separatorStyle = .none
+        }
+        
         self.tableView.reloadData()
     }
     
@@ -55,10 +61,12 @@ class YesGroupTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let tableSection = TableSection(rawValue: section), let groupData = data[tableSection] {
-            if hasGroup {
+        if hasGroup {
+            if let tableSection = TableSection(rawValue: section), let groupData = data[tableSection] {
                 return groupData.count
             }
+        }else{
+            return 1
         }
         return 0
     }
@@ -90,7 +98,12 @@ class YesGroupTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return SectionHeaderHeight
+        if hasGroup {
+            return SectionHeaderHeight
+        }else{
+            return 0
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

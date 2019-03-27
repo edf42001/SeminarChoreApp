@@ -28,7 +28,6 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
         self.group = tabBar.group
         
         errorMessageLabel.text = ""
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
