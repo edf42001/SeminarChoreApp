@@ -66,6 +66,9 @@ class OptionsTableViewController: UITableViewController {
                 self.user?.groupID = nil
                 self.group = nil
                 self.setupGroupButtonsAndLabel()
+                let tabBar = self.tabBarController as! CustomTabBarController
+                tabBar.user?.groupID = nil
+                tabBar.group = nil
             })
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

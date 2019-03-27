@@ -19,14 +19,20 @@ class YesGroupTableViewController: UITableViewController {
     let SectionHeaderHeight: CGFloat = 25
     var data = [TableSection: [[String: String]]]()
     var groupData: [[String:String]] = []
+    var hasGroup: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
-    
         if let g = self.group {
+            hasGroup = true
             for parent in g.parents {
                 groupData.append(["role" : "parent", "username" : parent.username])
             }
@@ -34,10 +40,12 @@ class YesGroupTableViewController: UITableViewController {
                 groupData.append(["role" : "child", "username" : child.username])
             }
             
+        }else {
+            hasGroup = false
         }
-
+        
         sortData()
-        // Do any additional setup after loading the view.
+        print(hasGroup)
     }
     
     func sortData() {
@@ -47,28 +55,37 @@ class YesGroupTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let tableSection = TableSection(rawValue: section), let groupData = data[tableSection] {
-            return groupData.count
+            if hasGroup {
+                return groupData.count
+            }
         }
         return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        // Similar to above, first check if there is a valid section of table.
-        // Then we check that for the section there is a row.
-        if let tableSection = TableSection(rawValue: indexPath.section), let role = data[tableSection]?[indexPath.row] {
-            if let titleLabel = cell.viewWithTag(10) as? UILabel {
-                titleLabel.text = role["username"]
+        if hasGroup {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            // Similar to above, first check if there is a valid section of table.
+            // Then we check that for the section there is a row.
+            if let tableSection = TableSection(rawValue: indexPath.section), let role = data[tableSection]?[indexPath.row] {
+                if let titleLabel = cell.viewWithTag(10) as? UILabel {
+                    titleLabel.text = role["username"]
+                }
             }
-//            if let subtitleLabel = cell.viewWithTag(20) as? UILabel {
-//                subtitleLabel.text = role["username"]
-//            }
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath)
+            return cell
         }
-        return cell
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return TableSection.total.rawValue
+        if hasGroup {
+            return TableSection.total.rawValue
+        }
+        else {
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -92,18 +109,12 @@ class YesGroupTableViewController: UITableViewController {
             }
         }
         view.addSubview(label)
-        return view
+        if hasGroup {
+            return view
+        }
+        else {
+            return nil
+        }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
