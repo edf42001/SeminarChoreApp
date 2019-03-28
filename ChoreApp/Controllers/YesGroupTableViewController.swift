@@ -34,6 +34,7 @@ class YesGroupTableViewController: UITableViewController {
         self.group = tabBar.group
         if let g = self.group {
             hasGroup = true
+            groupData = []
             for parent in g.parents {
                 groupData.append(["role" : "parent", "username" : parent.username])
             }
@@ -44,7 +45,7 @@ class YesGroupTableViewController: UITableViewController {
         }else {
             hasGroup = false
         }
-        
+
         sortData()
         
         if hasGroup {
