@@ -114,16 +114,16 @@ class YesGroupTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if hasGroup{
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
-            view.backgroundColor = UIColor(red: 253.0/255.0, green: 240.0/255.0, blue: 196.0/255.0, alpha: 1)
+            view.backgroundColor = UIColor(red: 178/255.0, green: 34/255.0, blue: 34.0/255.0, alpha: 1)
             let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
             label.font = UIFont.boldSystemFont(ofSize: 15)
             label.textColor = UIColor.black
             if let tableSection = TableSection(rawValue: section) {
                 switch tableSection {
                 case .parent:
-                    label.text = "Parent"
+                    label.text = "Parents"
                 case .child:
-                    label.text = "Child"
+                    label.text = "Children"
                 default:
                     label.text = ""
                 }

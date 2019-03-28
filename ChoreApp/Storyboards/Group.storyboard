@@ -18,31 +18,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="RrK-O5-lzt" userLabel="FooterToRemoveExtraCells">
-                            <rect key="frame" x="0.0" y="737.5" width="414" height="0.0"/>
+                            <rect key="frame" x="0.0" y="768.5" width="414" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="PD3-oQ-cvO">
-                                <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="75" id="PD3-oQ-cvO">
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PD3-oQ-cvO" id="vNW-A6-RTl">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mN-Zz-TjN">
-                                            <rect key="frame" x="20" y="11" width="374" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mN-Zz-TjN">
+                                            <rect key="frame" x="104" y="5.5" width="270" height="64"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="64" id="Zob-p9-zgV"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TempIcon" translatesAutoresizingMaskIntoConstraints="NO" id="NPC-Hv-G64">
+                                            <rect key="frame" x="20" y="5.5" width="64" height="64"/>
+                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="IaO-2C-OO5"/>
+                                                <constraint firstAttribute="height" constant="64" id="gnh-rx-ck1"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="NPC-Hv-G64" firstAttribute="leading" secondItem="vNW-A6-RTl" secondAttribute="leading" constant="20" id="4kl-qO-c0X"/>
+                                        <constraint firstItem="4mN-Zz-TjN" firstAttribute="centerY" secondItem="vNW-A6-RTl" secondAttribute="centerY" id="Vyn-px-aXT"/>
+                                        <constraint firstItem="4mN-Zz-TjN" firstAttribute="leading" secondItem="NPC-Hv-G64" secondAttribute="trailing" constant="20" id="e8z-a0-Dcz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="4mN-Zz-TjN" secondAttribute="trailing" constant="20" id="kXc-1C-ueA"/>
+                                        <constraint firstAttribute="bottom" secondItem="NPC-Hv-G64" secondAttribute="bottom" constant="5.25" id="tpY-4h-Fye"/>
+                                        <constraint firstItem="NPC-Hv-G64" firstAttribute="top" secondItem="vNW-A6-RTl" secondAttribute="top" constant="5.25" id="vef-Nh-ubi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="600" id="6yV-YG-pN4">
-                                <rect key="frame" x="0.0" y="99.5" width="414" height="600"/>
+                                <rect key="frame" x="0.0" y="130.5" width="414" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6yV-YG-pN4" id="dkz-BA-0Pn">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="599.5"/>
@@ -82,6 +100,7 @@
                     <navigationItem key="navigationItem" title="Members" id="P2E-DE-t9p">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Fva-Va-Y7J"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yGP-YG-3qO">
+                            <color key="tintColor" red="1" green="0.35168235047234397" blue="0.03634309662526225" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="eec-oe-0I7" kind="show" id="4Xa-9e-72H"/>
                             </connections>
@@ -214,6 +233,7 @@
     </scenes>
     <resources>
         <image name="Group" width="25" height="25"/>
+        <image name="TempIcon" width="512" height="512"/>
         <image name="broom-cartoon" width="700" height="1080"/>
     </resources>
 </document>
