@@ -43,6 +43,8 @@ class OptionsTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: {action in
             do{
                 try Auth.auth().signOut()
+                DatabaseHandler.stopObservingChores()
+                DatabaseHandler.stopObservingMembersInGroup()
                 self.group = nil
                 self.user = nil
                 self.performSegue(withIdentifier: "toStartingScreen", sender: self)

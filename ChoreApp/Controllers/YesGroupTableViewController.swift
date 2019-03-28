@@ -25,10 +25,49 @@ class YesGroupTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        // Do any additional setup after loading the view.
+        let tabBar = self.tabBarController as! CustomTabBarController
+        self.user = tabBar.user
+        self.group = tabBar.group
+        
+        if let group = group {
+            DatabaseHandler.observeMembersInGroup(groupID: group.id, completion: {parents, children in
+                self.group?.parents = parents
+                self.group?.children = children
+                self.loadData()
+            })
+        }else{
+            DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
+                if let groupID = groupID as? String {
+                    DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
+                        print("\(groupID), \(isParent)")
+                        self.group = group
+                        if isParent {
+                            print("User is parent")
+                            self.user?.isParent = true
+                            DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
+                                self.group?.chores = chores
+                            })
+                            
+                        }else {
+                            print("User is child")
+                            self.user?.isParent = false
+                            DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
+                                self.user?.chores = chores
+                            })
+                        }
+                        DatabaseHandler.stopObservingIfAddedToGroup()
+                        self.loadData()
+                    })
+                }
+            })
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+       loadData()
+    }
+    
+    func loadData() {
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
@@ -45,7 +84,7 @@ class YesGroupTableViewController: UITableViewController {
         }else {
             hasGroup = false
         }
-
+        
         sortData()
         
         if hasGroup {
