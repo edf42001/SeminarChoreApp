@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="RrK-O5-lzt" userLabel="FooterToRemoveExtraCells">
-                            <rect key="frame" x="0.0" y="116" width="414" height="0.0"/>
+                            <rect key="frame" x="0.0" y="672" width="414" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -41,25 +41,34 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell2" id="6yV-YG-pN4">
-                                <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell2" rowHeight="600" id="6yV-YG-pN4">
+                                <rect key="frame" x="0.0" y="72" width="414" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6yV-YG-pN4" id="dkz-BA-0Pn">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="599.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not in any groups. Create a new one or wait to be added to one!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsR-y4-IDA">
-                                            <rect key="frame" x="20" y="11" width="374" height="22"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dX2-HT-eew">
+                                            <rect key="frame" x="28" y="61" width="358" height="28"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="broom-cartoon" translatesAutoresizingMaskIntoConstraints="NO" id="kiK-GW-Agm">
+                                            <rect key="frame" x="7" y="139" width="400" height="450"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="450" id="Dte-dx-tZk"/>
+                                                <constraint firstAttribute="width" constant="400" id="cp5-IN-AQg"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="PsR-y4-IDA" firstAttribute="top" secondItem="dkz-BA-0Pn" secondAttribute="topMargin" id="WTp-yU-Bt2"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="PsR-y4-IDA" secondAttribute="trailing" id="ffq-cF-Ffu"/>
-                                        <constraint firstItem="PsR-y4-IDA" firstAttribute="bottom" secondItem="dkz-BA-0Pn" secondAttribute="bottomMargin" id="j36-Lp-SiX"/>
-                                        <constraint firstItem="PsR-y4-IDA" firstAttribute="leading" secondItem="dkz-BA-0Pn" secondAttribute="leadingMargin" id="pBP-y9-Ohp"/>
+                                        <constraint firstItem="kiK-GW-Agm" firstAttribute="top" secondItem="dX2-HT-eew" secondAttribute="bottom" constant="50" id="4eF-Vh-Lsk"/>
+                                        <constraint firstItem="dX2-HT-eew" firstAttribute="leading" secondItem="dkz-BA-0Pn" secondAttribute="leadingMargin" constant="8" id="EuL-dv-aL4"/>
+                                        <constraint firstItem="dX2-HT-eew" firstAttribute="top" secondItem="dkz-BA-0Pn" secondAttribute="topMargin" constant="50" id="QWj-9O-uD3"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dX2-HT-eew" secondAttribute="trailing" constant="8" id="cVn-Hr-12D"/>
+                                        <constraint firstItem="kiK-GW-Agm" firstAttribute="bottom" secondItem="dkz-BA-0Pn" secondAttribute="bottomMargin" id="iJQ-iW-SnC"/>
+                                        <constraint firstItem="kiK-GW-Agm" firstAttribute="centerX" secondItem="dkz-BA-0Pn" secondAttribute="centerX" id="rR4-Db-kBI"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -205,5 +214,6 @@
     </scenes>
     <resources>
         <image name="Group" width="25" height="25"/>
+        <image name="broom-cartoon" width="700" height="1080"/>
     </resources>
 </document>

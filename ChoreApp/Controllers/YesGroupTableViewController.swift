@@ -23,6 +23,7 @@ class YesGroupTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         // Do any additional setup after loading the view.
     }
@@ -84,6 +85,9 @@ class YesGroupTableViewController: UITableViewController {
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath)
+            if let titleLabel = cell.viewWithTag(10) as? UILabel {
+                titleLabel.text = "You are not in any groups. Create a new one or wait to be added to one!"
+            }
             return cell
         }
     }
