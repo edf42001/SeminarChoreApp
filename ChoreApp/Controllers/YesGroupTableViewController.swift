@@ -75,10 +75,10 @@ class YesGroupTableViewController: UITableViewController {
             hasGroup = true
             groupData = []
             for parent in g.parents {
-                groupData.append(["role" : "parent", "username" : parent.username])
+                groupData.append(["role" : "parent", "username" : parent.username, "uid" : parent.uid])
             }
             for child in g.children {
-                groupData.append(["role" : "child", "username" : child.username])
+                groupData.append(["role" : "child", "username" : child.username, "uid" : child.uid])
             }
             
         }else {
@@ -117,9 +117,24 @@ class YesGroupTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
             // Similar to above, first check if there is a valid section of table.
             // Then we check that for the section there is a row.
-            if let tableSection = TableSection(rawValue: indexPath.section), let role = data[tableSection]?[indexPath.row] {
+            if let tableSection = TableSection(rawValue: indexPath.section), let userData = data[tableSection]?[indexPath.row] {
                 if let titleLabel = cell.viewWithTag(10) as? UILabel {
-                    titleLabel.text = role["username"]
+                    titleLabel.text = userData["username"]
+                }
+                guard let choresLabel = cell.viewWithTag(20) as? UILabel else {return cell}
+
+                if indexPath.section == 0 { //parent
+                    cell.accessoryType = .none
+                    choresLabel.text = "Parent"
+                }else{ //child
+                    cell.accessoryType = .disclosureIndicator
+                    guard let uid = userData["uid"] else {return cell}
+                    let choreNum = group!.numChoresForUser(uid: uid)
+                    var text = "\(choreNum) assigned chore"
+                    if choreNum != 1 {
+                        text+="s"
+                    }
+                    choresLabel.text = text
                 }
             }
             return cell

@@ -23,19 +23,16 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="75" id="PD3-oQ-cvO">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="75" id="PD3-oQ-cvO">
                                 <rect key="frame" x="0.0" y="55.5" width="414" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PD3-oQ-cvO" id="vNW-A6-RTl">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="74.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mN-Zz-TjN">
-                                            <rect key="frame" x="104" y="5.5" width="270" height="64"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="64" id="Zob-p9-zgV"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="92" y="8" width="256" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -47,11 +44,23 @@
                                                 <constraint firstAttribute="height" constant="64" id="gnh-rx-ck1"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 assigned chores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfV-la-ZVz">
+                                            <rect key="frame" x="92" y="46" width="268" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="fzR-zx-fVW"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="NPC-Hv-G64" firstAttribute="leading" secondItem="vNW-A6-RTl" secondAttribute="leading" constant="20" id="4kl-qO-c0X"/>
-                                        <constraint firstItem="4mN-Zz-TjN" firstAttribute="centerY" secondItem="vNW-A6-RTl" secondAttribute="centerY" id="Vyn-px-aXT"/>
-                                        <constraint firstItem="4mN-Zz-TjN" firstAttribute="leading" secondItem="NPC-Hv-G64" secondAttribute="trailing" constant="20" id="e8z-a0-Dcz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="SfV-la-ZVz" secondAttribute="trailing" constant="8" id="OFG-0B-QMs"/>
+                                        <constraint firstItem="SfV-la-ZVz" firstAttribute="bottom" secondItem="vNW-A6-RTl" secondAttribute="bottomMargin" id="chX-hY-s8E"/>
+                                        <constraint firstItem="4mN-Zz-TjN" firstAttribute="leading" secondItem="NPC-Hv-G64" secondAttribute="trailing" constant="8" id="e8z-a0-Dcz"/>
+                                        <constraint firstItem="4mN-Zz-TjN" firstAttribute="top" secondItem="vNW-A6-RTl" secondAttribute="top" constant="8" id="gXU-zJ-8J5"/>
+                                        <constraint firstItem="SfV-la-ZVz" firstAttribute="leading" secondItem="NPC-Hv-G64" secondAttribute="trailing" constant="8" id="gga-JY-sKq"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="4mN-Zz-TjN" secondAttribute="trailing" constant="20" id="kXc-1C-ueA"/>
                                         <constraint firstAttribute="bottom" secondItem="NPC-Hv-G64" secondAttribute="bottom" constant="5.25" id="tpY-4h-Fye"/>
                                         <constraint firstItem="NPC-Hv-G64" firstAttribute="top" secondItem="vNW-A6-RTl" secondAttribute="top" constant="5.25" id="vef-Nh-ubi"/>

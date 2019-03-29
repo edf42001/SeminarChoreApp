@@ -24,23 +24,17 @@ class Group{
         self.chores = chores
     }
     
-//    init(name:String, creator:User){
-//        self.ref = Database.database().reference()
-//        self.id = ref.child("groups").childByAutoId().key ?? ""
-//        self.ref.child("groups/\(id)").setValue(["name":name,
-//                                                 "members":[creator.uid:"parent"]
-//                                                 ])
-//
-//    }
-//
-//    func addMember(userName:String) {
-//        self.ref.child("usernames/\(userName)").observeSingleEvent(of: .value) {snapshot in
-//            let uid = snapshot as? String ?? ""
-//
-//        }
-//        self.ref.child("groups/\(id)")
-//
-//    }
+    func numChoresForUser(uid:String) -> Int {
+        var numChores = 0
+        if let chores = chores {
+            for chore in chores {
+                if chore.asigneeID == uid {
+                    numChores+=1
+                }
+            }
+        }
+        return numChores
+    }
 }
 
 struct UserInfo{
