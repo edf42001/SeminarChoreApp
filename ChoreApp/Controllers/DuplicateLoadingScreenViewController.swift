@@ -37,6 +37,9 @@ class DuplicateLoadingScreenViewController: UIViewController {
                 if let groupID = groupID {
                     DatabaseHandler.readBasicGroupData(groupID: groupID, uid: user.uid, completion: {group, isParent in
                         self.group = group
+                        DatabaseHandler.getAllCustomChoresFromGroup(groupID: groupID, completion: { (addedChores) in
+                            self.group?.addedChores = addedChores
+                        })
                         if isParent {
                             print("User is parent")
                             self.user?.isParent = true
@@ -45,6 +48,7 @@ class DuplicateLoadingScreenViewController: UIViewController {
                                 self.group?.chores = chores
                                 self.performSegue(withIdentifier: "toTabBar", sender: self)
                             })
+                            
                         }else {
                             print("User is child")
                             self.user?.isParent = false

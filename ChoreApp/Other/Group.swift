@@ -15,13 +15,14 @@ class Group{
     var parents:[UserInfo]
     var children:[UserInfo]
     var chores:[Chore]?
-    
-    init(id:String, name:String, parents:[UserInfo], children:[UserInfo], chores:[Chore]?){
+    var addedChores:[CustomChore]?
+    init(id:String, name:String, parents:[UserInfo], children:[UserInfo], chores:[Chore]?, addedChores:[CustomChore]?){
         self.id = id
         self.name = name
         self.parents = parents
         self.children = children
         self.chores = chores
+        self.addedChores = addedChores
     }
     
 //    init(name:String, creator:User){

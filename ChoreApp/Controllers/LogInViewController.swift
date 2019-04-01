@@ -45,6 +45,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     if let groupID = groupID {
                         DatabaseHandler.readBasicGroupData(groupID: groupID, uid: user.uid, completion: {group, isParent in
                             self.group = group
+                            DatabaseHandler.getAllCustomChoresFromGroup(groupID: groupID, completion: { (addedChores) in
+                                self.group?.addedChores = addedChores
+                            })
                             if isParent {
                                 print("User is parent")
                                 self.user?.isParent = true

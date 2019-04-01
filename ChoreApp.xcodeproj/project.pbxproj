@@ -38,6 +38,9 @@
 		97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */; };
 		97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A33121DE5CC700B58278 /* LogInViewController.swift */; };
 		E0E2AB16C4E0D6A118B26F7D /* Pods_ChoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB135B47EA073AA2992A294E /* Pods_ChoreApp.framework */; };
+		F370A02C224BA85A00D9E18F /* CustomChore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370A02B224BA85A00D9E18F /* CustomChore.swift */; };
+		F370A02E224BB16000D9E18F /* NewChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370A02D224BB16000D9E18F /* NewChoreTableViewCell.swift */; };
+		F370A030224BB29700D9E18F /* AssignableChore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370A02F224BB29700D9E18F /* AssignableChore.swift */; };
 		F37C778C22426E03002640ED /* ParentChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C778B22426E03002640ED /* ParentChoresViewController.swift */; };
 		F37C77902243D683002640ED /* ChoreNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37C778F2243D683002640ED /* ChoreNavigationViewController.swift */; };
 		F390B1B822049828006A5F97 /* ChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */; };
@@ -81,6 +84,9 @@
 		98D7D931FF7F0FA21FB2178A /* Pods-ChoreApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.debug.xcconfig"; path = "Target Support Files/Pods-ChoreApp/Pods-ChoreApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CB135B47EA073AA2992A294E /* Pods_ChoreApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B941B14A85B763217D5324 /* Pods-ChoreApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.release.xcconfig"; path = "Target Support Files/Pods-ChoreApp/Pods-ChoreApp.release.xcconfig"; sourceTree = "<group>"; };
+		F370A02B224BA85A00D9E18F /* CustomChore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChore.swift; sourceTree = "<group>"; };
+		F370A02D224BB16000D9E18F /* NewChoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChoreTableViewCell.swift; sourceTree = "<group>"; };
+		F370A02F224BB29700D9E18F /* AssignableChore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssignableChore.swift; sourceTree = "<group>"; };
 		F37C778B22426E03002640ED /* ParentChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentChoresViewController.swift; sourceTree = "<group>"; };
 		F37C778F2243D683002640ED /* ChoreNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreNavigationViewController.swift; sourceTree = "<group>"; };
 		F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTableViewCell.swift; sourceTree = "<group>"; };
@@ -156,6 +162,9 @@
 				F39BC85721DE593100BD3DD3 /* staticValues.swift */,
 				F390B1B722049828006A5F97 /* ChoreTableViewCell.swift */,
 				8BB436B922049A8A00811C2B /* DatabaseHandler.swift */,
+				F370A02B224BA85A00D9E18F /* CustomChore.swift */,
+				F370A02D224BB16000D9E18F /* NewChoreTableViewCell.swift */,
+				F370A02F224BB29700D9E18F /* AssignableChore.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -350,12 +359,14 @@
 			files = (
 				8B97E18D22452503003590C7 /* AddMemberViewController.swift in Sources */,
 				8BF2A8CF2242593D0035AE70 /* OptionsTableViewController.swift in Sources */,
+				F370A02E224BB16000D9E18F /* NewChoreTableViewCell.swift in Sources */,
 				8B6AB6BC22314E990055907B /* AddChorePopupViewController.swift in Sources */,
 				8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */,
 				8B73F68621C8235F005A66E5 /* NoGroupViewController.swift in Sources */,
 				8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */,
 				8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */,
 				8B296EF0222EBE40002EB0B8 /* AddMemberPopupViewController.swift in Sources */,
+				F370A02C224BA85A00D9E18F /* CustomChore.swift in Sources */,
 				F37C77902243D683002640ED /* ChoreNavigationViewController.swift in Sources */,
 				97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */,
 				9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */,
@@ -370,6 +381,7 @@
 				97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */,
 				8B28478421C00F51009737AC /* Group.swift in Sources */,
 				F37C778C22426E03002640ED /* ParentChoresViewController.swift in Sources */,
+				F370A030224BB29700D9E18F /* AssignableChore.swift in Sources */,
 				F390B1B822049828006A5F97 /* ChoreTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

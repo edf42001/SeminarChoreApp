@@ -161,7 +161,7 @@ class OptionsTableViewController: UITableViewController {
                         self.user!.groupID = key
                         self.user!.isParent = true
                         let parent:[UserInfo] = [UserInfo(uid: self.user!.uid, username:self.user!.username, isParent:true)]
-                        self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil)
+                        self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil, addedChores: nil)
                         let tabBar = self.tabBarController as! CustomTabBarController
                         tabBar.group = self.group
                     }
