@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="naU-ef-LBP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxN-Uj-Wer">
-                                                    <rect key="frame" x="20" y="12" width="78.5" height="21"/>
+                                                    <rect key="frame" x="20" y="12" width="79" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="kxN-Uj-Wer" secondAttribute="height" multiplier="79:21" id="qgv-Mf-6Bw"/>
                                                     </constraints>
@@ -114,8 +114,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-pr-Uj5">
-                                                    <rect key="frame" x="20" y="11.5" width="47.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEp-pr-Uj5">
+                                                    <rect key="frame" x="20" y="11.5" width="97" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -171,9 +171,8 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shN-dV-opx">
                                                     <rect key="frame" x="20" y="5.5" width="97" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <state key="normal" title="Leave Group">
-                                                        <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </state>
+                                                    <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Leave Group"/>
                                                     <connections>
                                                         <action selector="leaveGroupButtonPressed:" destination="naU-ef-LBP" eventType="touchUpInside" id="Vm3-7X-5zJ"/>
                                                     </connections>
@@ -194,7 +193,8 @@
                             <outlet property="delegate" destination="naU-ef-LBP" id="IQa-eM-mID"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Options" image="Options" id="Rfs-d7-cM3"/>
+                    <tabBarItem key="tabBarItem" title="Options" image="Options" selectedImage="Options" id="F8k-en-oYF"/>
+                    <navigationItem key="navigationItem" id="n5u-KJ-TwS"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="createGroupButton" destination="kHR-Rm-bDw" id="jtG-Yi-Bf7"/>
@@ -207,7 +207,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dD4-sG-k0N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-514.49275362318849" y="38.839285714285715"/>
+            <point key="canvasLocation" x="395.6521739130435" y="38.839285714285715"/>
         </scene>
         <!--CreateNewGroupPopup-->
         <scene sceneID="JW3-95-uOK">
@@ -215,7 +215,7 @@
                 <viewControllerPlaceholder storyboardName="Popups" referencedIdentifier="CreateNewGroupPopup" id="vaE-RC-c6Y" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zJu-px-OU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159" y="146"/>
+            <point key="canvasLocation" x="1068.840579710145" y="145.98214285714286"/>
         </scene>
         <!--StartingScreenViewController-->
         <scene sceneID="rsR-Ru-iKB">
@@ -223,7 +223,7 @@
                 <viewControllerPlaceholder storyboardName="Accounts" referencedIdentifier="StartingScreenViewController" id="eQA-MW-xng" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNc-yU-v4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="39"/>
+            <point key="canvasLocation" x="1102.1739130434783" y="38.839285714285715"/>
         </scene>
     </scenes>
     <resources>

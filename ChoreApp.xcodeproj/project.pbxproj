@@ -252,6 +252,7 @@
 				TargetAttributes = {
 					8B326A9B21AD926D00665FFE = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;

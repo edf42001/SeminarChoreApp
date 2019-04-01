@@ -52,7 +52,7 @@
         <scene sceneID="QxU-3z-koJ">
             <objects>
                 <viewControllerPlaceholder storyboardName="Options" referencedIdentifier="OptionsViewController" id="0Wk-OC-ONK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Options" image="Options" id="54z-wD-BBu"/>
+                    <tabBarItem key="tabBarItem" title="Options" image="Options" selectedImage="Options" id="54z-wD-BBu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swg-nu-xFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

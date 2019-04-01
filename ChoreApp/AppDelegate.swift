@@ -21,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         FirebaseApp.configure()
         FirebaseConfiguration.shared.setLoggerLevel(.min)
+        
+        UIApplication.shared.statusBarStyle = .lightContent
         return true
     }
 

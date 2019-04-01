@@ -28,7 +28,6 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
         self.group = tabBar.group
         
         errorMessageLabel.text = ""
-        
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -76,7 +75,7 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
         if let name = usernameTextField.text, hasValidMember {
             let asParent = parentChildSwitch.selectedSegmentIndex == 0
              DatabaseHandler.addMemberToGroup(groupID: group!.id, newMemberUserName: name, asParent: asParent, completition: {error in
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
              })
         }
     }

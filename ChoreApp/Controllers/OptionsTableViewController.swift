@@ -43,6 +43,8 @@ class OptionsTableViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: {action in
             do{
                 try Auth.auth().signOut()
+                DatabaseHandler.stopObservingChores()
+                DatabaseHandler.stopObservingMembersInGroup()
                 self.group = nil
                 self.user = nil
                 self.performSegue(withIdentifier: "toStartingScreen", sender: self)
@@ -66,6 +68,9 @@ class OptionsTableViewController: UITableViewController {
                 self.user?.groupID = nil
                 self.group = nil
                 self.setupGroupButtonsAndLabel()
+                let tabBar = self.tabBarController as! CustomTabBarController
+                tabBar.user?.groupID = nil
+                tabBar.group = nil
             })
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
