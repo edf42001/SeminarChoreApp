@@ -34,6 +34,7 @@
 		8BF2A8CF2242593D0035AE70 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF2A8CE2242593D0035AE70 /* OptionsTableViewController.swift */; };
 		9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */; };
 		97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */; };
+		97EA5F7E2252361B0075B7E3 /* AssignChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EA5F7D2252361B0075B7E3 /* AssignChoreViewController.swift */; };
 		97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */; };
 		97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97F6A33121DE5CC700B58278 /* LogInViewController.swift */; };
 		E0E2AB16C4E0D6A118B26F7D /* Pods_ChoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB135B47EA073AA2992A294E /* Pods_ChoreApp.framework */; };
@@ -77,6 +78,7 @@
 		8BF2A8D022426AB80035AE70 /* ChoreApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChoreApp.entitlements; sourceTree = "<group>"; };
 		9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateLoadingScreenViewController.swift; sourceTree = "<group>"; };
 		97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController.swift; sourceTree = "<group>"; };
+		97EA5F7D2252361B0075B7E3 /* AssignChoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssignChoreViewController.swift; sourceTree = "<group>"; };
 		97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		97F6A33121DE5CC700B58278 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		98D7D931FF7F0FA21FB2178A /* Pods-ChoreApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreApp.debug.xcconfig"; path = "Target Support Files/Pods-ChoreApp/Pods-ChoreApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		8B2F019D223A99DA008AC7DC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				97EA5F7D2252361B0075B7E3 /* AssignChoreViewController.swift */,
 				9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */,
 				8BB436B52203592600811C2B /* StartingScreenViewController.swift */,
 				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
@@ -370,6 +373,7 @@
 				8B2F01A2223A9AC7008AC7DC /* CustomTabBarController.swift in Sources */,
 				8B28478621C00F59009737AC /* Chore.swift in Sources */,
 				8B97E18B2243DAFE003590C7 /* YesGroupTableViewController.swift in Sources */,
+				97EA5F7E2252361B0075B7E3 /* AssignChoreViewController.swift in Sources */,
 				F39BC85821DE593100BD3DD3 /* staticValues.swift in Sources */,
 				97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */,
 				8B28478221C00F44009737AC /* User.swift in Sources */,
