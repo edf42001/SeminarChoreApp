@@ -176,7 +176,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.21568627450980393" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="SNy-CX-E8Y" firstAttribute="leading" secondItem="ubw-BQ-ddO" secondAttribute="leading" constant="50" id="A5s-Zh-Mfo"/>
                             <constraint firstItem="Xje-ZJ-ad9" firstAttribute="top" secondItem="7pW-pB-DhH" secondAttribute="bottom" constant="10" id="ANN-y9-o2x"/>
@@ -231,7 +231,7 @@
                     </view>
                     <connections>
                         <segue destination="iEW-kE-hWu" kind="show" identifier="toStartingScreen" animates="NO" id="17p-St-eLZ"/>
-                        <segue destination="KQp-jF-4pg" kind="show" identifier="toTabBar" id="1su-UQ-hbd"/>
+                        <segue destination="KQp-jF-4pg" kind="presentation" identifier="toTabBar" modalTransitionStyle="crossDissolve" id="1su-UQ-hbd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ez4-w0-na3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -344,6 +344,6 @@
         <image name="Icon" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dhi-lX-CDw"/>
+        <segue reference="pvd-eN-gh0"/>
     </inferredMetricsTieBreakers>
 </document>

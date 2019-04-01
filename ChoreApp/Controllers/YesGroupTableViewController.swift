@@ -19,24 +19,81 @@ class YesGroupTableViewController: UITableViewController {
     let SectionHeaderHeight: CGFloat = 25
     var data = [TableSection: [[String: String]]]()
     var groupData: [[String:String]] = []
+    var hasGroup: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
+        
+        DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
+            if let groupID = groupID as? String {
+                DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
+                    print("\(groupID), \(isParent)")
+                    self.group = group
+                    if isParent {
+                        print("User is parent")
+                        self.user?.isParent = true
+                        DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
+                            self.group?.chores = chores
+                        })
+                        DatabaseHandler.observeMembersInGroup(groupID: group.id, completion: {parents, children in
+                            self.group?.parents = parents
+                            self.group?.children = children
+                            self.loadData()
+                        })
+                    }else {
+                        print("User is child")
+                        self.user?.isParent = false
+                        DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
+                            self.user?.chores = chores
+                        })
+                    }
+                    tabBar.group = self.group
+                    self.loadData()
+                })
+            }else{
+                self.group = nil
+                tabBar.group = nil
+                self.loadData()
+            }
+        })
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+       loadData()
+    }
+    
+    func loadData() {
+        let tabBar = self.tabBarController as! CustomTabBarController
+        self.user = tabBar.user
+        self.group = tabBar.group
         if let g = self.group {
+            hasGroup = true
+            groupData = []
             for parent in g.parents {
-                groupData.append(["role" : "parent", "username" : parent.username])
+                groupData.append(["role" : "parent", "username" : parent.username, "uid" : parent.uid])
             }
             for child in g.children {
-                groupData.append(["role" : "child", "username" : child.username])
+                groupData.append(["role" : "child", "username" : child.username, "uid" : child.uid])
             }
             
+        }else {
+            hasGroup = false
         }
-
-        // Do any additional setup after loading the view.
+        
+        sortData()
+        
+        if hasGroup {
+            tableView.separatorStyle = .singleLine
+        }else{
+            tableView.separatorStyle = .none
+        }
+        
+        self.tableView.reloadData()
     }
     
     func sortData() {
@@ -45,64 +102,91 @@ class YesGroupTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let tableSection = TableSection(rawValue: section), let groupData = data[tableSection] {
-            return groupData.count
+        if hasGroup {
+            if let tableSection = TableSection(rawValue: section), let groupData = data[tableSection] {
+                return groupData.count
+            }
+        }else{
+            return 1
         }
         return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        // Similar to above, first check if there is a valid section of table.
-        // Then we check that for the section there is a row.
-        if let tableSection = TableSection(rawValue: indexPath.section), let role = data[tableSection]?[indexPath.row] {
-            if let titleLabel = cell.viewWithTag(10) as? UILabel {
-                titleLabel.text = role["username"]
+        if hasGroup {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            // Similar to above, first check if there is a valid section of table.
+            // Then we check that for the section there is a row.
+            if let tableSection = TableSection(rawValue: indexPath.section), let userData = data[tableSection]?[indexPath.row] {
+                if let titleLabel = cell.viewWithTag(10) as? UILabel {
+                    titleLabel.text = userData["username"]
+                }
+                guard let choresLabel = cell.viewWithTag(20) as? UILabel else {return cell}
+
+                if indexPath.section == 0 { //parent
+                    cell.accessoryType = .none
+                    choresLabel.text = "Parent"
+                }else{ //child
+                    cell.accessoryType = .disclosureIndicator
+                    guard let uid = userData["uid"] else {return cell}
+                    let choreNum = group!.numChoresForUser(uid: uid)
+                    var text = "\(choreNum) assigned chore"
+                    if choreNum != 1 {
+                        text+="s"
+                    }
+                    choresLabel.text = text
+                }
             }
-//            if let subtitleLabel = cell.viewWithTag(20) as? UILabel {
-//                subtitleLabel.text = role["username"]
-//            }
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell2", for: indexPath)
+            if let titleLabel = cell.viewWithTag(10) as? UILabel {
+                titleLabel.text = "You are not in any groups. Create a new one or wait to be added to one!"
+            }
+            return cell
         }
-        return cell
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return TableSection.total.rawValue
+        if hasGroup {
+            return TableSection.total.rawValue
+        }
+        else {
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return SectionHeaderHeight
+        if hasGroup {
+            return SectionHeaderHeight
+        }else{
+            return 0
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
-        view.backgroundColor = UIColor(red: 253.0/255.0, green: 240.0/255.0, blue: 196.0/255.0, alpha: 1)
-        let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = UIColor.black
-        if let tableSection = TableSection(rawValue: section) {
-            switch tableSection {
-            case .parent:
-                label.text = "Parent"
-            case .child:
-                label.text = "Child"
-            default:
-                label.text = ""
+        if hasGroup{
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
+            view.backgroundColor = UIColor(red: 178/255.0, green: 34/255.0, blue: 34.0/255.0, alpha: 1)
+            let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
+            label.font = UIFont.boldSystemFont(ofSize: 15)
+            label.textColor = UIColor.black
+            if let tableSection = TableSection(rawValue: section) {
+                switch tableSection {
+                case .parent:
+                    label.text = "Parents"
+                case .child:
+                    label.text = "Children"
+                default:
+                    label.text = ""
+                }
             }
+            view.addSubview(label)
+            return view
+        }else{
+            return nil
         }
-        view.addSubview(label)
-        return view
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
