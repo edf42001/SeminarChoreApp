@@ -81,10 +81,6 @@ class DuplicateLoadingScreenViewController: UIViewController {
         }
         
         switch toScreen {
-        case 0:
-            guard let destination = segue.destination as? NoGroupViewController else {return}
-            destination.user = self.user
-            destination.group = self.group
         case 1:
             guard let destination = segue.destination as? ParentViewController else {return}
             destination.user = self.user

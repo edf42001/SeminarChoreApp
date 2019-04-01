@@ -143,9 +143,6 @@ class ParentViewController: UIViewController, UITableViewDataSource, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toNoGroup" {
-            guard let destination = segue.destination as? NoGroupViewController else {return}
-            destination.group = group
-            destination.user = user
         }else if segue.identifier == "toAddMemberPopup" {
             guard let destination = segue.destination as? AddMemberPopupViewController else {return}
             destination.group = group
