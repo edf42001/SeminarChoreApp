@@ -171,7 +171,7 @@ class DatabaseHandler {
     }
     
     static func readBasicGroupData(groupID: String, uid:String, completion: @escaping((_ group:Group, _ isParent:Bool)->())){
-        let group = Group(id: groupID, name: "", parents: [], children: [], chores: nil)
+        let group = Group(id: groupID, name: "", parents: [], children: [], chores: nil, addedChores: nil)
         ref.child("groups/\(groupID)").observeSingleEvent(of: .value, with: {snapshot in
             if let groupData = snapshot.value as? [String:Any] {
                 if let name = groupData["name"] as? String{
@@ -212,7 +212,16 @@ class DatabaseHandler {
             }
         })
     }
-    
+    static func getAllCustomChoresFromGroup(groupID:String, completion: @escaping(_ addedChores:[CustomChore])->())
+    {
+        ref.child("groups/\(groupID)/addedChores").observeSingleEvent(of: .value, with: {snapshot in
+            var addedChores:[CustomChore] = []
+            if let data = snapshot.value as? [String:String] {
+                addedChores.append(contentsOf: parseCustomChoreList(choreList: data))
+            }
+            completion(addedChores)
+        })
+    }
     static func getAllChoresFromGroup(groupID:String, completion: @escaping(_ chores:[Chore])->()){
         //If the user is a parent then they will get all the chores
         ref.child("groups/\(groupID)/chores").observeSingleEvent(of: .value, with: {snapshot in
@@ -287,4 +296,17 @@ class DatabaseHandler {
         return chores
     }
     
+    private static func parseCustomChoreList(choreList:Any?)->[CustomChore]
+    {
+        var addedChores:[CustomChore] = []
+        if let choreList = choreList as? [String:String]
+        {
+            for (choreID) in choreList
+            {
+                    let chore = CustomChore(id: choreID.key, name: choreID.value)
+                    addedChores.append(chore)
+            }
+        }
+        return addedChores
+    }
 }

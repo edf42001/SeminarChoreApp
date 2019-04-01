@@ -94,10 +94,6 @@ class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
      // MARK: - Navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? NoGroupViewController {
-            destination.user = user
-            destination.group = group
-        }
      }
     
     
