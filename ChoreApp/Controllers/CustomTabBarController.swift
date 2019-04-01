@@ -26,6 +26,40 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
 //        self.user = User(uid: "jkashd", username: "edf42001", email: "how@are.you", isParent: true)
 //        let parents = [UserInfo(uid: "1", username: "bob", isParent: true), UserInfo(uid: "2", username: "lui", isParent: true)]
 //        self.group = Group(id: "sad", name: "My Group", parents: parents, children: [], chores: [])
+        
+        DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
+            let groupViewController = ((self.viewControllers?[1] as? UINavigationController)?.viewControllers[0] as? YesGroupTableViewController)
+
+            if let groupID = groupID as? String {
+                DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
+                    print("\(groupID), \(isParent)")
+                    self.group = group
+                    if isParent {
+                        print("User is parent")
+                        self.user?.isParent = true
+                        DatabaseHandler.observeMembersInGroup(groupID: group.id, completion: {parents, children in
+                            self.group?.parents = parents
+                            self.group?.children = children
+                            groupViewController?.loadData()
+                        })
+                        DatabaseHandler.observeChores(groupID: groupID, completion: {chores in
+                            self.group?.chores = chores
+                            groupViewController?.loadData()
+                        })
+                    }else {
+                        print("User is child")
+                        self.user?.isParent = false
+                        DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
+                            self.user?.chores = chores
+                        })
+                    }
+                    groupViewController?.loadData()
+                })
+            }else{
+                self.group = nil
+                groupViewController?.loadData()
+            }
+        })
     }
     
     // MARK: - Navigation

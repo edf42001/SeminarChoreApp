@@ -29,38 +29,6 @@ class YesGroupTableViewController: UITableViewController {
         self.user = tabBar.user
         self.group = tabBar.group
         
-        DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
-            if let groupID = groupID as? String {
-                DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
-                    print("\(groupID), \(isParent)")
-                    self.group = group
-                    if isParent {
-                        print("User is parent")
-                        self.user?.isParent = true
-                        DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
-                            self.group?.chores = chores
-                        })
-                        DatabaseHandler.observeMembersInGroup(groupID: group.id, completion: {parents, children in
-                            self.group?.parents = parents
-                            self.group?.children = children
-                            self.loadData()
-                        })
-                    }else {
-                        print("User is child")
-                        self.user?.isParent = false
-                        DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
-                            self.user?.chores = chores
-                        })
-                    }
-                    tabBar.group = self.group
-                    self.loadData()
-                })
-            }else{
-                self.group = nil
-                tabBar.group = nil
-                self.loadData()
-            }
-        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
