@@ -20,13 +20,13 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
-        self.view.backgroundColor = UIColor.black
+//        self.view.backgroundColor = UIColor.black
         choreTable.dataSource = self
         choreTable.delegate = self
-        choreTable.backgroundColor = UIColor.black
+//        choreTable.backgroundColor = UIColor.black
         choreTable.rowHeight = UITableViewAutomaticDimension
-        choreTable.estimatedRowHeight = 600
-        addedChores = addedChores + (group?.addedChores)!
+//        choreTable.estimatedRowHeight = 600
+//        addedChores = addedChores + (group?.addedChores)!
         if ((user?.isParent)!) == false
         {
             DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
@@ -36,22 +36,23 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         }
         choreTable.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if((user?.isParent)!)
-        {
-            return addedChores.count
-        }
-        else
-        {
+        if user!.isParent {
+            return ChoreType.total.rawValue - 1 // addedChores.count
+        }else{
             return (user?.chores?.count)!
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if((user?.isParent)!)
+        if user!.isParent
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "choreItem", for: indexPath) as! AssignableChore
-            cell.choreLabel.text = addedChores[indexPath.row].name
+            cell.choreLabel.text = Chore.choreNames[indexPath.row]
+            cell.iconImage.image = Chore.getChoreImage(choreType: ChoreType(rawValue: indexPath.row)!)
+            cell.iconImage.layer.cornerRadius = 8
+            cell.iconImage.layer.masksToBounds = true
             return cell
         }
         else

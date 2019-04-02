@@ -288,7 +288,7 @@ class DatabaseHandler {
         if let choreList = choreList as? [String:[String:String]] {
             for (choreID, choreData) in choreList {
                 if let name = choreData["name"] {
-                    let chore = Chore(id: choreID, name: name, asigneeID: uid)
+                    let chore = Chore(id: choreID, name: name, asigneeID: uid, choreType: .Dog)
                     chores.append(chore)
                 }
             }

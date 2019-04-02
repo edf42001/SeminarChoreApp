@@ -17,8 +17,6 @@
 		8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B326A9F21AD926D00665FFE /* AppDelegate.swift */; };
 		8B326AA721AD927700665FFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B326AA621AD927700665FFE /* Assets.xcassets */; };
 		8B4BBCCB222D794A0068B417 /* Popups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4BBCCA222D794A0068B417 /* Popups.storyboard */; };
-		8B6AB6BC22314E990055907B /* AddChorePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AB6BB22314E990055907B /* AddChorePopupViewController.swift */; };
-		8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B73F68721C83F56005A66E5 /* ParentViewController.swift */; };
 		8B97E18B2243DAFE003590C7 /* YesGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97E18A2243DAFE003590C7 /* YesGroupTableViewController.swift */; };
 		8B97E18D22452503003590C7 /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B97E18C22452503003590C7 /* AddMemberViewController.swift */; };
 		8BB436B62203592600811C2B /* StartingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB436B52203592600811C2B /* StartingScreenViewController.swift */; };
@@ -29,8 +27,6 @@
 		8BDD009D2226BCE3005210BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */; };
 		8BDD009F2226BCE3005210BC /* Accounts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD009C2226BCE3005210BC /* Accounts.storyboard */; };
 		8BDD00A12226BD13005210BC /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A02226BD13005210BC /* Group.storyboard */; };
-		8BDD00A32226BE11005210BC /* Parent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A22226BE11005210BC /* Parent.storyboard */; };
-		8BDD00A52226BE28005210BC /* Child.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDD00A42226BE28005210BC /* Child.storyboard */; };
 		8BF2A8CF2242593D0035AE70 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF2A8CE2242593D0035AE70 /* OptionsTableViewController.swift */; };
 		9736145D22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */; };
 		97C6789B21F0B47500EFA7F2 /* ChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */; };
@@ -60,8 +56,6 @@
 		8B326AA621AD927700665FFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B326AAB21AD927700665FFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B4BBCCA222D794A0068B417 /* Popups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popups.storyboard; sourceTree = "<group>"; };
-		8B6AB6BB22314E990055907B /* AddChorePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChorePopupViewController.swift; sourceTree = "<group>"; };
-		8B73F68721C83F56005A66E5 /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		8B97E18A2243DAFE003590C7 /* YesGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YesGroupTableViewController.swift; sourceTree = "<group>"; };
 		8B97E18C22452503003590C7 /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
 		8BB436B52203592600811C2B /* StartingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingScreenViewController.swift; sourceTree = "<group>"; };
@@ -72,8 +66,6 @@
 		8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BDD009C2226BCE3005210BC /* Accounts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Accounts.storyboard; sourceTree = "<group>"; };
 		8BDD00A02226BD13005210BC /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
-		8BDD00A22226BE11005210BC /* Parent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Parent.storyboard; sourceTree = "<group>"; };
-		8BDD00A42226BE28005210BC /* Child.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Child.storyboard; sourceTree = "<group>"; };
 		8BF2A8CE2242593D0035AE70 /* OptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
 		8BF2A8D022426AB80035AE70 /* ChoreApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChoreApp.entitlements; sourceTree = "<group>"; };
 		9736145C22034B3200B427E0 /* DuplicateLoadingScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateLoadingScreenViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +119,6 @@
 			children = (
 				8B296EEF222EBE40002EB0B8 /* AddMemberPopupViewController.swift */,
 				8B296EF122301B74002EB0B8 /* CreateNewGroupViewController.swift */,
-				8B6AB6BB22314E990055907B /* AddChorePopupViewController.swift */,
 			);
 			path = PopupViewControllers;
 			sourceTree = "<group>";
@@ -141,7 +132,6 @@
 				97F6A33121DE5CC700B58278 /* LogInViewController.swift */,
 				97F6A32F21DE5CA100B58278 /* SignUpViewController.swift */,
 				8B97E18A2243DAFE003590C7 /* YesGroupTableViewController.swift */,
-				8B73F68721C83F56005A66E5 /* ParentViewController.swift */,
 				97C6789A21F0B47500EFA7F2 /* ChildViewController.swift */,
 				F37C778F2243D683002640ED /* ChoreNavigationViewController.swift */,
 				F37C778B22426E03002640ED /* ParentChoresViewController.swift */,
@@ -208,8 +198,6 @@
 				8BDD009A2226BCE3005210BC /* LaunchScreen.storyboard */,
 				8BDD009C2226BCE3005210BC /* Accounts.storyboard */,
 				8BDD00A02226BD13005210BC /* Group.storyboard */,
-				8BDD00A22226BE11005210BC /* Parent.storyboard */,
-				8BDD00A42226BE28005210BC /* Child.storyboard */,
 				8B4BBCCA222D794A0068B417 /* Popups.storyboard */,
 				8B2F019B223A9792008AC7DC /* Main.storyboard */,
 				8BC7165E223BC9ED00910ED0 /* Chores.storyboard */,
@@ -284,10 +272,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BDD00A32226BE11005210BC /* Parent.storyboard in Resources */,
 				8BDD00A12226BD13005210BC /* Group.storyboard in Resources */,
 				8BDD009D2226BCE3005210BC /* LaunchScreen.storyboard in Resources */,
-				8BDD00A52226BE28005210BC /* Child.storyboard in Resources */,
 				8BDD009F2226BCE3005210BC /* Accounts.storyboard in Resources */,
 				8BC1EBFD21AF04B0004CF3EC /* GoogleService-Info.plist in Resources */,
 				8B2F019C223A9792008AC7DC /* Main.storyboard in Resources */,
@@ -361,10 +347,8 @@
 				8B97E18D22452503003590C7 /* AddMemberViewController.swift in Sources */,
 				8BF2A8CF2242593D0035AE70 /* OptionsTableViewController.swift in Sources */,
 				F370A02E224BB16000D9E18F /* NewChoreTableViewCell.swift in Sources */,
-				8B6AB6BC22314E990055907B /* AddChorePopupViewController.swift in Sources */,
 				8BB436BA22049A8A00811C2B /* DatabaseHandler.swift in Sources */,
 				8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */,
-				8B73F68821C83F56005A66E5 /* ParentViewController.swift in Sources */,
 				8B296EF0222EBE40002EB0B8 /* AddMemberPopupViewController.swift in Sources */,
 				F370A02C224BA85A00D9E18F /* CustomChore.swift in Sources */,
 				F37C77902243D683002640ED /* ChoreNavigationViewController.swift in Sources */,
