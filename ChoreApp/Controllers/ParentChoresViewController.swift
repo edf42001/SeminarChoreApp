@@ -27,6 +27,14 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         choreTable.rowHeight = UITableViewAutomaticDimension
         choreTable.estimatedRowHeight = 600
         addedChores = addedChores + (group?.addedChores)!
+        if ((user?.isParent)!) == false
+        {
+            DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
+                self.user?.chores! = chores
+                self.choreTable.reloadData()
+            }
+        }
+        choreTable.reloadData()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if((user?.isParent)!)
@@ -48,11 +56,33 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         }
         else
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "assignedChore", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "assignedChore", for: indexPath) as! NewChoreTableViewCell
+            cell.choreLabel.text = user?.chores![indexPath.row].name
             return cell
         }
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if((user?.isParent)!) == false{
+            let confirmationMessage = UIAlertController(title: "Please Confirm", message: choreTable.cellForRow(at: indexPath)?.textLabel?.text, preferredStyle: .alert)
+            confirmationMessage.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        
+            confirmationMessage.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
+                let cell = tableView.cellForRow(at: indexPath) as! ChoreTableViewCell
+                DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
+                self.choreTable.reloadData()
+            
+            }))
+            self.present(confirmationMessage, animated: true)
+        }
+    }
+    
+    
+    
+
+    
+    
     
     
 }

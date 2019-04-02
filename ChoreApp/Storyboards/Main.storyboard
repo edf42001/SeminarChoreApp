@@ -32,7 +32,7 @@
         <scene sceneID="jCu-rP-fnU">
             <objects>
                 <viewControllerPlaceholder storyboardName="Chores" referencedIdentifier="ChoresViewController" id="IOa-cL-EkS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" selectedImage="Group" systemItem="favorites" id="egb-i1-cpu"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="egb-i1-cpu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhF-Zd-hGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

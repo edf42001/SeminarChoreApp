@@ -58,6 +58,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="choreLabel" destination="Hwb-Wy-vBT" id="rSW-aE-35c"/>
+                                            <outlet property="iconImage" destination="P7t-gS-wwW" id="9Rh-lY-QTR"/>
                                             <segue destination="Bgc-mK-kch" kind="presentation" identifier="assignChore" id="rUi-7t-9zg"/>
                                         </connections>
                                     </tableViewCell>
@@ -97,6 +98,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="choreLabel" destination="oLi-iH-RMD" id="TNq-52-3sh"/>
+                                            <outlet property="iconImage" destination="LnN-11-ADA" id="UjF-4m-hUH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -111,6 +113,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CaE-JA-kEk"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="oHa-NF-UFn"/>
                     <navigationItem key="navigationItem" title="Create A Chore" id="2Og-9K-K9U"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
