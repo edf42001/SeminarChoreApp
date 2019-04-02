@@ -12,4 +12,5 @@ import UIKit
 class AssignableChore: UITableViewCell
 {
     @IBOutlet weak var choreLabel: UILabel!
+    @IBOutlet weak var iconImage: UIImageView!
 }
