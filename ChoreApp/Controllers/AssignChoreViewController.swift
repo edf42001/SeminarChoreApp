@@ -54,9 +54,11 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
     }
     
     @IBAction func createChore(_ sender: Any) {
+        var count = 0
         for cell in childList.visibleCells {
             if let check = cell.viewWithTag(20) as? UISwitch {
                 if check.isOn {
+                    count += 1
                     let child = self.group?.children[childList.visibleCells.firstIndex(of: cell)!]
                     DatabaseHandler.addChore(name: chore!.name, asigneeUid: child!.uid, groupID: self.group!.id, completion: {id in
                         //add the chore to the group
@@ -66,6 +68,9 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
                     })
                 }
             }
+        }
+        if count > 0 {
+            //Segue here
         }
     }
     
