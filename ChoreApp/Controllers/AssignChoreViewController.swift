@@ -25,6 +25,8 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
         childList.dataSource = self
         childList.delegate = self
         createButton.applyButtonStyles(type: .standard)
+        choreName.text = chore?.name
+        choreIcon.image = Chore.getChoreImage(choreType: self.chore!.choreType)
         // Do any additional setup after loading the view.
     }
     
@@ -56,7 +58,12 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
             if let check = cell.viewWithTag(20) as? UISwitch {
                 if check.isOn {
                     let child = self.group?.children[childList.visibleCells.firstIndex(of: cell)!]
-                    DatabaseHandler.addChore(name: <#T##String#>, asigneeUid: (child?.uid)!, groupID: (self.group?.id)!, completion: <#T##(String) -> ()#>)
+                    DatabaseHandler.addChore(name: chore!.name, asigneeUid: child!.uid, groupID: self.group!.id, completion: {id in
+                        //add the chore to the group
+                        if let ch = self.chore {
+                            self.group?.chores?.append(ch)
+                        }
+                    })
                 }
             }
         }
