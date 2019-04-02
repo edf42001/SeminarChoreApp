@@ -16,7 +16,7 @@ class YesGroupTableViewController: UITableViewController {
     enum TableSection: Int {
         case parent = 0, child, total
     }
-    let SectionHeaderHeight: CGFloat = 25
+    let SectionHeaderHeight: CGFloat = 35
     var data = [TableSection: [[String: String]]]()
     var groupData: [[String:String]] = []
     var hasGroup: Bool = false
@@ -59,6 +59,12 @@ class YesGroupTableViewController: UITableViewController {
             tableView.separatorStyle = .singleLine
         }else{
             tableView.separatorStyle = .none
+        }
+        
+        if user!.isParent {
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        }else{
+//            navigationItem.rightBarButtonItem = nil
         }
         
         self.tableView.reloadData()
@@ -133,28 +139,41 @@ class YesGroupTableViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if hasGroup{
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
-            view.backgroundColor = UIColor(red: 178/255.0, green: 34/255.0, blue: 34.0/255.0, alpha: 1)
-            let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
-            label.font = UIFont.boldSystemFont(ofSize: 15)
-            label.textColor = UIColor.black
-            if let tableSection = TableSection(rawValue: section) {
-                switch tableSection {
-                case .parent:
-                    label.text = "Parents"
-                case .child:
-                    label.text = "Children"
-                default:
-                    label.text = ""
-                }
-            }
-            view.addSubview(label)
-            return view
-        }else{
-            return nil
-        }
-    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        if hasGroup{
+//            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
+////   view.backgroundColor = UIColor(red: 178/255.0, green: 34/255.0, blue: 34.0/255.0, alpha: 1)
+//            let label = UILabel(frame: CGRect(x: 15, y: 0, width: tableView.bounds.width - 30, height: SectionHeaderHeight))
+//            label.font = UIFont.boldSystemFont(ofSize: 15)
+//            label.textColor = UIColor.white
+//            if let tableSection = TableSection(rawValue: section) {
+//                switch tableSection {
+//                case .parent:
+//                    label.text = "Parents"
+//                case .child:
+//                    label.text = "Children"
+//                default:
+//                    label.text = ""
+//                }
+//            }
+//            view.addSubview(label)
+//            return view
+//        }else{
+//            return nil
+//        }
+//    }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let tableSection = TableSection(rawValue: section) {
+            switch tableSection {
+            case .parent:
+                return "Parents"
+            case .child:
+                return "Children"
+            default:
+                return ""
+            }
+        }
+        return ""
+    }
 }
