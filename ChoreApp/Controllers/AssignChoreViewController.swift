@@ -12,16 +12,19 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
     
     var user:User?
     var group:Group?
+    var chore:Chore?
     
     @IBOutlet weak var choreName: UILabel!
     @IBOutlet weak var choreIcon: UIImageView!
     @IBOutlet weak var childList: UITableView!
+    @IBOutlet weak var createButton: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         childList.dataSource = self
         childList.delegate = self
+        createButton.applyButtonStyles(type: .standard)
         // Do any additional setup after loading the view.
     }
     
@@ -47,5 +50,16 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
         }
         return cell
     }
-
+    
+    @IBAction func createChore(_ sender: Any) {
+        for cell in childList.visibleCells {
+            if let check = cell.viewWithTag(20) as? UISwitch {
+                if check.isOn {
+                    let child = self.group?.children[childList.visibleCells.firstIndex(of: cell)!]
+                    DatabaseHandler.addChore(name: <#T##String#>, asigneeUid: (child?.uid)!, groupID: (self.group?.id)!, completion: <#T##(String) -> ()#>)
+                }
+            }
+        }
+    }
+    
 }
