@@ -80,7 +80,7 @@
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.21632799010000001" green="0.235994171" blue="0.235994171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.21568627450980393" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U8G-XU-zyx" secondAttribute="trailing" constant="50" id="6kg-Ic-o9D"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="G2k-k7-ZQQ" secondAttribute="bottom" constant="50" id="6nn-ta-RTg"/>
@@ -344,6 +344,6 @@
         <image name="Icon" width="1024" height="1024"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pvd-eN-gh0"/>
+        <segue reference="Dhi-lX-CDw"/>
     </inferredMetricsTieBreakers>
 </document>
