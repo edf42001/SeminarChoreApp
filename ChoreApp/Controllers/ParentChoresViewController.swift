@@ -78,12 +78,14 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
             self.present(confirmationMessage, animated: true)
         }
     }
-    
-    
-    
 
-    
-    
-    
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "assignChore" {
+            if let destination = segue.destination as? AssignChoreViewController {
+                if let indexPath = choreTable.indexPathForSelectedRow {
+                    destination.chore = Chore(id: "", name: "", asigneeID: "", choreType: ChoreType(rawValue: indexPath.row)!)
+                }
+            }
+        }
+    }
 }

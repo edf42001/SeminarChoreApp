@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssignChoreViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
+class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var user:User?
     var group:Group?
@@ -22,8 +22,7 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        childList.dataSource = self
-        childList.delegate = self
+
         createButton.applyButtonStyles(type: .standard)
         choreName.text = chore?.name
         choreIcon.image = Chore.getChoreImage(choreType: self.chore!.choreType)
@@ -60,7 +59,7 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
                 if check.isOn {
                     count += 1
                     let child = self.group?.children[childList.visibleCells.firstIndex(of: cell)!]
-                    DatabaseHandler.addChore(name: chore!.name, type: .Dog, asigneeUid: child!.uid, groupID: self.group!.id, completion: {id in
+                    DatabaseHandler.addChore(name: chore!.name, type: self.chore!.choreType, asigneeUid: child!.uid, groupID: self.group!.id, completion: {id in
                         //add the chore to the group
                         if let ch = self.chore {
                             self.group?.chores?.append(ch)
@@ -70,7 +69,7 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
             }
         }
         if count > 0 {
-            //Segue here
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
