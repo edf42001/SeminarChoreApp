@@ -26,7 +26,11 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         choreTable.backgroundColor = UIColor.black
         choreTable.rowHeight = UITableViewAutomaticDimension
         choreTable.estimatedRowHeight = 600
-        addedChores = addedChores + (group?.addedChores)!
+        if let someMoreChores = group?.addedChores
+        {
+            addedChores = addedChores + (group?.addedChores)!
+        }
+        
         if ((user?.isParent)!) == false
         {
             DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
