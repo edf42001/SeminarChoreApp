@@ -25,7 +25,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
 //        self.selectedIndex = 1 //for testing purposes
 //        self.user = User(uid: "jkashd", username: "edf42001", email: "how@are.you", isParent: true)
 //        let parents = [UserInfo(uid: "1", username: "bob", isParent: true), UserInfo(uid: "2", username: "lui", isParent: true)]
-//        self.group = Group(id: "sad", name: "My Group", parents: parents, children: [], chores: [])
+//        self.group = Group(id: "sad", name: "My Group", parents: parents, children: [], chores: [], addedChores: [])
         
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
             let groupViewController = ((self.viewControllers?[1] as? UINavigationController)?.viewControllers[0] as? YesGroupTableViewController)

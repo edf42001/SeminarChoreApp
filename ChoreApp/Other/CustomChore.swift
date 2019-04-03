@@ -19,3 +19,5 @@ class CustomChore
         self.name = name
     }
 }
+
+
