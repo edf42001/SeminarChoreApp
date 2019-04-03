@@ -61,7 +61,7 @@
                                         <connections>
                                             <outlet property="choreLabel" destination="Hwb-Wy-vBT" id="rSW-aE-35c"/>
                                             <outlet property="iconImage" destination="P7t-gS-wwW" id="9Rh-lY-QTR"/>
-                                            <segue destination="Bgc-mK-kch" kind="presentation" identifier="assignChore" id="rUi-7t-9zg"/>
+                                            <segue destination="ooe-6k-q4k" kind="show" identifier="assignChore" id="avC-xK-I1j"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="assignedChore" rowHeight="80" id="lA4-Ly-cPJ" customClass="NewChoreTableViewCell" customModule="ChoreApp" customModuleProvider="target">
@@ -125,7 +125,7 @@
             </objects>
             <point key="canvasLocation" x="1010.144927536232" y="22.767857142857142"/>
         </scene>
-        <!--Assign Chores-->
+        <!--Assign Chore-->
         <scene sceneID="qNB-81-ODY">
             <objects>
                 <viewController id="ooe-6k-q4k" customClass="AssignChoreViewController" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -171,47 +171,50 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ooe-6k-q4k" id="P5A-RY-GEe"/>
+                                    <outlet property="delegate" destination="ooe-6k-q4k" id="DRk-Ad-zvx"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrI-ZN-CbN">
-                                <rect key="frame" x="184" y="757" width="46" height="30"/>
+                                <rect key="frame" x="184" y="708" width="46" height="30"/>
                                 <state key="normal" title="Create"/>
                                 <connections>
                                     <action selector="createChore:" destination="ooe-6k-q4k" eventType="touchUpInside" id="8uN-af-hw1"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.050980392156862744" green="0.050980392156862744" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wtM-40-Ppj" firstAttribute="bottom" secondItem="yrI-ZN-CbN" secondAttribute="bottom" constant="75" id="HZ3-fl-FQ9"/>
                             <constraint firstItem="yrI-ZN-CbN" firstAttribute="centerX" secondItem="AOC-dG-uLy" secondAttribute="centerX" id="YSA-YB-TlC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wtM-40-Ppj"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Assign Chores" id="UkI-QR-g4f">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tZs-LC-bj5">
-                            <connections>
-                                <action selector="cancel:" destination="ooe-6k-q4k" id="Z7k-2w-GAl"/>
-                            </connections>
-                        </barButtonItem>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="X1S-ma-bbh"/>
+                    <navigationItem key="navigationItem" title="Assign Chore" id="UkI-QR-g4f">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tZs-LC-bj5"/>
                         <barButtonItem key="rightBarButtonItem" title="Assign" id="YUA-JE-WzB"/>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="childList" destination="qCH-tk-Cu2" id="qJ0-hJ-BJY"/>
-                        <outlet property="choreIcon" destination="PrX-B2-9cd" id="n2N-Gk-JhH"/>
+                        <outlet property="childList" destination="qCH-tk-Cu2" id="eoQ-qg-c0J"/>
+                        <outlet property="choreIcon" destination="PrX-B2-9cd" id="lur-b4-K6W"/>
                         <outlet property="choreName" destination="jh9-Z1-zAw" id="a2w-qC-Wwn"/>
-                        <outlet property="createButton" destination="yrI-ZN-CbN" id="xbx-u4-Orj"/>
+                        <outlet property="createButton" destination="yrI-ZN-CbN" id="ewn-QU-wZZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eml-0q-RY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2857.971014492754" y="22.767857142857142"/>
+            <point key="canvasLocation" x="1968" y="23"/>
         </scene>
-        <!--Chores-->
+        <!--Navigation Controller-->
         <scene sceneID="X3O-vi-lQd">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bem-DA-r2l" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chores" id="eL1-bf-KiK"/>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="oRv-m4-tk4"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="dZJ-jO-TDo">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -224,24 +227,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u28-OU-Xh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="100.00000000000001" y="22.767857142857142"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="hn6-Gc-hqO">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bgc-mK-kch" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rQn-8M-Vue">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ooe-6k-q4k" kind="relationship" relationship="rootViewController" id="bfC-z0-1o1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vL3-Hu-gbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1947.826086956522" y="22.767857142857142"/>
         </scene>
     </scenes>
     <resources>
