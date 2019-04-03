@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Create A Chore-->
+        <!--Chores-->
         <scene sceneID="wV0-fZ-hln">
             <objects>
-                <viewController storyboardIdentifier="ChoresViewController" id="VLN-SC-pHU" customClass="ParentChoresViewContoller" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VLN-SC-pHU" customClass="ParentChoresViewContoller" customModule="ChoreApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8TD-sT-lmv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorInsetReference="fromAutomaticInsets" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rwF-1g-b6h">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" red="0.050980392156862744" green="0.050980392156862744" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -105,17 +105,17 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.050980392156862744" green="0.050980392156862744" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rwF-1g-b6h" firstAttribute="leading" secondItem="CaE-JA-kEk" secondAttribute="leading" id="H9x-Fb-Hza"/>
+                            <constraint firstItem="rwF-1g-b6h" firstAttribute="top" secondItem="CaE-JA-kEk" secondAttribute="top" id="Rb0-Yq-PvM"/>
                             <constraint firstItem="rwF-1g-b6h" firstAttribute="trailing" secondItem="CaE-JA-kEk" secondAttribute="trailing" id="im2-eP-8MA"/>
-                            <constraint firstItem="rwF-1g-b6h" firstAttribute="top" secondItem="8TD-sT-lmv" secondAttribute="top" id="oi8-7m-5Co"/>
                             <constraint firstItem="CaE-JA-kEk" firstAttribute="bottom" secondItem="rwF-1g-b6h" secondAttribute="bottom" id="uTi-aL-Aaz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CaE-JA-kEk"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="oHa-NF-UFn"/>
-                    <navigationItem key="navigationItem" title="Create A Chore" id="2Og-9K-K9U"/>
+                    <navigationItem key="navigationItem" title="Chores" id="2Og-9K-K9U"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="choreTable" destination="rwF-1g-b6h" id="sQL-iN-DcZ"/>
@@ -209,7 +209,7 @@
         <!--Chores-->
         <scene sceneID="X3O-vi-lQd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bem-DA-r2l" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ChoresViewController" automaticallyAdjustsScrollViewInsets="NO" id="Bem-DA-r2l" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chores" id="eL1-bf-KiK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="dZJ-jO-TDo">
@@ -230,7 +230,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bgc-mK-kch" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rQn-8M-Vue">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="rQn-8M-Vue">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
