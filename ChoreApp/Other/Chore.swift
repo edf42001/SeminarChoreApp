@@ -16,7 +16,7 @@ class Chore{
     let choreType:ChoreType
     
     static let choreNames = ["Make the bed", "Walk the dog", "Clean the house", "Do the dishes", "Do the laundry", "Clean your room", "Take out the trash", "Feed the pet", "Mow the lawn"]
-    static let choreImages = ["Bed.jpeg", "Dog.png", "", "", "", "", "", "", "", "Custom.png"]
+    static let choreImages = ["Bed.jpeg", "Dog.png", "House.png", "Dishes.png", "Laundry.png", "Room.png", "Trash.png", "Pet.png", "Lawn.png", "Custom.png"]
     
     init(id:String, name:String, asigneeID:String, choreType:ChoreType){
         self.id = id

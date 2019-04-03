@@ -126,9 +126,10 @@ class DatabaseHandler {
         })
     }
     
-    static func addChore(name:String, asigneeUid: String, groupID:String, completion: @escaping (_ id:String)->()){
+    static func addChore(name:String, type:ChoreType, asigneeUid: String, groupID:String, completion: @escaping (_ id:String)->()){
         let key = ref.child("groups/\(groupID)/chores/\(asigneeUid)").childByAutoId().key ?? ""
         ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(key)/name").setValue(name)
+        ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(key)/type").setValue(type.rawValue)
         completion(key)
     }
     
@@ -285,10 +286,10 @@ class DatabaseHandler {
     
     private static func parseChoreList(choreList:Any?, uid:String)->[Chore]{
         var chores:[Chore] = []
-        if let choreList = choreList as? [String:[String:String]] {
+        if let choreList = choreList as? [String:[String:Any]] {
             for (choreID, choreData) in choreList {
-                if let name = choreData["name"] {
-                    let chore = Chore(id: choreID, name: name, asigneeID: uid, choreType: .Dog)
+                if let name = choreData["name"] as? String, let type = ChoreType(rawValue: choreData["type"] as? Int ?? ChoreType.Custom.rawValue) {
+                    let chore = Chore(id: choreID, name: name, asigneeID: uid, choreType: type)
                     chores.append(chore)
                 }
             }
