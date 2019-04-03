@@ -54,6 +54,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                                 self.toScreen = 1
                                 DatabaseHandler.getAllChoresFromGroup(groupID: groupID, completion: {chores in
                                     self.group?.chores = chores
+                                    self.navigationController?.isNavigationBarHidden = true
                                     self.performSegue(withIdentifier: "toTabBar", sender: self)
                                 })
                                 
@@ -63,6 +64,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                                 self.toScreen = 2
                                 DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
                                     self.user?.chores = chores
+                                    self.navigationController?.isNavigationBarHidden = true
                                     self.performSegue(withIdentifier: "toTabBar", sender: self)
                                 })
                             }

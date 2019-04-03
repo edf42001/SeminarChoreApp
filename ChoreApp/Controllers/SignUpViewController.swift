@@ -45,6 +45,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 })
                 self.user = User(uid: current.uid, username: dText, email: eText, isParent: false)
                 DatabaseHandler.addUser(username: dText, uid: current.uid, email: eText)
+                self.navigationController?.isNavigationBarHidden = true
                 self.performSegue(withIdentifier: "toTabBar", sender: self)
             }
             else {
