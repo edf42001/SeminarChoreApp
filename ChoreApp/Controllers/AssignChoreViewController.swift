@@ -60,7 +60,7 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
                 if check.isOn {
                     count += 1
                     let child = self.group?.children[childList.visibleCells.firstIndex(of: cell)!]
-                    DatabaseHandler.addChore(name: chore!.name, asigneeUid: child!.uid, groupID: self.group!.id, completion: {id in
+                    DatabaseHandler.addChore(name: chore!.name, type: .Dog, asigneeUid: child!.uid, groupID: self.group!.id, completion: {id in
                         //add the chore to the group
                         if let ch = self.chore {
                             self.group?.chores?.append(ch)
