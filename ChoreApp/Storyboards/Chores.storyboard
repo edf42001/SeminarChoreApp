@@ -163,13 +163,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" tag="20" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fCK-Fb-ZyP">
+                                                    <rect key="frame" x="267" y="6" width="49" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrI-ZN-CbN">
+                                <rect key="frame" x="184" y="757" width="46" height="30"/>
+                                <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="createChore:" destination="ooe-6k-q4k" eventType="touchUpInside" id="8uN-af-hw1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wtM-40-Ppj" firstAttribute="bottom" secondItem="yrI-ZN-CbN" secondAttribute="bottom" constant="75" id="HZ3-fl-FQ9"/>
+                            <constraint firstItem="yrI-ZN-CbN" firstAttribute="centerX" secondItem="AOC-dG-uLy" secondAttribute="centerX" id="YSA-YB-TlC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="wtM-40-Ppj"/>
                     </view>
                     <navigationItem key="navigationItem" title="Assign Chores" id="UkI-QR-g4f">
@@ -184,6 +199,7 @@
                         <outlet property="childList" destination="qCH-tk-Cu2" id="qJ0-hJ-BJY"/>
                         <outlet property="choreIcon" destination="PrX-B2-9cd" id="n2N-Gk-JhH"/>
                         <outlet property="choreName" destination="jh9-Z1-zAw" id="a2w-qC-Wwn"/>
+                        <outlet property="createButton" destination="yrI-ZN-CbN" id="xbx-u4-Orj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eml-0q-RY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
