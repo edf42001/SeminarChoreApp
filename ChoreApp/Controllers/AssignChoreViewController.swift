@@ -24,9 +24,10 @@ class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         createButton.applyButtonStyles(type: .standard)
-        choreName.text = chore?.name
+        choreName.text = Chore.choreNames[chore!.choreType.rawValue]
         choreIcon.image = Chore.getChoreImage(choreType: self.chore!.choreType)
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,12 +37,7 @@ class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let g = self.group {
-            return g.children.count
-        }
-        else {
-            return 0
-        }
+        return group!.children.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,7 +65,7 @@ class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
         if count > 0 {
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
