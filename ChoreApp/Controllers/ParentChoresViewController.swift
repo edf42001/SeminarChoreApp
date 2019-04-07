@@ -27,21 +27,26 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         choreTable.rowHeight = UITableViewAutomaticDimension
 //        choreTable.estimatedRowHeight = 600
 //        addedChores = addedChores + (group?.addedChores)!
-        if ((user?.isParent)!) == false
-        {
-            DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
-                self.user?.chores! = chores
-                self.choreTable.reloadData()
-            }
-        }
-        choreTable.reloadData()
+//        if ((user?.isParent)!) == false
+//        {
+//            DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
+//                self.user?.chores! = chores
+//                self.choreTable.reloadData()
+//            }
+//        }
+        
+        loadData()
+    }
+    
+    func loadData() {
+        self.choreTable.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if user!.isParent {
             return ChoreType.total.rawValue - 1 // addedChores.count
         }else{
-            return (user?.chores?.count)!
+            return user!.chores?.count ?? 0
         }
     }
     
