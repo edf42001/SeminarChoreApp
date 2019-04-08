@@ -28,6 +28,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         displayName.delegate = self
         password.delegate = self
         email.becomeFirstResponder()
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     //Create a user with the specifications entered by the user, and send the data to the database. Also, send the user to the NoGroupViewController
