@@ -66,6 +66,7 @@ class OptionsTableViewController: UITableViewController {
             DatabaseHandler.stopObservingChores()
             DatabaseHandler.stopObservingMembersInGroup()
             DatabaseHandler.leaveGroup(uid: self.user!.uid, groupID: self.group!.id, isParent: self.user!.isParent, done: {
+                self.user?.chores = nil
                 self.user?.groupID = nil
                 self.group = nil
                 self.setupGroupButtonsAndLabel()
