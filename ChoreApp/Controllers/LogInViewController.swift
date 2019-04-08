@@ -71,6 +71,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                         })
                     }else{
                         self.toScreen = 0
+                        self.navigationController?.isNavigationBarHidden = true
                         self.performSegue(withIdentifier: "toTabBar", sender: self)
                     }
                 })

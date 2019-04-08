@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AssignChoreViewController: UINavigationController, UITableViewDelegate, UITableViewDataSource {
+class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var user:User?
     var group:Group?
@@ -22,12 +22,12 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        childList.dataSource = self
-        childList.delegate = self
+
         createButton.applyButtonStyles(type: .standard)
-        choreName.text = chore?.name
+        choreName.text = Chore.choreNames[chore!.choreType.rawValue]
         choreIcon.image = Chore.getChoreImage(choreType: self.chore!.choreType)
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,12 +37,7 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let g = self.group {
-            return g.children.count
-        }
-        else {
-            return 0
-        }
+        return group!.children.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,7 +55,7 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
                 if check.isOn {
                     count += 1
                     let child = self.group?.children[childList.visibleCells.firstIndex(of: cell)!]
-                    DatabaseHandler.addChore(name: chore!.name, type: .Dog, asigneeUid: child!.uid, groupID: self.group!.id, completion: {id in
+                    DatabaseHandler.addChore(name: chore!.name, type: self.chore!.choreType, asigneeUid: child!.uid, groupID: self.group!.id, completion: {id in
                         //add the chore to the group
                         if let ch = self.chore {
                             self.group?.chores?.append(ch)
@@ -70,7 +65,7 @@ class AssignChoreViewController: UINavigationController, UITableViewDelegate, UI
             }
         }
         if count > 0 {
-            //Segue here
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

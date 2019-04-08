@@ -38,6 +38,7 @@ class OptionsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    
     @IBAction func logoutButtonPressed(_ sender: UIButton) {
         let alert = UIAlertController(title: "Log Out", message: "Are you sure you want to log out?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: {action in
@@ -78,6 +79,10 @@ class OptionsTableViewController: UITableViewController {
     }
     
     func setupGroupButtonsAndLabel() {
+        let tabBar = self.tabBarController as! CustomTabBarController
+        self.user = tabBar.user
+        self.group = tabBar.group
+        
         createGroupButton.isEnabled = (group == nil)
         leaveGroupButton.isEnabled = (group != nil)
         if group == nil {

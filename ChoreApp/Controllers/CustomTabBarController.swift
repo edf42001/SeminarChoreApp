@@ -29,7 +29,13 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
             let groupViewController = ((self.viewControllers?[1] as? UINavigationController)?.viewControllers[0] as? YesGroupTableViewController)
-
+            let choresViewController = ((self.viewControllers?[0] as? UINavigationController)?.viewControllers[0] as? ParentChoresViewContoller)
+            let optionsViewController = (self.viewControllers?[2] as? OptionsTableViewController)
+            
+            groupViewController?.loadViewIfNeeded() //Prevent crash when trying to access view controller before it is loaded
+            choresViewController?.loadViewIfNeeded()
+            optionsViewController?.loadViewIfNeeded()
+            
             if let groupID = groupID as? String {
                 DatabaseHandler.readBasicGroupData(groupID: groupID, uid: self.user!.uid, completion: {group, isParent in
                     print("\(groupID), \(isParent)")
@@ -41,10 +47,14 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
                             self.group?.parents = parents
                             self.group?.children = children
                             groupViewController?.loadData()
+                            choresViewController?.loadData()
+                            optionsViewController?.setupGroupButtonsAndLabel()
                         })
                         DatabaseHandler.observeChores(groupID: groupID, completion: {chores in
                             self.group?.chores = chores
                             groupViewController?.loadData()
+                            choresViewController?.loadData()
+                            optionsViewController?.setupGroupButtonsAndLabel()
                         })
                     }else {
                         print("User is child")
@@ -54,10 +64,14 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
                         })
                     }
                     groupViewController?.loadData()
+                    choresViewController?.loadData()
+                    optionsViewController?.setupGroupButtonsAndLabel()
                 })
             }else{
                 self.group = nil
                 groupViewController?.loadData()
+                choresViewController?.loadData()
+                optionsViewController?.setupGroupButtonsAndLabel()
             }
         })
     }
