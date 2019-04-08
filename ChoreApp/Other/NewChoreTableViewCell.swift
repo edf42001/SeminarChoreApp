@@ -13,6 +13,6 @@ class NewChoreTableViewCell: UITableViewCell
 {
     @IBOutlet weak var choreLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
-    
+    var choreID: String?
     
 }
