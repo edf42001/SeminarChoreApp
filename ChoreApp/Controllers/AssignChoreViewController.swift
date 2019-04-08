@@ -17,13 +17,10 @@ class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var choreName: UILabel!
     @IBOutlet weak var choreIcon: UIImageView!
     @IBOutlet weak var childList: UITableView!
-    @IBOutlet weak var createButton: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        createButton.applyButtonStyles(type: .standard)
         choreName.text = Chore.choreNames[chore!.choreType.rawValue]
         choreIcon.image = Chore.getChoreImage(choreType: self.chore!.choreType)
         // Do any additional setup after loading the view.
