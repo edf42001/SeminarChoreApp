@@ -42,7 +42,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choreLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwb-Wy-vBT">
-                                                    <rect key="frame" x="87" y="26" width="659" height="29"/>
+                                                    <rect key="frame" x="87" y="26" width="239" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -133,8 +133,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PrX-B2-9cd">
-                                <rect key="frame" x="107" y="174" width="200" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PrX-B2-9cd">
+                                <rect key="frame" x="107" y="173" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="SJP-V7-lQj"/>
                                     <constraint firstAttribute="height" constant="200" id="oHz-Kh-Gug"/>
@@ -146,7 +146,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-tk-Cu2">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-tk-Cu2">
                                 <rect key="frame" x="39" y="510" width="336" height="208"/>
                                 <color key="backgroundColor" red="0.050980392156862744" green="0.050980392156862744" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -189,7 +189,7 @@
                                     <outlet property="delegate" destination="ooe-6k-q4k" id="O1r-2e-xXT"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jh9-Z1-zAw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jh9-Z1-zAw">
                                 <rect key="frame" x="178.5" y="382" width="57" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -199,8 +199,12 @@
                         <color key="backgroundColor" red="0.050980392156862744" green="0.050980392156862744" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jh9-Z1-zAw" firstAttribute="centerX" secondItem="AOC-dG-uLy" secondAttribute="centerX" id="6Oy-qQ-fhT"/>
+                            <constraint firstItem="jh9-Z1-zAw" firstAttribute="top" secondItem="PrX-B2-9cd" secondAttribute="bottom" constant="9" id="C3E-eQ-UbC"/>
+                            <constraint firstItem="qCH-tk-Cu2" firstAttribute="top" secondItem="jh9-Z1-zAw" secondAttribute="bottom" constant="99" id="Ce0-T3-Izc"/>
+                            <constraint firstItem="PrX-B2-9cd" firstAttribute="top" secondItem="wtM-40-Ppj" secondAttribute="top" constant="85" id="L9q-pa-ryZ"/>
                             <constraint firstItem="qCH-tk-Cu2" firstAttribute="centerX" secondItem="AOC-dG-uLy" secondAttribute="centerX" id="U8V-p9-6Tb"/>
                             <constraint firstItem="PrX-B2-9cd" firstAttribute="centerX" secondItem="AOC-dG-uLy" secondAttribute="centerX" id="mSA-LY-UZi"/>
+                            <constraint firstItem="wtM-40-Ppj" firstAttribute="bottom" secondItem="qCH-tk-Cu2" secondAttribute="bottom" constant="95" id="vWi-QB-fhk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wtM-40-Ppj"/>
                     </view>
