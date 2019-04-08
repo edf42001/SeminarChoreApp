@@ -64,23 +64,29 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "assignedChore", for: indexPath) as! NewChoreTableViewCell
             cell.choreLabel.text = user?.chores![indexPath.row].name
+            cell.choreID = user?.chores![indexPath.row].id
+            cell.iconImage.image = Chore.getChoreImage(choreType: (user?.chores![indexPath.row].choreType)!)
+            cell.iconImage.layer.cornerRadius = 8
+            cell.iconImage.layer.masksToBounds = true
             return cell
         }
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if((user?.isParent)!) == false{
-            let confirmationMessage = UIAlertController(title: "Please Confirm", message: choreTable.cellForRow(at: indexPath)?.textLabel?.text, preferredStyle: .alert)
-            confirmationMessage.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
         
+        if((user?.isParent)!) == false{
+            DispatchQueue.main.async{
+                let confirmationMessage = UIAlertController(title: "Please Confirm", message: self.choreTable.cellForRow(at: indexPath)?.textLabel?.text, preferredStyle: .alert)
+            confirmationMessage.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             confirmationMessage.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
-                let cell = tableView.cellForRow(at: indexPath) as! ChoreTableViewCell
+                let cell = tableView.cellForRow(at: indexPath) as! NewChoreTableViewCell
                 DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
-                self.choreTable.reloadData()
-            
             }))
             self.present(confirmationMessage, animated: true)
+            
+            }
+            choreTable.reloadData()
         }
     }
 
