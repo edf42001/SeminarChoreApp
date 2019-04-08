@@ -36,6 +36,18 @@ class Group{
         }
         return numChores
     }
+    
+    func getChoresForUser(uid: String) -> [Chore] {
+        var chores:[Chore] = []
+        if let chorz = self.chores {
+            for chore in chorz {
+                if chore.id == uid {
+                    chores.append(chore)
+                }
+            }
+        }
+        return chores
+    }
 }
 
 struct UserInfo{

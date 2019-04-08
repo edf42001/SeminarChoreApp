@@ -31,6 +31,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         email.delegate = self
         password.delegate = self
         email.becomeFirstResponder()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     @IBAction func LogInButtonTouchedUp(_ sender: UIButton) {

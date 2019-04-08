@@ -20,25 +20,20 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
-//        self.view.backgroundColor = UIColor.black
+        
         choreTable.dataSource = self
         choreTable.delegate = self
-//        choreTable.backgroundColor = UIColor.black
         choreTable.rowHeight = UITableViewAutomaticDimension
-//        choreTable.estimatedRowHeight = 600
+        
 //        addedChores = addedChores + (group?.addedChores)!
-//        if ((user?.isParent)!) == false
-//        {
-//            DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
-//                self.user?.chores! = chores
-//                self.choreTable.reloadData()
-//            }
-//        }
         
         loadData()
     }
     
     func loadData() {
+        let tabBar = self.tabBarController as! CustomTabBarController
+        self.user = tabBar.user
+        self.group = tabBar.group
         self.choreTable.reloadData()
     }
     
@@ -63,7 +58,7 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "assignedChore", for: indexPath) as! NewChoreTableViewCell
-            cell.choreLabel.text = user?.chores![indexPath.row].name
+            cell.choreLabel.text = Chore.choreNames[user?.chores![indexPath.row].choreType.rawValue ?? 8]
             cell.choreID = user?.chores![indexPath.row].id
             cell.iconImage.image = Chore.getChoreImage(choreType: (user?.chores![indexPath.row].choreType)!)
             cell.iconImage.layer.cornerRadius = 8

@@ -21,5 +21,10 @@ class StartingScreenViewController: UIViewController {
         self.view.backgroundColor = Styles.backgroundColor
         loginButton.applyButtonStyles(type: .standard)
         signUpButton.applyButtonStyles(type: .standard)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }

@@ -59,8 +59,12 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
                     }else {
                         print("User is child")
                         self.user?.isParent = false
-                        DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
-                            self.user?.chores = chores
+                        DatabaseHandler.observeChores(groupID: groupID, completion: {chores in
+                            self.group?.chores = chores
+                            self.user?.chores = self.group?.getChoresForUser(uid: self.user!.uid)
+                            groupViewController?.loadData()
+                            choresViewController?.loadData()
+                            optionsViewController?.setupGroupButtonsAndLabel()
                         })
                     }
                     groupViewController?.loadData()
