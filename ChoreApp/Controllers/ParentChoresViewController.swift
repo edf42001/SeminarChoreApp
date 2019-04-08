@@ -20,20 +20,12 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
-//        self.view.backgroundColor = UIColor.black
+        
         choreTable.dataSource = self
         choreTable.delegate = self
-//        choreTable.backgroundColor = UIColor.black
         choreTable.rowHeight = UITableViewAutomaticDimension
-//        choreTable.estimatedRowHeight = 600
+        
 //        addedChores = addedChores + (group?.addedChores)!
-//        if ((user?.isParent)!) == false
-//        {
-//            DatabaseHandler.observeChores(groupID: group!.id) { (chores) in
-//                self.user?.chores! = chores
-//                self.choreTable.reloadData()
-//            }
-//        }
         
         loadData()
     }
@@ -42,7 +34,6 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
-        print("does this even run")
         self.choreTable.reloadData()
     }
     
@@ -50,7 +41,6 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         if user!.isParent {
             return ChoreType.total.rawValue - 1 // addedChores.count
         }else{
-            print(user!.chores?.count)
             return user!.chores?.count ?? 0
         }
     }
@@ -68,9 +58,6 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "assignedChore", for: indexPath) as! NewChoreTableViewCell
-            print(indexPath.row)
-            print(user?.chores![indexPath.row].choreType.rawValue ?? 8)
-            print(user?.chores![indexPath.row].choreType)
             cell.choreLabel.text = Chore.choreNames[user?.chores![indexPath.row].choreType.rawValue ?? 8]
             cell.choreID = user?.chores![indexPath.row].id
             cell.iconImage.image = Chore.getChoreImage(choreType: (user?.chores![indexPath.row].choreType)!)

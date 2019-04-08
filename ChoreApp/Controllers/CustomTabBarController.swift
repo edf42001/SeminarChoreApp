@@ -53,7 +53,6 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
                         DatabaseHandler.observeChores(groupID: groupID, completion: {chores in
                             self.group?.chores = chores
                             groupViewController?.loadData()
-                            print(chores)
                             choresViewController?.loadData()
                             optionsViewController?.setupGroupButtonsAndLabel()
                         })
@@ -61,14 +60,11 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
                         print("User is child")
                         self.user?.isParent = false
                         DatabaseHandler.observeChores(groupID: groupID, completion: {chores in
-                            DatabaseHandler.getChoresForUser(uid: self.user!.uid, groupID: groupID, completion: {chores in
-                                self.user?.chores = chores
-                                print(chores)
-                                print("yay chores")
-                                groupViewController?.loadData()
-                                choresViewController?.loadData()
-                                optionsViewController?.setupGroupButtonsAndLabel()
-                            })
+                            self.group?.chores = chores
+                            self.user?.chores = self.group?.getChoresForUser(uid: self.user!.uid)
+                            groupViewController?.loadData()
+                            choresViewController?.loadData()
+                            optionsViewController?.setupGroupButtonsAndLabel()
                         })
                     }
                     groupViewController?.loadData()

@@ -128,8 +128,8 @@ class DatabaseHandler {
     
     static func addChore(name:String, type:ChoreType, asigneeUid: String, groupID:String, completion: @escaping (_ id:String)->()){
         let key = ref.child("groups/\(groupID)/chores/\(asigneeUid)").childByAutoId().key ?? ""
-        ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(key)/name").setValue(name)
-        ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(key)/type").setValue(type.rawValue)
+        ref.child("groups/\(groupID)/chores/\(asigneeUid)/\(key)").setValue(["name":name,
+                                                                             "type":type.rawValue])
         completion(key)
     }
     
