@@ -155,9 +155,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="336" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hna-Np-Wea">
-                                                    <rect key="frame" x="20" y="15" width="225" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hna-Np-Wea">
+                                                    <rect key="frame" x="20" y="15" width="225" height="30"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="6Lb-HJ-SNw"/>
                                                         <constraint firstAttribute="width" constant="225" id="fYZ-f9-Zcd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -171,6 +172,7 @@
                                                 </switch>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="hna-Np-Wea" firstAttribute="centerY" secondItem="sie-cR-99b" secondAttribute="centerY" id="cbz-kp-SrI"/>
                                                 <constraint firstItem="hna-Np-Wea" firstAttribute="leading" secondItem="sie-cR-99b" secondAttribute="leadingMargin" id="iFq-tO-FSi"/>
                                             </constraints>
                                         </tableViewCellContentView>
