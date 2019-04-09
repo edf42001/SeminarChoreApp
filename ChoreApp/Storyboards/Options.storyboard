@@ -150,7 +150,6 @@
                                                     <state key="normal" title="Create Group"/>
                                                     <connections>
                                                         <action selector="createGroupButtonPressed:" destination="naU-ef-LBP" eventType="touchUpInside" id="dSp-Mo-4AG"/>
-                                                        <segue destination="vaE-RC-c6Y" kind="presentation" identifier="toCreateGroupPopup" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="KlA-bQ-9Oe"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -208,14 +207,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dD4-sG-k0N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="395.6521739130435" y="38.839285714285715"/>
-        </scene>
-        <!--CreateNewGroupPopup-->
-        <scene sceneID="JW3-95-uOK">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Popups" referencedIdentifier="CreateNewGroupPopup" id="vaE-RC-c6Y" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zJu-px-OU5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1068.840579710145" y="145.98214285714286"/>
         </scene>
         <!--StartingScreenViewController-->
         <scene sceneID="rsR-Ru-iKB">

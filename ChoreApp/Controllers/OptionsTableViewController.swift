@@ -57,7 +57,28 @@ class OptionsTableViewController: UITableViewController {
     }
     
     @IBAction func createGroupButtonPressed(_ sender: UIButton) {
-        
+        let alert = UIAlertController(title: "Create Group", message: "Please enter the group name", preferredStyle: .actionSheet)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Name"
+        }
+        let createAction = UIAlertAction(title: "Create Group", style: .default) {(_) in
+            let groupName = alert.textFields![0] as UITextField
+            if let name = groupName.text {
+                DatabaseHandler.stopObservingIfAddedToGroup()
+                DatabaseHandler.createGroup(uid: self.user!.uid, name: name) {key in
+                    self.user!.groupID = key
+                    self.user!.isParent = true
+                    let parent:[UserInfo] = [UserInfo(uid: self.user!.uid, username:self.user!.username, isParent:true)]
+                    self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil, addedChores: nil)
+                    let tabBar = self.tabBarController as! CustomTabBarController
+                    tabBar.group = self.group
+                }
+                self.setupGroupButtonsAndLabel()
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        alert.addAction(createAction)
+        alert.addAction(cancelAction)
     }
     
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {

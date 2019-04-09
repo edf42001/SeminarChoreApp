@@ -51,7 +51,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 assigned chores" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfV-la-ZVz">
-                                            <rect key="frame" x="87" y="49" width="130.5" height="18"/>
+                                            <rect key="frame" x="87" y="49" width="239" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                                     <constraints>
                                         <constraint firstItem="NPC-Hv-G64" firstAttribute="leading" secondItem="vNW-A6-RTl" secondAttribute="leading" constant="15" id="4kl-qO-c0X"/>
                                         <constraint firstItem="SfV-la-ZVz" firstAttribute="top" secondItem="4mN-Zz-TjN" secondAttribute="bottom" constant="8.5" id="9Zv-sM-aXl"/>
-                                        <constraint firstAttribute="trailing" secondItem="SfV-la-ZVz" secondAttribute="trailing" constant="158.5" id="cFe-XU-cYO"/>
+                                        <constraint firstAttribute="trailing" secondItem="SfV-la-ZVz" secondAttribute="trailing" constant="50" id="cFe-XU-cYO"/>
                                         <constraint firstItem="4mN-Zz-TjN" firstAttribute="leading" secondItem="NPC-Hv-G64" secondAttribute="trailing" constant="8" id="e8z-a0-Dcz"/>
                                         <constraint firstItem="4mN-Zz-TjN" firstAttribute="top" secondItem="vNW-A6-RTl" secondAttribute="top" constant="11" id="gXU-zJ-8J5"/>
                                         <constraint firstItem="SfV-la-ZVz" firstAttribute="leading" secondItem="NPC-Hv-G64" secondAttribute="trailing" constant="8" id="kIO-zf-dI5"/>
