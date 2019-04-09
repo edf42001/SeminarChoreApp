@@ -40,8 +40,10 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if user!.isParent {
             return ChoreType.total.rawValue - 1 // addedChores.count
-        }else{
+        }else if group != nil{
             return user!.chores?.count ?? 0
+        }else{
+            return 0
         }
     }
     
@@ -58,7 +60,7 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         else
         {
             let cell = tableView.dequeueReusableCell(withIdentifier: "assignedChore", for: indexPath) as! NewChoreTableViewCell
-            cell.choreLabel.text = Chore.choreNames[user?.chores![indexPath.row].choreType.rawValue ?? 8]
+            cell.choreLabel.text = Chore.choreNames[user!.chores?[indexPath.row].choreType.rawValue ?? 8]
             cell.choreID = user?.chores![indexPath.row].id
             cell.iconImage.image = Chore.getChoreImage(choreType: (user?.chores![indexPath.row].choreType)!)
             cell.iconImage.layer.cornerRadius = 8
