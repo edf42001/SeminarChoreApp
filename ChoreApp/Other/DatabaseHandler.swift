@@ -109,13 +109,17 @@ class DatabaseHandler {
                         }
                     }
                 }
-            }else{
+            }else{ //not parent
                 dispatchGroup.enter()
                 ref.child("users/\(uid)/group").removeValue() {error, ref in
                     dispatchGroup.leave()
                 }
                 dispatchGroup.enter()
                 ref.child("groups/\(groupID)/members/\(uid)").removeValue() {error, ref in
+                    dispatchGroup.leave()
+                }
+                dispatchGroup.enter()
+                ref.child("groups/\(groupID)/chores/\(uid)").removeValue() {error, ref in
                     dispatchGroup.leave()
                 }
             }
