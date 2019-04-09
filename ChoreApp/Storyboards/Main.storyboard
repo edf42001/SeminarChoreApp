@@ -32,7 +32,7 @@
         <scene sceneID="jCu-rP-fnU">
             <objects>
                 <viewControllerPlaceholder storyboardName="Chores" referencedIdentifier="ChoresViewController" id="IOa-cL-EkS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="egb-i1-cpu"/>
+                    <tabBarItem key="tabBarItem" title="Chores" image="Chores" selectedImage="Chores" id="egb-i1-cpu"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhF-Zd-hGd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,6 +60,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Chores" width="25" height="25"/>
         <image name="Group" width="25" height="25"/>
         <image name="Options" width="40" height="39"/>
     </resources>
