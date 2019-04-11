@@ -182,27 +182,7 @@ class OptionsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toCreateGroupPopup"{
-            guard let destination = segue.destination as? CreateNewGroupViewController else {return}
-            destination.user = self.user
-            destination.group = self.group
-            destination.onClose = {name in
-                if let name = name {
-                    DatabaseHandler.stopObservingIfAddedToGroup()
-                    DatabaseHandler.createGroup(uid: self.user!.uid, name: name) {key in
-                        self.user!.groupID = key
-                        self.user!.isParent = true
-                        let parent:[UserInfo] = [UserInfo(uid: self.user!.uid, username:self.user!.username, isParent:true)]
-                        self.group = Group(id: key, name: name, parents: parent, children: [], chores: nil, addedChores: nil)
-                        let tabBar = self.tabBarController as! CustomTabBarController
-                        tabBar.group = self.group
-                    }
-                    self.setupGroupButtonsAndLabel()
-                }
-            }
-        }else{
-            print("Failed segue error")
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+//    }
 }
