@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bed" translatesAutoresizingMaskIntoConstraints="NO" id="P7t-gS-wwW">
-                                                    <rect key="frame" x="15" y="8" width="64" height="64"/>
+                                                    <rect key="frame" x="10" y="8" width="64" height="64"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="64" id="6az-iI-fIX"/>
                                                         <constraint firstAttribute="height" constant="64" id="vX1-dN-f4G"/>
@@ -42,19 +42,19 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choreLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hwb-Wy-vBT">
-                                                    <rect key="frame" x="87" y="26" width="239" height="29"/>
+                                                    <rect key="frame" x="89" y="26" width="237" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="P7t-gS-wwW" firstAttribute="leading" secondItem="Uzp-KQ-EDB" secondAttribute="leading" constant="15" id="068-qm-1zA"/>
+                                                <constraint firstItem="P7t-gS-wwW" firstAttribute="leading" secondItem="Uzp-KQ-EDB" secondAttribute="leading" constant="10" id="068-qm-1zA"/>
                                                 <constraint firstAttribute="bottom" secondItem="P7t-gS-wwW" secondAttribute="bottom" constant="7.5" id="2k7-cE-oug"/>
                                                 <constraint firstItem="Hwb-Wy-vBT" firstAttribute="top" secondItem="Uzp-KQ-EDB" secondAttribute="topMargin" constant="15" id="7rL-i2-Yta"/>
                                                 <constraint firstAttribute="trailing" secondItem="Hwb-Wy-vBT" secondAttribute="trailing" constant="50" id="bqj-Ug-lK9"/>
                                                 <constraint firstItem="P7t-gS-wwW" firstAttribute="top" secondItem="Uzp-KQ-EDB" secondAttribute="top" constant="8" id="dZF-vB-daw"/>
-                                                <constraint firstItem="Hwb-Wy-vBT" firstAttribute="leading" secondItem="P7t-gS-wwW" secondAttribute="trailing" constant="8" id="vTp-qm-wBQ"/>
+                                                <constraint firstItem="Hwb-Wy-vBT" firstAttribute="leading" secondItem="P7t-gS-wwW" secondAttribute="trailing" constant="15" id="vTp-qm-wBQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,33 +67,33 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="assignedChore" rowHeight="80" id="lA4-Ly-cPJ" customClass="NewChoreTableViewCell" customModule="ChoreApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="108" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lA4-Ly-cPJ" id="fc9-Po-Ko3">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lA4-Ly-cPJ" id="fc9-Po-Ko3">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LnN-11-ADA">
-                                                    <rect key="frame" x="15" y="12" width="64" height="64"/>
+                                                    <rect key="frame" x="10" y="8.5" width="64" height="64"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="64" id="NHZ-mK-fVy"/>
                                                         <constraint firstAttribute="width" constant="64" id="uHV-NG-m8A"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choreLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-iH-RMD">
-                                                    <rect key="frame" x="87" y="12" width="270" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="270" id="UhG-3O-pYD"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="89" y="26" width="270" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="LnN-11-ADA" firstAttribute="leading" secondItem="fc9-Po-Ko3" secondAttribute="leading" constant="15" id="8Mv-d6-3Kn"/>
-                                                <constraint firstItem="oLi-iH-RMD" firstAttribute="leading" secondItem="LnN-11-ADA" secondAttribute="trailing" constant="8" id="FPq-vi-LOK"/>
+                                                <constraint firstItem="oLi-iH-RMD" firstAttribute="top" secondItem="fc9-Po-Ko3" secondAttribute="topMargin" constant="15" id="8Hb-o5-edA"/>
+                                                <constraint firstItem="LnN-11-ADA" firstAttribute="leading" secondItem="fc9-Po-Ko3" secondAttribute="leading" constant="10" id="8Mv-d6-3Kn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oLi-iH-RMD" secondAttribute="trailing" constant="35" id="HnL-Bk-uNL"/>
+                                                <constraint firstItem="oLi-iH-RMD" firstAttribute="centerY" secondItem="LnN-11-ADA" secondAttribute="centerY" id="Pe8-vV-ReA"/>
                                                 <constraint firstItem="LnN-11-ADA" firstAttribute="bottom" secondItem="fc9-Po-Ko3" secondAttribute="bottomMargin" id="VO0-NW-Ggu"/>
-                                                <constraint firstItem="oLi-iH-RMD" firstAttribute="top" secondItem="fc9-Po-Ko3" secondAttribute="topMargin" constant="1" id="W38-xO-xcB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oLi-iH-RMD" secondAttribute="bottom" constant="10" id="Ydz-wo-7Nq"/>
                                                 <constraint firstItem="LnN-11-ADA" firstAttribute="top" secondItem="fc9-Po-Ko3" secondAttribute="topMargin" constant="1" id="bN2-HO-FJf"/>
+                                                <constraint firstItem="oLi-iH-RMD" firstAttribute="leading" secondItem="LnN-11-ADA" secondAttribute="trailing" constant="15" id="hHu-5b-xmW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -287,7 +287,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Bed" width="64" height="64"/>
+        <image name="Bed" width="96" height="96"/>
         <image name="Chores" width="25" height="25"/>
         <image name="noChorePlaceholder" width="253" height="178"/>
     </resources>
