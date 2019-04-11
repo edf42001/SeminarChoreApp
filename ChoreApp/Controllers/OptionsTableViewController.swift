@@ -57,11 +57,11 @@ class OptionsTableViewController: UITableViewController {
     }
     
     @IBAction func createGroupButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Create Group", message: "Please enter the group name", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Create Group", message: "Please enter the group name", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Name"
         }
-        let createAction = UIAlertAction(title: "Create Group", style: .default) {(_) in
+        let createAction = UIAlertAction(title: "Create", style: .cancel) {(_) in
             let groupName = alert.textFields![0] as UITextField
             if let name = groupName.text {
                 DatabaseHandler.stopObservingIfAddedToGroup()
@@ -76,9 +76,10 @@ class OptionsTableViewController: UITableViewController {
                 self.setupGroupButtonsAndLabel()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_) in }
         alert.addAction(createAction)
         alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func leaveGroupButtonPressed(_ sender: UIButton) {
