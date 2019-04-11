@@ -10,7 +10,6 @@
 		8B28478221C00F44009737AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28478121C00F44009737AC /* User.swift */; };
 		8B28478421C00F51009737AC /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28478321C00F51009737AC /* Group.swift */; };
 		8B28478621C00F59009737AC /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28478521C00F59009737AC /* Chore.swift */; };
-		8B296EF222301B74002EB0B8 /* CreateNewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B296EF122301B74002EB0B8 /* CreateNewGroupViewController.swift */; };
 		8B2F019C223A9792008AC7DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2F019B223A9792008AC7DC /* Main.storyboard */; };
 		8B2F01A2223A9AC7008AC7DC /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */; };
 		8B326AA021AD926D00665FFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B326A9F21AD926D00665FFE /* AppDelegate.swift */; };
@@ -45,7 +44,6 @@
 		8B28478121C00F44009737AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		8B28478321C00F51009737AC /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		8B28478521C00F59009737AC /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
-		8B296EF122301B74002EB0B8 /* CreateNewGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewGroupViewController.swift; sourceTree = "<group>"; };
 		8B2F019B223A9792008AC7DC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		8B326A9C21AD926D00665FFE /* ChoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,14 +108,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		8B296EEE222EBE01002EB0B8 /* PopupViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				8B296EF122301B74002EB0B8 /* CreateNewGroupViewController.swift */,
-			);
-			path = PopupViewControllers;
-			sourceTree = "<group>";
-		};
 		8B2F019D223A99DA008AC7DC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,7 +122,6 @@
 				8B2F01A1223A9AC7008AC7DC /* CustomTabBarController.swift */,
 				8BF2A8CE2242593D0035AE70 /* OptionsTableViewController.swift */,
 				8B97E18C22452503003590C7 /* AddMemberViewController.swift */,
-				8B296EEE222EBE01002EB0B8 /* PopupViewControllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -354,7 +343,6 @@
 				97F6A33021DE5CA100B58278 /* SignUpViewController.swift in Sources */,
 				8B28478221C00F44009737AC /* User.swift in Sources */,
 				8BB436B62203592600811C2B /* StartingScreenViewController.swift in Sources */,
-				8B296EF222301B74002EB0B8 /* CreateNewGroupViewController.swift in Sources */,
 				97F6A33221DE5CC700B58278 /* LogInViewController.swift in Sources */,
 				8B28478421C00F51009737AC /* Group.swift in Sources */,
 				F37C778C22426E03002640ED /* ParentChoresViewController.swift in Sources */,
