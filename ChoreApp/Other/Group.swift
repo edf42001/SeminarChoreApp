@@ -41,7 +41,7 @@ class Group{
         var chores:[Chore] = []
         if let chorz = self.chores {
             for chore in chorz {
-                if chore.id == uid {
+                if chore.asigneeID == uid {
                     chores.append(chore)
                 }
             }
