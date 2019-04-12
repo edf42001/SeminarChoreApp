@@ -73,6 +73,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
                 })
             }else{
                 self.group = nil
+                self.user?.isParent = false
+                self.user?.chores = []
                 groupViewController?.loadData()
                 choresViewController?.loadData()
                 optionsViewController?.setupGroupButtonsAndLabel()

@@ -23,7 +23,7 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         self.group = tabBar.group
         if let choreCount = user!.chores?.count
         {
-            if choreCount != 0 && user?.isParent == false
+            if choreCount != 0 || user?.isParent == true
             {
                 hasChores = true
             }
@@ -51,12 +51,13 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
     }
     
     func loadData() {
+
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
         if let choreCount = user!.chores?.count
         {
-            if choreCount != 0 && user?.isParent == false
+            if choreCount != 0 || user?.isParent == true
             {
                 hasChores = true
             }
@@ -73,11 +74,12 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         {
             hasChores = true
         }
-        
         if hasChores == true {
             choreTable.separatorStyle = .singleLine
+            choreTable.allowsSelection = true
         }else{
             choreTable.separatorStyle = .none
+            choreTable.allowsSelection = false
         }
         
         self.choreTable.reloadData()
@@ -87,6 +89,7 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         if hasChores == true
         {
             if user!.isParent {
+                
                 return ChoreType.total.rawValue - 1 // addedChores.count
             }else{
                 return user!.chores?.count ?? 0
@@ -132,7 +135,7 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if((user?.isParent)!) == false{
+        if((user?.isParent)!) == false && hasChores == true{
             DispatchQueue.main.async{
                 let confirmationMessage = UIAlertController(title: "Please Confirm", message: self.choreTable.cellForRow(at: indexPath)?.textLabel?.text, preferredStyle: .alert)
             confirmationMessage.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
