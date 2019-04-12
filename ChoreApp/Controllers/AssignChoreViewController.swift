@@ -17,6 +17,7 @@ class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var choreName: UILabel!
     @IBOutlet weak var choreIcon: UIImageView!
     @IBOutlet weak var childList: UITableView!
+    @IBOutlet weak var assign: UIBarButtonItem!
     
 
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableV
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
+        assign.isEnabled = false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,4 +68,20 @@ class AssignChoreViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    @IBAction func switchPressed(_ sender: UISwitch) {
+        let sum = childList.visibleCells.map() { $0.viewWithTag(20) as? UISwitch }.map() { $0!.isOn ? 1 : 0 }.reduce(0, +)
+//        var sum = 0
+//        for cell in childList.visibleCells {
+//            if (cell.viewWithTag(20) as! UISwitch).isOn {
+//                sum += 1
+//            }
+//        }
+        
+        if sum > 0 {
+            assign.isEnabled = true
+        }
+        else {
+            assign.isEnabled = false
+        }
+    }
 }

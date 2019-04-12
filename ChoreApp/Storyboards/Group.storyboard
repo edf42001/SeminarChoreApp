@@ -112,7 +112,7 @@
                     <navigationItem key="navigationItem" title="Members" id="P2E-DE-t9p">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Fva-Va-Y7J"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yGP-YG-3qO">
-                            <color key="tintColor" red="1" green="0.35168235047234397" blue="0.03634309662526225" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="eec-oe-0I7" kind="show" id="4Xa-9e-72H"/>
                             </connections>

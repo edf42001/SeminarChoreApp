@@ -67,19 +67,19 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="assignedChore" rowHeight="80" id="lA4-Ly-cPJ" customClass="NewChoreTableViewCell" customModule="ChoreApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="108" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lA4-Ly-cPJ" id="fc9-Po-Ko3">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lA4-Ly-cPJ" id="fc9-Po-Ko3">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LnN-11-ADA">
-                                                    <rect key="frame" x="10" y="8.5" width="64" height="64"/>
+                                                    <rect key="frame" x="10" y="12" width="64" height="64"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="64" id="NHZ-mK-fVy"/>
                                                         <constraint firstAttribute="width" constant="64" id="uHV-NG-m8A"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choreLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-iH-RMD">
-                                                    <rect key="frame" x="89" y="26" width="270" height="29"/>
+                                                    <rect key="frame" x="89" y="26" width="270" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -186,12 +186,17 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-tk-Cu2">
-                                <rect key="frame" x="39" y="510" width="336" height="208"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-tk-Cu2">
+                                <rect key="frame" x="39" y="461" width="336" height="327"/>
                                 <color key="backgroundColor" red="0.050980392156862744" green="0.050980392156862744" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="336" id="jVN-co-gDJ"/>
                                 </constraints>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="7vp-TG-FG0">
+                                    <rect key="frame" x="0.0" y="88" width="336" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="60" id="dbe-al-RHE">
                                         <rect key="frame" x="0.0" y="28" width="336" height="60"/>
@@ -214,6 +219,9 @@
                                                     <rect key="frame" x="269" y="14" width="49" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <action selector="switchPressed:" destination="ooe-6k-q4k" eventType="valueChanged" id="U0j-Qd-eXF"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -240,11 +248,11 @@
                         <constraints>
                             <constraint firstItem="jh9-Z1-zAw" firstAttribute="centerX" secondItem="AOC-dG-uLy" secondAttribute="centerX" id="6Oy-qQ-fhT"/>
                             <constraint firstItem="jh9-Z1-zAw" firstAttribute="top" secondItem="PrX-B2-9cd" secondAttribute="bottom" constant="9" id="C3E-eQ-UbC"/>
-                            <constraint firstItem="qCH-tk-Cu2" firstAttribute="top" secondItem="jh9-Z1-zAw" secondAttribute="bottom" constant="99" id="Ce0-T3-Izc"/>
+                            <constraint firstItem="qCH-tk-Cu2" firstAttribute="top" secondItem="jh9-Z1-zAw" secondAttribute="bottom" constant="50" id="Ce0-T3-Izc"/>
                             <constraint firstItem="PrX-B2-9cd" firstAttribute="top" secondItem="wtM-40-Ppj" secondAttribute="top" constant="85" id="L9q-pa-ryZ"/>
                             <constraint firstItem="qCH-tk-Cu2" firstAttribute="centerX" secondItem="AOC-dG-uLy" secondAttribute="centerX" id="U8V-p9-6Tb"/>
                             <constraint firstItem="PrX-B2-9cd" firstAttribute="centerX" secondItem="AOC-dG-uLy" secondAttribute="centerX" id="mSA-LY-UZi"/>
-                            <constraint firstItem="wtM-40-Ppj" firstAttribute="bottom" secondItem="qCH-tk-Cu2" secondAttribute="bottom" constant="95" id="vWi-QB-fhk"/>
+                            <constraint firstItem="wtM-40-Ppj" firstAttribute="bottom" secondItem="qCH-tk-Cu2" secondAttribute="bottom" constant="25" id="vWi-QB-fhk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wtM-40-Ppj"/>
                     </view>
@@ -256,6 +264,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="assign" destination="YUA-JE-WzB" id="xlM-ja-wpW"/>
                         <outlet property="childList" destination="qCH-tk-Cu2" id="qJ0-hJ-BJY"/>
                         <outlet property="choreIcon" destination="PrX-B2-9cd" id="n2N-Gk-JhH"/>
                         <outlet property="choreName" destination="jh9-Z1-zAw" id="a2w-qC-Wwn"/>
