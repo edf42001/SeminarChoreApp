@@ -30,7 +30,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         DatabaseHandler.observeIfAddedToGroup(uid: user!.uid, onRecieve: {groupID in
             let groupViewController = ((self.viewControllers?[1] as? UINavigationController)?.viewControllers[0] as? YesGroupTableViewController)
             let choresViewController = ((self.viewControllers?[0] as? UINavigationController)?.viewControllers[0] as? ParentChoresViewContoller)
-            let optionsViewController = (self.viewControllers?[2] as? OptionsTableViewController)
+            let optionsViewController = ((self.viewControllers?[2] as? UINavigationController)?.viewControllers[0] as? OptionsTableViewController)
             
             groupViewController?.loadViewIfNeeded() //Prevent crash when trying to access view controller before it is loaded
             choresViewController?.loadViewIfNeeded()
