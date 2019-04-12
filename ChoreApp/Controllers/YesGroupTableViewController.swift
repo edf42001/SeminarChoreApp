@@ -16,7 +16,7 @@ class YesGroupTableViewController: UITableViewController {
     enum TableSection: Int {
         case parent = 0, child, total
     }
-    let SectionHeaderHeight: CGFloat = 35
+//    let SectionHeaderHeight: CGFloat = 35
     var data = [TableSection: [[String: String]]]()
     var groupData: [[String:String]] = []
     var hasGroup: Bool = false
@@ -130,15 +130,15 @@ class YesGroupTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if hasGroup {
-            return SectionHeaderHeight
-        }else{
-            return 0
-        }
-        
-    }
-    
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if hasGroup {
+//            return SectionHeaderHeight
+//        }else{
+//            return 0
+//        }
+//    
+//    }
+
 //    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        if hasGroup{
 //            let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: SectionHeaderHeight))
