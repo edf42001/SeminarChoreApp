@@ -50,6 +50,12 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = choreTable.indexPathForSelectedRow{
+            choreTable.deselectRow(at: index, animated: true)
+        }
+    }
+    
     func loadData() {
 
         let tabBar = self.tabBarController as! CustomTabBarController
