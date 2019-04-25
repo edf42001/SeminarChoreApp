@@ -118,6 +118,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addMemberItem" destination="yGP-YG-3qO" id="dgy-UQ-Zme"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWW-8R-roe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

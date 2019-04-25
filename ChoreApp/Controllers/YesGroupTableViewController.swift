@@ -12,6 +12,8 @@ class YesGroupTableViewController: UITableViewController {
     var user:User?
     var group:Group?
     
+    @IBOutlet weak var addMemberItem: UIBarButtonItem!
+    
     //Tableview Variables
     enum TableSection: Int {
         case parent = 0, child, total
@@ -68,6 +70,9 @@ class YesGroupTableViewController: UITableViewController {
         }
         
         self.tableView.reloadData()
+        
+        addMemberItem.isEnabled = (group != nil)
+        
     }
     
     func sortData() {
