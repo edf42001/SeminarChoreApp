@@ -61,7 +61,8 @@ class OptionsTableViewController: UITableViewController {
         alert.addTextField { (textField) in
             textField.placeholder = "Name"
         }
-        let createAction = UIAlertAction(title: "Create", style: .cancel) {(_) in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in }
+        let createAction = UIAlertAction(title: "Create", style: .default) {(_) in
             let groupName = alert.textFields![0] as UITextField
             if let name = groupName.text {
                 DatabaseHandler.stopObservingIfAddedToGroup()
@@ -76,9 +77,8 @@ class OptionsTableViewController: UITableViewController {
                 self.setupGroupButtonsAndLabel()
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_) in }
-        alert.addAction(createAction)
         alert.addAction(cancelAction)
+        alert.addAction(createAction)
         self.present(alert, animated: true, completion: nil)
     }
     

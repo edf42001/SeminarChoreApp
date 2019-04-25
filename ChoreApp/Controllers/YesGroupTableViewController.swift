@@ -106,7 +106,7 @@ class YesGroupTableViewController: UITableViewController {
                     cell.accessoryType = .none
                     choresLabel.text = "Parent"
                 }else{ //child
-                    cell.accessoryType = .disclosureIndicator
+                    cell.accessoryType = .none
                     guard let uid = userData["uid"] else {return cell}
                     let choreNum = group!.numChoresForUser(uid: uid)
                     var text = "\(choreNum) assigned chore"
