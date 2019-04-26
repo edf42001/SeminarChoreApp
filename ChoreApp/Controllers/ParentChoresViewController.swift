@@ -181,8 +181,8 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
 //        if editingStyle == .delete
 //        {
 //            print("***************************does this run")
-//            let cell = tableView.cellForRow(at: indexPath) as! NewChoreTableViewCell
-//            DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
+////            let cell = tableView.cellForRow(at: indexPath) as! NewChoreTableViewCell
+////            DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
 //        }
 //        else if editingStyle == .insert
 //        {
