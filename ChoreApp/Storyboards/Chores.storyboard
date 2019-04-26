@@ -115,21 +115,14 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noChoreCell" rowHeight="490" id="mwR-XD-njD" customClass="NewChoreTableViewCell" customModule="ChoreApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="216.5" width="414" height="490"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mwR-XD-njD" id="t26-96-Lm5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mwR-XD-njD" id="t26-96-Lm5">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="489.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noChorePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="8XX-Fp-q8b">
-                                                    <rect key="frame" x="20" y="79" width="374" height="370"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no chores!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YfK-Yl-Mtz">
+                                                    <rect key="frame" x="95" y="11" width="224" height="650"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="374" id="97y-6T-PcV"/>
-                                                        <constraint firstAttribute="height" constant="370" id="QaV-4F-sWy"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Have No Chores!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YfK-Yl-Mtz">
-                                                    <rect key="frame" x="95" y="11" width="224" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="29" id="Q3k-Zy-35x"/>
+                                                        <constraint firstAttribute="height" constant="650" id="1Dv-Q7-1TL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,19 +130,15 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="8XX-Fp-q8b" secondAttribute="bottom" constant="30" id="0SB-Ig-4RV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="YfK-Yl-Mtz" secondAttribute="trailing" constant="75" id="G5j-4O-SEZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="YfK-Yl-Mtz" secondAttribute="bottom" id="LNL-O4-TkR"/>
                                                 <constraint firstItem="YfK-Yl-Mtz" firstAttribute="top" secondItem="t26-96-Lm5" secondAttribute="topMargin" id="THE-qh-SqC"/>
                                                 <constraint firstItem="YfK-Yl-Mtz" firstAttribute="leading" secondItem="t26-96-Lm5" secondAttribute="leadingMargin" constant="75" id="kmL-V0-zP6"/>
-                                                <constraint firstItem="8XX-Fp-q8b" firstAttribute="leading" secondItem="t26-96-Lm5" secondAttribute="leadingMargin" id="nNm-BJ-E7t"/>
-                                                <constraint firstItem="8XX-Fp-q8b" firstAttribute="trailing" secondItem="t26-96-Lm5" secondAttribute="trailingMargin" id="oJW-pi-Z1n"/>
-                                                <constraint firstItem="8XX-Fp-q8b" firstAttribute="top" secondItem="t26-96-Lm5" secondAttribute="topMargin" constant="68" id="rv0-wT-nac"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.050980392156862744" green="0.050980392156862744" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="choreLabel" destination="YfK-Yl-Mtz" id="qg1-I6-4XI"/>
-                                            <outlet property="iconImage" destination="8XX-Fp-q8b" id="yYQ-hL-NTd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -309,6 +298,5 @@
     <resources>
         <image name="Bed" width="96" height="96"/>
         <image name="Chores" width="25" height="25"/>
-        <image name="noChorePlaceholder" width="253" height="178"/>
     </resources>
 </document>

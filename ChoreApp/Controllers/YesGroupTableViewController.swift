@@ -170,13 +170,16 @@ class YesGroupTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let tableSection = TableSection(rawValue: section) {
-            switch tableSection {
-            case .parent:
-                return "Parents"
-            case .child:
-                return "Children"
-            default:
-                return ""
+        if hasGroup
+            {
+                switch tableSection {
+                case .parent:
+                    return "Parents"
+                case .child:
+                    return "Children"
+                default:
+                    return ""
+                }
             }
         }
         return ""
