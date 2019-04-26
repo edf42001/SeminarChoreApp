@@ -21,6 +21,7 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         let tabBar = self.tabBarController as! CustomTabBarController
         self.user = tabBar.user
         self.group = tabBar.group
+        
         if let choreCount = user!.chores?.count
         {
             if choreCount != 0 || user?.isParent == true
@@ -40,7 +41,15 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         {
             hasChores = true
         }
-        
+        if user?.isParent == false && hasChores == true
+        {
+            let editButton = UIBarButtonItem(title: (choreTable.isEditing) ? "Done" : "Complete", style: .plain, target: self, action: #selector(toggleEditing))
+            navigationItem.leftBarButtonItem = editButton
+        }
+        else
+        {
+            navigationItem.leftBarButtonItem = nil
+        }
         choreTable.dataSource = self
         choreTable.delegate = self
         choreTable.rowHeight = UITableViewAutomaticDimension
@@ -81,7 +90,15 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
             choreTable.separatorStyle = .none
             choreTable.allowsSelection = false
         }
-        
+        if user?.isParent == false && hasChores == true
+        {
+           let editButton = UIBarButtonItem(title: (choreTable.isEditing) ? "Done" : "Complete", style: .plain, target: self, action: #selector(toggleEditing))
+            navigationItem.leftBarButtonItem = editButton
+        }
+        else
+        {
+            navigationItem.leftBarButtonItem = nil
+        }
         self.choreTable.reloadData()
     }
     
@@ -133,22 +150,22 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if((user?.isParent)!) == false && hasChores == true{
-            DispatchQueue.main.async{
-                let confirmationMessage = UIAlertController(title: "Please Confirm", message: self.choreTable.cellForRow(at: indexPath)?.textLabel?.text, preferredStyle: .alert)
-            confirmationMessage.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-            confirmationMessage.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
-                let cell = tableView.cellForRow(at: indexPath) as! NewChoreTableViewCell
-                DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
-            }))
-            self.present(confirmationMessage, animated: true)
-            
-            }
-            choreTable.reloadData()
-        }
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//
+//        if((user?.isParent)!) == false && hasChores == true{
+//            DispatchQueue.main.async{
+//                let confirmationMessage = UIAlertController(title: "Please Confirm", message: self.choreTable.cellForRow(at: indexPath)?.textLabel?.text, preferredStyle: .alert)
+//            confirmationMessage.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+//            confirmationMessage.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (action) in
+//                let cell = tableView.cellForRow(at: indexPath) as! NewChoreTableViewCell
+//                DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
+//            }))
+//            self.present(confirmationMessage, animated: true)
+//
+//            }
+//            choreTable.reloadData()
+//        }
+//    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "assignChore" {
@@ -159,4 +176,50 @@ class ParentChoresViewContoller: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete
+//        {
+//            print("***************************does this run")
+////            let cell = tableView.cellForRow(at: indexPath) as! NewChoreTableViewCell
+////            DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
+//        }
+//        else if editingStyle == .insert
+//        {
+//            //really the tutorial I was reading didnt put anything here but I cant help but feel that there really should be something here and if it breaks everything then that will be a problem
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if hasChores == true && user?.isParent == false
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
+    @objc private func toggleEditing() {
+        choreTable.setEditing(!choreTable.isEditing, animated: true)
+        navigationItem.leftBarButtonItem?.title = choreTable.isEditing ? "Done" : "Complete"
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
+    {
+        let cell = tableView.cellForRow(at: indexPath) as! NewChoreTableViewCell
+        DatabaseHandler.removeChore(asigneeUid: self.user!.uid, choreID: cell.choreID!, groupID: self.group!.id)
+        
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if tableView.isEditing {
+            return .delete
+        }
+        
+        return .none
+    }
+    
 }
